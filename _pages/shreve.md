@@ -8,4 +8,4 @@ _Stochastic Calculus for Finance II_ is one of the most accessible books in math
 
 ## Chapter 1
 
-[shreve_1_1](https://sinabaghal.github.io/posts/shreve_1_1/)  
+[Exercise 1.1](https://sinabaghal.github.io/posts/shreve_1_1/)  
