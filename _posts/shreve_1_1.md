@@ -1,4 +1,3 @@
-
 ---
 title: 'Exercise 1.1'
 date: 2024-06-02
