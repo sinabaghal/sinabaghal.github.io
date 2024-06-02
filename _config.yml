@@ -11,7 +11,7 @@ locale                   : "en-US"
 title                    : "Sina Baghal"
 title_separator          : "-"
 name                     : &name "Sina Baghal"
-description              : &description "Mathematician"
+description              : &description ""
 url                      : https://academicpages.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "academicpages/academicpages.github.io"
@@ -22,13 +22,11 @@ repository               : "academicpages/academicpages.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Your Sidebar Name"
-  pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
-  location         : "Earth"
-  employer         : "Red Brick University"
-  uri              : # URL
-  email            : "none@example.org" 
+  name             : "Sina Baghal" 
+  bio              : "Mathematician"
+  location         : "Toronto, ON"
+  linkedin         : "https://www.linkedin.com/in/sina-baghal-35b076143/"
+
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
