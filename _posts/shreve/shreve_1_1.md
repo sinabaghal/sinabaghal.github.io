@@ -2,7 +2,7 @@
 ---
 title: 'Exercise 1.1'
 date: 2024-06-02
-permalink: /posts/shreve/shreve_1_1/
+permalink: /posts/shreve/shreve_1_1
 tags:
   - Probability Theory
 ---
