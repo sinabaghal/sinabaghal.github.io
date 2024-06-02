@@ -6,13 +6,14 @@ tags:
   - Probability Theory
 ---
 
-Consider a probability space $(\Omega,\mathcal{F},\mathbb{P})$. Show that 
-\begin{itemize}
-    \item If $A,B \in \mathcal{F}$ and $A\subseteq B$, then $\mathbb{P}(A)\leq \mathbb{P}(B)$
-    \item If $A\subseteq A_n$ and $\lim \mathbb{P}(A_n)=0$, then $\mathbb{P}(A)=0$.
-\end{itemize}
+### Exercise 1.1
 
-\subsubsection*{Proof} 
+Consider a probability space $(\Omega,\mathcal{F},\mathbb{P})$. Show that 
+
+  - If $A,B \in \mathcal{F}$ and $A\subseteq B$, then $\mathbb{P}(A)\leq \mathbb{P}(B)$
+  - If $A\subseteq A_n$ and $\lim \mathbb{P}(A_n)=0$, then $\mathbb{P}(A)=0$.
+
+### Proof
 
 Consider the following set of countable many disjoint sets in $\mathcal{F}$:
 
