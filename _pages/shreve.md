@@ -51,4 +51,29 @@ _Stochastic Calculus for Finance II_ is one of the most accessible books in math
 [Exercise 3.8](https://sinabaghal.github.io/files/shreve/Shreve_3_8.pdf)  
 [Exercise 3.9 (Laplace transform of first passage density)](https://sinabaghal.github.io/files/shreve/Shreve_3_9.pdf)  
 
+## Chapter 4 (Stochastic Calculus)
+
+[Exercise 4.1](https://sinabaghal.github.io/files/shreve/Shreve_4_1.pdf)  
+[Exercise 4.2](https://sinabaghal.github.io/files/shreve/Shreve_4_2.pdf)  
+[Exercise 4.3](https://sinabaghal.github.io/files/shreve/Shreve_4_3.pdf)  
+[Exercise 4.4](https://sinabaghal.github.io/files/shreve/Shreve_4_4.pdf)  
+[Exercise 4.5](https://sinabaghal.github.io/files/shreve/Shreve_4_5.pdf)  
+[Exercise 4.6](https://sinabaghal.github.io/files/shreve/Shreve_4_6.pdf)  
+[Exercise 4.7](https://sinabaghal.github.io/files/shreve/Shreve_4_7.pdf)  
+[Exercise 4.8](https://sinabaghal.github.io/files/shreve/Shreve_4_8.pdf)  
+[Exercise 4.9](https://sinabaghal.github.io/files/shreve/Shreve_4_9.pdf)  
+[Exercise 4.10](https://sinabaghal.github.io/files/shreve/Shreve_4_10.pdf)   
+[Exercise 4.11](https://sinabaghal.github.io/files/shreve/Shreve_4_11.pdf)  
+[Exercise 4.12](https://sinabaghal.github.io/files/shreve/Shreve_4_12.pdf)  
+[Exercise 4.13](https://sinabaghal.github.io/files/shreve/Shreve_4_13.pdf)  
+[Exercise 4.14](https://sinabaghal.github.io/files/shreve/Shreve_4_14.pdf)  
+[Exercise 4.15](https://sinabaghal.github.io/files/shreve/Shreve_4_15.pdf)  
+[Exercise 4.16](https://sinabaghal.github.io/files/shreve/Shreve_4_16.pdf)  
+[Exercise 4.17](https://sinabaghal.github.io/files/shreve/Shreve_4_17.pdf)  
+[Exercise 4.18](https://sinabaghal.github.io/files/shreve/Shreve_4_18.pdf)  
+[Exercise 4.19](https://sinabaghal.github.io/files/shreve/Shreve_4_19.pdf) 
+[Exercise 4.20](https://sinabaghal.github.io/files/shreve/Shreve_4_20.pdf)
+[Exercise 4.21](https://sinabaghal.github.io/files/shreve/Shreve_4_21.pdf)
+
+
 
