@@ -24,3 +24,16 @@ _Stochastic Calculus for Finance II_ is one of the most accessible books in math
 [Exercise 1.14 (Change of measure for an exponential random variable)](https://sinabaghal.github.io/files/shreve/Shreve_1_14.pdf)  
 [Exercise 1.15](https://sinabaghal.github.io/files/shreve/Shreve_1_15.pdf)  
 
+## Chapter 2 (Information and Conditioning)
+
+[Exercise 2.1](https://sinabaghal.github.io/files/shreve/Shreve_2_1.pdf)  
+[Exercise 2.2](https://sinabaghal.github.io/files/shreve/Shreve_2_2.pdf)  
+[Exercise 2.3 (Rotating the axes)](https://sinabaghal.github.io/files/shreve/Shreve_2_3.pdf)  
+[Exercise 2.4](https://sinabaghal.github.io/files/shreve/Shreve_2_4.pdf)  
+[Exercise 2.5](https://sinabaghal.github.io/files/shreve/Shreve_2_5.pdf)  
+[Exercise 2.6](https://sinabaghal.github.io/files/shreve/Shreve_2_6.pdf)  
+[Exercise 2.7](https://sinabaghal.github.io/files/shreve/Shreve_2_7.pdf)  
+[Exercise 2.8](https://sinabaghal.github.io/files/shreve/Shreve_2_8.pdf)  
+[Exercise 2.9](https://sinabaghal.github.io/files/shreve/Shreve_2_9.pdf)  
+[Exercise 2.10](https://sinabaghal.github.io/files/shreve/Shreve_2_10.pdf)   
+[Exercise 2.11](https://sinabaghal.github.io/files/shreve/Shreve_2_11.pdf)  
