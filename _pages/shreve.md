@@ -72,7 +72,7 @@ independent Brownian motions)](https://sinabaghal.github.io/files/shreve/Shreve_
 [Exercise 4.15 (Creating correlated Brownian motions from independent ones)](https://sinabaghal.github.io/files/shreve/Shreve_4_15.pdf)  
 [Exercise 4.16 (Creating independent Brownian motions to represent correlated ones)](https://sinabaghal.github.io/files/shreve/Shreve_4_16.pdf)  
 [Exercise 4.17 (Instantaneous correlation)](https://sinabaghal.github.io/files/shreve/Shreve_4_17.pdf)  
-[Exercise 4.18](https://sinabaghal.github.io/files/shreve/Shreve_4_18.pdf)  
+[Exercise 4.18 (State price density process)](https://sinabaghal.github.io/files/shreve/Shreve_4_18.pdf)  
 [Exercise 4.19](https://sinabaghal.github.io/files/shreve/Shreve_4_19.pdf)  
 [Exercise 4.20 (Local time)](https://sinabaghal.github.io/files/shreve/Shreve_4_20.pdf)  
 [Exercise 4.21 (Stop-loss start-gain paradox)](https://sinabaghal.github.io/files/shreve/Shreve_4_21.pdf)
