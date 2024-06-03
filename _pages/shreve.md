@@ -37,3 +37,18 @@ _Stochastic Calculus for Finance II_ is one of the most accessible books in math
 [Exercise 2.9](https://sinabaghal.github.io/files/shreve/Shreve_2_9.pdf)  
 [Exercise 2.10](https://sinabaghal.github.io/files/shreve/Shreve_2_10.pdf)   
 [Exercise 2.11](https://sinabaghal.github.io/files/shreve/Shreve_2_11.pdf)  
+
+
+## Chapter 3 (Brownian Motion)
+
+[Exercise 3.1](https://sinabaghal.github.io/files/shreve/Shreve_3_1.pdf)  
+[Exercise 3.2](https://sinabaghal.github.io/files/shreve/Shreve_3_2.pdf)  
+[Exercise 3.3 (Normal kurtosis)](https://sinabaghal.github.io/files/shreve/Shreve_3_3.pdf)  
+[Exercise 3.4 (Other variations of Brownian motion)](https://sinabaghal.github.io/files/shreve/Shreve_3_4.pdf)  
+[Exercise 3.5 (Black-Scholes-Merton formula)](https://sinabaghal.github.io/files/shreve/Shreve_3_5.pdf)  
+[Exercise 3.6](https://sinabaghal.github.io/files/shreve/Shreve_3_6.pdf)  
+[Exercise 3.7](https://sinabaghal.github.io/files/shreve/Shreve_3_7.pdf)  
+[Exercise 3.8](https://sinabaghal.github.io/files/shreve/Shreve_3_8.pdf)  
+[Exercise 3.9 (Laplace transform of first passage density)](https://sinabaghal.github.io/files/shreve/Shreve_3_9.pdf)  
+
+
