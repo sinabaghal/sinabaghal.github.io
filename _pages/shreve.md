@@ -106,6 +106,19 @@ independent Brownian motions)](https://sinabaghal.github.io/files/shreve/Shreve_
 [Exercise 6.8 (Kolmogorov backward equation)](https://sinabaghal.github.io/files/shreve/Shreve_6_8.pdf)   
 [Exercise 6.9 (Kolmogorov forward equation)](https://sinabaghal.github.io/files/shreve/Shreve_6_9.pdf)  
 [Exercise 6.10 (Implying the volatility surface)](https://sinabaghal.github.io/files/shreve/Shreve_6_10.pdf)   
+
+## Chapter 7 (Exotic Options)
+  
+[Exercise 7.2 (Boundary conditions for the up-and-out call)](https://sinabaghal.github.io/files/shreve/Shreve_7_2.pdf)  
+[Exercise 7.3 (Markov property for geometric Brownian motion and 
+its maximum to date)](https://sinabaghal.github.io/files/shreve/Shreve_7_3.pdf)  
+[Exercise 7.4 (Cross variation of geometric Brownian motion and its 
+maximum to date)](https://sinabaghal.github.io/files/shreve/Shreve_7_4.pdf)  
+[Exercise 7.6 (Boundary conditions for lookback option)](https://sinabaghal.github.io/files/shreve/Shreve_7_6.pdf)  
+[Exercise 7.7 (Zero-strike Asian call))](https://sinabaghal.github.io/files/shreve/Shreve_7_7.pdf)  
+[Exercise 7.8](https://sinabaghal.github.io/files/shreve/Shreve_7_8.pdf)  
+[Exercise 7.9](https://sinabaghal.github.io/files/shreve/Shreve_7_9.pdf)  
+
   
 
 
