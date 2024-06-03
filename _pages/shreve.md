@@ -77,5 +77,23 @@ independent Brownian motions)](https://sinabaghal.github.io/files/shreve/Shreve_
 [Exercise 4.20 (Local time)](https://sinabaghal.github.io/files/shreve/Shreve_4_20.pdf)  
 [Exercise 4.21 (Stop-loss start-gain paradox)](https://sinabaghal.github.io/files/shreve/Shreve_4_21.pdf)
 
+## Chapter 5 (Risk-Neutral Pricing)
+
+[Exercise 5.1](https://sinabaghal.github.io/files/shreve/Shreve_5_1.pdf)  
+[Exercise 5.2 (State price density process)](https://sinabaghal.github.io/files/shreve/Shreve_5_2.pdf)  
+[Exercise 5.3](https://sinabaghal.github.io/files/shreve/Shreve_5_3.pdf)  
+[Exercise 5.4 (Black-Scholes-Merton formula for time-varying, nonrandom interest rate and volatility)](https://sinabaghal.github.io/files/shreve/Shreve_5_4.pdf)  
+[Exercise 5.5](https://sinabaghal.github.io/files/shreve/Shreve_5_5.pdf)  
+[Exercise 5.6](https://sinabaghal.github.io/files/shreve/Shreve_5_6.pdf)  
+[Exercise 5.7](https://sinabaghal.github.io/files/shreve/Shreve_5_7.pdf)  
+[Exercise 5.8 (Every strictly positive asset is a generalized geometric 
+Brownian motion)](https://sinabaghal.github.io/files/shreve/Shreve_5_8.pdf)  
+[Exercise 5.9 (Implying the risk-neutral distribution)](https://sinabaghal.github.io/files/shreve/Shreve_5_9.pdf)  
+[Exercise 5.10 (Chooser option)](https://sinabaghal.github.io/files/shreve/Shreve_5_10.pdf)   
+[Exercise 5.11 (Hedging a cash flow)](https://sinabaghal.github.io/files/shreve/Shreve_5_11.pdf)  
+[Exercise 5.12 (Correlation under change of measure)](https://sinabaghal.github.io/files/shreve/Shreve_5_12.pdf)  
+[Exercise 5.13](https://sinabaghal.github.io/files/shreve/Shreve_5_13.pdf)   
+[Exercise 5.14 (Cost of carry)](https://sinabaghal.github.io/files/shreve/Shreve_5_14.pdf)  
+
 
 
