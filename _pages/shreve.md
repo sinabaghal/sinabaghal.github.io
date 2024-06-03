@@ -115,7 +115,7 @@ its maximum to date)](https://sinabaghal.github.io/files/shreve/Shreve_7_3.pdf)
 [Exercise 7.4 (Cross variation of geometric Brownian motion and its 
 maximum to date)](https://sinabaghal.github.io/files/shreve/Shreve_7_4.pdf)  
 [Exercise 7.6 (Boundary conditions for lookback option)](https://sinabaghal.github.io/files/shreve/Shreve_7_6.pdf)  
-[Exercise 7.7 (Zero-strike Asian call))](https://sinabaghal.github.io/files/shreve/Shreve_7_7.pdf)  
+[Exercise 7.7 (Zero-strike Asian call)](https://sinabaghal.github.io/files/shreve/Shreve_7_7.pdf)  
 [Exercise 7.8](https://sinabaghal.github.io/files/shreve/Shreve_7_8.pdf)  
 [Exercise 7.9](https://sinabaghal.github.io/files/shreve/Shreve_7_9.pdf)  
 
