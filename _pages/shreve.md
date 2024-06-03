@@ -82,7 +82,7 @@ independent Brownian motions)](https://sinabaghal.github.io/files/shreve/Shreve_
 [Exercise 5.1](https://sinabaghal.github.io/files/shreve/Shreve_5_1.pdf)  
 [Exercise 5.2 (State price density process)](https://sinabaghal.github.io/files/shreve/Shreve_5_2.pdf)  
 [Exercise 5.3](https://sinabaghal.github.io/files/shreve/Shreve_5_3.pdf)  
-[Exercise 5.4 (Black-Scholes-Merton formula for time-varying, non-random interest rate and volatility)](https://sinabaghal.github.io/files/shreve/Shreve_5_4.pdf)  
+[Exercise 5.4 (BSM formula for time-varying, non-random interest rate and volatility)](https://sinabaghal.github.io/files/shreve/Shreve_5_4.pdf)  
 [Exercise 5.5](https://sinabaghal.github.io/files/shreve/Shreve_5_5.pdf)  
 [Exercise 5.6](https://sinabaghal.github.io/files/shreve/Shreve_5_6.pdf)  
 [Exercise 5.7](https://sinabaghal.github.io/files/shreve/Shreve_5_7.pdf)  
