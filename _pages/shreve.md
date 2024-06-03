@@ -119,6 +119,17 @@ maximum to date)](https://sinabaghal.github.io/files/shreve/Shreve_7_4.pdf)
 [Exercise 7.8](https://sinabaghal.github.io/files/shreve/Shreve_7_8.pdf)  
 [Exercise 7.9](https://sinabaghal.github.io/files/shreve/Shreve_7_9.pdf)  
 
+## Chapter 8 (American Derivative Securities)
+
+[Exercise 8.1 (Determination of L_* by smooth pasting)](https://sinabaghal.github.io/files/shreve/Shreve_8_1.pdf)  
+[Exercise 8.2](https://sinabaghal.github.io/files/shreve/Shreve_8_2.pdf)  
+[Exercise 8.3 (Solving the linear complementarity conditions)](https://sinabaghal.github.io/files/shreve/Shreve_8_3.pdf)  
+[Exercise 8.4](https://sinabaghal.github.io/files/shreve/Shreve_8_4.pdf)  
+[Exercise 8.5 (Perpetual American put paying dividends)](https://sinabaghal.github.io/files/shreve/Shreve_8_5.pdf)  
+[Exercise 8.6 (Optional sampling)](https://sinabaghal.github.io/files/shreve/Shreve_8_6.pdf)  
+[Exercise 8.7](https://sinabaghal.github.io/files/shreve/Shreve_8_7.pdf)  
+
+
   
 
 
