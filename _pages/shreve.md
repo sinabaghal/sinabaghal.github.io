@@ -94,5 +94,18 @@ independent Brownian motions)](https://sinabaghal.github.io/files/shreve/Shreve_
 [Exercise 5.13](https://sinabaghal.github.io/files/shreve/Shreve_5_13.pdf)   
 [Exercise 5.14 (Cost of carry)](https://sinabaghal.github.io/files/shreve/Shreve_5_14.pdf)  
 
+## Chapter 6 (Connections with Partial Differential Equations)
+
+[Exercise 6.1](https://sinabaghal.github.io/files/shreve/Shreve_6_1.pdf)  
+[Exercise 6.2 (No-arbitrage derivation of bond-pricing equation)](https://sinabaghal.github.io/files/shreve/Shreve_6_2.pdf)  
+[Exercise 6.3 (Solution of Hull-White model)](https://sinabaghal.github.io/files/shreve/Shreve_6_3.pdf)  
+[Exercise 6.4 (Solution of Cox-Ingersoll-Ross model)](https://sinabaghal.github.io/files/shreve/Shreve_6_4.pdf)  
+[Exercise 6.5 (Two-dimensional Feynman-Kac)](https://sinabaghal.github.io/files/shreve/Shreve_6_5.pdf)  
+[Exercise 6.6 (Moment-generating function for Cox-Ingersoll-Ross process)](https://sinabaghal.github.io/files/shreve/Shreve_6_6.pdf)  
+[Exercise 6.7 (Heston stochastic volatility model)](https://sinabaghal.github.io/files/shreve/Shreve_6_7.pdf)
+[Exercise 6.8 (Kolmogorov backward equation)](https://sinabaghal.github.io/files/shreve/Shreve_6_8.pdf)   
+[Exercise 6.9 (Kolmogorov forward equation)](https://sinabaghal.github.io/files/shreve/Shreve_6_9.pdf)  
+[Exercise 6.10 (Implying the volatility surface)](https://sinabaghal.github.io/files/shreve/Shreve_6_10.pdf)   
+  
 
 
