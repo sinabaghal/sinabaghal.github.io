@@ -9,7 +9,25 @@ In this note, we consider three types of exotic options on geometric Brownian mo
 - Lookback options 
 - Asian options
 
-Pricing of exotic options for GBM assets depend on a the following principle:
+## Definition
+
+A _Barrier options_ are a type of financial derivative whose payoff depends on whether the underlying asset's price reaches a specific predetermined level, called the barrier, within a certain timeframe. If the asset's price hits this barrier, the option is either activated (knock-in) or deactivated (knock-out). These options can be either calls or puts and usually have lower premiums than standard options due to their conditional nature.
+
+A _Lookback options_ are a type of exotic financial derivative that allows the holder to "look back" over the life of the option and choose the optimal underlying asset's price to determine the payoff. There are two main types of lookback options:
+
+- Fixed Lookback Options: The strike price is determined at the inception of the option, but the payoff is based on the maximum or minimum underlying asset price during the option's life.
+- Floating Lookback Options: The strike price is determined based on the maximum or minimum underlying asset price during the option's life, providing the holder with the most favorable price movement.
+
+As an example, a lookback call option expiring at time $T$ will have the following payoff formula:
+
+- Fixed-Strike: $\max(S_{\max}-K,0)$
+- Floating-Strike: $\max(S(T)-S_{\min},0)$
+
+These options are more expensive than standard options because they offer a significant advantage in eliminating the uncertainty of timing market highs and lows.
+
+An _Asian options_ is a type of financial derivative where the payoff is determined by the average price of the underlying asset over a specific period, rather than its price at a single point in time. This averaging feature can reduce the option's volatility and, typically, its premium compared to standard options. Asian options can be either calls or puts.
+
+In this note, we provide some insights into how these exotic options are priced. Pricing barrier and lookback options requires an understanding of the joint density between the maximum of a Brownian motion $W(t)$ over an interval $[0, T]$ and $W(T)$. This distribution is derived using _Reflection Principle_ which is defined next.
 
 ## Reflection Principle
 
@@ -51,7 +69,7 @@ Payoff functions for barriers and lookbacks are computed as follows:
 
 ```math
 \begin{align}
-    V_b(T) &= (S(0)e^{\sigma \widehat{W}(t)}-K){1}_{\{\widehat{W}(T)\geq k, \widehat{M}(T)\leq b\}} \\ 
+    V_b(T) &= S(0)e^{\sigma \widehat{W}(t)}-K){1}_{\{\widehat{W}(T)\geq k, \widehat{M}(T)\leq b\}} \\ 
        V_l(T) &= S(0)(e^{\sigma \widehat{M}(T)}-e^{\sigma \widehat{W}(T)} )
 \end{align}
 ```
