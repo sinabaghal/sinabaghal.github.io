@@ -4,7 +4,7 @@ permalink: /posts/
 author_profile: true
 ---
 
-A blog containing tutorials, notes, and insights on topics in quantitative finance, statistics, computing, and machine learning.  
+I share my notes on quantitative finance, statistics, computing, and machine learning here.
 
 ## Quantitaive finance
 
