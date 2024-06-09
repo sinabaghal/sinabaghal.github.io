@@ -16,7 +16,7 @@ Exotic options have payoffs that depend on the path taken by the underlying asse
 - Lookback options
 - Asian options
 
-[Exotic Option note]() provides further details on the pricing of these options.
+[Exotic Option note](https://sinabaghal.github.io/files/notes/exotic_options_notes.pdf) provides further details on the pricing of these options.
 
 
 
