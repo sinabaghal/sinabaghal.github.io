@@ -142,5 +142,20 @@ maximum to date)](https://sinabaghal.github.io/files/shreve/Shreve_7_4.pdf)
 [Exercise 9.5 (Quanto option)](https://sinabaghal.github.io/files/shreve/Shreve_9_5.pdf)  
 [Exercise 9.6](https://sinabaghal.github.io/files/shreve/Shreve_9_6.pdf)  
 
+## Chapter 10 (Term-Structure Models)
 
+[Exercise 10.1 (Statistics in the two-factor Vasicek model)](https://sinabaghal.github.io/files/shreve/Shreve_10_1.pdf)  
+[Exercise 10.2 (Ordinary differential equations for the mixed affine­
+yield model)](https://sinabaghal.github.io/files/shreve/Shreve_10_2.pdf)  
+[Exercise 10.3 (Calibration of the two-factor Vasicek model)](https://sinabaghal.github.io/files/shreve/Shreve_10_3.pdf)  
+[Exercise 10.4](https://sinabaghal.github.io/files/shreve/Shreve_10_4.pdf)  
+[Exercise 10.5 (Correlation between long rate and short rate in the
+one-factor Vasicek model)](https://sinabaghal.github.io/files/shreve/Shreve_10_5.pdf)  
+[Exercise 10.6 (Degenerate two-factor Vasicek model)](https://sinabaghal.github.io/files/shreve/Shreve_10_6.pdf)  
+[Exercise 10.7 (Forward measure in the two-factor Vasicek model)](https://sinabaghal.github.io/files/shreve/Shreve_10_7.pdf)  
+[Exercise 10.8 (Reversal of order of integration in forward rates)](https://sinabaghal.github.io/files/shreve/Shreve_10_8.pdf)  
+[Exercise 10.9 (Multifactor HJM model)](https://sinabaghal.github.io/files/shreve/Shreve_10_9.pdf)  
+[Exercise 10.10](https://sinabaghal.github.io/files/shreve/Shreve_10_10.pdf)   
+[Exercise 10.11](https://sinabaghal.github.io/files/shreve/Shreve_10_11.pdf)  
+[Exercise 10.11](https://sinabaghal.github.io/files/shreve/Shreve_10_11.pdf)  
 
