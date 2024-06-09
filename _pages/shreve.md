@@ -133,7 +133,14 @@ maximum to date)](https://sinabaghal.github.io/files/shreve/Shreve_7_4.pdf)
 [Exercise 8.6 (Optional sampling)](https://sinabaghal.github.io/files/shreve/Shreve_8_6.pdf)  
 [Exercise 8.7](https://sinabaghal.github.io/files/shreve/Shreve_8_7.pdf)  
 
+## Chapter 9 (Change of Numeraire)
 
-  
+[Exercise 9.1](https://sinabaghal.github.io/files/shreve/Shreve_9_1.pdf)  
+[Exercise 9.2 (Portfolios under change of numeraire)](https://sinabaghal.github.io/files/shreve/Shreve_9_2.pdf)  
+[Exercise 9.3 (Change in volatility caused by change of numeraire)](https://sinabaghal.github.io/files/shreve/Shreve_9_3.pdf)  
+[Exercise 9.4](https://sinabaghal.github.io/files/shreve/Shreve_9_4.pdf)  
+[Exercise 9.5 (Quanto option)](https://sinabaghal.github.io/files/shreve/Shreve_9_5.pdf)  
+[Exercise 9.6](https://sinabaghal.github.io/files/shreve/Shreve_9_6.pdf)  
+
 
 
