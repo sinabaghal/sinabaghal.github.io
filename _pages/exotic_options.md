@@ -1,4 +1,8 @@
-## Exotic options 
+---
+title: "Exotic options"
+permalink: /exotic_options/
+author_profile: true
+---
 
 Exotic options have payoffs that depend on the path taken by the underlying asset. Exotic options include:
 
