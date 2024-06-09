@@ -1,6 +1,6 @@
 ---
 title: "Exotic options"
-permalink: /exotic_options/
+permalink: /posts/
 author_profile: true
 ---
 
