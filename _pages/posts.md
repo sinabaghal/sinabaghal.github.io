@@ -13,6 +13,3 @@ I share my notes on quantitative finance, statistics, computing, and machine lea
 
 ## Computing 
 
-[C++ Notes](https://sinabaghal.github.io/pages/cpp/)  
-
-
