@@ -11,4 +11,4 @@ $$
  \frac{\partial f}{\partial t} + rS \frac{\partial f}{\partial S} + \frac{1}{2} \sigma^2 S^2 \frac{\partial^2 f}{\partial S^2} = r f
  $$
  
-with the terminal condition $f(T, S) = h(S)$, where $h(S)$ is the payoff at maturity $T$. 
+with the terminal condition $f(T, S) = h(S)$, where $h(S)$ is the payoff at maturity $T$. Document below provides some concrete examples on how Feynman-Kac Theorem can be used for pricing derivatives!
