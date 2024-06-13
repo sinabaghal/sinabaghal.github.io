@@ -9,5 +9,6 @@ I share my notes on quantitative finance, statistics, computing, and machine lea
 ## Quantitaive finance
 
 [Exotic Options](https://sinabaghal.github.io/pages/exotic_options/)
+[Exotic Options](https://sinabaghal.github.io/pages/feyman_kac/)
 
 
