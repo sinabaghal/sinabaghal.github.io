@@ -10,3 +10,6 @@ Dupire's formula is a fundamental result in quantitative finance that provides a
 $$
 \sigma_{\text{loc}}^2(K, T) = \frac{\frac{\partial C}{\partial T} + r K \frac{\partial C}{\partial K}}{\frac{1}{2} K^2 \frac{\partial^2 C}{\partial K^2}}
 $$
+
+The document below provides a proof of this formula. 
+
