@@ -1,3 +1,9 @@
+---
+title: "Feynman-Kac Theorem"
+permalink: /pages/feyman_kac/
+author_profile: true
+---
+
 Feynman-Kac Theorem states that the price of a derivative can be represented as the solution to a certain PDE. Specifically, if $f(t, S)$ is the price of the derivative
 at time $t$ when the underlying asset price is S which follows 
 
