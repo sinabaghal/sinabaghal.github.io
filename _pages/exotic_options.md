@@ -1,5 +1,5 @@
 ---
-title: "Exotic options"
+title: "Exotic Options"
 permalink: /pages/exotic_options/
 author_profile: true
 ---
