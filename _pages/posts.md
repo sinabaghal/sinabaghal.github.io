@@ -9,7 +9,7 @@ I share my notes on quantitative finance, statistics, computing, and machine lea
 ## Quantitaive Finance
 
 [Exotic Options](https://sinabaghal.github.io/pages/exotic_options/)  
-[Feynman-Kac Theorem](https://sinabaghal.github.io/pages/feyman_kac/)
+[Feynman-Kac Theorem](https://sinabaghal.github.io/pages/feyman_kac/)   
 [Dupire's Formula](https://sinabaghal.github.io/pages/dupire/)
 
 ## Computing 
