@@ -6,9 +6,13 @@ author_profile: true
 
 I share my notes on quantitative finance, statistics, computing, and machine learning here.
 
-## Quantitaive finance
+## Quantitaive Finance
 
 [Exotic Options](https://sinabaghal.github.io/pages/exotic_options/)  
 [Feynman-Kac Theorem](https://sinabaghal.github.io/pages/feyman_kac/)
+
+## Computing 
+
+[C++ Notes](https://sinabaghal.github.io/pages/cpp/)  
 
 
