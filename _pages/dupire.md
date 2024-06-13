@@ -13,3 +13,6 @@ $$
 
 The document below provides a proof of this formula. 
 
+[Document (The Dupire Formula)](https://sinabaghal.github.io/files/notes/dupire.pdf)
+
+
