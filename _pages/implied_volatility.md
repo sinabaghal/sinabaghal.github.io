@@ -64,9 +64,7 @@ for row_cnt in range(spx_options.shape[0]):
         continue
     
     # upper_bound = 2*np.sqrt(np.abs(np.log(zeta)))
-
-    ## Next, we obtain an interval which contains the IV.
-
+    ## Next, we obtain an interval which contains IV.
     upper_bound = 0.4
     while call_function(upper_bound) < 0: 
         upper_bound =  2*upper_bound
