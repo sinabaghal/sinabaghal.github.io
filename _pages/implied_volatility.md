@@ -14,11 +14,10 @@ $$c(\sigma), S, K, r, \tau$$ are market observed data and solveing this equation
 
 ```rb
 
-## The following code is not optimized and for clarity it's kept as-is.
-
-It solves for IV using a combination of bisection and Newton root finding algorithm. 
-
-Index option data is collected from CBOE.com and those outside of the allowable range within the Black-Scholes framework are discarded. 
+## The following code is not optimized and for clarity it's kept as-is. 
+# It solves for IV using a combination of bisection and Newton root finding algorithm.  
+# Index option data is collected from CBOE.com and those outside of the allowable range within the Black-Scholes framework
+# are discarded. 
 
 import numpy as np ; import pandas as pd 
 import scipy.stats as st; import scipy.optimize as opt
@@ -48,7 +47,8 @@ for row_cnt in range(spx_options.shape[0]):
     d2                 = lambda sigma: (np.log(S / K) + (r0 - 0.5 * sigma ** 2) * tau) / (sigma * np.sqrt(tau))
 
     def call_price(sigma):
-    # Compute call option price as a function of sigma. Since vega is positive, call_price(sigma) is increasing w.r.t. sigma.
+    # Compute call option price as a function of sigma.  
+    # Since vega is positive, call_price(sigma) is increasing w.r.t. sigma.
 
         if sigma >0:
             return (S * st.norm.cdf(d1(sigma)) - K * np.exp(-r0 * tau) * st.norm.cdf(d2(sigma)))
