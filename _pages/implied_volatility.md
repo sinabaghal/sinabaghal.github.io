@@ -95,7 +95,7 @@ df.to_csv('result_22June_V1.csv')
 Fixing time to maturity $$\tau$$ and ploting IV against strike, the volatility smile is obtained. 
 
 <p align="center">
-<img src="http://sinabaghal.github.io/images/DJX_Smile.png" width="70%" height="70%">
+<img src="http://sinabaghal.github.io/images/DJX_Smile.png" width="90%" height="90%">
 </p>
 
 Here is also the curve-fitting code:
