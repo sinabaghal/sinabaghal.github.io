@@ -61,7 +61,8 @@ for row_cnt in range(spx_options.shape[0]):
     
     # upper_bound = 2*np.sqrt(np.abs(np.log(zeta)))
 
-    ## Next, we obtain an interval which contains the IV. 
+    ## Next, we obtain an interval which contains the IV.
+
     upper_bound = 0.4
     while call_function(upper_bound) < 0: 
 
@@ -81,7 +82,8 @@ for row_cnt in range(spx_options.shape[0]):
 
     assert(call_function(lower_bound)<0)
     assert(call_function(upper_bound)>0)  
-    
+
+    # Apply Newton's root finding algorithm using the midpoint of the interval above.
     init_newton = (lower_bound+upper_bound)/2
 
     newton_sol = opt.newton(call_function,  init_newton, tol=1e-10, maxiter=1000, disp=True, full_output=True)
