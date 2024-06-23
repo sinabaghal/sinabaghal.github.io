@@ -60,7 +60,6 @@ for row_cnt in range(spx_options.shape[0]):
             else:
                 return 0
 
-
     call_function      = lambda sigma: call_price(sigma) - market_price
     # import pdb; pdb.set_trace()
     if call_function(0) > 0 : 
@@ -92,10 +91,6 @@ for row_cnt in range(spx_options.shape[0]):
     
     entry['K'], entry['S'], entry['Moneyness'], entry['tau'], entry['market_price'],entry['IV'],entry['error'] = \
     K,S, S/K, tau, market_price, implied_vol,error
-
-    
-        
-
 
     entries.append(entry)
 
