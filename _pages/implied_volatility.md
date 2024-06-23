@@ -92,3 +92,20 @@ for row_cnt in range(spx_options.shape[0]):
 df = pd.DataFrame(entries)
 df.to_csv('result_22June_V1.csv')
 ```
+Fixing time to maturity $$\tau$$ and ploting IV against strike, the volatility smile is obtained. 
+
+<p align="center">
+<img src="http://sinabaghal.github.io/images/DJX_Smile.png" width="40%" height="40%">
+</p>
+
+Here is also the curve-fitting code:
+
+```rb
+df_tau = df[df.tau == df.iloc[0,:].tau]
+def func(x, a3,a2,a1,a0):
+    return a3 * x**3+a2*x**2+a1*x + a0
+
+popt, pcov = curve_fit(func, df_tau.K,  df_tau.IV)
+plt.plot(df_tau.K, func(df_tau.K, *popt), 'g--',
+         label='fit: a3=%5.10f, a2=%5.10f, a1=%5.10f, a0=%5.10f' % tuple(popt))
+```
