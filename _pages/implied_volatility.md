@@ -10,7 +10,7 @@ $$
 c(\sigma) = SN(d_+)-Ke^{-r\tau}N(d_-) \text{ where } d_{\pm} = \tfrac{1}{\sigma\sqrt{\tau}}[\log \tfrac{S}{K}+(r\pm\tfrac{\sigma^2}{2})\tau]
 $$
 
-$$c(\sigma), S, K, r, \tau$$ are market observed data and solveing this equation for $$\sigma$$ provides the implied volaitlity (IV). 
+$$c(\sigma), S, K, r, \tau$$ are market observed data and solving this equation for $$\sigma$$ provides the implied volatility (IV). It is emphasized that solving this equation is numerically challenging as it involves the Gaussian CDF which levels off rapidly both for positive and negative values. Due to this fact, any use of Newton root finding algorithm requires careful consideration as for the initialization.
 
 ```rb
 
