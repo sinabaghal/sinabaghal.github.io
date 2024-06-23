@@ -17,6 +17,7 @@ import numpy as np ; import pandas as pd
 import scipy.stats as st; import scipy.optimize as opt
 
 
+# Index option data is downloaded from CBOE.com.
 options = pd.read_csv('data/eod_marking_prices_list.csv')
 spx_options = options[options.underlying_symbol == '^SPX']
 rates = pd.read_csv('data/FEDFUNDS.csv')
@@ -31,6 +32,8 @@ for row_cnt in range(spx_options.shape[0]):
     S = row.call_underlying_value  # Today's stock price
     K =  row.strike # Strike price
     tau = row.DTE/252 # time to maturity
+
+    ## Here it's be better if midpoint of ask and bid price is used even though that's not guaranteed to be arbitrage free. 
     market_price = row.call_final_indicative_ask # Market call option price
     zeta = (S/K)*np.exp(r0*tau) ## forward moneyess (or its inverse)
 
