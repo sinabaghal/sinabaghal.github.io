@@ -108,4 +108,5 @@ def func(x, a3,a2,a1,a0):
 popt, pcov = curve_fit(func, df_tau.K,  df_tau.IV)
 plt.plot(df_tau.K, func(df_tau.K, *popt), 'g--',
          label='fit: a3=%5.10f, a2=%5.10f, a1=%5.10f, a0=%5.10f' % tuple(popt))
+# plt details omitted for brevity
 ```
