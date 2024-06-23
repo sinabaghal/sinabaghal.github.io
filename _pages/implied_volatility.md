@@ -54,12 +54,10 @@ for row_cnt in range(spx_options.shape[0]):
         if sigma >0:
             return (S * st.norm.cdf(d1(sigma)) - K * np.exp(-r0 * tau) * st.norm.cdf(d2(sigma)))
         elif sigma == 0:
-
             if zeta>1:
                 return S - K * np.exp(-r0 * tau) 
             elif zeta ==1:
                 return 0.5*(S - K * np.exp(-r0 * tau))
-            
             else:
                 return 0
 
@@ -76,24 +74,16 @@ for row_cnt in range(spx_options.shape[0]):
 
     upper_bound = 0.4
     while call_function(upper_bound) < 0: 
-
-        
         upper_bound =  2*upper_bound
-
     while call_function(upper_bound) >0:
-
         # import pdb; pdb.set_trace()
         if call_function( 0.5*upper_bound) >0:
-         
             upper_bound =  0.5*upper_bound
         else: 
             lower_bound = 0.5*upper_bound
             break 
 
-
-    assert(call_function(lower_bound)<0)
-    assert(call_function(upper_bound)>0)  
-
+    assert(call_function(lower_bound)<0);  assert(call_function(upper_bound)>0)  
     # Apply Newton's root finding algorithm using the midpoint of the interval above.
     init_newton = (lower_bound+upper_bound)/2
 
