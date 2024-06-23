@@ -16,7 +16,8 @@ $$c(\sigma), S, K, r, \tau$$ are market observed data and solveing this equation
 
 ## The following code is not optimized and for clarity it's kept as-is. 
 # It solves for IV using a combination of bisection and Newton root finding algorithm.  
-# Index option data is collected from CBOE.com and those outside of the allowable range within the Black-Scholes framework
+# Index option data is collected from CBOE.com and those outside of the allowable range within the 
+# Black-Scholes framework
 # are discarded. 
 
 import numpy as np ; import pandas as pd 
