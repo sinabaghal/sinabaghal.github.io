@@ -101,7 +101,8 @@ for row_cnt in range(spx_options.shape[0]):
     implied_vol = newton_sol[1].root
     error = np.abs(call_price(implied_vol) - market_price)
     
-    entry['K'], entry['S'], entry['Moneyness'], entry['tau'], entry['market_price'],entry['IV'],entry['error'] = K,S, S/K, tau, market_price, implied_vol,error
+    entry['K'], entry['S'], entry['Moneyness'], entry['tau'], entry['market_price'],entry['IV'],entry['error'] = \
+    K,S, S/K, tau, market_price, implied_vol,error
 
     
         
