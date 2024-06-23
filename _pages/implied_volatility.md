@@ -1,4 +1,8 @@
-### Implied Volatility 
+---
+title: "Implied Volatility "
+permalink: /pages/implied_volatility/
+author_profile: true
+---
 
 Implied volatility is a crucial concept in financial markets, reflecting the market's forecast of a security's price fluctuation over a specific period. It is derived from the market price of an option and represents the volatility that, when input into the Black-Scholes model, yields the observed market price. Implied volatility is a key metric for traders and investors in the assessment of market expectations and the pricing of options.
 
