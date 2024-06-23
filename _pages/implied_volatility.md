@@ -12,13 +12,9 @@ $$
 
 $$c(\sigma), S, K, r, \tau$$ are market observed data and solving this equation for $$\sigma$$ provides the implied volatility (IV). It is emphasized that solving this equation is numerically challenging as it involves the Gaussian CDF which levels off rapidly both for positive and negative values. Due to this fact, any use of Newton root finding algorithm requires careful consideration as for the initialization.
 
+Below, I provide a code in Python that calculates IV for index options (collected from CBOE.com). This code is not optimized and for clarity it's kept as-is. It solves for IV using a combination of bisection and Newton root finding algorithm. Option prices outside of the allowable range within the Black-Scholes framework are discarded. 
+
 ```rb
-
-## The following code is not optimized and for clarity it's kept as-is. 
-# It solves for IV using a combination of bisection and Newton root finding algorithm.  
-# Index option data is collected from CBOE.com and those outside of the allowable range within the 
-# Black-Scholes framework are discarded. 
-
 import numpy as np ; import pandas as pd 
 import scipy.stats as st; import scipy.optimize as opt
 
