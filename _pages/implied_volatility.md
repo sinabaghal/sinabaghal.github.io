@@ -44,8 +44,8 @@ for row_cnt in range(spx_options.shape[0]):
     market_price = row.call_final_indicative_ask # Market call option price
     zeta = (S/K)*np.exp(r0*tau) ## forward moneyess (or its inverse)
 
-    d1                 = lambda sigma: (np.log(S / K) + (r0 + 0.5 * sigma ** 2) * tau)/(sigma * np.sqrt(tau))
-    d2                 = lambda sigma: (np.log(S / K) + (r0 - 0.5 * sigma ** 2) * tau) / (sigma * np.sqrt(tau))
+    d1 = lambda sigma: (np.log(S / K) + (r0 + 0.5 * sigma ** 2) * tau)/(sigma * np.sqrt(tau))
+    d2 = lambda sigma: (np.log(S / K) + (r0 - 0.5 * sigma ** 2) * tau) / (sigma * np.sqrt(tau))
 
     def call_price(sigma):
     # Compute call option price as a function of sigma.  
