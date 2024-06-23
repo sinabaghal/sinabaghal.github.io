@@ -39,7 +39,8 @@ for row_cnt in range(spx_options.shape[0]):
     K =  row.strike # Strike price
     tau = row.DTE/252 # time to maturity
 
-    ## Here it's be better if midpoint of ask and bid price is used even though that's not guaranteed to be arbitrage free. 
+    ## It'd be better if midpoint of ask and bid price is used even though
+    # that's not guaranteed to be arbitrage free. 
     market_price = row.call_final_indicative_ask # Market call option price
     zeta = (S/K)*np.exp(r0*tau) ## forward moneyess (or its inverse)
 
