@@ -29,13 +29,10 @@ $$
 \end{equation}
 $$
 
-We use the above three constraints to shape the loss function utilized in training the implied variance $$\omega$$. As for learning rate scheduling, we use a slightly different approach than Ackerer et al;  we employ model weights perturbation along with a divergence handling scheme. 
+We use the above three constraints to shape the loss function utilized in training the implied variance $$\omega$$. For learning rate scheduling, we adopt a slightly different approach compared to Ackerer et al.; specifically, we use model weight perturbation along with a divergence handling scheme.
 
 
-Numerical results show that our enhanced model, incorporating a neural network with the loss function $$\omega(k,\tau; \theta)$$, fits the Bated model data perfectly and produces an arbitrage-free volatility surface. 
-
-
-The figure below shows how well our model fits the training data.
+Numerical results show that our enhanced model, incorporating a neural network with the loss function $$\omega(k,\tau; \theta)$$, fits the Bated model data perfectly and produces an arbitrage-free volatility surface. The figure below shows how well our model fits the training data.
 
 <p align="center">
 <img src="http://sinabaghal.github.io/images/ref_V.png" width="100%" height="100%">
