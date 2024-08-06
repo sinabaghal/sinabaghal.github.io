@@ -49,26 +49,22 @@ Python code can be found at the following link:
 For convenience, we include the main body of the code below. Please ensure you have utils.py from above link available to run it successfully.
 
 ```rb
-from matplotlib import pyplot as plt
-import QuantLib as ql
 from utils import *
-import numpy as np
-import pandas as pd
-from matplotlib import pyplot as plt
+import QuantLib as ql
 from scipy.interpolate import interp1d
 from scipy.fftpack import fft
 from scipy.interpolate import UnivariateSpline
 import cvxpy as cv
-from itertools import product 
-from collections import defaultdict
 import torch
 import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
 from torch.autograd import Function
 from scipy.optimize import curve_fit
+import numpy as np ; import pandas as pd ; from matplotlib import pyplot as plt
+from collections import defaultdict ; from itertools import product 
 import os
-import csv
+
 
 
 epsilon = 1e-8
