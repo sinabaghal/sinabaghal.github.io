@@ -51,9 +51,8 @@ For convenience, we include the main body of the code below. Please ensure you h
 ```rb
 from utils import *
 import QuantLib as ql
-from scipy.interpolate import interp1d
+from scipy.interpolate import interp1d,  UnivariateSpline
 from scipy.fftpack import fft
-from scipy.interpolate import UnivariateSpline
 import cvxpy as cv
 import torch
 import torch.nn as nn
