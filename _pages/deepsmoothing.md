@@ -50,7 +50,8 @@ Click [here](https://sinabaghal.github.io/files/deepsmoothing/IVS_Deep_Smoothing
 """
 Author: Sina Baghal
 Date: August 5, 2024
-Description: This project implements the methodologies presented in the paper Deep Smoothing of the Implied Volatility Surface by Ackerer et al (2020). 
+Description: This project implements the methodologies presented in the paper 
+Deep Smoothing of the Implied Volatility Surface by Ackerer et al (2020). 
 Version: 1.0.0
 """
 
