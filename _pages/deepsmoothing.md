@@ -49,6 +49,13 @@ Python code can be found at the following link:
 For convenience, we include the main body of the code below. Please ensure you have utils.py from above link available to run it successfully.
 
 ```rb
+"""
+Author: Sina Baghal
+Date: August 5, 2024
+Description: This project implements the methodologies presented in the paper Deep Smoothing of the Implied Volatility Surface by Ackerer et al (2020). 
+Version: 1.0.0
+"""
+
 from utils import *
 import QuantLib as ql
 from scipy.interpolate import interp1d,  UnivariateSpline
