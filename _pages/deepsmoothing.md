@@ -12,7 +12,7 @@ $$
 \end{equation}
 $$
 
-we enrich the space of parameters used for fitting the volatility surface. Here $$\theta_{\text{prior}}$$ and $\theta_{\text{nn}}$ are two disjoint set of parameters. Furthermore, to ensure our volatility surface is free of arbitrage, we use the ideas by Roper (2010) which argues that if the following are satisfied then the call price surface is free of Calendar \& Butterfly arbitrage resp.
+we enrich the space of parameters used for fitting the volatility surface. Here $$\theta_{\text{prior}}$$ and $$\theta_{\text{nn}}$$ are two disjoint set of parameters. Furthermore, to ensure our volatility surface is free of arbitrage, we use the ideas by Roper (2010) which argues that if the following are satisfied then the call price surface is free of Calendar & Butterfly arbitrage resp.
 
 $$
 \begin{align*}
@@ -21,7 +21,7 @@ $$
 \end{align*}
 $$
 
-Another condition required to guarantee a free-arbitrage VS is the large moneyness behaviour which states that $\sigma^2(k,\tau)$ is linear for $k\to \pm \infty$ for every $\tau>0$. Roper achieves this by imposing $\frac{\sigma^2(k,\tau)}{\vert k \vert}<2$ which in turn is achieved by minimizing the following 
+Another condition required to guarantee a free-arbitrage VS is the large moneyness behaviour which states that $$\sigma^2(k,\tau)$$ is linear for $$k\to \pm \infty$$ for every $\tau>0$. Roper achieves this by imposing $$\frac{\sigma^2(k,\tau)}{\vert k \vert}<2$$ which in turn is achieved by minimizing the following 
 
 $$
 \begin{equation}
@@ -29,10 +29,10 @@ $$
 \end{equation}
 $$
 
-We use the above three constraints to shape the loss function utilized in training the implied variance $\omega$. As for learning rate scheduling, we use a slightly different approach than Ackerer et al;  we employ model weights perturbation along with a divergence handling scheme. 
+We use the above three constraints to shape the loss function utilized in training the implied variance $$\omega$$. As for learning rate scheduling, we use a slightly different approach than Ackerer et al;  we employ model weights perturbation along with a divergence handling scheme. 
 
 
-Numerical results show that our enhanced model, incorporating a neural network with the loss function $\omega(k,\tau; \theta)$, fits the Bated model data perfectly and produces an arbitrage-free volatility surface. 
+Numerical results show that our enhanced model, incorporating a neural network with the loss function $$\omega(k,\tau; \theta)$$, fits the Bated model data perfectly and produces an arbitrage-free volatility surface. 
 
 
 The figure below shows how well our model fits the training data.
