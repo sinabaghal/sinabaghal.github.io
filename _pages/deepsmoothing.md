@@ -44,9 +44,7 @@ While the next figure displays the log of the implied volatility surface generat
 <img src="http://sinabaghal.github.io/images/ref_VOl.png" width="100%" height="100%">
 </p>
 
-Click [here](https://sinabaghal.github.io/files/deepsmoothing/IVS_Deep_Smoothing_Github.pdf) to access a technical report with additional details. Python code can be found [here](https://github.com/sinabaghal/sinabaghal.github.io/tree/master/files/codes/deepsmoothing).
-
-For convenience, we include the main body of the code below. Please ensure you have utils.py from above link available to run it successfully.
+Click [here](https://sinabaghal.github.io/files/deepsmoothing/IVS_Deep_Smoothing_Github.pdf) to access a technical report with additional details. The project code is also available [here](https://github.com/sinabaghal/sinabaghal.github.io/tree/master/files/codes/deepsmoothing). For convenience, we include the main body of the code below as well. Please ensure you have utils.py from above link available to run it successfully.
 
 ```rb
 """
