@@ -73,13 +73,13 @@ import os
 
 epsilon = 1e-8
 
-# ## Bates model parameters -- used for building a reference model
-# alpha = 0.7; beta = -0.03 ; kappa = 0.5 ; v0 = 0.01 ; theta = 0.0625 ; 
-# rho = -0.75 ; sigma = 1 ; lam = 0.2
+## Bates model parameters -- use for building a reference model
+alpha = 0.7; beta = -0.03 ; kappa = 0.5 ; v0 = 0.01 ; theta = 0.0625 ; 
+rho = -0.75 ; sigma = 1 ; lam = 0.2
 
-### Bates model parameters 
-alpha = 0.5; beta = -0.04 ; kappa = 0.4 ; v0 = 0.02 ; theta = 0.05 ; 
-rho = -0.65 ; sigma = 0.8 ; lam = 0.3
+# ### Bates model parameters -- use for building subsequent models
+# alpha = 0.5; beta = -0.04 ; kappa = 0.4 ; v0 = 0.02 ; theta = 0.05 ; 
+# rho = -0.65 ; sigma = 0.8 ; lam = 0.3
 
 ### market data 
 spot = 1; rate = 0.0; q = 0.0
