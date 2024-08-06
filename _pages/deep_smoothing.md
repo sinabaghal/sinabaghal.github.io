@@ -1,6 +1,6 @@
 ---
 title: "Deep Smoothing of IVS"
-permalink: /deep_smoothing/
+permalink: /pages/deep_smoothing/
 author_profile: true
 ---
 
