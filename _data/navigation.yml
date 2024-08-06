@@ -4,8 +4,8 @@ main:
   #   url: /publications/
 
 
-  - title: "Blog"
-    url: /posts/    
+  # - title: "Blog"
+  #   url: /posts/    
     
   # - title: "Portfolio"
   #   url: /portfolio/
