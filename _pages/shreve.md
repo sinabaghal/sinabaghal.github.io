@@ -158,3 +158,11 @@ one-factor Vasicek model)](https://sinabaghal.github.io/files/shreve/Shreve_10_5
 [Exercise 10.11](https://sinabaghal.github.io/files/shreve/Shreve_10_11.pdf)  
 [Exercise 10.11](https://sinabaghal.github.io/files/shreve/Shreve_10_11.pdf)  
 
+## Notes 
+
+[Exotic Options](https://sinabaghal.github.io/pages/exotic_options/)  
+[Feynman-Kac Theorem](https://sinabaghal.github.io/pages/feyman_kac/)   
+[Dupire's Formula](https://sinabaghal.github.io/pages/dupire/)   
+[Implied Volatility](https://sinabaghal.github.io/pages/implied_volatility/)
+
+
