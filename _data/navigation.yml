@@ -15,7 +15,9 @@ main:
 
   - title: "Stochastic Calculus for Finance II"
     url: /shreve/    
- 
+    
+ - title: "Deep Smoothing of IVS"
+    url: /deep_smoothing/   
   # - title: "CV"
   #   url:  http://sinabaghal.github.io/files/CV__Github_.pdf
     
