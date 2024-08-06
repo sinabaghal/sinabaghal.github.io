@@ -16,8 +16,8 @@ we enrich the space of parameters used for fitting the volatility surface. Here 
 
 $$
 \begin{align*}
-\ell_{cal}&=\partial_\tau \omega(k,\tau) \geq 0 \\
-    \ell_{but}&=\left(1-\frac{k\partial_k \omega(k,\tau)}{2\omega(k,\tau)} \right)^2-\frac{\partial_k \omega(k,\tau)}{4}\left(\frac{1}{\omega(k,\tau)}+0.25 \right)+\frac{\partial^2_{kk}\omega(k,\tau)}{2}\geq 0  
+\ell_{cal}&:=\partial_\tau \omega(k,\tau) \geq 0 \\
+    \ell_{but}&:=\left(1-\frac{k\partial_k \omega(k,\tau)}{2\omega(k,\tau)} \right)^2-\frac{\partial_k \omega(k,\tau)}{4}\left(\frac{1}{\omega(k,\tau)}+0.25 \right)+\frac{\partial^2_{kk}\omega(k,\tau)}{2}\geq 0  
 \end{align*}
 $$
 
