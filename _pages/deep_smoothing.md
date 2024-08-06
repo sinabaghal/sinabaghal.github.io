@@ -8,7 +8,7 @@ This project implements the methodologies presented in the paper *Deep Smoothing
 
 $$
 \begin{equation}
-\omega(k,\tau; \theta):= \omega_{\text{prior}}(k,\tau;\theta_{prior})\omega_{\text{nn}}(k,\tau;\theta_{nn})
+\omega(k,\tau; \theta):= \omega_{\text{prior}}(k,\tau;\theta_{prior})\omega_{\text{nn}}(k,\tau;\theta_{nn}),
 \end{equation}
 $$
 
