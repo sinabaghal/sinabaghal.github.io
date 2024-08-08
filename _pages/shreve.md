@@ -10,6 +10,8 @@ _Stochastic Calculus for Finance II_ is one of the most accessible books in math
 <img src="http://sinabaghal.github.io/images/shreve.jpg" width="40%" height="40%">
 </p>
 
+Click [here](https://github.com/sinabaghal/StochasticCalculusShreve/tree/main) to access the repository containing all the solutions. For your convenience, I have also included them below.
+
 ## Chapter 1 (General Probability Theory)
 
 [Exercise 1.1](https://sinabaghal.github.io/files/shreve/Shreve_1_1.pdf)  
