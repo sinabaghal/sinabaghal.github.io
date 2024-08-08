@@ -144,9 +144,8 @@ maximum to date)](https://sinabaghal.github.io/files/shreve/Shreve_7_4.pdf)
 
 ## Chapter 10 (Term-Structure Models)
 
-[Exercise 10.1 (Statistics in the two-factor Vasicek model)](https://github.com/sinabaghal/StochasticCalculusShreve/blob/main/Shreve_10_1.pdf)  
-[Exercise 10.2 (Ordinary differential equations for the mixed affine­
-yield model)](https://sinabaghal.github.io/files/shreve/Shreve_10_2.pdf)  
+[Exercise 10.1 (Statistics in the two-factor Vasicek model)](https://sinabaghal.github.io/files/shreve/Shreve_10_1.pdf)  
+[Exercise 10.2 (Ordinary differential equations for the mixed affine­ yield model)](https://sinabaghal.github.io/files/shreve/Shreve_10_2.pdf)  
 [Exercise 10.3 (Calibration of the two-factor Vasicek model)](https://sinabaghal.github.io/files/shreve/Shreve_10_3.pdf)  
 [Exercise 10.4](https://sinabaghal.github.io/files/shreve/Shreve_10_4.pdf)  
 [Exercise 10.5 (Correlation between long rate and short rate in the
