@@ -29,10 +29,19 @@ $$
 \end{equation}
 $$
 
-The above three constraints along with the prediction error are used to shape the loss function utilized in training the implied variance $$\omega$$. For learning rate scheduling, a slightly different approach is taken compared to Ackerer et al.; specifically, I use model weight perturbation along with a divergence handling scheme.
+The above three constraints along with the prediction error are used to shape the loss function utilized in training the implied variance $$\omega$$. For learning rate scheduling, a slightly different approach is taken compared to Ackerer et al. The following table summerizes the convergence techniques used for training:
 
 
-Numerical results show that the enhanced model, incorporating a neural network with the loss function $$\omega(k,\tau; \theta)$$, fits the Bates model data perfectly and produces an arbitrage-free volatility surface. The figure below shows how well the model fits the training data.
+| Checkpoint Interval                          | A checkpoint is set every 500 epochs.                                                                                                                                                                                   |
+|----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Bad Initialization                           | After the first 4 checkpoints, if the best loss is not below 1, the model is reinitialized.                                                                                                                               |
+| Learning Rate Adjustment                     | Every 4 checkpoints, if the best loss is not below 0.05, the learning rate is reset to its initial value.                                                                                                                 |
+| Weights Perturbation                         | After each checkpoint, regardless of other conditions, the weights of the model are perturbed. This is to help escape local minima.                                                                                        |
+| Divergence Handling (Bad Perturbation)       | If the current loss is at least 10% worse than the best loss so far and > 0.1, and this occurs after the first checkpoint, the models are reloaded from the last saved state, and training continues from the last checkpoint with the best loss value. |
+
+
+
+Numerical results show that the enhanced model, incorporating a neural network with the loss function $$\omega(k,\tau; \theta)$$, fits the Bated model data perfectly and produces an arbitrage-free volatility surface. The figure below shows how well the model fits the training data.
 
 <p align="center">
 <img src="http://sinabaghal.github.io/images/ref_V.png" width="100%" height="100%">
@@ -49,3 +58,4 @@ The following also is an example of the training trajectory. See the technical r
 <p align="center">
 <img src="http://sinabaghal.github.io/images/train_metrics.png" width="100%" height="100%">
 </p>
+
