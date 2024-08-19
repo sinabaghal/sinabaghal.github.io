@@ -4,7 +4,7 @@ permalink: /deepsmoothing/
 author_profile: true
 ---
 
-This project implements the methodologies presented in the paper *Deep Smoothing of the Implied Volatility Surface* by Ackerer et al (2020). The main idea is to use feedforward neural networks as a corrective tool to modify the prior models considered for volatility surfaces. By letting
+This project ([Github link](https://github.com/sinabaghal/deepsmoothigIVS)) implements the methodologies presented in the paper *Deep Smoothing of the Implied Volatility Surface* by Ackerer et al (2020). The main idea is to use feedforward neural networks as a corrective tool to modify the prior models considered for volatility surfaces. By letting
 
 $$
 \begin{equation}
@@ -44,10 +44,8 @@ While the next figure displays the log of the implied volatility surface generat
 <img src="http://sinabaghal.github.io/images/ref_VOl.png" width="100%" height="100%">
 </p>
 
-The following also is an example of the training trajectory. See the technical report inside the Github repo (link below) for more details. 
+The following also is an example of the training trajectory. See the technical report inside the Github repofor more details. 
 
 <p align="center">
 <img src="http://sinabaghal.github.io/images/train_metrics.png" width="100%" height="100%">
 </p>
-
-Github page for this project is located [here](https://github.com/sinabaghal/deepsmoothigIVS). 
