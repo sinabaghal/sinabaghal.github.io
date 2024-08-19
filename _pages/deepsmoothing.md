@@ -47,7 +47,7 @@ While the next figure displays the log of the implied volatility surface generat
 The following also is an example of the training trajectory. See the technical report inside the Github repo (link below) for more details. 
 
 <p align="center">
-<img src="http://sinabaghal.github.io/images/training_metric.png" width="100%" height="100%">
+<img src="http://sinabaghal.github.io/images/train_metric.png" width="100%" height="100%">
 </p>
 
 Github page for this project is located [here](https://github.com/sinabaghal/deepsmoothigIVS). 
