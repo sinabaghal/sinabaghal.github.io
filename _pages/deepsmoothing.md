@@ -44,4 +44,10 @@ While the next figure displays the log of the implied volatility surface generat
 <img src="http://sinabaghal.github.io/images/ref_VOl.png" width="100%" height="100%">
 </p>
 
-Click [here](https://github.com/sinabaghal/deepsmoothigIVS/blob/main/Technical_Report.pdf) to access a technical report with additional details. The project code is also available [here](https://github.com/sinabaghal/deepsmoothigIVS). 
+The following also is an example of the training trajectory. See the technical report inside the Github repo (link below) for more details. 
+
+<p align="center">
+<img src="http://sinabaghal.github.io/images/training_metric.png" width="100%" height="100%">
+</p>
+
+Github page for this project is located [here](https://github.com/sinabaghal/deepsmoothigIVS). 
