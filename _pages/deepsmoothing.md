@@ -2,6 +2,14 @@
 title: "Deep Smoothing of IVS"
 permalink: /deepsmoothing/
 author_profile: true
+tags:
+  - Deep Learning
+  - Feed Forward Networks
+  - Volatility Surfaces
+  - Vectorization
+  - SSVI
+  - CVX
+---
 ---
 
 This project ([Github link](https://github.com/sinabaghal/deepsmoothigIVS)) implements the methodologies presented in the paper *Deep Smoothing of the Implied Volatility Surface* by Ackerer et al (2020). The main idea is to use feedforward neural networks as a corrective tool to modify the prior models considered for volatility surfaces. By letting
