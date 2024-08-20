@@ -53,12 +53,12 @@ While the next figure displays the log of the implied volatility surface generat
 <img src="http://sinabaghal.github.io/images/ref_VOl.png" width="100%" height="100%">
 </p>
 
-The following also is an example of the training trajectory where a feedforward neural network with 4 hidden layers and each with 40 nodes is used. 
+The following also is an example of the training trajectory where a feedforward neural network with 4 hidden layers, with 40 units in each layer. 
 
 <p align="center">
 <img src="http://sinabaghal.github.io/images/train_metrics.png" width="100%" height="100%">
 </p>
 
-See the technical report inside the Github repofor more details. 
+See the technical report inside the Github repo for more details. 
 
 
