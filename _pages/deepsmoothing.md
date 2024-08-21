@@ -49,7 +49,7 @@ The above three constraints along with the prediction error are used to shape th
 
 
 
-Numerical results show that the enhanced model, incorporating a neural network with the loss function $$\omega(k,\tau; \theta)$$, fits the Bated model data perfectly and produces an arbitrage-free volatility surface. The figure below shows how well the model fits the training data.
+Numerical results show that the enhanced model, incorporating a neural network with the loss function $$\omega(k,\tau; \theta)$$ with SSVI as prior, fits the Bates model data perfectly and produces an arbitrage-free volatility surface. The figure below shows how well the model fits the training data.
 
 <p align="center">
 <img src="http://sinabaghal.github.io/images/ref_V.png" width="100%" height="100%">
