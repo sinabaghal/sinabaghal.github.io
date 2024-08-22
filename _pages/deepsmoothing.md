@@ -55,7 +55,7 @@ Numerical results show that the enhanced model, incorporating a neural network w
 <img src="http://sinabaghal.github.io/images/ref_V.png" width="100%" height="100%">
 </p>
 
-The figure below illustrates 28 trained implied volatility surfaces (IVS) obtained using the deep smoothing algorithm. Different values for the Bates model parameters are used in each case.
+The figure below illustrates 29 trained implied volatility surfaces (IVS) obtained using the deep smoothing algorithm. Different values for the Bates model parameters are used in each case.
 
 <p align="center">
 <img src="http://sinabaghal.github.io/images/28IVS.png" width="100%" height="100%">
