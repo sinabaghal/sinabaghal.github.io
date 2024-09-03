@@ -165,7 +165,7 @@ one-factor Vasicek model)](https://sinabaghal.github.io/files/shreve/Shreve_10_5
 [Feynman-Kac Theorem](https://sinabaghal.github.io/pages/feyman_kac/)   
 [Dupire's Formula](https://sinabaghal.github.io/pages/dupire/)   
 [Implied Volatility](https://sinabaghal.github.io/pages/implied_volatility/)
-[Basic Concepts (Short Notes)](https://sinabaghal.github.io/pages/short_notes/) 
-[Cheat Sheet](https://sinabaghal.github.io/pages/cheat_sheet/) 
+[Basic Concepts (Short Notes)](https://sinabaghal.github.io/files/notes/short_notes.pdf) 
+[Cheat Sheet](https://sinabaghal.github.io/files/notes/cheat_sheet.pdf) 
 
 
