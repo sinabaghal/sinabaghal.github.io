@@ -58,7 +58,7 @@ Numerical results show that the enhanced model, incorporating a neural network w
 The figure below illustrates 29 trained implied variance surfaces obtained using the deep smoothing algorithm. Different values for the Bates model parameters are used in each case. Displayed parameters are $$\alpha, \beta, \kappa, v0, \theta, \rho, \sigma, \lambda$$ respectively. For definition of these parameters see the technical report inside the github repository. 
 
 <p align="center">
-<img src="http://sinabaghal.github.io/images/all_models.png" width="80%" height="100%">
+<img src="http://sinabaghal.github.io/images/all_models2.png" width="80%" height="100%">
 </p>
 
 The following also is an example of the training trajectory where a feedforward neural network with 4 hidden layers, with 40 units in each layer. 
