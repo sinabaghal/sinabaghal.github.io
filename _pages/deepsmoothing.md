@@ -61,7 +61,7 @@ The figure below illustrates 29 trained implied volatility surfaces obtained usi
 <img src="http://sinabaghal.github.io/images/all_models3.png" width="80%" height="100%">
 </p>
 
-The figure below also exihbits the same volatility surfaces where moneyness $$K/S$$ is narrowed to $$[0.6,1.6]$$ and time to maturity to 40 days till 1.5 years.
+The figure below displays the same volatility surfaces, with moneyness $$\frac{K}{S}$$ restricted to the range $$[0.6, 1.6]$$ and time to maturity limited to between 40 days and 1.5 years.
 
 <p align="center">
 <img src="http://sinabaghal.github.io/images/all_models4.png" width="80%" height="100%">
