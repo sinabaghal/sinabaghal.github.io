@@ -61,12 +61,6 @@ The figure below illustrates 29 trained implied volatility surfaces obtained usi
 <img src="http://sinabaghal.github.io/images/all_models3.png" width="80%" height="100%">
 </p>
 
-The figure below displays the same volatility surfaces, with moneyness $$\frac{K}{S}$$ restricted to the range $$[0.6, 1.6]$$ and time to maturity limited to between 40 days and 1.5 years.
-
-<p align="center">
-<img src="http://sinabaghal.github.io/images/all_models4.png" width="80%" height="100%">
-</p>
-
 The following also is an example of the training trajectory where a feedforward neural network with 4 hidden layers, with 40 units in each layer. 
 
 <p align="center">
