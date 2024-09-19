@@ -55,10 +55,16 @@ Numerical results show that the enhanced model, incorporating a neural network w
 <img src="http://sinabaghal.github.io/images/ref_V.png" width="100%" height="100%">
 </p>
 
-The figure below illustrates 29 trained implied volatility surfaces obtained using the deep smoothing algorithm. Different values for the Bates model parameters are used in each case. Displayed parameters are $$\alpha, \beta, \kappa, v0, \theta, \rho, \sigma, \lambda$$ respectively. If you cannot guess the definition of these parameters see the technical report inside the github repository. 
+The figure below illustrates 29 trained implied volatility surfaces obtained using the deep smoothing algorithm for long term maturies obly _i.e.,_ $$\tau>$$ 20 days. Different values for the Bates model parameters are used in each case. Displayed parameters are $$\alpha, \beta, \kappa, v0, \theta, \rho, \sigma, \lambda$$ respectively. If you cannot guess the definition of these parameters see the technical report inside the github repository. 
 
 <p align="center">
-<img src="http://sinabaghal.github.io/images/all_models3.png" width="80%" height="100%">
+<img src="http://sinabaghal.github.io/images/all_models_long.png" width="80%" height="100%">
+</p>
+
+The figure below displays the same volatility surfaces for short term maturities  _i.e.,_ $$\tau<=$$ 20 days.
+
+<p align="center">
+<img src="http://sinabaghal.github.io/images/all_models_short.png" width="80%" height="100%">
 </p>
 
 The following also is an example of the training trajectory where a feedforward neural network with 4 hidden layers, with 40 units in each layer. 
