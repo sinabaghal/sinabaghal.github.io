@@ -300,7 +300,14 @@ The following also is an example of the training trajectory where a feedforward 
 <img src="http://sinabaghal.github.io/images/train_metrics.png" width="100%" height="100%">
 </p>
 
-## Arb-Free Volatility Surfaces
+
+
+## Final Remarks
+
+Several numerical experiments are still to be conducted using the project code. These experiments include applying deep smoothing to real market data rather than synthetic data, performing backtesting, examining W-shaped smile patterns, investigating different sizes for neural network layers, and comparing results with a stand-alone prior (which can be easily implemented by setting the neural network's forward pass output to 1). We encourage interested readers to explore these avenues further.
+
+
+## Appendix: Arb-Free Volatility Surfaces
 
 The figure below illustrates 29 trained implied volatility surfaces obtained using the deep smoothing algorithm for long term maturies obly _i.e.,_ $$\tau>$$ 20 days. Different values for the Bates model parameters are used in each case. Displayed parameters are $$\alpha, \beta, \kappa, v0, \theta, \rho, \sigma, \lambda$$ respectively. If you cannot guess the definition of these parameters see the technical report inside the github repository. 
 
