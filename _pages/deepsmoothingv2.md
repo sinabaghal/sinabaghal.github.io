@@ -37,9 +37,9 @@ European call options with the following table of notation and values are used:
 
 | **Parameter**             | **Value/Definition**                     |
 |---------------------------|------------------------------------------|
-| Spot Price                | $$spot = \$1$$                           |
+| Spot Price                | spot = $\$1$$                           |
 | Strike                    | $$K$$                                    |
-| Interest Rate             | $$rate = 0.0$$                           |
+| Interest Rate             | rate $$=0.0$$                           |
 | Dividend Rate             | $$q = 0.0$$                              |
 | Forward Price             | $$F_t$$                                  |
 | Forward Log Moneyness     | $$k = \log \frac{K}{F_t}$$               |
