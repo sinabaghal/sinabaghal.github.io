@@ -157,6 +157,7 @@ $$
 &\quad + \frac{1}{\vert \mathcal{I}_0 \vert} \sum_{(\sigma,k,\tau) \in \mathcal{I}_0} \frac{\left\vert \sigma - \sigma_\theta(k,\tau) \right\vert}{\sigma}
 \end{align*}
 $$
+
 Another condition required to guarantee a free-arbitrage VS is the large moneyness behaviour which states that $$\sigma^2(k,\tau)$$ is linear for $$k\to \pm \infty$$ for every $$\tau>0$$. Roper achieves this by imposing $$\frac{\sigma^2(k,\tau)}{\vert k \vert}<2$$ which in turn is achieved by minimizing the following 
 
 $$
