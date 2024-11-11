@@ -50,18 +50,18 @@ European call options with the following table of notation and values are used:
 
 Next, let’s review the Bates model.
 
-\[
+$$
 \begin{align*}
 \frac{dS_t}{S_t} &= (r - \delta) \, dt + \sqrt{V_t} \, dW_{1t} + dN_t \\
 dV_t &= \kappa (\theta - V_t) \, dt + \sigma \sqrt{V_t} \, dW_{2t} 
 \end{align*}
-\]
+$$
 
 $$dW_{1t}dW_{2t} = \rho dt$$ and $$N_t$$ is a compound Poisson process with intensity $$\lambda$$ and independent jumps $$J$$ with
 
-\[
+$$
 \ln(1 + J) \sim \mathcal{N} \left( \ln(1 + \beta) - \frac{1}{2} \alpha^2, \alpha^2 \right)
-\]
+$$
 
 
 Another condition required to guarantee a free-arbitrage VS is the large moneyness behaviour which states that $$\sigma^2(k,\tau)$$ is linear for $$k\to \pm \infty$$ for every $$\tau>0$$. Roper achieves this by imposing $$\frac{\sigma^2(k,\tau)}{\vert k \vert}<2$$ which in turn is achieved by minimizing the following 
