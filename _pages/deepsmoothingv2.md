@@ -210,17 +210,17 @@ $`
 
 Here
 
-$`
+$$
 \mathcal{I}_{\text{atm}} = \{(0, \tau) : \tau \in \mathcal{T}_{Aux}\}
-`$
+$$
 
 ### Total Loss Function
 
 The total loss function is constructed as follows:
 
-$`
+$$
 \mathcal{L}_{Tot}(\theta) = \mathcal{L}_0(\theta) + \lambda_{but}\mathcal{L}_{but} + \lambda_{cal}\mathcal{L}_{cal} + \lambda_{atm}\mathcal{L}_{atm}
-`$
+$$
 
 Regularization parameters $$\lambda_{but}, \lambda_{cal}, \lambda_{atm}$$ are tunable. In our experiments, we consider:
 
