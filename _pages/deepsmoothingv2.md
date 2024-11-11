@@ -48,9 +48,9 @@ European call options with the following table of notation and values are used:
 | Implied Volatility        | $\sigma(k, \tau)$                                    |
 | Implied Variance          | $\omega(k, \tau) := \sigma(k, \tau)^2 \tau$          |
 
+**Table:** Parameters and Definitions
 </div>
 
-**Table:** Parameters and Definitions
 
 ## Bates model
 
