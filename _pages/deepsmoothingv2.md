@@ -48,6 +48,8 @@ European call options with the following table of notation and values are used:
 
 **Table:** Parameters and Definitions
 
+## Bates model
+
 Next, let’s review the Bates model.
 
 $$
