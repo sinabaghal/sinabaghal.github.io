@@ -179,7 +179,7 @@ k_{aux} &= \left\{ x^3 : x \in  \left[ -(-2k_{\min})^{1/3}, (2k_{\max})^{1/3} \r
 \end{align*}
 $$
 
-where, for example, $`k_{\max} = k_{\max}(\mathcal{I}_0)`$. Note that we consider more monyness around the money. Calendar and Butterfly loss functions are then defined as
+where, for example, $$k_{\max} = k_{\max}(\mathcal{I}_0)$$. Note that we consider more monyness around the money. Calendar and Butterfly loss functions are then defined as
 
 $$
 \begin{align}
@@ -194,7 +194,7 @@ $$
 \mathcal{L}_{asym}(\theta) = \frac{1}{|\mathcal{I}_{asym}|} \sum_{(k, \tau) \in \mathcal{I}_{asym}} \left\vert \frac{\partial^2 \omega(k, \tau)}{\partial k \partial k} \right\vert
 $$
 
-where  $`\mathcal{I}_{asym} = \left\{ (k, \tau) : k \in \{ 6k_{\min}, 4k_{\min}, 4k_{\max}, 6k_{\max} \}, \tau \in \mathcal{T}_{Aux} \right\}`$
+where  $$\mathcal{I}_{asym} = \left\{ (k, \tau) : k \in \{ 6k_{\min}, 4k_{\min}, 4k_{\max}, 6k_{\max} \}, \tau \in \mathcal{T}_{Aux} \right\}$$
 
 ### Around the Money
 
@@ -208,7 +208,7 @@ $$
 \right)^{1/2}
 $$
 
-Here $`\mathcal{I}_{\text{atm}} = \{(0, \tau) : \tau \in \mathcal{T}_{Aux}\}`$.
+Here $$\mathcal{I}_{\text{atm}} = \{(0, \tau) : \tau \in \mathcal{T}_{Aux}\}$$.
 
 ### Total Loss Function
 
@@ -234,14 +234,15 @@ Regularization parameters $$\lambda_{but}, \lambda_{cal}, \lambda_{atm}$$ are tu
 
 ## ATM Total Variance
 
-The prior model is expected to provide a first-order approximation of the volatility surface, making it essential for the prior to accurately reproduce ATM (at-the-money) values. Since the ATM term structure is observable through market data for $`\tau \in \mathcal{T}_0`$, we construct the ATM variance for each  $`\tau \in \mathcal{T}_{aux}`$ as described below.
+The prior model is expected to provide a first-order approximation of the volatility surface, making it essential for the prior to accurately reproduce ATM (at-the-money) values. Since the ATM term structure is observable through market data for $$\tau \in \mathcal{T}_0$$, we construct the ATM variance for each  $$\tau \in \mathcal{T}_{aux}$$ as described below.
 
 ### Steps for Constructing ATM Variance
 
 - **Step A:** Ensure that $$\omega_{atm}(\tau_2) \geq \omega_{atm}(\tau_1)$$ for every $$\tau_2 \geq \tau_1$$. To achieve this, we solve the following optimization problem using CVX:
-  $`
+  
+$$
   \sum_{i=0}^{\vert \mathcal{T}_0\vert} \left(z_i - \omega_{atm}(\tau_i)\right)^2 \quad \text{s.t.} \quad z_{\vert \mathcal{T}_0\vert} \geq \cdots \geq z_0
-  `$
+$$
 
 - **Step B:** Interpolate the results from Step A using `scipy` with a smoothing spline of degree 3.
 
