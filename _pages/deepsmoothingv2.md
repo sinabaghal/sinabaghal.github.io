@@ -216,7 +216,6 @@ $$
 
 Regularization parameters $$\lambda_{but}, \lambda_{cal}, \lambda_{atm}$$ are tunable. In our experiments, we consider:
 
-<div align="center">
 
 | **Parameter**     | **Value** |
 |-------------------|-----------|
@@ -225,8 +224,6 @@ Regularization parameters $$\lambda_{but}, \lambda_{cal}, \lambda_{atm}$$ are tu
 | $$\lambda_{cal}$$ | 4         |
 
 **Table:** Loss Function Regularization Parameters
-
-</div>
 
 ## ATM Total Variance
 
