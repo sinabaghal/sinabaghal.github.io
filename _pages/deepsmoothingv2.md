@@ -272,7 +272,7 @@ For learning rate scheduling, a slightly different approach is taken compared to
 
 ## Results
 
-We have two kinds of training: training a reference model and training models using the reference model for initialization. Training the reference model takes significantly more time, whereas training other models based on it takes much less time. The following table shows the parameter values of the reference model as well as an example of those of a subsequent model trained based on the reference model. As Figures 1 and 2 show, training the subsequent model is much faster.
+We have two kinds of training: training a reference model and training models using the reference model for initialization. Training the reference model takes significantly more time, whereas training other models based on it takes much less time. The following table shows the parameter values of the reference model as well as an example of those of a subsequent model trained based on the reference model. It is emphasized that training the subsequent model is much faster.
 
 | **Parameter** | **Reference Model** | **Subsequent Model (Ex)** |
 |---------------|----------------------|----------------------------|
