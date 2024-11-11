@@ -208,7 +208,7 @@ $`
 \right)^{1/2}
 `$
 
-Here $$\mathcal{I}_{\text{atm}} = \{(0, \tau) : \tau \in \mathcal{T}_{Aux}\}$$.
+Here $$\mathcal{I}_{\text{atm}} = \{(0, \tau) : \tau \in \mathcal{T}{Aux}\}$$.
 
 ### Total Loss Function
 
