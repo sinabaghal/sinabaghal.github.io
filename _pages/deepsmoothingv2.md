@@ -252,7 +252,7 @@ $$
 \end{align*}
 $$
 
-Here $`\omega_{\text{atm}}(\tau)`$ is the ATM term structure, and $`\rho`$, $`\gamma`$, and $`\eta`$ are tunable parameters. In other words, we have:
+Here $$\omega_{\text{atm}}(\tau)$$ is the ATM term structure, and $$\rho$$, $$\gamma$$, and $$\eta$$ are tunable parameters. In other words, we have:
 
 $$
 \theta_{prior} = (\rho, \gamma, \eta)
