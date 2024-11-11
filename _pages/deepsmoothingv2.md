@@ -155,17 +155,18 @@ $$
 
 We define four different loss functions and construct the total loss function as a linear combination of these four, with coefficients being the penalty parameters. The first loss function is the prediction error, which is defined as below:
 
-$$
+
+$`
 \begin{align*}
     \mathcal{L}_0(\theta) &= \sqrt{\frac{1}{\vert \mathcal{I}_0\vert} \sum_{(\sigma,k,\tau)\in \mathcal{I}_0} \left(\sigma-\sigma_\theta(k,\tau)\right)^2} + \frac{1}{\vert \mathcal{I}_0\vert} \sum_{(\sigma,k,\tau)\in \mathcal{I}_0} \frac{\left\vert \sigma - \sigma_\theta(k,\tau) \right\vert}{\sigma}
 \end{align*}
-$$
+`$
 
 Here, $$\mathcal{I}_0$$ is the set of log-moneyness, implied volatility, and maturities for each observed market option. For future use, denote
 
-$$
+$`
 \mathcal{T}_0 = { \tau:(0,\tau)\in  \mathcal{I}_0 }
-$$
+`$
 
 The other three loss functions are auxiliary, and consequently, we need to introduce auxiliary maturities and log-moneyness values. This ensures desired features for the constructed implied variance $$\omega$$ across unobserved market data. Define
 
