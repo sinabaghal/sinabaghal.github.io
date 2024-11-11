@@ -65,6 +65,88 @@ $$
 \ln(1 + J) \sim \mathcal{N} \left( \ln(1 + \beta) - \frac{1}{2} \alpha^2, \alpha^2 \right)
 $$
 
+### Characteristic Function
+
+The characteristic function of the log-strike in the Bates model is given by:
+
+$$
+\begin{align*}
+\phi(\tau,u) &= \exp\left(\tau \lambda\cdot \left(e^{-0.5\alpha^2u^2+iu\left(\ln(1+\beta)-0.5\alpha^2\right)}-1\right)\right) \\
+&\cdot \exp\left(\frac{\kappa\theta \tau(\kappa-i\rho\sigma u)}{\sigma^2}+iu\tau(rate-\lambda\cdot \beta)+iu\cdot\log spot\right) \\
+&\cdot \left(\cosh \frac{\gamma \tau}{2}+\frac{\kappa-i\rho\sigma u}{\gamma}\cdot\sinh \frac{\gamma \tau}{2}\right)^{-\frac{2\kappa \theta}{\sigma^2}} \\
+&\cdot \exp\left(-\frac{(u^2+iu)v_0}{\gamma \coth \frac{\gamma \tau}{2}+\kappa-i\rho\sigma u}\right).
+\end{align*}
+$$
+
+### Fast Fourier Transform
+
+Option price calculation for the Bates model is done using FFT. Following [Carr and Madan, 1999], we apply a smoothing technique to be able to compute the FFT integral. Recall that the option value is given by 
+
+$$
+C_\tau(k) = spot \cdot \Pi_1 - K e^{-rate \cdot \tau} \cdot \Pi_2
+$$
+
+where 
+
+$$
+\begin{align*}
+\Pi_1 &= \frac{1}{2} + \frac{1}{\pi} \int_0^\infty \text{Re} \left[ \frac{e^{-iu \ln(K)} \phi_\tau(u - i)}{iu \phi_\tau(-i)} \right] du \\
+\Pi_2 &= \frac{1}{2} + \frac{1}{\pi} \int_0^\infty \text{Re} \left[ \frac{e^{-iu \ln(K)} \phi_\tau(u)}{iu} \right] du
+\end{align*}
+$$
+
+Since the integrand is singular at the required evaluation point $$u = 0$$, FFT cannot be used to evaluate call price $$C_\tau(k)$$. To offset this issue, we consider the modified call price $$c_\tau(k) := \exp(\alpha k) C_\tau(k)$$ for $$\alpha > 0$$. Denote the Fourier transform of $$c_\tau(k)$$ by
+
+$$
+\Psi_\tau(v) = \int_{-\infty}^{\infty} e^{ivk} c_\tau(k) \, dk \Rightarrow  C_\tau(k) = \frac{\exp(-\alpha k)}{\pi} \int_0^\infty e^{-ivk} \Psi_{\tau}(v) \, dv
+$$
+
+It can be shown that 
+
+$$
+\Psi_\tau(v) = \frac{e^{-r \tau} \phi_\tau(v - (\alpha + 1)i)}{\alpha^2 + \alpha - v^2 + i(2\alpha + 1)v}
+$$
+
+#### FFT Setup
+
+We set up the FFT calculation as follows:
+
+- Log strike levels range from $$-b$$ to $$b$$ where 
+
+$$
+b = \frac{Ndk}{2}
+$$
+
+- $$\Psi_\tau(u)$$ is computed at the following $$v$$ values:
+
+$$
+v_j = (j-1)du \text{ for } j = 1, \cdots, N
+$$
+
+- Option prices are computed at the following $$k$$ values:
+
+$$
+k_u = -b + dk(u-1) \text{ for } u = 1, \cdots, N
+$$
+
+- To apply FFT, we need to set
+
+$$
+dk \cdot du = \frac{2\pi}{N}
+$$
+
+- Simpson weights are used:
+
+$$
+3 + (-1)^j - \delta_{j-1} \text{ for } j = 1, \cdots, N
+$$
+
+Having this setup ready, call prices are obtained as follows:
+
+$$
+C(k_u) = \frac{\exp(-\alpha k_u)}{\pi} \sum_{j=1}^{N} e^{-i \frac{2\pi}{N} (j-1)(u-1)} e^{ibv_j} \Psi(v_j) \frac{\eta}{3} \left(3 + (-1)^j - \delta_{j-1}\right)
+$$
+
 
 Another condition required to guarantee a free-arbitrage VS is the large moneyness behaviour which states that $$\sigma^2(k,\tau)$$ is linear for $$k\to \pm \infty$$ for every $$\tau>0$$. Roper achieves this by imposing $$\frac{\sigma^2(k,\tau)}{\vert k \vert}<2$$ which in turn is achieved by minimizing the following 
 
