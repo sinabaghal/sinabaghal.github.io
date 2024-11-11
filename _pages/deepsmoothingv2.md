@@ -200,13 +200,13 @@ where  $`\mathcal{I}_{asym} = \left\{ (k, \tau) : k \in \{ 6k_{\min}, 4k_{\min},
 
 We prefer that the prior component gives the best possible fit for ATM, while the neural network corrects the prior's limitations for OTM. To this end, the following loss function is considered:
 
-$`
+```math
 \mathcal{L}_{atm}(\theta) = \frac{1}{|\mathcal{I}_{\text{atm}}|}
 \left(
 \sum_{(k, \tau) \in \mathcal{I}_{\text{atm}}}
 (1 - \omega_{nn}(k, \tau; \theta_{nn}))^2
 \right)^{1/2}
-`$
+```
 
 Here $$\mathcal{I}_{\text{atm}} = \{(0, \tau) : \tau \in \mathcal{T}{Aux}\}$$.
 
@@ -214,9 +214,9 @@ Here $$\mathcal{I}_{\text{atm}} = \{(0, \tau) : \tau \in \mathcal{T}{Aux}\}$$.
 
 The total loss function is constructed as follows:
 
-$$
+```math
 \mathcal{L}_{Tot}(\theta) = \mathcal{L}_0(\theta) + \lambda_{but}\mathcal{L}_{but} + \lambda_{cal}\mathcal{L}_{cal} + \lambda_{atm}\mathcal{L}_{atm}
-$$
+```
 
 Regularization parameters $$\lambda_{but}, \lambda_{cal}, \lambda_{atm}$$ are tunable. In our experiments, we consider:
 
@@ -260,9 +260,9 @@ $$
 
 Here $`\omega_{\text{atm}}(\tau)`$ is the ATM term structure, and $`\rho`$, $`\gamma`$, and $`\eta`$ are tunable parameters. In other words, we have:
 
-$$
+```math
 \theta_{prior} = (\rho, \gamma, \eta)
-$$
+```
 
 
 Another condition required to guarantee a free-arbitrage VS is the large moneyness behaviour which states that $$\sigma^2(k,\tau)$$ is linear for $$k\to \pm \infty$$ for every $$\tau>0$$. Roper achieves this by imposing $$\frac{\sigma^2(k,\tau)}{\vert k \vert}<2$$ which in turn is achieved by minimizing the following 
