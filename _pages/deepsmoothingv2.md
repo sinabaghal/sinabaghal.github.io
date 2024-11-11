@@ -37,14 +37,14 @@ European call options with the following table of notation and values are used:
   
 | **Parameter**             | **Value/Definition**                                 |
 |---------------------------|------------------------------------------------------|
-| Spot Price                | spot = $1$                                           |
-| Strike                    | $K$                                                  |
-| Interest Rate             | rate $= 0.0$                                         |
-| Dividend Rate             | $q = 0.0$                                            |
-| Forward Price             | $F_t$                                                |
-| Forward Log Moneyness     | $k = \log \frac{K}{F_t}$                             |
-| Implied Volatility        | $\sigma(k, \tau)$                                    |
-| Implied Variance          | $\omega(k, \tau) := \sigma(k, \tau)^2 \tau$          |
+| Spot Price                | spot = 1                                           |
+| Strike                    | $$K$$                                                  |
+| Interest Rate             | rate $$= 0.0$$                                         |
+| Dividend Rate             | $$q = 0.0$$                                            |
+| Forward Price             | $$F_t$$                                               |
+| Forward Log Moneyness     | $$k = \log \frac{K}{F_t}$$                             |
+| Implied Volatility        | $$\sigma(k, \tau)$$                                    |
+| Implied Variance          | $$\omega(k, \tau) := \sigma(k, \tau)^2 \tau$$        |
 
 **Table:** Parameters and Definitions
 
