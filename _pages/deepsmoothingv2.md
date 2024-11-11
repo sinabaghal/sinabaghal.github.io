@@ -149,7 +149,7 @@ $$
 
 ## Loss Function
 
-We define four different loss functions and construct the total loss function as a linear combination of these four with coefficients being the penalty parameters. The first loss function is the prediction error, which is defined as below:
+We define 4 different loss functions and construct the total loss function as a linear combination of these with coefficients being the penalty parameters. The first loss function is the prediction error, which is defined as below:
 
 $$
 \begin{align*}
