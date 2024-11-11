@@ -35,18 +35,19 @@ Here, we will walk through the main steps of the deep smoothing framework.
 
 European call options with the following table of notation and values are used:
 
-| **Parameter**             | **Value/Definition**                     |
-|---------------------------|------------------------------------------|
-| Spot Price                | \( spot = \$1 \)                         |
-| Strike                    | \( K \)                                  |
-| Interest Rate             | \( rate = 0.0 \)                         |
-| Dividend Rate             | \( q = 0.0 \)                            |
-| Forward Price             | \( F_t \)                                |
-| Forward Log Moneyness     | \( k = \log \frac{K}{F_t} \)             |
-| Implied Volatility        | \( \sigma(k, \tau) \)                    |
-| Implied Variance          | \( \omega(k, \tau) := \sigma(k, \tau)^2 \tau \) |
+| **Parameter**             | **Value/Definition**                         |
+|---------------------------|----------------------------------------------|
+| Spot Price                | $$ spot = \$1 $$                             |
+| Strike                    | $$ K $$                                      |
+| Interest Rate             | $$ rate = 0.0 $$                             |
+| Dividend Rate             | $$ q = 0.0 $$                                |
+| Forward Price             | $$ F_t $$                                    |
+| Forward Log Moneyness     | $$ k = \log \frac{K}{F_t} $$                 |
+| Implied Volatility        | $$ \sigma(k, \tau) $$                        |
+| Implied Variance          | $$ \omega(k, \tau) := \sigma(k, \tau)^2 \tau $$ |
 
 **Table:** Parameters and Definitions
+
 
 
 Another condition required to guarantee a free-arbitrage VS is the large moneyness behaviour which states that $$\sigma^2(k,\tau)$$ is linear for $$k\to \pm \infty$$ for every $$\tau>0$$. Roper achieves this by imposing $$\frac{\sigma^2(k,\tau)}{\vert k \vert}<2$$ which in turn is achieved by minimizing the following 
