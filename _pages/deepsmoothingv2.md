@@ -270,6 +270,22 @@ For learning rate scheduling, a slightly different approach is taken compared to
 | Weights Perturbation                         | After each checkpoint, regardless of other conditions, the weights of the model are perturbed. This is to help escape local minima.                                                                                        |
 | Divergence Handling (Bad Perturbation)       | If the current loss is at least 10% worse than the best loss so far and > 0.1, and this occurs after the first checkpoint, the models are reloaded from the last saved state, and training continues from the last checkpoint with the best loss value. |
 
+## Results
+
+We have two kinds of training: training a reference model and training models using the reference model for initialization. Training the reference model takes significantly more time, whereas training other models based on it takes much less time. The following table shows the parameter values of the reference model as well as an example of those of a subsequent model trained based on the reference model. As Figures 1 and 2 show, training the subsequent model is much faster.
+
+| **Parameter** | **Reference Model** | **Subsequent Model (Ex)** |
+|---------------|----------------------|----------------------------|
+| $\alpha$      | 0.7                  | 0.5                        |
+| $\beta$       | -0.03                | -0.04                      |
+| $\kappa$      | 0.5                  | 0.4                        |
+| $v_0$         | 0.01                 | 0.02                       |
+| $\theta$      | 0.0625               | 0.05                       |
+| $\rho$        | -0.75                | -0.65                      |
+| $\sigma$      | 1                    | 0.8                        |
+| $\lambda$     | 0.2                  | 0.3                        |
+
+**Table:** Parameter Values
 
 
 Numerical results show that the enhanced model, incorporating a neural network with the loss function $$\omega(k,\tau; \theta)$$ with SSVI as prior, fits the Bates model data perfectly and produces an arbitrage-free volatility surface. The figure below shows how well the model fits the training data.
@@ -277,6 +293,14 @@ Numerical results show that the enhanced model, incorporating a neural network w
 <p align="center">
 <img src="http://sinabaghal.github.io/images/ref_V.png" width="100%" height="100%">
 </p>
+
+The following also is an example of the training trajectory where a feedforward neural network with 4 hidden layers, with 40 units in each layer. 
+
+<p align="center">
+<img src="http://sinabaghal.github.io/images/train_metrics.png" width="100%" height="100%">
+</p>
+
+## Arb-Free Volatility Surfaces
 
 The figure below illustrates 29 trained implied volatility surfaces obtained using the deep smoothing algorithm for long term maturies obly _i.e.,_ $$\tau>$$ 20 days. Different values for the Bates model parameters are used in each case. Displayed parameters are $$\alpha, \beta, \kappa, v0, \theta, \rho, \sigma, \lambda$$ respectively. If you cannot guess the definition of these parameters see the technical report inside the github repository. 
 
@@ -290,11 +314,7 @@ The figure below displays the same volatility surfaces for short term maturities
 <img src="http://sinabaghal.github.io/images/all_models_short.png" width="80%" height="100%">
 </p>
 
-The following also is an example of the training trajectory where a feedforward neural network with 4 hidden layers, with 40 units in each layer. 
 
-<p align="center">
-<img src="http://sinabaghal.github.io/images/train_metrics.png" width="100%" height="100%">
-</p>
 
 See the technical report inside the Github repo for more details. 
 
