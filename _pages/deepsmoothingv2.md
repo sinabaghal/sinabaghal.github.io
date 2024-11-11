@@ -153,7 +153,11 @@ We define 4 different loss functions and construct the total loss function as a 
 
 $$
 \begin{align*}
-\mathcal{L}_0(\theta) &= \sqrt{\frac{1}{\vert \mathcal{I}_0 \vert} \sum_{(\sigma,k,\tau) \in \mathcal{I}_0} \left(\sigma - \sigma_\theta(k,\tau)\right)^2} \\
+\mathcal{L}_0(\theta) &= \sqrt{\frac{1}{\vert \mathcal{I}_0 \vert} \sum_{(\sigma,k,\tau) \in \mathcal{I}_0} \left(\sigma - \sigma_\theta(k,\tau)\right)^2} 
+\end{align*}
+$$
+$$
+\begin{align*}
 &\quad + \frac{1}{\vert \mathcal{I}_0 \vert} \sum_{(\sigma,k,\tau) \in \mathcal{I}_0} \frac{\left\vert \sigma - \sigma_\theta(k,\tau) \right\vert}{\sigma}
 \end{align*}
 $$
