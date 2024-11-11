@@ -153,10 +153,11 @@ We define 4 different loss functions and construct the total loss function as a 
 
 $$
 \begin{align*}
-    \mathcal{L}_0(\theta)&  \label{eq:pred_error}\tag{Prediction Error}\\ 
-    &= \sqrt{\frac{1}{\vert \mathcal{I}_0\vert} \sum_{(\sigma,k,\tau)\in \mathcal{I}_0} \left(\sigma-\sigma_\theta(k,\tau)\right)^2}+\frac{1}{\vert \mathcal{I}_0\vert} \sum_{(\sigma,k,\tau)\in \mathcal{I}_0} \frac{\left\vert\sigma-\sigma_\theta(k,\tau)\right\vert}{\sigma} 
+\mathcal{L}_0(\theta) &= \sqrt{\frac{1}{\vert \mathcal{I}_0 \vert} \sum_{(\sigma,k,\tau) \in \mathcal{I}_0} \left(\sigma - \sigma_\theta(k,\tau)\right)^2} \\
+&\quad + \frac{1}{\vert \mathcal{I}_0 \vert} \sum_{(\sigma,k,\tau) \in \mathcal{I}_0} \frac{\left\vert \sigma - \sigma_\theta(k,\tau) \right\vert}{\sigma}
 \end{align*}
 $$
+
 
 Here, $$\mathcal{I}_0$$ is the set of log-moneyness, implied volatility, and maturities for each observed market option. For future use, denote
 
