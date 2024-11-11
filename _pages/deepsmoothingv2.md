@@ -251,12 +251,12 @@ The prior model is expected to provide a first-order approximation of the volati
 
 The following version of the SSVI prior model (with power-law parameterization) has been used for the entire volatility surface.
 
-$$
+```math
 \begin{align*}
 \omega_{\text{ssvi}}^{\text{prior}}(k, \tau) &= \frac{\omega_{\text{atm}}(\tau)}{2} \left( 1 + \rho \phi k + \sqrt{ \phi( k + \rho)^2 + 1 - \rho^2 } \right) \\
 \phi &:= \phi(\omega_{\text{atm}}(\tau)) = \frac{\eta }{\omega_{\text{atm}}(\tau)^\gamma(1 + \omega_{\text{atm}}(\tau))^{1-\gamma}}
 \end{align*}
-$$
+```
 
 Here $`\omega_{\text{atm}}(\tau)`$ is the ATM term structure, and $`\rho`$, $`\gamma`$, and $`\eta`$ are tunable parameters. In other words, we have:
 
