@@ -29,7 +29,7 @@ $$
 \end{align*}
 $$
 
-Below, we will go through the main steps of the deep smoothing framework.
+Here, we will walk through the main steps of the deep smoothing framework.
 
 ## Notation and Initial Values
 
