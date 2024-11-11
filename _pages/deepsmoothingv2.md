@@ -234,7 +234,7 @@ Regularization parameters $$\lambda_{but}, \lambda_{cal}, \lambda_{atm}$$ are tu
 
 ## ATM Total Variance
 
-The prior model is expected to provide a first-order approximation of the volatility surface, making it essential for the prior to accurately reproduce ATM (at-the-money) values. Since the ATM term structure is observable through market data for \(\tau \in \mathcal{T}_0\) (Equation \eqref{eq:T0}), we construct the ATM variance for each \(\tau \in \mathcal{T}_{aux}\) as described below.
+The prior model is expected to provide a first-order approximation of the volatility surface, making it essential for the prior to accurately reproduce ATM (at-the-money) values. Since the ATM term structure is observable through market data for \(\tau \in \mathcal{T}_0\) (Equation \eqref{eq:T0}), we construct the ATM variance for each $$\tau \in \mathcal{T}_{aux}$$ as described below.
 
 ### Steps for Constructing ATM Variance
 
