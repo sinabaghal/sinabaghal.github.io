@@ -34,8 +34,6 @@ Here, we will walk through the main steps of the deep smoothing framework.
 ## Notation and Initial Values
 
 European call options with the following table of notation and values are used:
-
-<center>
   
 | **Parameter**             | **Value/Definition**                                 |
 |---------------------------|------------------------------------------------------|
@@ -49,8 +47,6 @@ European call options with the following table of notation and values are used:
 | Implied Variance          | $\omega(k, \tau) := \sigma(k, \tau)^2 \tau$          |
 
 **Table:** Parameters and Definitions
-
-<center>
 
 ## Bates model
 
