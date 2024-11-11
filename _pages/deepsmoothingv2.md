@@ -153,13 +153,92 @@ $$
 
 ## Loss Function
 
-We define 4 different loss functions and construct the total loss function as a linear combination of these with coefficients being the penalty parameters. The first loss function is the prediction error, which is defined as below:
+We define four different loss functions and construct the total loss function as a linear combination of these four, with coefficients being the penalty parameters. The first loss function is the prediction error, which is defined as below:
 
 $$
 \begin{align*}
-\mathcal{L}_0(\theta) = \sqrt{\frac{1}{\vert \mathcal{I}_0 \vert} \sum_{(\sigma,k,\tau) \in \mathcal{I}_0} \left(\sigma - \sigma_\theta(k,\tau)\right)^2}  + \frac{1}{\vert \mathcal{I}_0 \vert} \sum_{(\sigma,k,\tau) \in \mathcal{I}_0} \frac{\left\vert \sigma - \sigma_\theta(k,\tau) \right\vert}{\sigma}
+    \mathcal{L}_0(\theta) &= \sqrt{\frac{1}{\vert \mathcal{I}_0\vert} \sum_{(\sigma,k,\tau)\in \mathcal{I}_0} \left(\sigma-\sigma_\theta(k,\tau)\right)^2} + \frac{1}{\vert \mathcal{I}_0\vert} \sum_{(\sigma,k,\tau)\in \mathcal{I}_0} \frac{\left\vert \sigma - \sigma_\theta(k,\tau) \right\vert}{\sigma}
 \end{align*}
 $$
+
+Here, $$\mathcal{I}_0$$ is the set of log-moneyness, implied volatility, and maturities for each observed market option. For future use, denote
+
+$$
+\mathcal{T}_0 = \{\tau:(0,\tau)\in  \mathcal{I}_0\}
+$$
+
+The other three loss functions are auxiliary, and consequently, we need to introduce auxiliary maturities and log-moneyness values. This ensures desired features for the constructed implied variance $$\omega$$ across unobserved market data. Define
+
+$$
+\begin{align*}
+\mathcal{T}_{aux} &= \left\{ \exp(x) : x \in \left[ \log\left(\frac{1}{365}\right), \max(\log(\tau_{\max}(\mathcal{T}_0) + 1))\right]_{100} \right\} \\
+k_{aux} &= \left\{ x^3 : x \in  \left[ -(-2k_{\min})^{1/3}, (2k_{\max})^{1/3} \right]_{100} \right\} \\
+\mathcal{I}_{aux} &= \{(k, \tau) : k \in k_{aux}, \tau \in \mathcal{T}_{aux}\} 
+\end{align*}
+$$
+
+where, for example, $$k_{\max} = k_{\max}(\mathcal{I}_0)$$. Calendar and Butterfly loss functions are then defined as
+
+$$
+\begin{align}
+\mathcal{L}_{cal}(\theta) &= \frac{1}{\vert \mathcal{I}_{Aux}\vert}\sum_{(k,t)\in \mathcal{I}_{Aux}} \max\left(0, -\ell_{cal}(k,\tau)\right) \\
+\mathcal{L}_{but}(\theta) &= \frac{1}{\vert \mathcal{I}_{Aux}\vert}\sum_{(k,t)\in \mathcal{I}_{Aux}} \max\left(0, -\ell_{but}(k,\tau)\right)
+\end{align}
+$$
+
+For large moneyness behavior, we set
+
+$$
+\mathcal{L}_{asym}(\theta) = \frac{1}{|\mathcal{I}_{asym}|} \sum_{(k, \tau) \in \mathcal{I}_{asym}} \left\vert \frac{\partial^2 \omega(k, \tau)}{\partial k \partial k} \right\vert
+$$
+
+where
+
+$$
+\mathcal{I}_{asym} = \left\{ (k, \tau) : k \in \{ 6k_{\min}, 4k_{\min}, 4k_{\max}, 6k_{\max} \}, \tau \in \mathcal{T}_{Aux} \right\}
+$$
+
+### Around the Money
+
+We prefer that the prior component gives the best possible fit for ATM, while the neural network corrects the prior's limitations for OTM. To this end, the following loss function is considered:
+
+$$
+\mathcal{L}_{atm}(\theta) = \frac{1}{|\mathcal{I}_{\text{atm}}|}
+\left(
+\sum_{(k, \tau) \in \mathcal{I}_{\text{atm}}}
+(1 - \omega_{nn}(k, \tau; \theta_{nn}))^2
+\right)^{1/2}
+$$
+
+Here
+
+$$
+\mathcal{I}_{\text{atm}} = \{(0, \tau) : \tau \in \mathcal{T}_{Aux}\}
+$$
+
+### Total Loss Function
+
+The total loss function is constructed as follows:
+
+$$
+\mathcal{L}_{Tot}(\theta) = \mathcal{L}_0(\theta) + \lambda_{but}\mathcal{L}_{but} + \lambda_{cal}\mathcal{L}_{cal} + \lambda_{atm}\mathcal{L}_{atm}
+$$
+
+Regularization parameters $$\lambda_{but}, \lambda_{cal}, \lambda_{atm}$$ are tunable. In our experiments, we consider:
+
+<div align="center">
+
+| **Parameter**     | **Value** |
+|-------------------|-----------|
+| $$\lambda_{atm}$$ | 0.1       |
+| $$\lambda_{but}$$ | 4         |
+| $$\lambda_{cal}$$ | 4         |
+
+**Table:** Loss Function Regularization Parameters
+
+</div>
+
+
 
 Another condition required to guarantee a free-arbitrage VS is the large moneyness behaviour which states that $$\sigma^2(k,\tau)$$ is linear for $$k\to \pm \infty$$ for every $$\tau>0$$. Roper achieves this by imposing $$\frac{\sigma^2(k,\tau)}{\vert k \vert}<2$$ which in turn is achieved by minimizing the following 
 
