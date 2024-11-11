@@ -35,6 +35,8 @@ Here, we will walk through the main steps of the deep smoothing framework.
 
 European call options with the following table of notation and values are used:
 
+<center>
+  
 | **Parameter**             | **Value/Definition**                                 |
 |---------------------------|------------------------------------------------------|
 | Spot Price                | spot = $1$                                           |
@@ -48,7 +50,7 @@ European call options with the following table of notation and values are used:
 
 **Table:** Parameters and Definitions
 
-
+<center>
 
 ## Bates model
 
