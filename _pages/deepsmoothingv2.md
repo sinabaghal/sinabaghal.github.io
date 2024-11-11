@@ -151,9 +151,6 @@ $$
 
 We define 4 different loss functions and construct the total loss function as a linear combination of these with coefficients being the penalty parameters. The first loss function is the prediction error, which is defined as below:
 
-$$\mathcal{I}$$
-
-
 $$
 \begin{align*}
 \mathcal{L}_0(\theta) &= \sqrt{\frac{1}{\vert \mathcal{I}_0 \vert} \sum_{(\sigma,k,\tau) \in \mathcal{I}_0} \left(\sigma - \sigma_\theta(k,\tau)\right)^2} \\
