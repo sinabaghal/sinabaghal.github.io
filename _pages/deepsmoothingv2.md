@@ -276,14 +276,14 @@ We have two kinds of training: training a reference model and training models us
 
 | **Parameter** | **Reference Model** | **Subsequent Model (Ex)** |
 |---------------|----------------------|----------------------------|
-| $\alpha$      | 0.7                  | 0.5                        |
-| $\beta$       | -0.03                | -0.04                      |
-| $\kappa$      | 0.5                  | 0.4                        |
-| $v_0$         | 0.01                 | 0.02                       |
-| $\theta$      | 0.0625               | 0.05                       |
-| $\rho$        | -0.75                | -0.65                      |
-| $\sigma$      | 1                    | 0.8                        |
-| $\lambda$     | 0.2                  | 0.3                        |
+| $$\alpha$$     | 0.7                  | 0.5                        |
+| $$\beta$$       | -0.03                | -0.04                      |
+| $$\kappa$$      | 0.5                  | 0.4                        |
+| $$v_0$$         | 0.01                 | 0.02                       |
+| $$\theta$$      | 0.0625               | 0.05                       |
+| $$\rho$$        | -0.75                | -0.65                      |
+| $$\sigma$$      | 1                    | 0.8                        |
+| $$\lambda$$     | 0.2                  | 0.3                        |
 
 **Table:** Parameter Values
 
@@ -313,9 +313,4 @@ The figure below displays the same volatility surfaces for short term maturities
 <p align="center">
 <img src="http://sinabaghal.github.io/images/all_models_short.png" width="80%" height="100%">
 </p>
-
-
-
-See the technical report inside the Github repo for more details. 
-
 
