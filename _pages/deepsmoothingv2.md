@@ -242,7 +242,7 @@ The prior model is expected to provide a first-order approximation of the volati
 
 ### Steps for Constructing ATM Variance
 
-- **Step A:** Ensure that \(\omega_{atm}(\tau_2) \geq \omega_{atm}(\tau_1)\) for every \(\tau_2 \geq \tau_1\). To achieve this, we solve the following optimization problem using CVX:
+- **Step A:** Ensure that $$\(\omega_{atm}(\tau_2) \geq \omega_{atm}(\tau_1)\)$$ for every $$\(\tau_2 \geq \tau_1\)$$. To achieve this, we solve the following optimization problem using CVX:
   \[
   \sum_{i=0}^{\vert \mathcal{T}_0\vert} \left(z_i - \omega_{atm}(\tau_i)\right)^2 \quad \text{s.t.} \quad z_{\vert \mathcal{T}_0\vert} \geq \cdots \geq z_0
   \]
