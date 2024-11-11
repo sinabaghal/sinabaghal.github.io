@@ -179,7 +179,10 @@ k_{aux} &= \left\{ x^3 : x \in  \left[ -(-2k_{\min})^{1/3}, (2k_{\max})^{1/3} \r
 \end{align*}
 `$
 
-where, for example, $$k_{\max} = k_{\max}(\mathcal{I}_0)$$. Calendar and Butterfly loss functions are then defined as
+where, for example, $$k_{\max} = k_{\max}(\mathcal{I}_0)$$. Note that we consider more monyness around the money. The figure below shows $$k_{aux}$$ values. 
+
+
+Calendar and Butterfly loss functions are then defined as
 
 $`
 \begin{align}
@@ -204,27 +207,27 @@ $$
 
 We prefer that the prior component gives the best possible fit for ATM, while the neural network corrects the prior's limitations for OTM. To this end, the following loss function is considered:
 
-$$
+$`
 \mathcal{L}_{atm}(\theta) = \frac{1}{|\mathcal{I}_{\text{atm}}|}
 \left(
 \sum_{(k, \tau) \in \mathcal{I}_{\text{atm}}}
 (1 - \omega_{nn}(k, \tau; \theta_{nn}))^2
 \right)^{1/2}
-$$
+`$
 
 Here
 
-$$
+$`
 \mathcal{I}_{\text{atm}} = \{(0, \tau) : \tau \in \mathcal{T}_{Aux}\}
-$$
+`$
 
 ### Total Loss Function
 
 The total loss function is constructed as follows:
 
-$$
+$`
 \mathcal{L}_{Tot}(\theta) = \mathcal{L}_0(\theta) + \lambda_{but}\mathcal{L}_{but} + \lambda_{cal}\mathcal{L}_{cal} + \lambda_{atm}\mathcal{L}_{atm}
-$$
+`$
 
 Regularization parameters $$\lambda_{but}, \lambda_{cal}, \lambda_{atm}$$ are tunable. In our experiments, we consider:
 
