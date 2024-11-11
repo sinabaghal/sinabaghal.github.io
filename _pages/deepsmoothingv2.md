@@ -20,7 +20,7 @@ $$
 \end{equation}
 $$
 
-we enrich the space of parameters used for fitting the volatility surface. Here $$\omega$$ is the implied variance and $$\theta_{\text{prior}}$$ and $$\theta_{\text{nn}}$$ are two disjoint set of parameters. Furthermore, to ensure our volatility surface is free of arbitrage, we could use the ideas by Roper (2010) which argues that if the following are satisfied then the call price surface is free of Calendar & Butterfly arbitrage resp.
+we enrich the space of parameters used for fitting the volatility surface. Here $$\omega$$ is the implied variance and $$\theta_{\text{prior}}$$ and $$\theta_{\text{nn}}$$ are two disjoint set of parameters. Furthermore, to ensure our volatility surface is free of arbitrage, we use the ideas from _Arbitrage-free SVI Volatility Surfaces_ (2013) where they argue that if the following are satisfied then the call price surface is free of Calendar & Butterfly arbitrage resp.
 
 $$
 \begin{align*}
@@ -28,6 +28,26 @@ $$
     \ell_{but}&:=\left(1-\frac{k\partial_k \omega(k,\tau)}{2\omega(k,\tau)} \right)^2-\frac{\partial_k \omega(k,\tau)}{4}\left(\frac{1}{\omega(k,\tau)}+0.25 \right)+\frac{\partial^2_{kk}\omega(k,\tau)}{2}\geq 0  
 \end{align*}
 $$
+
+Below, we will go through the main steps of the deep smoothing framework.
+
+## Notation and Initial Values
+
+European call options with the following table of notation and values are used:
+
+| **Parameter**             | **Value/Definition**                     |
+|---------------------------|------------------------------------------|
+| Spot Price                | \( spot = \$1 \)                         |
+| Strike                    | \( K \)                                  |
+| Interest Rate             | \( rate = 0.0 \)                         |
+| Dividend Rate             | \( q = 0.0 \)                            |
+| Forward Price             | \( F_t \)                                |
+| Forward Log Moneyness     | \( k = \log \frac{K}{F_t} \)             |
+| Implied Volatility        | \( \sigma(k, \tau) \)                    |
+| Implied Variance          | \( \omega(k, \tau) := \sigma(k, \tau)^2 \tau \) |
+
+**Table:** Parameters and Definitions
+
 
 Another condition required to guarantee a free-arbitrage VS is the large moneyness behaviour which states that $$\sigma^2(k,\tau)$$ is linear for $$k\to \pm \infty$$ for every $$\tau>0$$. Roper achieves this by imposing $$\frac{\sigma^2(k,\tau)}{\vert k \vert}<2$$ which in turn is achieved by minimizing the following 
 
@@ -37,7 +57,11 @@ $$
 \end{equation}
 $$
 
-The above three constraints along with the prediction error are used to shape the loss function utilized in training the implied variance $$\omega$$. For learning rate scheduling, a slightly different approach is taken compared to Ackerer et al. The following table summerizes the convergence techniques used for training:
+The above three constraints along with the prediction error are used to shape the loss function utilized in training the implied variance $$\omega$$. 
+
+
+
+For learning rate scheduling, a slightly different approach is taken compared to Ackerer et al. The following table summerizes the convergence techniques used for training:
 
 
 | Checkpoint Interval                          | A checkpoint is set every 500 epochs.                                                                                                                                                                                   |
