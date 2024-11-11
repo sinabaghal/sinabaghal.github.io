@@ -164,7 +164,7 @@ $$
 Here, $$\mathcal{I}_0$$ is the set of log-moneyness, implied volatility, and maturities for each observed market option. For future use, denote
 
 $$
-\mathcal{T}_0 = \{ \tau:(0,\tau)\in  \mathcal{I}_0 \}
+\mathcal{T}_0 = { \tau:(0,\tau)\in  \mathcal{I}_0 }
 $$
 
 The other three loss functions are auxiliary, and consequently, we need to introduce auxiliary maturities and log-moneyness values. This ensures desired features for the constructed implied variance $$\omega$$ across unobserved market data. Define
