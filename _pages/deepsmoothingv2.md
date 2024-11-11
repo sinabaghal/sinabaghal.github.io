@@ -251,6 +251,24 @@ The prior model is expected to provide a first-order approximation of the volati
 
 - **Step C:** Fit a degree-five polynomial to the result from Step B. This approach allows access to both $$\omega_{atm}(\tau)$$ and its derivative $$\frac{\partial}{\partial \tau} \omega_{atm}(\tau)$$ for each $$\tau \in \mathcal{T}_{aux}$$, which is useful during the training process.
 
+### Surface Stochastic Volatility Inspired (SSVI)
+
+The following version of the SSVI prior model (with power-law parameterization) has been used for the entire volatility surface.
+
+
+$`
+\begin{align*}
+\omega_{\text{ssvi}}^{\text{prior}}(k, \tau) &= \frac{\omega_{\text{atm}}(\tau)}{2} \left( 1 + \rho \phi k + \sqrt{ \phi( k + \rho)^2 + 1 - \rho^2 } \right) \\
+\phi &:= \phi(\omega_{\text{atm}}(\tau)) = \frac{\eta }{\omega_{\text{atm}}(\tau)^\gamma(1 + \omega_{\text{atm}}(\tau))^{1-\gamma}}
+\end{align*}
+`$
+
+Here $`\omega_{\text{atm}}(\tau)`$ is the ATM term structure, and $`\rho`$, $`\gamma`$, and $`\eta`$ are tunable parameters. In other words, we have:
+
+$`
+\theta_{prior} = (\rho, \gamma, \eta)
+`$
+
 
 Another condition required to guarantee a free-arbitrage VS is the large moneyness behaviour which states that $$\sigma^2(k,\tau)$$ is linear for $$k\to \pm \infty$$ for every $$\tau>0$$. Roper achieves this by imposing $$\frac{\sigma^2(k,\tau)}{\vert k \vert}<2$$ which in turn is achieved by minimizing the following 
 
