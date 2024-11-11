@@ -80,7 +80,7 @@ $$
 
 ### Fast Fourier Transform
 
-Option price calculation for the Bates model is done using FFT. Following [Carr and Madan, 1999], we apply a smoothing technique to be able to compute the FFT integral. Recall that the option value is given by 
+The option price calculation for the Bates model can be efficiently computed using an analytical formula that leverages FFT. Following [Carr and Madan, 1999], we apply a smoothing technique to be able to compute the FFT integral. Recall that the option value is given by 
 
 $$
 C_\tau(k) = spot \cdot \Pi_1 - K e^{-rate \cdot \tau} \cdot \Pi_2
