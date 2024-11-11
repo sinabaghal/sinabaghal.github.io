@@ -165,34 +165,34 @@ $$
 
 Here, $$\mathcal{I}_0$$ is the set of log-moneyness, implied volatility, and maturities for each observed market option. For future use, denote
 
-```math
+$$
 \mathcal{T}_0 = \{ \tau:(0,\tau)\in  \mathcal{I}_0 \}
-```
+$$
 
 The other three loss functions are auxiliary, and consequently, we need to introduce auxiliary maturities and log-moneyness values. This ensures desired features for the constructed implied variance $$\omega$$ across unobserved market data. Define
 
-```math
+$$
 \begin{align*}
 \mathcal{T}_{aux} &= \left\{ \exp(x) : x \in \left[ \log\left(\frac{1}{365}\right), \max(\log(\tau_{\max}(\mathcal{T}_0) + 1))\right]_{100} \right\} \\
 k_{aux} &= \left\{ x^3 : x \in  \left[ -(-2k_{\min})^{1/3}, (2k_{\max})^{1/3} \right]_{100} \right\} \\
 \mathcal{I}_{aux} &= \{(k, \tau) : k \in k_{aux}, \tau \in \mathcal{T}_{aux}\} 
 \end{align*}
-```
+$$
 
 where, for example, $`k_{\max} = k_{\max}(\mathcal{I}_0)`$. Note that we consider more monyness around the money. Calendar and Butterfly loss functions are then defined as
 
-```math
+$$
 \begin{align}
 \mathcal{L}_{cal}(\theta) &= \frac{1}{\vert \mathcal{I}_{Aux}\vert}\sum_{(k,t)\in \mathcal{I}_{Aux}} \max\left(0, -\ell_{cal}(k,\tau)\right) \\
 \mathcal{L}_{but}(\theta) &= \frac{1}{\vert \mathcal{I}_{Aux}\vert}\sum_{(k,t)\in \mathcal{I}_{Aux}} \max\left(0, -\ell_{but}(k,\tau)\right)
 \end{align}
-```
+$$
 
 For large moneyness behavior, we set
 
-```math
+$$
 \mathcal{L}_{asym}(\theta) = \frac{1}{|\mathcal{I}_{asym}|} \sum_{(k, \tau) \in \mathcal{I}_{asym}} \left\vert \frac{\partial^2 \omega(k, \tau)}{\partial k \partial k} \right\vert
-```
+$$
 
 where  $`\mathcal{I}_{asym} = \left\{ (k, \tau) : k \in \{ 6k_{\min}, 4k_{\min}, 4k_{\max}, 6k_{\max} \}, \tau \in \mathcal{T}_{Aux} \right\}`$
 
@@ -200,13 +200,13 @@ where  $`\mathcal{I}_{asym} = \left\{ (k, \tau) : k \in \{ 6k_{\min}, 4k_{\min},
 
 We prefer that the prior component gives the best possible fit for ATM, while the neural network corrects the prior's limitations for OTM. To this end, the following loss function is considered:
 
-```math
+$$
 \mathcal{L}_{atm}(\theta) = \frac{1}{|\mathcal{I}_{\text{atm}}|}
 \left(
 \sum_{(k, \tau) \in \mathcal{I}_{\text{atm}}}
 (1 - \omega_{nn}(k, \tau; \theta_{nn}))^2
 \right)^{1/2}
-```
+$$
 
 Here $`\mathcal{I}_{\text{atm}} = \{(0, \tau) : \tau \in \mathcal{T}_{Aux}\}`$.
 
@@ -214,9 +214,9 @@ Here $`\mathcal{I}_{\text{atm}} = \{(0, \tau) : \tau \in \mathcal{T}_{Aux}\}`$.
 
 The total loss function is constructed as follows:
 
-```math
+$$
 \mathcal{L}_{Tot}(\theta) = \mathcal{L}_0(\theta) + \lambda_{but}\mathcal{L}_{but} + \lambda_{cal}\mathcal{L}_{cal} + \lambda_{atm}\mathcal{L}_{atm}
-```
+$$
 
 Regularization parameters $$\lambda_{but}, \lambda_{cal}, \lambda_{atm}$$ are tunable. In our experiments, we consider:
 
@@ -251,18 +251,18 @@ The prior model is expected to provide a first-order approximation of the volati
 
 The following version of the SSVI prior model (with power-law parameterization) has been used for the entire volatility surface.
 
-```math
+$$
 \begin{align*}
 \omega_{\text{ssvi}}^{\text{prior}}(k, \tau) &= \frac{\omega_{\text{atm}}(\tau)}{2} \left( 1 + \rho \phi k + \sqrt{ \phi( k + \rho)^2 + 1 - \rho^2 } \right) \\
 \phi &:= \phi(\omega_{\text{atm}}(\tau)) = \frac{\eta }{\omega_{\text{atm}}(\tau)^\gamma(1 + \omega_{\text{atm}}(\tau))^{1-\gamma}}
 \end{align*}
-```
+$$
 
 Here $`\omega_{\text{atm}}(\tau)`$ is the ATM term structure, and $`\rho`$, $`\gamma`$, and $`\eta`$ are tunable parameters. In other words, we have:
 
-```math
+$$
 \theta_{prior} = (\rho, \gamma, \eta)
-```
+$$
 
 ## Convergence
 
