@@ -171,28 +171,28 @@ $`
 
 The other three loss functions are auxiliary, and consequently, we need to introduce auxiliary maturities and log-moneyness values. This ensures desired features for the constructed implied variance $$\omega$$ across unobserved market data. Define
 
-$$
+$`
 \begin{align*}
 \mathcal{T}_{aux} &= \left\{ \exp(x) : x \in \left[ \log\left(\frac{1}{365}\right), \max(\log(\tau_{\max}(\mathcal{T}_0) + 1))\right]_{100} \right\} \\
 k_{aux} &= \left\{ x^3 : x \in  \left[ -(-2k_{\min})^{1/3}, (2k_{\max})^{1/3} \right]_{100} \right\} \\
 \mathcal{I}_{aux} &= \{(k, \tau) : k \in k_{aux}, \tau \in \mathcal{T}_{aux}\} 
 \end{align*}
-$$
+`$
 
 where, for example, $$k_{\max} = k_{\max}(\mathcal{I}_0)$$. Calendar and Butterfly loss functions are then defined as
 
-$$
+$`
 \begin{align}
 \mathcal{L}_{cal}(\theta) &= \frac{1}{\vert \mathcal{I}_{Aux}\vert}\sum_{(k,t)\in \mathcal{I}_{Aux}} \max\left(0, -\ell_{cal}(k,\tau)\right) \\
 \mathcal{L}_{but}(\theta) &= \frac{1}{\vert \mathcal{I}_{Aux}\vert}\sum_{(k,t)\in \mathcal{I}_{Aux}} \max\left(0, -\ell_{but}(k,\tau)\right)
 \end{align}
-$$
+`$
 
 For large moneyness behavior, we set
 
-$$
+$`
 \mathcal{L}_{asym}(\theta) = \frac{1}{|\mathcal{I}_{asym}|} \sum_{(k, \tau) \in \mathcal{I}_{asym}} \left\vert \frac{\partial^2 \omega(k, \tau)}{\partial k \partial k} \right\vert
-$$
+`$
 
 where
 
