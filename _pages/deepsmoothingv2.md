@@ -447,6 +447,29 @@ $$
 \theta_{prior} = (\rho, \gamma, \eta)
 $$
 
+The Python snippet below shows how Wssvi is constructed. The function `apply_spline`, used here, is defined in the ATM Variance section above.
+
+```python
+
+class Wssvi(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.initialize_weights()
+
+    def initialize_weights(self):
+        
+        self.gamma = nn.Parameter(torch.tensor(0.5))
+        self.eta   = nn.Parameter(torch.tensor(1.0))
+        self.rho   = nn.Parameter(torch.tensor(0.0))
+
+    def forward(self, k, tau):
+
+        t1 = apply_spline(tau)
+        phi = self.eta*torch.pow(t1,-self.gamma**2)*torch.pow(1+t1,self.gamma**2-1)
+        t2 = 1+self.rho*phi*k+torch.sqrt((phi*k+self.rho)**2+1-self.rho**2)
+        return t1*t2/2 
+```
+
 ## Convergence
 
 For learning rate scheduling, a slightly different approach is taken compared to Ackerer et al. The following table summerizes the convergence techniques used for training:
