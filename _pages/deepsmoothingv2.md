@@ -256,7 +256,8 @@ degree = 5
 popt, _ = curve_fit(poly, taus_aux,  spline_curve(taus_aux), p0=np.ones(degree+1))
 popt_tensor = torch.tensor(popt).to(device)
 
-### ATM variance and it's derivatives are used in training. As such, we create the following Spline class. 
+# The at-the-money (ATM) variance and its derivatives are used as part of the neural network training process.
+# To facilitate this, we define the following custom spline class, SPLFunction, which inherits from PyTorch's Function class.
 class SPLFunction(Function):
     @staticmethod
     def forward(ctx, tau):
