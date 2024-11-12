@@ -20,7 +20,7 @@ $$
 \end{equation}
 $$
 
-we enrich the space of parameters used for fitting the volatility surface. Here $$\omega$$ is the implied variance and $$\theta_{\text{prior}}$$ and $$\theta_{\text{nn}}$$ are two disjoint set of parameters. 
+we enrich the space of parameters used for fitting the volatility surface. Here $$\omega$$ is the implied variance and $$\theta_{\text{prior}}$$ and $$\theta_{\text{nn}}$$ are two disjoint set of parameters. The figure below displays a neural network with 4 hidden layers, each containing 40 units. The weights of this network are represented by $$\theta_{\text{nn}}$$.
 
 <p align="center">
 <img src="http://sinabaghal.github.io/images/Screenshot 2024-11-12 085101.jpg" width="100%" height="100%">
