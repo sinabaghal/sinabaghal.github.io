@@ -219,9 +219,9 @@ $$
   \sum_{i=0}^{\vert \mathcal{T}_0\vert} \left(z_i - \omega_{atm}(\tau_i)\right)^2 \quad \text{s.t.} \quad z_{\vert \mathcal{T}_0\vert} \geq \cdots \geq z_0
 $$
 
-- **Step B:** Interpolate the results from Step A using `scipy` with a smoothing spline of degree 3.
+- **Step B:** Interpolate results from Step A using `scipy` with a smoothing spline of degree 3
 
-- **Step C:** Fit a degree-five polynomial to the result from Step B. This approach allows access to both $$\omega_{atm}(\tau)$$ and its derivative $$\frac{\partial}{\partial \tau} \omega_{atm}(\tau)$$ for each $$\tau \in \mathcal{T}_{aux}$$, which is useful during the training process.
+- **Step C:** Fit a degree-five polynomial to the result from Step B. This approach allows access to both $$\omega_{atm}(\tau)$$ and its derivative $$\frac{\partial}{\partial \tau} \omega_{atm}(\tau)$$ for each $$\tau \in \mathcal{T}_{aux}$$, which is useful during the training process
 
 ## Surface Stochastic Volatility Inspired (SSVI)
 
