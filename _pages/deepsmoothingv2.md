@@ -12,7 +12,7 @@ tags:
 ---
 ---
 
-This project ([Github repository](https://github.com/sinabaghal/deepsmoothigIVS)) is a python-based implementation of the methodologies presented in the paper *Deep Smoothing of the Implied Volatility Surface* by Ackerer et al (2020). The main idea is to use feedforward neural networks as a corrective tool to modify the prior models considered for volatility surfaces. By letting
+This project is a python-based implementation of the methodologies presented in the paper *Deep Smoothing of the Implied Volatility Surface* by Ackerer et al (2020). The main idea is to use feedforward neural networks as a corrective tool to modify the prior models considered for volatility surfaces. By letting
 
 $$
 \begin{equation}
@@ -29,7 +29,7 @@ $$
 \end{align*}
 $$
 
-Here, we will walk through the main steps of the deep smoothing framework.
+In this blog, we’ll walk through the main steps of the deep smoothing framework. You can find the code for this project ([here](https://github.com/sinabaghal/deepsmoothigIVS)).
 
 ## Notation and Initial Values
 
