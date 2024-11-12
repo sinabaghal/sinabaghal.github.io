@@ -84,6 +84,8 @@ $$
 \end{align*}
 $$
 
+We will use this characteristic function to price options in Bates model. To this end, we utilize FFTs. 
+
 ### Fast Fourier Transform
 
 The option price calculation for the Bates model can be efficiently computed using an analytical formula that leverages FFT. Following [Carr and Madan, 1999], we apply a smoothing technique to be able to compute the FFT integral. Recall that the option value is given by 
@@ -134,6 +136,8 @@ Having this setup ready, call prices are obtained as follows:
 $$
 C(k_u) = \frac{\exp(-\alpha k_u)}{\pi} \sum_{j=1}^{N} e^{-i \frac{2\pi}{N} (j-1)(u-1)} e^{ibv_j} \Psi(v_j) \frac{\eta}{3} \left(3 + (-1)^j - \delta_{j-1}\right)
 $$
+
+After computing prices, we use Quantlib library to obtain the volatility surface. We are now ready to explain the loss functions through which the arb-free conditions are enforced!
 
 ## Loss Function
 
