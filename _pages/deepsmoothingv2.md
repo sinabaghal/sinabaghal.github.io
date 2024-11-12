@@ -137,7 +137,8 @@ $$
 C(k_u) = \frac{\exp(-\alpha k_u)}{\pi} \sum_{j=1}^{N} e^{-i \frac{2\pi}{N} (j-1)(u-1)} e^{ibv_j} \Psi(v_j) \frac{\eta}{3} \left(3 + (-1)^j - \delta_{j-1}\right)
 $$
 
-Python snippet below computes prices using FFT. 
+The Python snippet below computes option prices using the Fast Fourier Transform (FFT). We use `np.vectorize` multiple times to vectorize the computations across various maturities and the corrective parameter, $$\alpha$$.
+
 
 ```python
 def cf_bates(tau,u):
