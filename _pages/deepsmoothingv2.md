@@ -107,15 +107,17 @@ $$
 \Psi_\tau(v) = \frac{e^{-r \tau} \phi_\tau(v - (\alpha + 1)i)}{\alpha^2 + \alpha - v^2 + i(2\alpha + 1)v}
 $$
 
-#### FFT Setup
-
 We set up the FFT calculation as follows:
 
 - Log strike levels range from $$-b$$ to $$b$$ where $$b = \frac{Ndk}{2}$$
 
 - $$\Psi_\tau(u)$$ is computed at the following $$v$$ values: $$v_j = (j-1)du \text{ for } j = 1, \cdots, N$$
 
-- Option prices are computed at the following $$k$$ values: $$k_u = -b + dk(u-1) \text{ for } u = 1, \cdots, N$$
+- Option prices are computed at the following $$k$$ values:
+  
+$$
+k_u = -b + dk(u-1) \text{ for } u = 1, \cdots, N
+$$
 
 - To apply FFT, we need to set $$dk \cdot du = \frac{2\pi}{N}$$
 
