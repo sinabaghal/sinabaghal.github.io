@@ -29,7 +29,7 @@ $$
 \end{align*}
 $$
 
-In this blog, we’ll walk through the main steps of the deep smoothing framework. You can find the code for this project ([here](https://github.com/sinabaghal/deepsmoothigIVS)).
+In this blog, we’ll walk through the main steps of the deep smoothing framework. You can find the code for this project [here](https://github.com/sinabaghal/deepsmoothigIVS).
 
 ## Notation and Initial Values
 
