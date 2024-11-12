@@ -291,6 +291,80 @@ Regularization parameters $$\lambda_{but}, \lambda_{cal}, \lambda_{atm}$$ are tu
 
 **Table:** Loss Function Regularization Parameters
 
+```python
+def loss_butcal(model_prior, model_nn, ks, ts):
+    
+    kts = torch.stack((ks, ts), dim=1)
+    output = model_prior(ks, ts)*model_nn(kts).squeeze(1)
+    
+    dw = torch.autograd.grad(outputs=output, inputs=[ks,ts], grad_outputs= torch.ones_like(output), create_graph=True, retain_graph=True)
+    dwdk_,dwdtau_ = dw
+    d2wdk_ = torch.autograd.grad(outputs=dwdk_, inputs=ks, grad_outputs=torch.ones_like(dwdk_), create_graph=True)[0]
+
+    loss_but = relu(-((1-ks*dwdk_/(2*output))**2-(dwdk_/4)*(1/output+0.25)+d2wdk_/2)).mean()
+    loss_cal = relu(-dwdtau_).mean()
+
+    return loss_but, loss_cal 
+
+def loss_large_m(model_prior, model_nn, ks, ts):
+
+    kts = torch.stack((ks,ts), dim=1)
+    output = model_prior(ks, ts)*model_nn(kts).squeeze(1)
+    dw= torch.autograd.grad(outputs=output, inputs=ks, grad_outputs=torch.ones_like(output), create_graph=True)
+    dwdk = dw[0]
+    grad_output_dwdk = torch.ones_like(dwdk)
+    d2wdk = torch.autograd.grad(outputs=dwdk, inputs=ks, grad_outputs=grad_output_dwdk, create_graph=True)[0]
+    loss_large_m = torch.abs(d2wdk).mean()
+
+    return loss_large_m
+
+def loss_atm(model_nn, ks, ts):
+    
+    kts = torch.stack((ks,ts), dim=1)
+    output = model_nn(kts).squeeze(1)
+    loss_atm = torch.sqrt(torch.pow(1-output,2).sum()/output.shape[0])
+    
+    return loss_atm
+
+def loss_0(model_prior, model_nn):
+
+    output = model_prior(df_torch_gpu[:,2], df_torch_gpu[:,3])*(model_nn(df_torch_gpu[:,2:4]).squeeze(1))
+    sigma_theta = torch.sqrt(output/df_torch_gpu[:,3])
+    temp = sigma_theta-df_torch_gpu[:,4]
+    rmse = torch.sqrt(torch.pow(temp,2).mean())
+    mape = (torch.abs(temp)/df_torch_gpu[:,4]).mean()
+
+    return rmse, mape 
+
+def total_loss(model_prior, model_nn):
+
+    ###########  Butterfly & Calendar Loss function ###############
+
+    k_but_cal   = torch.tensor(ext(0,I_butcal), requires_grad=True).to(device)
+    t_but_cal   = torch.tensor(ext(1,I_butcal), requires_grad=True).to(device) 
+    l_but, l_cal = loss_butcal(model_prior, model_nn,k_but_cal, t_but_cal)
+    
+    ###########  Large moneyness loss function ################
+
+    k_large_m  = torch.tensor(ext(0,I_large_m), requires_grad=True).to(device)
+    t_large_m  = torch.tensor(ext(1,I_large_m), requires_grad=True).to(device)
+    l_large_m = loss_large_m(model_prior, model_nn, k_large_m, t_large_m)
+    
+    ###########  ATM loss function ###############
+
+    k_atm = torch.tensor(ext(0,I_atm)).to(device)
+    t_atm = torch.tensor(ext(1,I_atm)).to(device)
+    l_atm = loss_atm(model_nn, k_atm, t_atm)
+    
+    ###########  L0 loss function ###############
+
+    rmse, mape  = loss_0(model_prior, model_nn)
+
+    ###########  Total loss ###############
+
+    return rmse, mape, l_cal,l_but,l_large_m,l_atm
+```
+
 ## ATM Total Variance
 
 The prior model is expected to provide a first-order approximation of the volatility surface, making it essential for the prior to accurately reproduce ATM (at-the-money) values. Since the ATM term structure is observable through market data for $$\tau \in \mathcal{T}_0$$, we construct the ATM variance for each  $$\tau \in \mathcal{T}_{aux}$$ as described below.
