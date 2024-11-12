@@ -231,7 +231,46 @@ $$
 
 - **Step B:** Interpolate results from Step A using `scipy` with a smoothing spline of degree 3
 
-- **Step C:** Fit a degree-five polynomial to the result from Step B. This approach allows access to both $$\omega_{atm}(\tau)$$ and its derivative $$\frac{\partial}{\partial \tau} \omega_{atm}(\tau)$$ for each $$\tau \in \mathcal{T}_{aux}$$, which is useful during the training process
+- **Step C:** Fit a degree-five polynomial to the result from Step B. This approach allows access to both $$\omega_{atm}(\tau)$$ and its derivative $$\frac{\partial}{\partial \tau} \omega_{atm}(\tau)$$ for each $$\tau \in \mathcal{T}_{aux}$$, which is useful during the training process. Python snippet below shows how ATM total variance is constructed. 
+
+```python
+
+spot_variances = ... ## a numpy array containing atm variance 
+z = cv.Variable(len(spot_variances))
+objective = cv.Minimize(cv.sum_squares(z - spot_variances))
+constraints = [z[i] >= z[i-1]+1e-10 for i in range(1,len(spot_variances))]
+prob = cv.Problem(objective, constraints)
+prob.solve(verbose=False)
+spot_variances_mdfd= z.value
+
+spline_curve = UnivariateSpline(spot_taus, spot_variances_mdfd, k=5)
+spline_curve.set_smoothing_factor(0.5)
+
+def poly(x, *coeffs):
+    return sum(c * x**i for i, c in enumerate(coeffs))
+
+def poly_derivative(x, *coeffs):
+    return sum(i * c * x**(i-1) for i, c in enumerate(coeffs) if i > 0)
+
+degree = 5
+popt, _ = curve_fit(poly, taus_aux,  spline_curve(taus_aux), p0=np.ones(degree+1))
+popt_tensor = torch.tensor(popt).to(device)
+
+### ATM variance and it's derivatives are used in training. As such, we create the following Spline class. 
+class SPLFunction(Function):
+    @staticmethod
+    def forward(ctx, tau):
+        ctx.save_for_backward(tau)
+        return poly(tau,*popt_tensor)
+
+    @staticmethod
+    def backward(ctx, grad_output):
+        tau, = ctx.saved_tensors
+        grad_input = poly_derivative(tau,*popt_tensor)*grad_output
+        return grad_input
+    
+def apply_spline(tau): return SPLFunction.apply(tau)
+``` 
 
 ## Surface Stochastic Volatility Inspired (SSVI)
 
