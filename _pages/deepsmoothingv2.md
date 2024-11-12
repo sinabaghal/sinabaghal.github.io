@@ -36,7 +36,7 @@ Here, we will walk through the main steps of the deep smoothing framework.
 European call options with the following table of notation and values are used:
   
 | **Parameter**             | **Value/Definition**                                 |
-|---------------------------|------------------------------------------------------|
+|----------------------|--------------------------------------|
 | Spot Price                | spot = 1                                           |
 | Strike                    | $$K$$                                                  |
 | Interest Rate             | rate $$= 0.0$$                                         |
