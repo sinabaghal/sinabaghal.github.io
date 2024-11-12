@@ -237,6 +237,11 @@ Python snippet below shows how ATM total variance is constructed.
 
 ```python
 
+import cvxpy as cv
+from torch.autograd import Function
+from scipy.optimize import curve_fit
+from scipy.interpolate import UnivariateSpline
+
 spot_variances = ... ## a numpy array containing atm variance 
 z = cv.Variable(len(spot_variances))
 objective = cv.Minimize(cv.sum_squares(z - spot_variances))
