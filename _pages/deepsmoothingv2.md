@@ -56,7 +56,7 @@ European call options with the following table of notation and values are used:
 
 ## Bates model
 
-Next, let’s review the Bates model.
+Bates dynamic is displayed below.
 
 $$
 \begin{align*}
