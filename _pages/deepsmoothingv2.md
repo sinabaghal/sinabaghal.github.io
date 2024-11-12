@@ -111,35 +111,15 @@ $$
 
 We set up the FFT calculation as follows:
 
-- Log strike levels range from $$-b$$ to $$b$$ where 
+- Log strike levels range from $$-b$$ to $$b$$ where $$b = \frac{Ndk}{2}$$
 
-$$
-b = \frac{Ndk}{2}
-$$
+- $$\Psi_\tau(u)$$ is computed at the following $$v$$ values: $$v_j = (j-1)du \text{ for } j = 1, \cdots, N$$
 
-- $$\Psi_\tau(u)$$ is computed at the following $$v$$ values:
+- Option prices are computed at the following $$k$$ values: $$k_u = -b + dk(u-1) \text{ for } u = 1, \cdots, N$$
 
-$$
-v_j = (j-1)du \text{ for } j = 1, \cdots, N
-$$
+- To apply FFT, we need to set $$dk \cdot du = \frac{2\pi}{N}$$
 
-- Option prices are computed at the following $$k$$ values:
-
-$$
-k_u = -b + dk(u-1) \text{ for } u = 1, \cdots, N
-$$
-
-- To apply FFT, we need to set
-
-$$
-dk \cdot du = \frac{2\pi}{N}
-$$
-
-- Simpson weights are used:
-
-$$
-3 + (-1)^j - \delta_{j-1} \text{ for } j = 1, \cdots, N
-$$
+- Simpson weights are used: $$3 + (-1)^j - \delta_{j-1} \text{ for } j = 1, \cdots, N$$
 
 Having this setup ready, call prices are obtained as follows:
 
