@@ -291,6 +291,8 @@ Regularization parameters $$\lambda_{but}, \lambda_{cal}, \lambda_{atm}$$ are tu
 
 **Table:** Loss Function Regularization Parameters
 
+Python snippet below shows how loss function is computed given a pair of prior and neural network model _i.e.,_ $$\theta_{\text{prior}}$$ and $$\theta_{nn}$$, respectively.
+
 ```python
 def loss_butcal(model_prior, model_nn, ks, ts):
     
