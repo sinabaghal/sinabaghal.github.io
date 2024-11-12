@@ -291,15 +291,9 @@ Several numerical experiments are still to be conducted using the project code. 
 
 ## Appendix: Arb-Free Volatility Surfaces
 
-The figure below illustrates 29 trained implied volatility surfaces obtained using the deep smoothing algorithm for long term maturies obly _i.e.,_ $$\tau>$$ 20 days. Different values for the Bates model parameters are used in each case. Displayed parameters are $$\alpha, \beta, \kappa, v0, \theta, \rho, \sigma, \lambda$$ respectively. If you cannot guess the definition of these parameters see the technical report inside the github repository. 
+The figure below illustrates 29 trained implied variance surfaces obtained using the deep smoothing algorithm. Different values for the Bates model parameters are used in each case. Displayed parameters are $$\alpha, \beta, \kappa, v0, \theta, \rho, \sigma, \lambda$$ respectively. If you cannot guess the definition of these parameters see the technical report inside the github repository. 
 
 <p align="center">
-<img src="http://sinabaghal.github.io/images/all_models_long.png" width="80%" height="100%">
-</p>
-
-The figure below displays the same volatility surfaces for short term maturities  _i.e.,_ $$\tau<=$$ 20 days.
-
-<p align="center">
-<img src="http://sinabaghal.github.io/images/all_models_short.png" width="80%" height="100%">
+<img src="http://sinabaghal.github.io/images/all_models6.png" width="80%" height="100%">
 </p>
 
