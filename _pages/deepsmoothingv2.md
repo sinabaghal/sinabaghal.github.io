@@ -137,6 +137,79 @@ $$
 C(k_u) = \frac{\exp(-\alpha k_u)}{\pi} \sum_{j=1}^{N} e^{-i \frac{2\pi}{N} (j-1)(u-1)} e^{ibv_j} \Psi(v_j) \frac{\eta}{3} \left(3 + (-1)^j - \delta_{j-1}\right)
 $$
 
+Python snippet below computes prices using FFT. 
+
+```python
+def cf_bates(tau,u):
+
+
+    u2, sigma2, alpha2, ju = u**2,sigma**2, alpha**2, 1j*u
+
+    def log_phi_j():
+        term1 = -0.5*u2*alpha2+ju*(np.log(1+beta)-0.5*alpha2)
+        term2 = np.exp(term1)-1
+        return tau*lam*term2
+
+    a = kappa-ju*rho*sigma
+    gamma = np.sqrt((sigma2)*(u2+ju)+a**2)
+    b = 0.5*gamma*tau
+    c = kappa*theta/(sigma2)
+
+    coshb, sinhb = np.cosh(b), np.sinh(b)
+    
+    term1 = c*tau*a+ju*(tau*(rate-lam*beta)+np.log(spot))
+    term2 = coshb+(a/gamma)*sinhb
+    term3 = (u2+ju)*v0/(gamma*(coshb/sinhb)+a)
+    res = log_phi_j()+term1-term3-2*c*np.log(term2)
+    
+    return np.exp(res)
+
+N = 2**14  # number of knots for FFT
+B = 1000  # integration limit
+
+alpha_corrs = np.array([[[0.4,0.5,0.7,1]]])
+n_a = alpha_corrs.shape[2]
+
+du = B / N
+u = np.array(np.arange(N)* du).reshape(1,-1,1) 
+
+w_fft = 3 + (-1) ** (np.arange(N) + 1)   # Simpson weights
+w_fft[0] = 1 # [1, 4, 2, ..., 4, 2, 4]
+dk = 2*np.pi/(du*N) # dk * du = 2pi/N
+upper_b = N * dk / 2
+lower_b = -upper_b
+kus = lower_b + dk * np.arange(N)
+
+taus_0_np = np.array(taus_0).reshape(-1,1,1) #n_t*1*1
+w_fft = w_fft.reshape(1,-1,1) # 1*N*1
+kus = kus.reshape(1,-1,1) # 1*N*1
+
+cust_interp1d = lambda x,y: interp1d(x, y, kind='linear')
+fn_vec = np.vectorize(cust_interp1d, signature='(n),(n)->()')
+
+term1 = np.exp(-rate*taus_0_np)/(alpha_corrs**2+alpha_corrs-u**2+1j*(2*alpha_corrs+1)*u)
+term2 = cf_bates(taus_0_np,u-(alpha_corrs+1)*1j) 
+mdfd_cf = term1*term2
+
+integrand = np.exp(1j * upper_b * u)*mdfd_cf*w_fft* du / (3*np.pi)
+vectorized_fft = np.vectorize(lambda i, j: fft(integrand[i,:, j]), signature='(),()->(n_k)')
+tau_indices, corr_indices = np.indices((n_t, n_a))
+integrand_fft = vectorized_fft(tau_indices, corr_indices).transpose(0, 2, 1)
+
+Ck_u =np.exp(-alpha_corrs*kus)*np.real(integrand_fft )
+
+f1 = Ck_u.transpose(1, 0, 2).reshape(N, -1)
+fn = fn_vec([kus[0,:,0] for _ in range(n_t*n_a)],[f1[:,i] for i in range(n_t*n_a)])
+
+spline = fn.reshape(n_t, n_a) 
+vectorized_spline = np.vectorize(lambda i, j, k: spline[i, j](ks[k]), signature='(),(),()->()')
+
+tau_indices, corr_indices, ks_indices  = np.indices((n_t, n_a, n_k))
+prices = vectorized_spline(tau_indices, corr_indices, ks_indices)
+prices_ = prices.copy()
+prices = np.median(prices,axis=1)
+```
+
 After computing prices, we use Quantlib library to obtain the volatility surface. We are now ready to explain the loss functions through which the arb-free conditions are enforced!
 
 ## Loss Function
