@@ -1,5 +1,5 @@
 ---
-title: "Deep Smoothing of IVS"
+title: "Implementing Deep Smoothing for Implied Volatility Surfaces (IVS)"
 permalink: /deepsmoothing/
 author_profile: true
 tags:
