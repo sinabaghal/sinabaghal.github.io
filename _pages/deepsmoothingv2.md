@@ -18,7 +18,7 @@ This project is a python-based implementation of the methodologies presented in 
 <img src="http://sinabaghal.github.io/images/header.png" width="150%" height="150%">
 </p>
 
-The main idea is to use feedforward neural networks as a corrective tool to modify the prior models considered for volatility surfaces. By letting
+Deep smoothing's main idea is to use feedforward neural networks as a corrective tool to modify the prior models considered for volatility surfaces. By letting
 
 $$
 \begin{equation}
