@@ -515,7 +515,6 @@ class NN(nn.Module):
     def forward(self, x):
         # return torch.tensor([[1]]).to(device)
         return self.network(x)
-```
 
 def reinitialize_model(model,weight_init,scheduler_class, scheduler_args, lr=learning_rate):
 
@@ -525,6 +524,7 @@ def reinitialize_model(model,weight_init,scheduler_class, scheduler_args, lr=lea
     optimizer = optim.Adam(model.parameters(), lr=lr)
     scheduler = scheduler_class(optimizer, **scheduler_args)
     return optimizer, scheduler
+```
 
 ## Convergence
 
