@@ -12,13 +12,13 @@ tags:
 ---
 ---
 
-This project is a python-based implementation of the methodologies presented in the paper *Deep Smoothing of the Implied Volatility Surface* by Ackerer et al (2020) [^1]. It focuses on applying deep learning methods to generate smooth, arbitrage-free implied volatility surfaces. A volatility surface is a representation of implied volatility across different strike prices and maturities, crucial for pricing and hedging options accurately. Ensuring the surface is arbitrage-free is essential to prevent inconsistencies that could lead to riskless profit opportunities, which would undermine the model’s reliability in real markets.
+This project is a python-based implementation of the methodologies presented in the paper *Deep Smoothing of the Implied Volatility Surface* by Ackerer et al (2020) [^1].  A volatility surface is a representation of implied volatility across different strike prices and maturities, crucial for pricing and hedging options accurately. Ensuring the surface is arbitrage-free is essential to prevent inconsistencies that could lead to riskless profit opportunities, which would undermine the model’s reliability in real markets.
 
 <p align="center">
 <img src="http://sinabaghal.github.io/images/header.png" width="150%" height="150%">
 </p>
 
-Deep smoothing's main idea is to use feedforward neural networks as a corrective tool to modify the prior models considered for volatility surfaces. By letting
+Deep smoothing focuses on applying deep learning methods to generate smooth, arbitrage-free implied volatility surfaces. Its main idea is to use feedforward neural networks as a corrective tool to modify the prior models considered for volatility surfaces. By letting
 
 $$
 \begin{equation}
