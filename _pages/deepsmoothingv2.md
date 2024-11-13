@@ -24,7 +24,7 @@ Deep smoothing focuses on applying deep learning methods to generate smooth, arb
 - We must ensure that the surface meets certain curvature properties. In quantitative finance, this means creating an arbitrage-free surface. Mathematically, this translates to minimizing a specified loss function across the entire surface.
 
 
-Deep smoothing's main idea is to use feedforward neural networks as a corrective tool to modify the prior models considered for volatility surfaces. By letting
+Deep smoothing's main idea is to use feedforward neural networks as a corrective tool to modify the prior models considered for volatility surfaces (See [^2] to learn more about prior models). By letting
 
 $$
 \begin{equation}
