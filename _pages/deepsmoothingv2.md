@@ -535,5 +535,5 @@ The figure below illustrates 29 trained implied variance surfaces obtained using
 
 ## References 
 
-[^1]: Ackerer, D., Filipović, D., & Pulido, S. (2020). *Deep Smoothing of the Implied Volatility Surface*. [arXiv:2003.05462](https://arxiv.org/abs/2003.05462)
+[^1]: Ackerer, D., Tagasovska, N., & Vatter, T. (2020). *Deep Smoothing of the Implied Volatility Surface*. [arXiv:1906.05065](https://arxiv.org/pdf/1906.05065)
 
