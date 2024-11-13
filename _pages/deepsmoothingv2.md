@@ -537,5 +537,5 @@ The figure below illustrates 29 trained implied variance surfaces obtained using
 
 [^1]: Ackerer, D., Tagasovska, N., & Vatter, T. (2020). *Deep Smoothing of the Implied Volatility Surface*. [arXiv:1906.05065](https://arxiv.org/pdf/1906.05065)
 [^2]: Gatheral, J., Jacquier, A. (2013). *Arbitrage-free SVI volatility surfaces*. [arXiv:1204.0646](https://arxiv.org/pdf/1204.0646)
-
+[^3]: Carr, P., Madan, D. (2001) Option valuation using the fast Fourier transform. [CarrMadan2_0.pdf](https://engineering.nyu.edu/sites/default/files/2018-08/CarrMadan2_0.pdf)
 
