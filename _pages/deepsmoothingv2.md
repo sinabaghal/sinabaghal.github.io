@@ -20,7 +20,7 @@ This project is a python-based implementation of the methodologies presented in 
 
 Deep smoothing focuses on applying deep learning methods to generate smooth, arbitrage-free implied volatility surfaces. For someone unfamiliar with quantitative finance, this problem can be summarized as follows: Imagine you are given a set of points $$(k, \tau, iv)$$ representing market data. These points form part of a 3D surface that we aim to construct with two key objectives:
 
-- We need to fit the market data accurately.  
+- We need to fit the market data.  
 - We must ensure that the surface meets certain curvature properties. In quantitative finance, this means creating an arbitrage-free surface. Mathematically, this translates to minimizing a specified loss function across the entire surface.
 
 
