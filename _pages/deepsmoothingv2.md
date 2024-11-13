@@ -545,10 +545,10 @@ If you find this project helpful, please consider citing it:
 
 ```bibtex
 @misc{your_project_name,
-  author = {Your Name},
-  title = {Your Project Title},
-  year = {2023},
-  url = {https://github.com/yourusername/your_project_repo}
+  author = {Sina Baghal},
+  title = {Implementing Deep Smoothing for Implied Volatility Surfaces (IVS)},
+  year = {2024},
+  url = {https://sinabaghal.github.io/deepsmoothing/}
 }
 ```
 
