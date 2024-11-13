@@ -545,3 +545,15 @@ The figure below illustrates 29 trained implied variance surfaces obtained using
 [^2]: Gatheral, J., Jacquier, A. (2013). *Arbitrage-free SVI volatility surfaces*. [arXiv:1204.0646](https://arxiv.org/pdf/1204.0646)
 [^3]: Carr, P., Madan, D. (2001). *Option valuation using the fast Fourier transform*. [CarrMadan.pdf](https://engineering.nyu.edu/sites/default/files/2018-08/CarrMadan2_0.pdf)
 
+## Citation
+
+If you find this project helpful, please consider citing it:
+
+```bibtex
+@misc{your_project_name,
+  author = {Your Name},
+  title = {Your Project Title},
+  year = {2023},
+  url = {https://github.com/yourusername/your_project_repo}
+}
+
