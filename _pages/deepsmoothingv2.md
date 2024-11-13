@@ -482,6 +482,50 @@ class Wssvi(nn.Module):
         return t1*t2/2 
 ```
 
+## Neural Network 
+
+For the feed-forward neural network, we use 4 layers, each with 40 units. The model is trained using the Adam optimizer in conjunction with the `optim.lr_scheduler.ReduceLROnPlateau` scheduler. To escape local minima, we reinitialize weights when necessary. See the Convergence section below for more details. The Python snippet below provides the code for constructing the neural network class.
+
+```python
+class NN(nn.Module):
+    def __init__(self, input_size, hidden_sizes, output_size):
+        super().__init__()
+        layers = []
+        in_size = input_size
+        for hidden_size in hidden_sizes:
+
+            layers.append(nn.Linear(in_size, hidden_size).to(torch.float64))
+            layers.append(nn.Softplus())
+            in_size = hidden_size
+        layers.append(nn.Linear(in_size, output_size).to(torch.float64))
+        layers.append(oneplustanh())
+        self.layers = nn.ModuleList(layers)
+        self.network = nn.Sequential(*layers)
+        self.initialize_weights()
+
+    def initialize_weights(self):
+        for layer in self.layers:
+            if isinstance(layer, nn.Linear):
+                n_in = layer.in_features
+                n_out = layer.out_features
+                std = (1 / (n_in + n_out))**0.5
+                nn.init.normal_(layer.weight, mean=0, std=std)
+                nn.init.normal_(layer.bias, mean=0, std=std)
+    
+    def forward(self, x):
+        # return torch.tensor([[1]]).to(device)
+        return self.network(x)
+```
+
+def reinitialize_model(model,weight_init,scheduler_class, scheduler_args, lr=learning_rate):
+
+    if weight_init:
+        model.initialize_weights()
+
+    optimizer = optim.Adam(model.parameters(), lr=lr)
+    scheduler = scheduler_class(optimizer, **scheduler_args)
+    return optimizer, scheduler
+
 ## Convergence
 
 For learning rate scheduling, a slightly different approach is taken compared to Ackerer et al. The following table summerizes the convergence techniques used for training:
