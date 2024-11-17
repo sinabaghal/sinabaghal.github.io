@@ -72,6 +72,7 @@ $$\Pr(x_n; W_f, W_g) \approx \Pr(x_n \mid h_n; W_g)\quad \text{where} \quad h_n 
 
 The figure below illustrates the network architecture.
 
+
 <p align="center">
 <img src="http://sinabaghal.github.io/images/Screenshot 2024-11-14 172234.jpg" width="80%" height="100%">
 </p>
