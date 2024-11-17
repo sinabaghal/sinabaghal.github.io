@@ -77,7 +77,13 @@ The figure below illustrates the network architecture.
 <img src="http://sinabaghal.github.io/images/Screenshot 2024-11-14 172234.jpg" width="80%" height="100%">
 </p>
 
-With this architecture, we face a challenge when trying to backpropagate through the stochastic sampling step. The sampling introduces randomness, which disrupts the flow of gradients and makes the training infeasible. To address this, VAEs use a technique called the **reparameterization**: Instead of sampling directly from the distribution
+With this architecture, we face a challenge when trying to backpropagate through the stochastic sampling step. The sampling introduces randomness, which disrupts the flow of gradients and makes the training infeasible. To address this, VAEs use a technique called the **reparameterization**: Instead of sampling directly from the distribution $$h \sim q(h\|x)$$, we rewrite $$h$$ as a deterministic function of the encoder’s output parameters and an independent random variable $$\zeta \sim N(0,I)$$. The reparameterization trick transforms the sampling as follows:
+
+$$
+h = \mu_n(x) + \sigma_n(x) \cdot \zeta \quad \text{where} \quad \zeta \sim \mathcal{N}(0,I)
+$$
+
+Here $$\mu_n(x)$$ and $$\sigma_n(x)$$ are the mean and standard deviation of the latent distribution $$q(h|x)$$.
 
 This transformation effectively makes the sample $$h$$ a function of $$x$$ and the learned parameters $$W_f$$, with the randomness isolated in $$\zeta$$. Now, $$h$$ can be treated as a deterministic input to the decoder network during backpropagation, allowing us to compute gradients with respect to the encoder parameters. The resulting network looks as follows:
 
