@@ -481,7 +481,7 @@ If you find this project helpful, please consider citing it:
   author = {Sina Baghal},
   title = {Generative Modeling of Heston Volatility Surfaces Using Variational Autoencoders},
   year = {2024},
-  url = {https://sinabaghal.github.io/deepsmoothing/}
+  url = {https://sinabaghal.github.io/vae4heston/}
 }
 ```
 
