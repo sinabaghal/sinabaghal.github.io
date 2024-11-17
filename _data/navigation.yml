@@ -13,8 +13,6 @@ main:
   # - title: "Blog Posts"
   #   url: /year-archive/
 
-  - title: "Stochastic Calculus for Finance II"
-    url: /shreve/    
     
   - title: "Generative Modeling of Heston Volatility Surfaces Using VAEs"
     url: /vae4heston/    
@@ -22,6 +20,8 @@ main:
   - title: "Deep Smoothing of IVS"
     url: /deepsmoothing/    
 
+  - title: "Stochastic Calculus for Finance II"
+    url: /shreve/    
 
     
     
