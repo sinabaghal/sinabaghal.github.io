@@ -18,6 +18,29 @@ This project is a python-based implementation of the methodologies presented in 
 <img src="http://sinabaghal.github.io/images/header.png" width="150%" height="150%">
 </p>
 
+## Table of Contents
+- [Introduction](#introduction)
+- [Notation and Initial Values](#notation-and-initial-values)
+- [Bates Model](#bates-model)
+  - [Characteristic Function](#characteristic-function)
+  - [Fast Fourier Transform](#fast-fourier-transform)
+- [Loss Function](#loss-function)
+  - [Calendar and Butterfly Loss Functions](#calendar-and-butterfly-loss-functions)
+  - [Around the Money Loss Function](#around-the-money-loss-function)
+  - [Total Loss Function](#total-loss-function)
+- [ATM Total Variance](#atm-total-variance)
+  - [Steps for Constructing ATM Variance](#steps-for-constructing-atm-variance)
+- [Surface Stochastic Volatility Inspired (SSVI)](#surface-stochastic-volatility-inspired-ssvi)
+- [Neural Network](#neural-network)
+- [Convergence](#convergence)
+- [Results](#results)
+- [Final Remarks](#final-remarks)
+- [Appendix: Arb-Free Volatility Surfaces](#appendix-arb-free-volatility-surfaces)
+- [Citation](#citation)
+- [References](#references)
+
+## Introduction
+
 Deep smoothing focuses on applying deep learning methods to generate smooth, arbitrage-free implied volatility surfaces. For someone unfamiliar with quantitative finance, this problem can be summarized as follows: Imagine you are given a set of points $$(k, \tau, iv)$$ representing market data. These points form part of a 3D surface that we aim to construct with two key objectives:
 
 - We need to fit the market data.  
