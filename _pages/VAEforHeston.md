@@ -47,7 +47,7 @@ Probabilistic autoencoders learn to model the distribution of the data in the la
 So we have two simultaneous goals. First, to reconstruct $$x$$ with high probability. Second, to ensure that $$\Pr(h \mid x; W_f)$$ is close to $$\mathcal{N}(0, I)$$. Denoting the training dataset by $$\{x_1,\cdots,x_m\}$$, this leads to the following objective function:
 
 $$
-\max_{W} \sum_{m} \log \Pr(x_n; W_f, W_g) - \beta \text{KL}\left(\Pr(h \mid x_n; W_f) \| \mathcal{N}(h; 0, I)\right)
+\max_{W} \sum_{m} \log \Pr(x_n; W_f, W_g) - \beta \text{KL}\left(\Pr(h \mid x_n; W_f) \\| \mathcal{N}(h; 0, I)\right)
 $$
 
 We have 
