@@ -44,7 +44,7 @@ A VAE consists of two encoder and decoder parts. The encoder maps an input $$x$$
 <img src="http://sinabaghal.github.io/images/Screenshot 2024-11-14 152106.jpg" width="80%" height="100%">
 </p>
 
-The key idea in a VAEs is to ensure that the encoder distribution over the latent space is close to a simple, fixed distribution, typically a standard normal distribution $$N(0, I)$$. As a result, to generate new data points, we can easily sample new latent representations from $$N(0, I)$$ and pass them through the decoder.
+The key idea in a VAEs is to ensure that the encoder distribution over the latent space is close to a simple, fixed distribution, typically a standard normal distribution $$\mathcal{N}(0, I)$$. As a result, to generate new data points, we can easily sample new latent representations from $$\mathcal{N}(0, I)$$ and pass them through the decoder.
 
 So we have two simultaneous goals. First, to reconstruct $$x$$ with high probability. Second, to ensure that $$\Pr(h \mid x; W_f)$$ is close to $$\mathcal{N}(0, I)$$. Denoting the training dataset by $$\{x_1,\cdots,x_m\}$$, this leads to the following objective function:
 
@@ -99,10 +99,10 @@ $$
 \log Pr(x_n; W_f, W_g) \approx -\frac{1}{2}\Vert x_n-\tilde{x}_n\Vert^2
 $$
 
-Moreover, it is noted that the KL divergence between $$N(\mu, \sigma^2)$$ and $$N(0, 1)$$ is given by:
+Moreover, it is noted that the KL divergence between $$N(\mu, \sigma^2)$$ and $$\mathcal{N}(0, 1)$$ is given by:
 
 $$
-D_{\text{KL}} \big( N(\mu, \sigma^2) \parallel N(0, 1) \big) = \frac{1}{2} \left( \sigma^2 + \mu^2 - 1 - \ln(\sigma^2) \right)
+D_{\text{KL}} \big( N(\mu, \sigma^2) \parallel \mathcal{N}(0, 1) \big) = \frac{1}{2} \left( \sigma^2 + \mu^2 - 1 - \ln(\sigma^2) \right)
 $$
 
 Putting pieces together and scaling by 2, we derive the following loss function for training our VAE:
