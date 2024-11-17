@@ -73,7 +73,7 @@ $$\Pr(x_n; W_f, W_g) \approx \Pr(x_n \mid h_n; W_g)\quad \text{where} \quad h_n 
 The figure below illustrates the network architecture.
 
 <p align="center">
-<img src="https://github.com/sinabaghal/VariationalAutoEncoderforHeston/blob/main/Screenshot 2024-11-14 172234.jpg" width="80%" height="100%">
+<img src="http://sinabaghal.github.io/images/Screenshot 2024-11-14 172234.jpg" width="80%" height="100%">
 </p>
 
 With this architecture, we face a challenge when trying to backpropagate through the stochastic sampling step. The sampling introduces randomness, which disrupts the flow of gradients and makes the training infeasible. To address this, VAEs use a technique called the **reparameterization**: Instead of sampling directly from the distribution $$h \sim q(h|x)$$, we rewrite $$h$$ as a deterministic function of the encoder’s output parameters and an independent random variable $$\zeta \sim \mathcal{N}(0,I)$$. The reparameterization trick transforms the sampling as follows:
@@ -87,7 +87,7 @@ Here $$\mu_n(x)$$ and $$\sigma_n(x)$$ are the mean and standard deviation of the
 This transformation effectively makes the sample $$h$$ a function of $$x$$ and the learned parameters $$W_f$$, with the randomness isolated in $$\zeta$$. Now, $$h$$ can be treated as a deterministic input to the decoder network during backpropagation, allowing us to compute gradients with respect to the encoder parameters. The resulting network looks as follows:
 
 <p align="center">
-<img src="https://github.com/sinabaghal/VariationalAutoEncoderforHeston/blob/main/Screenshot 2024-11-14 172648.jpg" width="80%" height="100%">
+<img src="http://sinabaghal.github.io/images/Screenshot 2024-11-14 172648.jpg" width="80%" height="100%">
 </p>
 
 Now, returning to the second approximation (recal that $$Pr(x_n; W_f, W_g)$$ represents the probability of reconstructing $$x_n$$), we have that:
@@ -357,7 +357,7 @@ def train(autoencoder, epochs=print_epoch*10000):
 The figure below displays the logarithmic values of the MSE and KL divergence losses during the training process.
 
 <p align="center">
-<img src="https://github.com/sinabaghal/VariationalAutoEncoderforHeston/blob/main/logMSElogKL.png" width="80%" height="100%">
+<img src="http://sinabaghal.github.io/images/logMSElogKL.png" width="80%" height="100%">
 </p>
 
 ## Generative VAE model for Heston Model
@@ -371,17 +371,13 @@ The next two subsections provide detailed explanations of these approaches.
 
 ### Random Walk
 
-To explore the generative capabilities of my Variational Autoencoder (VAE), I create a random walk in $$R^{\text{latent dim}}$$. This random walk is generated using Gaussian steps with their length re-scaled to $$dt=0.2$$. The resulting random walk serves as the input trajectory to the VAE. The two GIFs below display a walk of size 1000. The original GIF was not uploaded in its entirety due to its large size, so it has been split into two parts. 
+To explore the generative capabilities of my Variational Autoencoder (VAE), I create a random walk in $$R^{\text{latent dim}}$$. This random walk is generated using Gaussian steps with their length re-scaled to $$dt=0.2$$. The resulting random walk serves as the input trajectory to the VAE. The GIF below displays a walk of size 500. 
 
 **Make sure to click on the GIF if it doesn't display the animation.**
 
 - Random Walk: Step 1 to 500
 
-![](part1.gif)
-
-- Random Walk: Step 501 to 1000
-
-![](part2.gif)
+![](http://sinabaghal.github.io/images/part1.gif)
 
 ### Fit a Random Surface Using the VAE Model
 
