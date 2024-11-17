@@ -372,7 +372,9 @@ The next two subsections provide detailed explanations of these approaches.
 
 ### Random Walk
 
-To explore the generative capabilities of my Variational Autoencoder (VAE), I create a random walk in $$R^{\text{latent dim}}$$. This random walk is generated using Gaussian steps with their length re-scaled to $$dt=0.2$$. The resulting random walk serves as the input trajectory to the VAE. The GIF below displays a walk of size 500. **Make sure to click on the GIF if it doesn't display the animation.**
+To explore the generative capabilities of my Variational Autoencoder (VAE), I create a random walk in $$R^{\text{latent dim}}$$. This random walk is generated using Gaussian steps with their length re-scaled to $$dt=0.2$$. The resulting random walk serves as the input trajectory to the VAE. The GIF below displays a walk of size 1000 (split into two parts). **Right click on the GIF and 'Open in new tab' if the GIF doesn't display the animation.**
+
+![](http://sinabaghal.github.io/images/part1.gif)
 
 ![](http://sinabaghal.github.io/images/part1.gif)
 
