@@ -464,7 +464,7 @@ while epoch < num_epochs:
 Figure below is an example of VAE's capablity of fitting a random surface. The 'o' marker represents the VAE's output.
 
 <p align="center">
-<img src="https://github.com/sinabaghal/VariationalAutoEncoderforHeston/blob/main/vaefit.png" width="80%" height="100%">
+<img src="http://sinabaghal.github.io/images/vaefit.png" width="80%" height="100%">
 </p>
 
 
