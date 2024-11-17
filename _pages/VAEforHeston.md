@@ -33,7 +33,9 @@ In this project, I focus on training a Variational Autoencoder (VAE), a generati
 
 This section provides a brief overview of variational autoencoders (VAEs). For a deeper understanding, refer to [^1]. Video lectures (20 & 21) [^2] are also an excellent resource for learning the core concepts of VAEs.
 
-Variational autoencoders (VAEs) belong to a broader family of probabilistic autoencoders. Unlike deterministic autoencoders, probabilistic autoencoders introduce a probabilistic framework that enables them not only to reconstruct input data but also to generate new data. In this framework, the encoder maps an input $$x$$ to a distribution over the latent space, encoding it into a conditional distribution of latent variables rather than a single point. The decoder then samples from this latent distribution to produce a conditional distribution over possible reconstructions of $$x$$. Denote these conditional distributions as $$f$$ and $$g$$ for the encoder and decoder, respectively. Then 
+Variational autoencoders (VAEs) belong to a broader family of probabilistic autoencoders. Probabilistic autoencoders learn to model the distribution of the data in the latent space enabling them to generate new examples by sampling from this distribution. This generative capability makes probabilistic autoencoders especially powerful. 
+
+Unlike deterministic autoencoders, probabilistic autoencoders introduce a probabilistic framework that enables them not only to reconstruct input data but also to generate new data. In this framework, the encoder maps an input $$x$$ to a distribution over the latent space, encoding it into a conditional distribution of latent variables rather than a single point. The decoder then samples from this latent distribution to produce a conditional distribution over possible reconstructions of $$x$$. Denote these conditional distributions as $$f$$ and $$g$$ for the encoder and decoder, respectively. Then 
 
 - $$f: Pr(h \mid x; W_f)$$, where $$h$$ is the latent representation conditioned on the input $$x$$, and $$W_f$$ are the parameters of the encoder.
 - $$g: Pr(\tilde{x} \mid h; W_g)$$, where $$\tilde{x}$$ is generated from the latent representation $$h$$, with $$W_g$$ as the parameters of the decoder. 
@@ -42,7 +44,7 @@ Variational autoencoders (VAEs) belong to a broader family of probabilistic auto
 <img src="http://sinabaghal.github.io/images/Screenshot 2024-11-14 152106.jpg" width="80%" height="100%">
 </p>
 
-Probabilistic autoencoders learn to model the distribution of the data in the latent space enabling them to generate new examples by sampling from this distribution. This generative capability makes probabilistic autoencoders especially powerful. The key idea in a VAEs is to ensure that the encoder distribution over the latent space is close to a simple, fixed distribution, typically a standard normal distribution $$N(0, I)$$. As a result, to generate new data points, we can easily sample new latent representations from $$N(0, I)$$ and pass them through the decoder.
+The key idea in a VAEs is to ensure that the encoder distribution over the latent space is close to a simple, fixed distribution, typically a standard normal distribution $$N(0, I)$$. As a result, to generate new data points, we can easily sample new latent representations from $$N(0, I)$$ and pass them through the decoder.
 
 So we have two simultaneous goals. First, to reconstruct $$x$$ with high probability. Second, to ensure that $$\Pr(h \mid x; W_f)$$ is close to $$\mathcal{N}(0, I)$$. Denoting the training dataset by $$\{x_1,\cdots,x_m\}$$, this leads to the following objective function:
 
