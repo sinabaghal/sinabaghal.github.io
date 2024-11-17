@@ -13,7 +13,7 @@ tags:
 ---
 ---
 
-In this project, I focus on training a Variational Autoencoder (VAE), a generative model, to produce Heston volatility surfaces. The Heston model is a widely used stochastic volatility option pricing model. Once trained, this VAE can generate new volatility surfaces, which could be useful for various financial applications such as risk management, pricing exotic derivatives, etc. This project emphasizes the power of advantage AI in advancing financial modeling.
+In this project, I focus on training a Variational Autoencoder (VAE), a generative model, to produce Heston volatility surfaces. The Heston model is a widely used stochastic volatility option pricing model. Once trained, this VAE can generate new volatility surfaces, which could be useful for various financial applications such as risk management, pricing exotic derivatives, etc. This project emphasizes the advantage of generative AI in advancing financial modeling.
 
 ## Table of Contents
 - [Variational Autoencoders](#variational-autoencoders)
