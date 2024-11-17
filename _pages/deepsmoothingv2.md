@@ -25,9 +25,10 @@ This project is a python-based implementation of the methodologies presented in 
   - [Characteristic Function](#characteristic-function)
   - [Fast Fourier Transform](#fast-fourier-transform)
 - [Loss Function](#loss-function)
-  - [Calendar and Butterfly Loss Functions](#calendar-and-butterfly-loss-functions)
-  - [Around the Money Loss Function](#around-the-money-loss-function)
-  - [Total Loss Function](#total-loss-function)
+  - [Calendar and Butterfly](#calendar-and-butterfly)
+  - [Large Moneyness](#large-moneyness)
+  - [Around the Money](#around-the-money)
+  - [Total Loss](#total-loss)
 - [ATM Total Variance](#atm-total-variance)
   - [Steps for Constructing ATM Variance](#steps-for-constructing-atm-variance)
 - [Surface Stochastic Volatility Inspired (SSVI)](#surface-stochastic-volatility-inspired-ssvi)
@@ -278,7 +279,7 @@ $$
 
 where, for example, $$k_{\max} = k_{\max}(\mathcal{I}_0)$$. Note that we consider more monyness around the money. 
 
-###  Calendar and Butterfly Loss Functions
+###  Calendar and Butterfly
 
 Calendar and Butterfly loss functions are then defined as
 
@@ -288,6 +289,8 @@ $$
 \mathcal{L}_{but}(\theta) &= \frac{1}{\vert \mathcal{I}_{Aux}\vert}\sum_{(k,t)\in \mathcal{I}_{Aux}} \max\left(0, -\ell_{but}(k,\tau)\right)
 \end{align}
 $$
+
+### Large Moneyness 
 
 For large moneyness behavior, we set
 
@@ -311,7 +314,7 @@ $$
 
 Here $$\mathcal{I}_{\text{atm}} = \{(0, \tau) : \tau \in \mathcal{T}_{Aux}\}$$.
 
-### Total Loss Function
+### Total Loss
 
 The total loss function is constructed as follows:
 
