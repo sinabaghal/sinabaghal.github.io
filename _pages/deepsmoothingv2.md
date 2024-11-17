@@ -30,7 +30,6 @@ This project is a python-based implementation of the methodologies presented in 
   - [Around the Money](#around-the-money)
   - [Total Loss](#total-loss)
 - [ATM Total Variance](#atm-total-variance)
-  - [Steps for Constructing ATM Variance](#steps-for-constructing-atm-variance)
 - [Surface Stochastic Volatility Inspired (SSVI)](#surface-stochastic-volatility-inspired-ssvi)
 - [Neural Network](#neural-network)
 - [Convergence](#convergence)
@@ -413,7 +412,7 @@ def total_loss(model_prior, model_nn):
 
 The prior model is expected to provide a first-order approximation of the volatility surface, making it essential for the prior to accurately reproduce ATM (at-the-money) values. Since the ATM term structure is observable through market data for $$\tau \in \mathcal{T}_0$$, we construct the ATM variance for each  $$\tau \in \mathcal{T}_{aux}$$ as described below.
 
-### Steps for Constructing ATM Variance
+Below are the steps to construct ATM variance: 
 
 - **Step A:** Ensure that $$\omega_{atm}(\tau_2) \geq \omega_{atm}(\tau_1)$$ for every $$\tau_2 \geq \tau_1$$. To achieve this, we solve the following optimization problem using quadratic programming (QP) with CVX:
   
