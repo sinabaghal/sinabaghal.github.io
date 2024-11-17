@@ -141,19 +141,19 @@ $$
 The following sets of maturities and log-moneyness are considered for our European options. The maturities in days are defined as:
 
 $$
-\\tau_{\\text{days}} = \\{0, 6, 12, 18\\} \\cup \\{26 \\cdot x \\mid x \\in \\{1, 2, \\ldots, 14\\}\\}.
+\tau_{\text{days}} = \{0, 6, 12, 18\} \cup \{26 \cdot x \mid x \in \{1, 2, \ldots, 14\}\}.
 $$
 
-The set of log-moneyness values, $$k_{\\text{aux}}$$, is constructed as follows. Let:
+The set of log-moneyness values, $$k_{\text{aux}}$$, is constructed as follows. Let:
 
 $$
-x_{\\min} = -k_{\\min}^{1/3}, \\quad x_{\\max} = k_{\\max}^{1/3},
+x_{\min} = -k_{\min}^{1/3}, \quad x_{\max} = k_{\max}^{1/3},
 $$
 
-where $$k_{\\min} = 0.4$$ and $$k_{\\max} = 0.6$$. Then:
+where $$k_{\min} = 0.4$$ and $$k_{\max} = 0.6$$. Then:
 
 $$
-k_{\\text{aux}} = \\{x^3 \\mid x \\in \\text{linspace}(x_{\\min}, x_{\\max}, 100)\\}.
+k_{\text{aux}} = \{x^3 \mid x \in \text{linspace}(x_{\min}, x_{\max}, 100)\}.
 $$
 
 It is emphasized that this construction ensures that more log-moneyness values are concentrated around at-the-money (ATM) levels.
