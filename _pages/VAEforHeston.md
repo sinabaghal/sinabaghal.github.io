@@ -478,6 +478,8 @@ If you find this project helpful, please consider citing it:
 }
 ```
 
+The full source code for this project is available at [here](https://github.com/sinabaghal/VariationalAutoEncoderforHeston). 
+
 ## References 
 
 [^1]: Kingma, D., Welling, M. (2019). *An Introduction to Variational Autoencoders*. [arXiv:1906.02691](https://arxiv.org/abs/1906.02691)
