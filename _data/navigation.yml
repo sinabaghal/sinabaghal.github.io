@@ -18,6 +18,11 @@ main:
     
   - title: "Deep Smoothing of IVS"
     url: /deepsmoothing/    
+
+  - title: "Generative Modeling of Heston Volatility Surfaces Using VAEs"
+    url: /vae4heston/    
+
+    
     
   # - title: "CV"
   #   url:  http://sinabaghal.github.io/files/CV__Github_.pdf
