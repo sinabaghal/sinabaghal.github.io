@@ -276,7 +276,11 @@ k_{aux} &= \left\{ x^3 : x \in  \left[ -(-2k_{\min})^{1/3}, (2k_{\max})^{1/3} \r
 \end{align*}
 $$
 
-where, for example, $$k_{\max} = k_{\max}(\mathcal{I}_0)$$. Note that we consider more monyness around the money. Calendar and Butterfly loss functions are then defined as
+where, for example, $$k_{\max} = k_{\max}(\mathcal{I}_0)$$. Note that we consider more monyness around the money. 
+
+###  Calendar and Butterfly Loss Functions
+
+Calendar and Butterfly loss functions are then defined as
 
 $$
 \begin{align}
