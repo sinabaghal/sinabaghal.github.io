@@ -14,7 +14,7 @@ main:
   #   url: /year-archive/
 
     
-  - title: "Generative Modeling of Heston Volatility Surfaces Using VAEs"
+  - title: "VAE for Heston"
     url: /vae4heston/    
     
   - title: "Deep Smoothing of IVS"
