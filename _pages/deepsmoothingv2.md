@@ -617,11 +617,12 @@ The figure below illustrates 29 trained implied variance surfaces obtained using
 If you find this project helpful, please consider citing it:
 
 ```bibtex
-@misc{Implementing Deep Smoothing for Implied Volatility Surfaces,
-  author = {Sina Baghal},
-  title = {Implementing Deep Smoothing for Implied Volatility Surfaces (IVS)},
-  year = {2024},
-  url = {https://sinabaghal.github.io/deepsmoothing/}
+@misc{baghal2024implementing,
+  title={Implementing Deep Smoothing for Implied Volatility Surfaces (IVS)},
+  author={Baghal, Sina},
+  journal={https://sinabaghal.github.io/deepsmoothing/},
+  url={https://sinabaghal.github.io/deepsmoothing/},
+  year={2024}
 }
 ```
 
