@@ -470,11 +470,12 @@ Figure below is an example of VAE's capablity of fitting a random surface. The '
 If you find this project helpful, please consider citing it:
 
 ```bibtex
-@misc{Generative Modeling of Heston Volatility Surfaces Using Variational Autoencoders,
-  author = {Sina Baghal},
-  title = {Generative Modeling of Heston Volatility Surfaces Using Variational Autoencoders},
-  year = {2024},
-  url = {https://sinabaghal.github.io/vae4heston/}
+@misc{baghal2024generative,
+  title={Generative Modeling of Heston Volatility Surfaces Using Variational Autoencoders},
+  author={Baghal, Sina},
+  journal={https://sinabaghal.github.io/vae4heston/},
+  url={https://sinabaghal.github.io/vae4heston/},
+  year={2024}
 }
 ```
 
