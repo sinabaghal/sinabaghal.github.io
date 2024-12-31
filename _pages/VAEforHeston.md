@@ -465,9 +465,7 @@ Figure below is an example of VAE's capablity of fitting a random surface. The '
 </p>
 
 
-## Citation
-
-If you find this project helpful, please consider citing it:
+## Bibtex
 
 ```bibtex
 @misc{baghal2024generative,
