@@ -612,9 +612,7 @@ The figure below illustrates 29 trained implied variance surfaces obtained using
 <img src="http://sinabaghal.github.io/images/all_models6.png" width="80%" height="100%">
 </p>
 
-## Citation
-
-If you find this project helpful, please consider citing it:
+## Bibtex
 
 ```bibtex
 @misc{baghal2024implementing,
