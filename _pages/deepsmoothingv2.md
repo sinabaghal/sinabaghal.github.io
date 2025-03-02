@@ -36,7 +36,7 @@ This project is a python-based implementation of the methodologies presented in 
 - [Results](#results)
 - [Final Remarks](#final-remarks)
 - [Appendix: Arb-Free Volatility Surfaces](#appendix-arb-free-volatility-surfaces)
-- [Citation](#citation)
+- [Bibtex](#bibtex)
 - [References](#references)
 
 ## Introduction
