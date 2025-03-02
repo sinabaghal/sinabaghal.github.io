@@ -12,7 +12,7 @@ tags:
 ---
 ---
 
-This project is a python-based implementation of the methodologies presented in the paper *Deep Smoothing of the Implied Volatility Surface* by Ackerer et al (2020) [^1].  A volatility surface is a representation of implied volatility across different strike prices and maturities, crucial for pricing and hedging options accurately. Ensuring the surface is arbitrage-free is essential to prevent inconsistencies that could lead to riskless profit opportunities, which would undermine the model’s reliability in real markets.
+This project is a python-based implementation of the methodologies presented in the paper *Deep Smoothing of the Implied Volatility Surface* by Ackerer et al (2020) [^1].  A volatility surface is a representation of implied volatility across different strike prices and maturities, crucial for pricing and hedging options accurately. Ensuring the surface is arbitrage-free is essential to prevent inconsistencies that could lead to riskless profit opportunities, which would undermine the model’s reliability in real markets. You can find the code for this project [here](https://github.com/sinabaghal/deepsmoothigIVS).
 
 <p align="center">
 <img src="http://sinabaghal.github.io/images/header.png" width="150%" height="150%">
@@ -70,7 +70,7 @@ $$
 \end{align*}
 $$
 
-In this blog, we’ll walk through the main steps of the deep smoothing framework. You can find the code for this project [here](https://github.com/sinabaghal/deepsmoothigIVS).
+In this blog, we’ll walk through the main steps of the deep smoothing framework. 
 
 ## Notation and Initial Values
 
