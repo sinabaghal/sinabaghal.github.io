@@ -1,5 +1,5 @@
 ---
-title: "Solution manual to Stochastic for Finance II"
+title: "Solution Manual to Stochastic for Finance II"
 permalink: /shreve/
 author_profile: true
 ---
