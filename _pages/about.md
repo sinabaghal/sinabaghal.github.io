@@ -22,12 +22,12 @@ This project focuses on training a Variational Autoencoder (VAE) to produce Hest
 
 ### Implementing Deep Smoothing for Implied Volatility Surfaces (IVS)
 
-This project is a python-based implementation of the methodologies presented in the paper [*Deep Smoothing of the Implied Volatility Surface*](https://arxiv.org/pdf/1906.05065).  A volatility surface is a representation of implied volatility across different strike prices and maturities, crucial for pricing and hedging options accurately. Ensuring the surface is arbitrage-free is essential to prevent inconsistencies that could lead to riskless profit opportunities, which would undermine the model’s reliability in real markets. Deep smoothing focuses on applying deep learning methods to generate smooth, arbitrage-free implied volatility surfaces which at a high-level can be summarized as follows: Imagine you are given a set of points $$(k, \tau, iv)$$ representing market data. These points form part of a 3D surface that we aim to construct with two key objectives:
+This project is a python-based implementation of the methodologies presented in the paper [*Deep Smoothing of the Implied Volatility Surface*](https://arxiv.org/pdf/1906.05065) with different aspects related to the neural network training, convergence behavior, and associated implementation details developed independently.  A volatility surface is a representation of implied volatility across different strike prices and maturities, crucial for pricing and hedging options accurately. Ensuring the surface is arbitrage-free is essential to prevent inconsistencies that could lead to riskless profit opportunities, which would undermine the model’s reliability in real markets. Deep smoothing focuses on applying deep learning methods to generate smooth, arbitrage-free implied volatility surfaces which at a high-level can be summarized as follows: Imagine you are given a set of points $$(k, \tau, iv)$$ representing market data. These points form part of a 3D surface that we aim to construct with two key objectives:
 
 - We need to fit the market data.  
 - We must ensure that the surface meets certain curvature properties. In quantitative finance, this means creating an arbitrage-free surface. Mathematically, this translates to minimizing a specified loss function across the entire surface.
 
-To see project's page, click [**here**](https://sinabaghal.github.io/deepsmoothing/). You can find the code for this project [**here**](https://github.com/sinabaghal/deepsmoothigIVS). 
+The convergence To see project's page, click [**here**](https://sinabaghal.github.io/deepsmoothing/). You can find the code for this project [**here**](https://github.com/sinabaghal/deepsmoothigIVS). 
 
 <p align="center">
 <img src="http://sinabaghal.github.io/images/header.png" width="150%" height="150%">
