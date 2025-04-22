@@ -17,6 +17,12 @@ I thrive on solving meaningful challenges and enjoy collaborating with diverse a
 
 ### Generative Modeling of Heston Volatility Surfaces Using Variational Autoencoders
 
-This project focuses on training a Variational Autoencoder (VAE) to produce Heston volatility surfaces. The Heston model is a widely used stochastic volatility option pricing model. Once trained, this VAE can generate new volatility surfaces, which could be useful for various financial applications such as risk management, pricing exotic derivatives, etc. You can find the code for this project [**here**](https://github.com/sinabaghal/VariationalAutoEncoderforHeston). To see project's page, click [**here**](https://sinabaghal.github.io/vae4heston/).
+This project focuses on training a Variational Autoencoder (VAE) to produce Heston volatility surfaces. The Heston model is used in stochastic volatility option pricing models. Once trained, this VAE can generate new volatility surfaces, which could be useful for various financial applications such pricing exotic derivatives. You can find the code for this project [**here**](https://github.com/sinabaghal/VariationalAutoEncoderforHeston). To see project's page, click [**here**](https://sinabaghal.github.io/vae4heston/).
 
 ![](http://sinabaghal.github.io/images/part1.gif)
+
+
+### Implementing Deep Smoothing for Implied Volatility Surfaces (IVS)
+
+This project is a python-based implementation of the methodologies presented in the paper *Deep Smoothing of the Implied Volatility Surface* by Ackerer et al (2020) [^1].  A volatility surface is a representation of implied volatility across different strike prices and maturities, crucial for pricing and hedging options accurately. Ensuring the surface is arbitrage-free is essential to prevent inconsistencies that could lead to riskless profit opportunities, which would undermine the model’s reliability in real markets. **You can find the code for this project** [**here**](https://github.com/sinabaghal/deepsmoothigIVS). To see project's page, click [**here**](https://sinabaghal.github.io/deepsmoothing/).
+
