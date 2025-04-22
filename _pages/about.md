@@ -11,8 +11,6 @@ I am a data scientist, quantitative analyst, and former mathematician with a pas
 
 I earned my PhD in Mathematics from the University of Waterloo in 2021, and I hold both a master's and a bachelor's degree in Mathematics from Sharif University of Technology. My [PhD research](https://uwspace.uwaterloo.ca/handle/10012/16872) focused on Stochastic Optimization, while my earlier studies delved into Fundamental Mathematics.
 
-I thrive on solving meaningful challenges and enjoy collaborating with diverse and talented teams. Feel free to reach out – I'm always up for a coffee and a good conversation!
-
 # Projects 
 
 ### Generative Modeling of Heston Volatility Surfaces Using Variational Autoencoders
