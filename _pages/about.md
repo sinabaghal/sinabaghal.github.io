@@ -30,7 +30,7 @@ This project focuses on training a Variational Autoencoder (VAE) to produce Hest
 ---
 ---
 
-### Implementing Deep Smoothing for Implied Volatility Surfaces (IVS)
+### Implementing Deep Smoothing for Implied Volatility Surfaces
 
 This project is a python-based implementation of the methodologies presented in the paper [*Deep Smoothing of the Implied Volatility Surface*](https://arxiv.org/pdf/1906.05065) with different aspects related to the neural network training, convergence behavior, and associated implementation details developed independently.  
 
