@@ -42,4 +42,12 @@ To see project's page, click [**here**](https://sinabaghal.github.io/deepsmoothi
 
 Once upon a time, I became interested in quantitaive finance, in particular Option Pricing. Stochastic models are used for option pricing where the underlying uncertainly is driven by a class of continous time martingales known as [**Wiener processes**](https://en.wikipedia.org/wiki/Wiener_process). The classic source for learning about options and how they are priced is Stochastic Calculus for Finance II written by Shreve. I compiled my own solutions to all of this book's exercises and you could find them [**here**](https://sinabaghal.github.io/shreve/).
 
+### A Termination Criterion for Stochastic Gradient Descent for Binary Classification
+
+Early stopping rules and termination criteria play a central role in machine learning. Models trained via first order methods without early stopping may not predict well on future data since they over-fit the given samples. In the versatile case of deep neural networks, although it is known that even interpolating the training data will result in low generalization errors, early stopping can still be used to correct the adversarially corrupted sample points. Despite all these advantages, our fundamental understanding of explicit stopping rules has lagged far behind. For my PhD project, I proposed a simple and computationally inexpensive termination criterion which exhibits a good degree of predictability on yet unseen data. We provide theoretical and numerical evidence for the effectiveness of our test. I presented the results at Neurips OPT workshop. To see the poster, click [**here**](https://opt-ml.org/oldopt/posters/2020/poster_7.pdf). 
+
+<p align="center">
+<img src="http://sinabaghal.github.io/images/binc.png" width="150%" height="150%">
+</p>
+
 
