@@ -40,6 +40,6 @@ To see project's page, click [**here**](https://sinabaghal.github.io/deepsmoothi
 
 ### Quantitative Finance and Option Pricing 
 
-Once upon a time, I became interested in quantitaive finance, in particular Option Pricing. Stochastic models are used for option pricing where the underlying uncertainly is driven by a class of continou time martingales known as [**Wiener processes**](https://en.wikipedia.org/wiki/Wiener_process). The classic source for learning about options and how they are priced is Stochastic Calculus for Finance II written by Shreve. I compiled my own solutions to all of this book's exercises and you could find them [**here**](https://sinabaghal.github.io/shreve/).
+Once upon a time, I became interested in quantitaive finance, in particular Option Pricing. Stochastic models are used for option pricing where the underlying uncertainly is driven by a class of continous time martingales known as [**Wiener processes**](https://en.wikipedia.org/wiki/Wiener_process). The classic source for learning about options and how they are priced is Stochastic Calculus for Finance II written by Shreve. I compiled my own solutions to all of this book's exercises and you could find them [**here**](https://sinabaghal.github.io/shreve/).
 
 
