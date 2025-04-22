@@ -1,7 +1,7 @@
 ---
 title: "Implementing Deep Smoothing for Implied Volatility Surfaces (IVS)"
 permalink: /deepsmoothing/
-author_profile: false
+author_profile: True
 tags:
   - Deep Learning
   - Feed Forward Networks
