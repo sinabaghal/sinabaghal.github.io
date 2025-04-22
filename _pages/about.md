@@ -19,7 +19,7 @@ This project focuses on training a Variational Autoencoder (VAE) to produce Hest
 
 ![](http://sinabaghal.github.io/images/part1.gif)
 
-**Tags:** `Variational Autoencoder`, `Generative AI`, `Deep Learning`, `Heston`, `Volatility Surfaces`, `Vectorization`, `Monte Carlo Simulation`
+**Tags:** `Variational Autoencoder`, `Pytorch`, `Generative AI`, `Deep Learning`, `Heston`, `Volatility Surfaces`, `Vectorization`, `Monte Carlo Simulation`
 
 ### Implementing Deep Smoothing for Implied Volatility Surfaces (IVS)
 
@@ -36,7 +36,7 @@ To see project's page, click [**here**](https://sinabaghal.github.io/deepsmoothi
 <img src="http://sinabaghal.github.io/images/header.png" width="150%" height="150%">
 </p>
 
-**Tags:** `Deep Learning`, `Feed Forward Networks`, `Volatility Surfaces`, `Vectorization`, `SSVI`, `CVX`
+**Tags:** `Deep Learning`, `Pytorch`, `Feed Forward Networks`, `Volatility Surfaces`, `Vectorization`, `SSVI`, `Convex Optimization`, `CVX`
 
 ### Quantitative Finance and Option Pricing 
 
