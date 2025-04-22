@@ -29,7 +29,7 @@ A volatility surface is a representation of implied volatility across different 
 - We need to fit the market data.  
 - We must ensure that the surface meets certain curvature properties. In quantitative finance, this means creating an arbitrage-free surface. Mathematically, this translates to minimizing a specified loss function across the entire surface.
 
-The convergence To see project's page, click [**here**](https://sinabaghal.github.io/deepsmoothing/). You can find the code for this project [**here**](https://github.com/sinabaghal/deepsmoothigIVS). 
+To see project's page, click [**here**](https://sinabaghal.github.io/deepsmoothing/). You can find the code for this project [**here**](https://github.com/sinabaghal/deepsmoothigIVS). 
 
 <p align="center">
 <img src="http://sinabaghal.github.io/images/header.png" width="150%" height="150%">
