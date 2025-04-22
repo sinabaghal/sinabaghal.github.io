@@ -13,7 +13,7 @@ I earned my PhD in Mathematics from the University of Waterloo in 2021, and I ho
 
 # Projects 
 
-## Table of Contents
+### Table of Contents
 - [Generative Modeling of Heston Volatility Surfaces Using Variational Autoencoders](#Generative-Modeling-of-Heston-Volatility-Surfaces-Using-Variational-Autoencoders)
 - [Implementing Deep Smoothing for Implied Volatility Surfaces](#Implementing-Deep-Smoothing-for-Implied-Volatility-Surfaces)
 - [Quantitative Finance and Option Pricing](#Quantitative-Finance-and-Option-Pricing)
