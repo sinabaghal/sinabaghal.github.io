@@ -50,4 +50,4 @@ Early stopping rules and termination criteria play a central role in machine lea
 <img src="http://sinabaghal.github.io/images/binC.png" width="150%" height="150%">
 </p>
 
-**Tags:** `Stochastic Gradient Descent`, `Mixure of Gaussians`, `Binary Classification`, `Early Stopping`, `Overtfitting`, `Markov Chains`,  `Stochastic Stability` 
+**Tags:** `Stochastic Gradient Descent`, `Logistic Regression`, `Mixure of Gaussians`, `Binary Classification`, `Early Stopping`, `Overtfitting`, `Markov Chains`,  `Stochastic Stability`
