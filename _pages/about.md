@@ -28,7 +28,7 @@ This project is a python-based implementation of the methodologies presented in 
 <img src="http://sinabaghal.github.io/images/header.png" width="150%" height="150%">
 </p>
 
-## Solution Manual to Stochastic for Finance II
+## Quantitative Finance and Option Pricing 
 
 Once upon a time, I became interested in quantitaive finance, in particular Option Pricing. Stochastic models are used for option pricing where the underlying uncertainly is driven by a class of continou time martingales known as [**Wiener processes**](https://en.wikipedia.org/wiki/Wiener_process). The classic source for learning about options and how they are priced is Stochastic Calculus for Finance II written by Shreve. I compiled my own solutions to all of this book's exercises and you could find them [**here**](https://sinabaghal.github.io/shreve/).
 
