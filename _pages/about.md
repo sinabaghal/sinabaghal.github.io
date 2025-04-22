@@ -24,3 +24,11 @@ This project focuses on training a Variational Autoencoder (VAE) to produce Hest
 
 This project is a python-based implementation of the methodologies presented in the paper *Deep Smoothing of the Implied Volatility Surface* by Ackerer et al (2020) [^1].  A volatility surface is a representation of implied volatility across different strike prices and maturities, crucial for pricing and hedging options accurately. Ensuring the surface is arbitrage-free is essential to prevent inconsistencies that could lead to riskless profit opportunities, which would undermine the model’s reliability in real markets. **You can find the code for this project** [**here**](https://github.com/sinabaghal/deepsmoothigIVS). To see project's page, click [**here**](https://sinabaghal.github.io/deepsmoothing/).
 
+<p align="center">
+<img src="http://sinabaghal.github.io/images/header.png" width="150%" height="150%">
+</p>
+
+## Solution Manual to Stochastic for Finance II
+
+Once upon a time, I became interested in quantitaive finance, in particular Option Pricing. Stochastic models are used for option pricing where the underlying uncertainly is driven by a class of continou time martingales known as [**Wiener processes**](https://en.wikipedia.org/wiki/Wiener_process). The classic source for learning about options and how they are priced is Stochastic Calculus for Finance II written by Shreve. I compiled my own solutions to all of this book's exercises and you could find them [**here**](https://sinabaghal.github.io/shreve/)
+
