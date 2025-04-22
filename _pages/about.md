@@ -19,6 +19,7 @@ This project focuses on training a Variational Autoencoder (VAE) to produce Hest
 
 ![](http://sinabaghal.github.io/images/part1.gif)
 
+**Tags:** `Variational Autoencoder`, `Generative AI`, `Deep Learning`, `Heston`, `Volatility Surfaces`, `Vectorization`, `Monte Carlo Simulation`
 
 ### Implementing Deep Smoothing for Implied Volatility Surfaces (IVS)
 
