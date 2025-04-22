@@ -44,7 +44,7 @@ Once upon a time, I became interested in quantitaive finance, in particular Opti
 
 ### A Termination Criterion for Stochastic Gradient Descent for Binary Classification
 
-Early stopping rules and termination criteria play a central role in machine learning. Models trained via first order methods without early stopping may not predict well on future data since they over-fit the given samples. For my PhD project, I proposed a simple and computationally inexpensive termination criterion which exhibits a good degree of predictability on yet unseen data. We provide theoretical and numerical evidence for the effectiveness of our test. I presented the results at [**OPT2020**](https://opt-ml.org/oldopt/opt20/papers.html) (Workshop on Optimization for Machine Learning with Neurips). To see the poster, click [**here**](https://opt-ml.org/oldopt/posters/2020/poster_7.pdf). 
+Early stopping rules and termination criteria play a central role in machine learning. Models trained via first order methods without early stopping may not predict well on future data since they over-fit the given samples. For my PhD project, I worked on a simple and computationally inexpensive termination criterion which exhibits a good degree of predictability on yet unseen data. Theoretical and numerical evidence are also provided for the effectiveness of the test. I presented the results at [**OPT2020**](https://opt-ml.org/oldopt/opt20/papers.html) (Workshop on Optimization for Machine Learning with Neurips). To see the poster, click [**here**](https://opt-ml.org/oldopt/posters/2020/poster_7.pdf). 
 
 <p align="center">
 <img src="http://sinabaghal.github.io/images/binC.png" width="150%" height="150%">
