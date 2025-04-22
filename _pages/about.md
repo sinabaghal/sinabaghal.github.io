@@ -13,6 +13,10 @@ I earned my PhD in Mathematics from the University of Waterloo in 2021, and I ho
 
 # Projects 
 
+## Table of Contents
+- [Generative Modeling of Heston Volatility Surfaces Using Variational Autoencoders](#Generative-Modeling-of-Heston-Volatility-Surfaces-Using-Variational-Autoencoders)
+
+
 ### Generative Modeling of Heston Volatility Surfaces Using Variational Autoencoders
 
 This project focuses on training a Variational Autoencoder (VAE) to produce Heston volatility surfaces. The Heston model is used in stochastic volatility option pricing models. Once trained, this VAE can generate new volatility surfaces, which could be useful for various financial applications such pricing exotic derivatives. To see project's page, click [**here**](https://sinabaghal.github.io/vae4heston/). You can find the code for this project [**here**](https://github.com/sinabaghal/VariationalAutoEncoderforHeston). 
