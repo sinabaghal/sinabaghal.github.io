@@ -14,14 +14,14 @@ main:
   #   url: /year-archive/
 
     
-  - title: "VAE for Heston"
-    url: /vae4heston/    
+  # - title: "VAE for Heston"
+  #   url: /vae4heston/    
     
-  - title: "Deep Smoothing of IVS"
-    url: /deepsmoothing/    
+  # - title: "Deep Smoothing of IVS"
+  #   url: /deepsmoothing/    
 
-  - title: "Stochastic Calculus for Finance II"
-    url: /shreve/    
+  # - title: "Stochastic Calculus for Finance II"
+  #   url: /shreve/    
 
     
     
