@@ -9,4 +9,6 @@ tags:
   - Nash Equilibrium
   - Game Theory
   - Memory Management
+  - GPU Optimization
+  - Efficient Computing
 ---
