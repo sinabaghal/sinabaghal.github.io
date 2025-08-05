@@ -13,7 +13,7 @@ I earned my PhD in Mathematics from the University of Waterloo in 2021, and I ho
 
 # Projects 
 
-- [Solving Pasur Using GPU-Accelerated CFR](#solving-pasur-using-gPU-acelerated-cFR)
+- [Solving Pasur Using GPU-Accelerated CFR](#solving-pasur-using-gPU-Acelerated-cFR)
 - [Generative Modeling of Heston Volatility Surfaces Using Variational Autoencoders](#generative-modeling-of-heston-volatility-surfaces-using-variational-autoencoders)
 - [Implementing Deep Smoothing for Implied Volatility Surfaces](#implementing-deep-smoothing-for-implied-volatility-surfaces)
 - [Quantitative Finance and Option Pricing](#quantitative-finance-and-option-pricing)
