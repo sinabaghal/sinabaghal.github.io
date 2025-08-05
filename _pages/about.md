@@ -23,8 +23,7 @@ I earned my PhD in Mathematics from the University of Waterloo in 2021, and I ho
 ### Solving Pasur Using GPU-Accelerated CFR
 
 Pasur is a fishing card game played over six rounds and is played similarly
-to Italian games such as Cassino and Scopa, and more closely to the Egyptian game Bastra . This paper introduces a CUDA-accelerated computational framework for simulating Pasur, emphasizing efficient memory management.
-We use our framework to compute near-Nash equilibria via Counterfactual Regret Minimization (CFR), a well-known algorithm for solving large imperfect-information games.
+to Italian games such as Cassino and Scopa, and more closely to the Egyptian game Bastra [**Wikipedia**]([https://github.com/sinabaghal/VariationalAutoEncoderforHeston](https://en.wikipedia.org/wiki/Pasur_(card_game))). This paper introduces a CUDA-accelerated computational framework for simulating Pasur, emphasizing efficient memory management. We use our framework to compute near-Nash equilibria via Counterfactual Regret Minimization (CFR), a well-known algorithm for solving large imperfect-information games.
 
 ### Generative Modeling of Heston Volatility Surfaces Using Variational Autoencoders
 
