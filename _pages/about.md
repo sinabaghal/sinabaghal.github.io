@@ -13,17 +13,10 @@ I earned my PhD in Mathematics from the University of Waterloo in 2021, and I ho
 
 # Projects 
 
-- [Solving Pasur Using GPU-Accelerated CFR](#solving-pasur-using-gpu-accelerated-cfr)
 - [Generative Modeling of Heston Volatility Surfaces Using Variational Autoencoders](#generative-modeling-of-heston-volatility-surfaces-using-variational-autoencoders)
 - [Implementing Deep Smoothing for Implied Volatility Surfaces](#implementing-deep-smoothing-for-implied-volatility-surfaces)
 - [Quantitative Finance and Option Pricing](#quantitative-finance-and-option-pricing)
 - [A Termination Criterion for Stochastic Gradient Descent for Binary Classification](#a-termination-criterion-for-stochastic-gradient-descent-for-binary-classification)
-
-
-### Solving Pasur Using GPU-Accelerated CFR
-
-Pasur is a fishing card game played over six rounds and is played similarly
-to Italian games such as Cassino and Scopa, and more closely to the Egyptian game Bastra [**Wikipedia: Pasur (card game)**](https://en.wikipedia.org/wiki/Pasur_(card_game)). This paper introduces a CUDA-accelerated computational framework for simulating Pasur, emphasizing efficient memory management. We use our framework to compute near-Nash equilibria via Counterfactual Regret Minimization (CFR), a well-known algorithm for solving large imperfect-information games.
 
 ### Generative Modeling of Heston Volatility Surfaces Using Variational Autoencoders
 
