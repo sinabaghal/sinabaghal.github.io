@@ -11,4 +11,5 @@ tags:
   - Memory Management
   - GPU Optimization
   - Efficient Computing
+  - Artificial Intelligence
 ---
