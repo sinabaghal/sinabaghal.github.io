@@ -28,6 +28,9 @@ Pasur is a fishing card game played over six rounds and is played similarly to g
 <img src="http://sinabaghal.github.io/images/Unfold.png" width="150%" height="150%">
 </p>
 
+**Tags:** `Counterfactual Regret Minimization`, `Reinforcement Learning`, `PyTorch`, `Nash Equilibrium`, `Game Theory`, `Memory Management`, `GPU Optimization`, `Efficient Computing`, `Artificial Intelligence`
+
+
 ### Generative Modeling of Heston Volatility Surfaces Using Variational Autoencoders
 
 This project focuses on training a Variational Autoencoder (VAE) to produce Heston volatility surfaces. The Heston model is used in stochastic volatility option pricing models. Once trained, this VAE can generate new volatility surfaces, which could be useful for various financial applications such pricing exotic derivatives. To see project's page, click [**here**](https://sinabaghal.github.io/vae4heston/). You can find the code for this project [**here**](https://github.com/sinabaghal/VariationalAutoEncoderforHeston). 
