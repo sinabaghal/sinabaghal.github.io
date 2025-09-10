@@ -24,6 +24,10 @@ I earned my PhD in Mathematics from the University of Waterloo in 2021, and I ho
 
 Pasur is a fishing card game played over six rounds and is played similarly to games such as Cassino and Scopa, and Bastra. This paper introduces a CUDA-accelerated computational framework for simulating Pasur, emphasizing efficient memory management. We use our framework to compute near-Nash equilibria via Counterfactual Regret Minimization (CFR), a well-known algorithm for solving large imperfect-information games.  To see project's page, click [**here**](https://sinabaghal.github.io/pasur/). You can find the code for this project [**here**](https://github.com/sinabaghal/pasur). 
 
+<p align="center">
+<img src="http://sinabaghal.github.io/images/Unfold.png" width="150%" height="150%">
+</p>
+
 ### Generative Modeling of Heston Volatility Surfaces Using Variational Autoencoders
 
 This project focuses on training a Variational Autoencoder (VAE) to produce Heston volatility surfaces. The Heston model is used in stochastic volatility option pricing models. Once trained, this VAE can generate new volatility surfaces, which could be useful for various financial applications such pricing exotic derivatives. To see project's page, click [**here**](https://sinabaghal.github.io/vae4heston/). You can find the code for this project [**here**](https://github.com/sinabaghal/VariationalAutoEncoderforHeston). 
