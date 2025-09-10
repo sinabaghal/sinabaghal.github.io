@@ -19,6 +19,8 @@ I earned my PhD in Mathematics from the University of Waterloo in 2021, and I ho
 - [Quantitative Finance and Option Pricing](#quantitative-finance-and-option-pricing)
 - [A Termination Criterion for Stochastic Gradient Descent for Binary Classification](#a-termination-criterion-for-stochastic-gradient-descent-for-binary-classification)
 
+---
+---
 
 ### Solving Pasur Using GPU-Accelerated Counterfactual Regret Minimization
 
@@ -30,6 +32,8 @@ Pasur is a fishing card game played over six rounds and is played similarly to g
 
 **Tags:** `Counterfactual Regret Minimization`, `Reinforcement Learning`, `PyTorch`, `Nash Equilibrium`, `Game Theory`, `Memory Management`, `GPU Optimization`, `Efficient Computing`, `Artificial Intelligence`
 
+---
+---
 
 ### Generative Modeling of Heston Volatility Surfaces Using Variational Autoencoders
 
