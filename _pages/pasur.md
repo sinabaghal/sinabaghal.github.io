@@ -15,7 +15,7 @@ tags:
 ---
 
 
-This repository is dedicated to the paper [*Solving Pasur Using GPU-Accelerated Counterfactual Regret Minimization*](https://arxiv.org/abs/2508.06559). 
+This repository is dedicated to the paper [*Solving Pasur Using GPU-Accelerated Counterfactual Regret Minimization*](https://arxiv.org/abs/2508.06559). You can find the code for this project [**here**](https://github.com/sinabaghal/pasur). 
 
 <p align="center">
 <img src="https://sinabaghal.github.io/images/GT.png" width="80%" height="100%">
