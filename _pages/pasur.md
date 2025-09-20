@@ -22,6 +22,7 @@ This repository is dedicated to the paper [*Solving Pasur Using GPU-Accelerated 
 - [Pasur](#pasur)
 - [Folding](#folding)
 - [Pytorch Framework](#pytorch-framework)
+  - [Game Tensor](#game-tensor)
 
 
 ## Counterfactual Regret Minimization (CFR)
@@ -112,6 +113,8 @@ The next figure shows the game tree of height 48. Notice that in the first round
 </p>
 
 At this stage, I need to explain several things, including how PyTorch tensors are used to represent game states. I also need to explain how these tensors are updated throughout the process.
+
+### Game Tensor
 
 So let me explain the game state tensors. Each layer of the game tree is represented by a tensor of shape _M × 3 × m_. Here, _M_ is the number of nodes in that layer, and _m_ is the number of active cards. A card is inactive if it has not yet been played or if it has already been collected across all terminal nodes of the previous rounds.
 
