@@ -21,7 +21,7 @@ tags:
 This repository is dedicated to the paper [*Solving Pasur Using GPU-Accelerated Counterfactual Regret Minimization*](https://arxiv.org/abs/2508.06559). You can find the code for this project [**here**](https://github.com/sinabaghal/pasur). 
 
 ## Table of Contents
-- [Counterfactual Regret Minimization](#counterfactual-regret-minimization)
+- [Counterfactual Regret Minimization (CFR)](#counterfactual-regret-minimization-(cfr))
 - [Pasur](#pasur)
 - [Folding](#folding)
 - [Pytorch Framework](#pytorch-framework)
