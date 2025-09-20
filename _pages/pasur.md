@@ -27,6 +27,7 @@ This repository is dedicated to the paper [*Solving Pasur Using GPU-Accelerated 
 - [Pytorch Framework](#pytorch-framework)
   - [Game Tensor](#game-tensor)
   - [In-Hand Updates](#in-hand-updates)
+  - [Between-Hand Updates](#between-hand-updates)
   - [Action Tensors](#action-tensor)
   - [Numeric Actions](#numeric-actions)
 
@@ -170,6 +171,8 @@ A simple inspection shows that the edge tensor is constructed using the displaye
 
 After these two updates, we proceed to update column 0 of the FGT tensor. Before doing so, the count score and branching factor are updated. Note that the actions will be applied to the game tensor at a later stage.
 
+### Between-Hand Updates
+
 Now we explain the between-hand updates. Remember that at the end of each round, the pool and the inherited scores are the only items that matter. We discard all other information in the game tensor except for the pool formation. We then find the unique pool formations using `torch.unique`. Notice that there is no need to sort the output, but we do need to record the inverse mapping from the unique operation. We apply the same procedure for the running score tensor `t_rus`.
 
 <p align="center">
@@ -212,10 +215,12 @@ Afterward, we apply padding to restore all tensors to the original shape of `t_g
 
 At this stage, we have the tensors `t_pck`, `t_lay`, `t_jck`, `t_kng`, `t_qun`, `c_pck`, `c_lay`, `c_jck`, `c_kng`, and `c_qun`. Finally, we concatenate the action tensors in such a way that all actions corresponding to each node of the game tree are grouped together. To achieve this, we concatenate these action tensors and then use the sorting indices obtained from the count tensors to shuffle the concatenated result, yielding `t_act`. The figure below summarizes this operation. The branching factor `t_brf` is constructed as shown.
 
-### Numeric Actions
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/t_act_scheme.png" width="110%" height="110%">
 </p>
+
+### Numeric Actions
+
 
 
 
