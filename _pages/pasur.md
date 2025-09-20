@@ -228,17 +228,25 @@ At this stage, we have the tensors `t_pck`, `t_lay`, `t_jck`, `t_kng`, `t_qun`, 
 
 ### Numeric Actions
 
+We explain how the numeric actions are constructed. The construction of king, queen, or jack actions is not discussed here; for those details, we refer the reader to the full paper. To find the numeric actions, we first construct an auxiliary tensor `t_40x2764`, where each column represents a unique possible action. This can be done using a simple Subset Sum Problem application. We also create another auxiliary tensor `t_tuples`, where the `k`-th column is `[1, q]`, with `q+1` being the number of cards used in the `k`-th action. See figure below.
+
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/num_0.png" width="110%" height="110%">
 </p>
+
+We can now easily determine whether action `k` is available for node `i` of tensor `t_2x40`. To do this, we compute `t_tuples - matmul(t_2x40, t_40x2764)`. The resulting tensor has shape `Mx2x2764`, and its `[i,:,k]`-th column is `0` if and only if the `k`-th action is available for node `i`.
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/num_1.png" width="110%" height="110%">
 </p>
 
+Next, we construct a tensor based on the pick action tensor `t_pck`, where each column corresponds to a node and each value represents the number of pick actions involving a specific card. We denote this tensor by `t_hnd`. The tensor `t_hnd` is then used to determine the available lay actions.
+
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/num_2.png" width="110%" height="110%">
 </p>
+
+Once `t_hnd` is constructed, the lay cards are found using a simple `torch.relu(t_2x40 - t_hnd)` computation. The masking requirement is omitted here, and the details can be understood from the figure below.
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/num_3.png" width="110%" height="110%">
