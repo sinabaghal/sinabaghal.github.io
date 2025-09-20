@@ -157,7 +157,7 @@ Finally, we establish the linkage between the two rounds for the full game tree.
 The game tensor is then populated using the newly dealt cards at the root level of the next round, while the full game tensor already reflects the unfolding process for that root level.
 
 <p align="center">
-<img src="https://sinabaghal.github.io/files/pasur/bet_hand_1.png" width="110%" height="110%">
+<img src="https://sinabaghal.github.io/files/pasur/bet_hand_1.png" width="120%" height="120%">
 </p>
 
 
