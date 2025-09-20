@@ -1,5 +1,5 @@
 ---
-title: "Solving Pasur Using GPU-Accelerated CFR 🚧 — Under Construction"
+title: "Solving Pasur Using GPU-Accelerated CFR — Under Construction 🚧🚧🚧🚧🚧🚧🚧"
 permalink: /pasur/
 author_profile: true
 tags:
