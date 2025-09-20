@@ -227,6 +227,21 @@ At this stage, we have the tensors `t_pck`, `t_lay`, `t_jck`, `t_kng`, `t_qun`, 
 
 ### Numeric Actions
 
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/num_0.png" width="110%" height="110%">
+</p>
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/num_1.png" width="110%" height="110%">
+</p>
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/num_2.png" width="110%" height="110%">
+</p>
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/tnum_3.png" width="110%" height="110%">
+</p>
 
 
 
