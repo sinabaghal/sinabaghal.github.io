@@ -68,6 +68,12 @@ At the end of the game, each player counts their score based on the cards they h
 <img src="https://sinabaghal.github.io/files/pasur/score.png" width="50%" height="50%">
 </p>
 
+Here is an example of a full game being played. Notice the 6 rounds, and the fact that at the end of each round all the cards remaining in the pool carry over to the next round. Also, both players end each round with empty hands and are then dealt 4 new cards for the next round.
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/full_game.png" width="50%" height="50%">
+</p>
+
 <p align="center">
 <img src="https://sinabaghal.github.io/images/GT.png" width="80%" height="100%">
 </p>
