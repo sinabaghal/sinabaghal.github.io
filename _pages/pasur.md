@@ -119,7 +119,7 @@ The first row encodes card ownership: 1 means Alex has the card, 2 means Bob has
 The second row encodes Alex’s action history. A value of 1 is added if a card is laid on his first turn, and 10 if it is picked on his first turn. Values of 2 and 20, 3 and 30, 4 and 40 are used similarly for the later turns.
 
 <p align="center">
-<img src="https://sinabaghal.github.io/files/pasur/t_gme_1.png" width="80%" height="100%">
+<img src="https://sinabaghal.github.io/files/pasur/t_gme_1.png" width="80%" height="80%">
 </p>
 
 Notice that a value of 41, for example, means the card was laid on the first turn and picked on the fourth turn. Similarly, a card that is laid and picked in the same turn can be identified by a value of 2 for that turn in the second row, while the corresponding value in the first row of the game tensor is 0.
@@ -129,3 +129,7 @@ Keeping track of inactive cards results in significant memory savings, as tensor
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/dyn_shape.png" width="80%" height="100%">
 </p>
+
+Next, I will explain how game tensors are updated throughout the process. There are two types of updates: in-hand updates and between-hand updates.
+
+Let us begin with the in-hand updates. Consider the example above with two game nodes, where the inherited scores are 3 and 2. In this case, the count score tensor _c_scr_ is given by [3,2]. Assume further that the branching factors are 2 and 3; _t_brf_ ] [2,3]. This setup corresponds to the figure on the left-hand side. Observe the count score tensor alongside the branch factor tensor. The complete game tensor for the first row of the game tree is also displayed.
