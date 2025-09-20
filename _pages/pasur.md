@@ -88,7 +88,9 @@ This process is explained more clearly in the figure below. We represent the inh
 <img src="https://sinabaghal.github.io/files/pasur/unfolding.png" width="80%" height="80%">
 </p>
 
-We need to explain the unfolding process—how to convert the Game Tree into the Full Game Tree. For now, let me mention the 4 main tensors used throughout. The first is the game tensor _t_gme_, which encodes the card states and action history within each round. The second is the score tensor _t_scr_, which encodes all the unique scores inherited from previous rounds. And finally, the Full Game Tree tensor, _t_fgm_, where a _[g, s]_ entry means that the g-th row of the Game Tree has inherited the s-th score from _t_scr_. Connections between the layers of the Full Game Tree are also encoded in the _t_edg_ tensor, as shown here.
+We need to explain the unfolding process—how to convert the Game Tree into the Full Game Tree. For now, let me mention the 4 main tensors used throughout. The first is the game tensor _t_gme_, which encodes the card states and action history within each round. The second is the score tensor _t_scr_, which encodes all the unique scores inherited from previous rounds. And finally, the Full Game Tree tensor, _t_fgm_, where a _[g, s]_ entry means that the g-th row of the Game Tree has inherited the s-th score from _t_scr_. Connections between the layers of the Full Game Tree are also encoded in the _t_edg_ tensor, as shown in the figure above.
+
+The next figure shows the game tree of height 48. Notice that in the first round, all the incoming arrows are colored red, because at the start of the game all scores are identically zero. In other words, nobody has collected any cards at that point. Throughout, we refer to this as the Game Tree (GT) and the Pasur Full Game Tree as shown above the Full Game Tree (FGT). Note that FGT is preserved through the full game tensor _t_fgm_ and also the score tensor _t_scr_. 
 
 <p align="center">
 <img src="https://sinabaghal.github.io/images/GT.png" width="80%" height="100%">
