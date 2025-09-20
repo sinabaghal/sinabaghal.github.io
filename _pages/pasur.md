@@ -20,7 +20,12 @@ This repository is dedicated to the paper [*Solving Pasur Using GPU-Accelerated 
 
 I begin by explaining CFR. Suppose we have two players, Alex and Bob, who are playing a game and the corresponding game tree is shown here. The goal of the CFR algorithm is to find an optimal strategy for both players. 
 
-By strategy, we mean a probability distribution over the possible actions at each node of the tree. For example, in the figure below, Bob has two actions where based on his current strategy, one action may be chosen with probability 20% (as shown) and the other with probability 80%. 
+By strategy, we mean a probability distribution over the possible actions at each node of the tree. For example, at the node denoted by B in the figure below, Bob has two actions where based on his current strategy, one action may be chosen with probability 20% (as shown) and the other with probability 80%. 
+
+<p align="center">
+<img src="http://sinabaghal.github.io/images/pasur/CFR_Tree.jpg" width="40%" height="40%">
+</p>
+
 
 Utilities at terminal nodes are defined naturally via the game’s scoring system. Utilities at other nodes is calculated via a backup pass. Notice that since we are in a zero-sum setting, the utilities of Alex and Bob always sum to zero at each node of the game tree. In other words, $$u_a$$ plus $$u_b$$ equals zero.
 
