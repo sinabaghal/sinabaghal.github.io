@@ -65,7 +65,7 @@ Let me explain the rule and scoring system in more detail. If the played card is
 At the end of the game, each player counts their score based on the cards they have collected, using the scoring system. The scoring system is as follows: any player with at least 7 clubs receives 7 points. Each Jack and each Ace is worth 1 point. There are also two key cards: the 10 of Diamonds, which is worth 3 points, and the 2 of Clubs, which is worth 2 points. 
 
 <p align="center">
-<img src="https://sinabaghal.github.io/files/pasur/score.png" width="70%" height="70%">
+<img src="https://sinabaghal.github.io/files/pasur/score.png" width="50%" height="50%">
 </p>
 
 <p align="center">
