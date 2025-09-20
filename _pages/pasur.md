@@ -15,6 +15,9 @@ tags:
 ---
 
 
+
+
+
 This repository is dedicated to the paper [*Solving Pasur Using GPU-Accelerated Counterfactual Regret Minimization*](https://arxiv.org/abs/2508.06559). You can find the code for this project [**here**](https://github.com/sinabaghal/pasur). 
 
 ## Table of Contents
@@ -24,6 +27,8 @@ This repository is dedicated to the paper [*Solving Pasur Using GPU-Accelerated 
 - [Pytorch Framework](#pytorch-framework)
   - [Game Tensor](#game-tensor)
   - [In-Hand Updates](#in-hand-updates)
+  - [Action Tensors](#action-tensor)
+  - [Numeric Actions](#numeric-actions)
 
 
 ## Counterfactual Regret Minimization (CFR)
@@ -99,15 +104,15 @@ Based on this observation, we represent each node of the full game tree using tw
 
 ## Pytorch Framework
 
-This process is explained more clearly in the figure below. We represent the inherited scores from previous rounds using colored arrows going into a node. We call the left-hand side the Game Tree and the right-hand side the Full Game Tree. Notice that the branching factors are shown by the underlying lines. For example, here the branching factor is [2, 3]. 
+This process is explained more clearly in the figure below. We represent the inherited scores from previous rounds using colored arrows going into a node. We call the left-hand side the Game Tree and the right-hand side the Full Game Tree. Notice that the branching factors are shown by the underlying lines. For example, here the branching factor is `[2, 3]`. 
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/unfolding.png" width="110%" height="110%">
 </p>
 
-We need to explain the unfolding process—how to convert the Game Tree into the Full Game Tree. For now, let me mention the 4 main tensors used throughout. The first is the game tensor _t_gme_, which encodes the card states and action history within each round. The second is the score tensor _t_scr_, which encodes all the unique scores inherited from previous rounds. And finally, the Full Game Tree tensor, _t_fgm_, where a _[g, s]_ entry means that the g-th row of the Game Tree has inherited the s-th score from _t_scr_. Connections between the layers of the Full Game Tree are also encoded in the _t_edg_ tensor, as shown in the figure above.
+We need to explain the unfolding process—how to convert the Game Tree into the Full Game Tree. For now, let me mention the 4 main tensors used throughout. The first is the game tensor _t_gme_, which encodes the card states and action history within each round. The second is the score tensor `t_scr`, which encodes all the unique scores inherited from previous rounds. And finally, the Full Game Tree tensor, `t_fgm`, where a `[g, s]` entry means that the g-th row of the Game Tree has inherited the s-th score from `t_scr`. Connections between the layers of the Full Game Tree are also encoded in the `t_edg` tensor, as shown in the figure above.
 
-The next figure shows the game tree of height 48. Notice that in the first round, all the incoming arrows are colored red, because at the start of the game all scores are identically zero. In other words, nobody has collected any cards at that point. Throughout, we refer to this as the Game Tree (GT) and the Pasur Full Game Tree as shown above the Full Game Tree (FGT). Note that FGT is preserved through the full game tensor _t_fgm_ and also the score tensor _t_scr_. 
+The next figure shows the game tree of height 48. Notice that in the first round, all the incoming arrows are colored red, because at the start of the game all scores are identically zero. In other words, nobody has collected any cards at that point. Throughout, we refer to this as the Game Tree (GT) and the Pasur Full Game Tree as shown above the Full Game Tree (FGT). Note that FGT is preserved through the full game tensor _t_fgm_ and also the score tensor `t_scr`. 
 
 <p align="center">
 <img src="https://sinabaghal.github.io/images/GT.png" width="100%" height="100%">
@@ -117,7 +122,7 @@ At this stage, I need to explain several things, including how PyTorch tensors a
 
 ### Game Tensor
 
-So let me explain the game state tensors. Each layer of the game tree is represented by a tensor of shape _M × 3 × m_. Here, _M_ is the number of nodes in that layer, and _m_ is the number of active cards. A card is inactive if it has not yet been played or if it has already been collected across all terminal nodes of the previous rounds.
+So let me explain the game state tensors. Each layer of the game tree is represented by a tensor of shape `M × 3 × m`. Here, `M` is the number of nodes in that layer, and `m` is the number of active cards. A card is inactive if it has not yet been played or if it has already been collected across all terminal nodes of the previous rounds.
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/map_idx.png" width="80%" height="100%">
@@ -153,7 +158,7 @@ Next, I will explain how game tensors are updated throughout the process. There 
 
 ### In-Hand Updates
 
-Let us begin with the in-hand updates. Consider the example above with two game nodes, where the inherited scores are 3 and 2. In this case, the count score tensor _c_scr_ is given by [3,2]. Assume further that the branching factors are 2 and 3; _t_brf_ [2,3]. This setup corresponds to the figure on the left-hand side. Observe the count score tensor alongside the branch factor tensor. The complete game tensor for the first row of the game tree is also displayed. The right-hand side illustrates the unfolded Full Game Tree. The unfolding is constructed in the most natural way: each node of the game tree is repeated with the same label but shown in a different color, depending on the incoming colors within the tree. The next step is to identify the edge tensor, which maps each node in the second layer of the Full Game Tree to its corresponding node in the first layer. 
+Let us begin with the in-hand updates. Consider the example above with two game nodes, where the inherited scores are `3` and `2`. In this case, the count score tensor _c_scr_ is given by `[3,2]`. Assume further that the branching factors are 2 and 3; `t_brf = [2,3]`. This setup corresponds to the figure on the left-hand side. Observe the count score tensor alongside the branch factor tensor. The complete game tensor for the first row of the game tree is also displayed. The right-hand side illustrates the unfolded Full Game Tree. The unfolding is constructed in the most natural way: each node of the game tree is repeated with the same label but shown in a different color, depending on the incoming colors within the tree. The next step is to identify the edge tensor, which maps each node in the second layer of the Full Game Tree to its corresponding node in the first layer. 
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/in_hand.png" width="110%" height="110%">
@@ -161,7 +166,7 @@ Let us begin with the in-hand updates. Consider the example above with two game 
 
 Here, the $$\otimes$$ notation refers to the PyTorch repeat_interleave operation. I also use an extension of repeat_interleave, which I call repeat blocks. This operation divides the source tensor into chunks and repeats each chunk a specified number of times. Notice that only nodes with matching colors are connected. 
 
-A simple inspection shows that the edge tensor is constructed using the displayed formula via the repeat-blocks process. Block sizes are determined by the count score tensor, and the repeat tensor is given by the branching factor. The first block [0, 1, 2] is repeated twice, while the last block [3, 4] is repeated three times, since its branching factor is 3. Similarly, column 1 of the FGT is updated. Recall that this column encodes the color of each node in the FGT. 
+A simple inspection shows that the edge tensor is constructed using the displayed formula via the repeat-blocks process. Block sizes are determined by the count score tensor, and the repeat tensor is given by the branching factor. The first block `[0, 1, 2]` is repeated twice, while the last block `[3, 4]` is repeated three times, since its branching factor is `3`. Similarly, column 1 of the FGT is updated. Recall that this column encodes the color of each node in the FGT. 
 
 After these two updates, we proceed to update column 0 of the FGT tensor. Before doing so, the count score and branching factor are updated. Note that the actions will be applied to the game tensor at a later stage.
 
@@ -184,7 +189,9 @@ The game tensor is then populated using the newly dealt cards at the root level 
 
 Notice that the linkage tensor is used to propagate back the utilities computed for each full game tree during the CFR algorithm. Since CFR is trained on the full game tree, we need to pass back the calculated utilities from the root level of each round to the terminal level of the preceding round.
 
-In the next few paragraphs, I explain how the action tensor is constructed. Note that the inherited score is not important when computing actions at each game tensor node. The action tensor has shape _M' × 2 × m_, where _M'_ is the number of nodes in the next layer of the game tree. The first row encodes the hand cards used in each action, and the second row encodes the pool cards used.
+### Action Tensor
+
+Next, I explain how the action tensor is constructed. Note that the inherited score is not important when computing actions at each game tensor node. The action tensor has shape `M' × 2 × m`, where `M'` is the number of nodes in the next layer of the game tree. The first row encodes the hand cards used in each action, and the second row encodes the pool cards used.
 
 
 <p align="center">
@@ -205,7 +212,7 @@ Afterward, we apply padding to restore all tensors to the original shape of `t_g
 
 At this stage, we have the tensors `t_pck`, `t_lay`, `t_jck`, `t_kng`, `t_qun`, `c_pck`, `c_lay`, `c_jck`, `c_kng`, and `c_qun`. Finally, we concatenate the action tensors in such a way that all actions corresponding to each node of the game tree are grouped together. To achieve this, we concatenate these action tensors and then use the sorting indices obtained from the count tensors to shuffle the concatenated result, yielding `t_act`. The figure below summarizes this operation. The branching factor `t_brf` is constructed as shown.
 
-
+### Numeric Actions
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/t_act_scheme.png" width="110%" height="110%">
 </p>
