@@ -176,6 +176,14 @@ Once the action tensor   `t_act` is obtained, the game tensor `t_gme` is constru
 <img src="https://sinabaghal.github.io/files/pasur/t_act_1.png" width="110%" height="110%">
 </p>
 
+Actions are divided into four categories: Numeric, Jack, King, and Queen actions. For example, since numeric actions do not involve face cards, when constructing them we filter the input game tensor to mask out all cards that are not numeric. We denote the resulting tensor as `t_2x40`. Note that, due to the dynamic shaping discussed earlier, `t_2x40` does not necessarily have shape 40; the notation is used for clarity.  
+
+Once `t_2x40` is obtained, we apply `torch.unique` without sorting to obtain `tu_2x40`, while also recording the reverse indices. For numeric actions in particular, we separate pick and lay actions and construct the resulting action tensors individually. These action tensors are denoted by `tu_pck` and `tu_lay`, along with the corresponding count tensors `cu_pck` and `cu_lay`. Similarly, we obtain `tu_jck`, `tu_kng`, `tu_qun`, `cu_jck`, `cu_kng`, and `cu_qun`.  
+
+Afterward, we apply padding to restore all tensors to the original shape of `t_gme`. In other words, `tu_pck.shape[2] = t_gme.shape[2]`, and so on. Next, we reverse the unique operation. The details of this step are omitted here, but we refer you to the full paper for further explanation.  
+
+At this stage, we have the tensors `t_pck`, `t_lay`, `t_jck`, `t_kng`, `t_qun`, `c_pck`, `c_lay`, `c_jck`, `c_kng`, and `c_qun`. Finally, we concatenate the action tensors in such a way that all actions corresponding to each node of the game tree are grouped together. To achieve this, we concatenate these action tensors and then use the sorting indices obtained from the count tensors to shuffle the concatenated result, yielding `t_act`. Figure below, summerizes this operation. 
+
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/t_act_scheme.png" width="110%" height="110%">
 </p>
