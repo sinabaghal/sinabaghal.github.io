@@ -170,8 +170,7 @@ In the next few paragraphs, I explain how the action tensor is constructed. Note
 <img src="https://sinabaghal.github.io/files/pasur/t_act.png" width="110%" height="110%">
 </p>
 
-Once the action tensor   `t_act` is obtained, the game tensor `t_gme` is constructed as follows. We first identify the pick actions, meaning those in which at least one card from the pool is selected. According to the rules of the game, whenever such a pick occurs, both the laid card and the selected pool cards are collected by the player. If no pick occurs, the laid card is simply added to the pool and removed from the player’s hand.
-
+Once the action tensor   `t_act` is obtained, the game tensor `t_gme` is constructed as follows. We first identify the pick actions, meaning those in which at least one card from the pool is selected. According to the rules of the game, whenever such a pick occurs, both the laid card and the selected pool cards are collected by the player. If no pick occurs, the laid card is simply added to the pool and removed from the player’s hand.  `t_act[*,1:2,:]` is updated via the procedure explained above, that is lay (weighted by `i_trn+1`) plus pick (weighted by `10 x (i_trn+1)`).
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/t_act_1.png" width="110%" height="110%">
