@@ -39,7 +39,7 @@ Next, we define something called instantaneous regret for each action. Instantan
 CFR is a classic algorithm that provably converges to this Nash Equilibrium. The idea of CFR is straightforward. We start with a uniform strategy, meaning each action is taken with equal probability. For example, if there are two actions, each one is chosen with probability 50%. At each iteration, we compute these instantaneous regrets for all nodes and store them. We then update the strategy by assigning probabilities to actions in proportion to the sum of all accumulated regrets up to the current iteration.  Finally, the output of CFR is the weighted average of all strategies observed so far, where the weights are given by the reach probabilities.
 
 <p align="left">
-<img src="https://sinabaghal.github.io/files/pasur/cfr_algo.png" width="70%" height="70%">
+<img src="https://sinabaghal.github.io/files/pasur/cfr_algorithm.png" width="70%" height="70%">
 </p>
 
 The aim of this work is to run CFR on the Pasur game tree, which has a height of 48 and an average size of about 2 to the power of 30 nodes.
