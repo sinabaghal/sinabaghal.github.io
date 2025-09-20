@@ -17,6 +17,14 @@ tags:
 
 This repository is dedicated to the paper [*Solving Pasur Using GPU-Accelerated Counterfactual Regret Minimization*](https://arxiv.org/abs/2508.06559). You can find the code for this project [**here**](https://github.com/sinabaghal/pasur). 
 
+## Table of Contents
+- [Counterfactual Regret Minimization](#counterfactual-regret-minimization)
+- [Pasur](#pasur)
+- [Folding](#folding)
+
+
+## Counterfactual Regret Minimization (CFR)
+
 
 I begin by explaining CFR. Suppose we have two players, Alex and Bob, who are playing a game and the corresponding game tree is shown here. The goal of the CFR algorithm is to find an optimal strategy for both players. 
 
@@ -48,6 +56,8 @@ The aim of this work is to run CFR on the Pasur game tree, which has a height of
 <img src="https://sinabaghal.github.io/files/pasur/pasur_game_tree.png" width="70%" height="70%">
 </p>
 
+## Pasur
+
 Let me explain the game itself next! 
 
 Pasur is played in 6 rounds, and in each round each player is dealt 4 cards, which they play sequentially over 4 turns, taking turns one after another. At each turn, a player places a card face up and either lays it in the pool or collects it along with some other pool cards, according to the rule shown in this table. Figure below shows an example of the first turn by Alex and Bob.
@@ -73,6 +83,8 @@ Here is an example of a full game being played. Notice the 6 rounds, and the fac
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/full_game.png" width="90%" height="90%">
 </p>
+
+## Folding
 
 And below is a basic but key observation that we will use to represent the full game tree, which has on average 2 to the power of 30 nodes, in a more compact way. In other words, if for two terminal nodes of the k-th round the pool carried over to the next round is the same, and the accumulated scores for Alex and Bob up to that point are also the same, then we may potentially consider the resulting root node of the next round to be identical. Notice that the score data we need to keep track of includes the number of club cards held by Alex and Bob, as well as the point difference from the point cards. We also add an extra value to the score to record whether Alex or Bob has accumulated at least 7 clubs by that terminal node of the round. In that case, we reset the number of clubs for both players to zero and set this new index to 1 or 2, depending on whether Alex or Bob was the one who collected the 7 clubs.
 
@@ -183,6 +195,7 @@ Once `t_2x40` is obtained, we apply `torch.unique` without sorting to obtain `tu
 Afterward, we apply padding to restore all tensors to the original shape of `t_gme`. In other words, `tu_pck.shape[2] = t_gme.shape[2]`, and so on. Next, we reverse the unique operation. The details of this step are omitted here, but we refer you to the full paper for further explanation.  
 
 At this stage, we have the tensors `t_pck`, `t_lay`, `t_jck`, `t_kng`, `t_qun`, `c_pck`, `c_lay`, `c_jck`, `c_kng`, and `c_qun`. Finally, we concatenate the action tensors in such a way that all actions corresponding to each node of the game tree are grouped together. To achieve this, we concatenate these action tensors and then use the sorting indices obtained from the count tensors to shuffle the concatenated result, yielding `t_act`. The figure below summarizes this operation. The branching factor `t_brf` is constructed as shown.
+
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/t_act_scheme.png" width="110%" height="110%">
