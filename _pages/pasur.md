@@ -132,10 +132,45 @@ Keeping track of inactive cards results in significant memory savings, as tensor
 
 Next, I will explain how game tensors are updated throughout the process. There are two types of updates: in-hand updates and between-hand updates.
 
-Let us begin with the in-hand updates. Consider the example above with two game nodes, where the inherited scores are 3 and 2. In this case, the count score tensor _c_scr_ is given by [3,2]. Assume further that the branching factors are 2 and 3; _t_brf_ ] [2,3]. This setup corresponds to the figure on the left-hand side. Observe the count score tensor alongside the branch factor tensor. The complete game tensor for the first row of the game tree is also displayed. The right-hand side illustrates the unfolded Full Game Tree. The unfolding is constructed in the most natural way: each node of the game tree is repeated with the same label but shown in a different color, depending on the incoming colors within the tree. The next step is to identify the edge tensor, which maps each node in the second layer of the Full Game Tree to its corresponding node in the first layer. 
+Let us begin with the in-hand updates. Consider the example above with two game nodes, where the inherited scores are 3 and 2. In this case, the count score tensor _c_scr_ is given by [3,2]. Assume further that the branching factors are 2 and 3; _t_brf_ [2,3]. This setup corresponds to the figure on the left-hand side. Observe the count score tensor alongside the branch factor tensor. The complete game tensor for the first row of the game tree is also displayed. The right-hand side illustrates the unfolded Full Game Tree. The unfolding is constructed in the most natural way: each node of the game tree is repeated with the same label but shown in a different color, depending on the incoming colors within the tree. The next step is to identify the edge tensor, which maps each node in the second layer of the Full Game Tree to its corresponding node in the first layer. 
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/in_hand.png" width="110%" height="110%">
 </p>
 
-Here, the $$\otimes$$ notation refers to the PyTorch repeat_interleave operation. I also use an extension of repeat_interleave, which I call repeat blocks. This operation divides the source tensor into chunks and repeats each chunk a specified number of times. Notice that only nodes with matching colors are connected. A simple inspection shows that the edge tensor is constructed using the displayed formula via the repeat-blocks process. Block sizes are determined by the count score tensor, and the repeat tensor is given by the branching factor. The first block [0, 1, 2] is repeated twice, while the last block [3, 4] is repeated three times, since its branching factor is 3. Similarly, column 1 of the FGT is updated. Recall that this column encodes the color of each node in the FGT. After these two updates, we proceed to update column 0 of the FGT tensor. Before doing so, the count score and branching factor are updated. Note that the actions will be applied to the game tensor at a later stage.
+Here, the $$\otimes$$ notation refers to the PyTorch repeat_interleave operation. I also use an extension of repeat_interleave, which I call repeat blocks. This operation divides the source tensor into chunks and repeats each chunk a specified number of times. Notice that only nodes with matching colors are connected. 
+
+A simple inspection shows that the edge tensor is constructed using the displayed formula via the repeat-blocks process. Block sizes are determined by the count score tensor, and the repeat tensor is given by the branching factor. The first block [0, 1, 2] is repeated twice, while the last block [3, 4] is repeated three times, since its branching factor is 3. Similarly, column 1 of the FGT is updated. Recall that this column encodes the color of each node in the FGT. 
+
+After these two updates, we proceed to update column 0 of the FGT tensor. Before doing so, the count score and branching factor are updated. Note that the actions will be applied to the game tensor at a later stage.
+
+Now we explain the between-hand updates. Remember that at the end of each round, the pool and the inherited scores are the only items that matter. We discard all other information in the game tensor except for the pool formation. We then find the unique pool formations using `torch.unique`. Notice that there is no need to sort the output, but we do need to record the inverse mapping from the unique operation. We apply the same procedure for the running score tensor `t_rus`.
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/bet_hand_0.png" width="110%" height="110%">
+</p>
+
+We find the new set of unique scores to be inherited by the nodes of the next round. At each node of the full game tree, we currently have two scores: one inherited from previous rounds, recorded in column 1 of the full game tensor, and the other being the running score accumulated during the current round. The resulting pair is encoded in the tensor shown here. We then apply a unique operation on this set of pairs, sum the corresponding scores, and apply unique again to determine the set of scores to be passed to the next round.
+
+Finally, we establish the linkage between the two rounds for the full game tree. To do this, we first determine the pair index and then locate where that pair is mapped inside the score tensor. Similarly, the index of the game state can be found, as shown in the second-to-last line of the displayed code snippet.
+
+The game tensor is then populated using the newly dealt cards at the root level of the next round, while the full game tensor already reflects the unfolding process for that root level.
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/bet_hand_1.png" width="110%" height="110%">
+</p>
+
+
+Notice that the linkage tensor is used to propagate back the utilities computed for each full game tree during the CFR algorithm. Since CFR is trained on the full game tree, we need to pass back the calculated utilities from the root level of each round to the terminal level of the preceding round.
+
+In the next few paragraphs, I explain how the action tensor is constructed. Note that the inherited score is not important when computing actions at each game tensor node. The action tensor has shape _M' × 2 × m_, where _M'_ is the number of nodes in the next layer of the game tree. The first row encodes the hand cards used in each action, and the second row encodes the pool cards used.
+
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/t_act.png" width="110%" height="110%">
+</p>
+
+
+
+
+
