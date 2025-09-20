@@ -93,7 +93,7 @@ We need to explain the unfolding process—how to convert the Game Tree into the
 The next figure shows the game tree of height 48. Notice that in the first round, all the incoming arrows are colored red, because at the start of the game all scores are identically zero. In other words, nobody has collected any cards at that point. Throughout, we refer to this as the Game Tree (GT) and the Pasur Full Game Tree as shown above the Full Game Tree (FGT). Note that FGT is preserved through the full game tensor _t_fgm_ and also the score tensor _t_scr_. 
 
 <p align="center">
-<img src="https://sinabaghal.github.io/images/GT.png" width="80%" height="100%">
+<img src="https://sinabaghal.github.io/images/GT.png" width="100%" height="100%">
 </p>
 
 At this stage, I need to explain several things, including how PyTorch tensors are used to represent game states. I also need to explain how these tensors are updated throughout the process.
@@ -171,6 +171,10 @@ In the next few paragraphs, I explain how the action tensor is constructed. Note
 </p>
 
 
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/t_act_scheme.png" width="110%" height="110%">
+</p>
 
 
 
