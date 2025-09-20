@@ -23,6 +23,7 @@ This repository is dedicated to the paper [*Solving Pasur Using GPU-Accelerated 
 - [Folding](#folding)
 - [Pytorch Framework](#pytorch-framework)
   - [Game Tensor](#game-tensor)
+  - [In-Hand Updates](#in-hand-updates)
 
 
 ## Counterfactual Regret Minimization (CFR)
@@ -149,6 +150,8 @@ Keeping track of inactive cards results in significant memory savings, as tensor
 </p>
 
 Next, I will explain how game tensors are updated throughout the process. There are two types of updates: in-hand updates and between-hand updates.
+
+### In-Hand Updates
 
 Let us begin with the in-hand updates. Consider the example above with two game nodes, where the inherited scores are 3 and 2. In this case, the count score tensor _c_scr_ is given by [3,2]. Assume further that the branching factors are 2 and 3; _t_brf_ [2,3]. This setup corresponds to the figure on the left-hand side. Observe the count score tensor alongside the branch factor tensor. The complete game tensor for the first row of the game tree is also displayed. The right-hand side illustrates the unfolded Full Game Tree. The unfolding is constructed in the most natural way: each node of the game tree is repeated with the same label but shown in a different color, depending on the incoming colors within the tree. The next step is to identify the edge tensor, which maps each node in the second layer of the Full Game Tree to its corresponding node in the first layer. 
 
