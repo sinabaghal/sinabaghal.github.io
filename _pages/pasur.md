@@ -68,25 +68,25 @@ The aim of this work is to run CFR on the Pasur game tree, which has a height of
 
 Let me explain the game itself next! 
 
-Pasur is played in 6 rounds, and in each round each player is dealt 4 cards, which they play sequentially over 4 turns, taking turns one after another. At each turn, a player places a card face up and either lays it in the pool or collects it along with some other pool cards, according to the rule shown in this table. Figure below shows an example of the first turn by Alex and Bob.
+Pasur is played in `6` rounds, and in each round each player is dealt `4` cards, which they play sequentially over `4` turns, taking turns one after another. At each turn, a player places a card face up and either lays it in the pool or collects it along with some other pool cards, according to the rule shown in this table. Figure below shows an example of the first turn by Alex and Bob.
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/ex.png" width="70%" height="70%">
 </p>
 
-Let me explain the rule and scoring system in more detail. If the played card is numeric, it can collect any subset of cards whose values add up to 11. If it is a Jack, it can collect all cards in the pool except for Kings and Queens. If it is a King, it can only collect a single King, and if it is a Queen, it can only collect a single Queen. 
+Let me explain the rule and scoring system in more detail. If the played card is numeric, it can collect any subset of cards whose values add up to `11`. If it is a Jack, it can collect all cards in the pool except for Kings and Queens. If it is a King, it can only collect a single King, and if it is a Queen, it can only collect a single Queen. 
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/rule.png" width="70%" height="70%">
 </p>
 
-At the end of the game, each player counts their score based on the cards they have collected, using the scoring system. The scoring system is as follows: any player with at least 7 clubs receives 7 points. Each Jack and each Ace is worth 1 point. There are also two key cards: the 10 of Diamonds, which is worth 3 points, and the 2 of Clubs, which is worth 2 points. 
+At the end of the game, each player counts their score based on the cards they have collected, using the scoring system. The scoring system is as follows: any player with at least `7` clubs receives `7` points. Each Jack and each Ace is worth `1` point. There are also two key cards: the `10` of Diamonds, which is worth `3` points, and the `2` of Clubs, which is worth `2` points. 
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/score.png" width="30%" height="30%">
 </p>
 
-Here is an example of a full game being played. Notice the 6 rounds, and the fact that at the end of each round all the cards remaining in the pool carry over to the next round. Also, both players end each round with empty hands and are then dealt 4 new cards for the next round.
+Here is an example of a full game being played. Notice the `6` rounds, and the fact that at the end of each round all the cards remaining in the pool carry over to the next round. Also, both players end each round with empty hands and are then dealt `4` new cards for the next round.
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/full_game.png" width="90%" height="90%">
@@ -94,7 +94,7 @@ Here is an example of a full game being played. Notice the 6 rounds, and the fac
 
 ## Folding
 
-And below is a basic but key observation that we will use to represent the full game tree, which has on average 2 to the power of 30 nodes, in a more compact way. In other words, if for two terminal nodes of the k-th round the pool carried over to the next round is the same, and the accumulated scores for Alex and Bob up to that point are also the same, then we may potentially consider the resulting root node of the next round to be identical. Notice that the score data we need to keep track of includes the number of club cards held by Alex and Bob, as well as the point difference from the point cards. We also add an extra value to the score to record whether Alex or Bob has accumulated at least 7 clubs by that terminal node of the round. In that case, we reset the number of clubs for both players to zero and set this new index to 1 or 2, depending on whether Alex or Bob was the one who collected the 7 clubs.
+And below is a basic but key observation that we will use to represent the full game tree, which has on average `2` to the power of `30` nodes, in a more compact way. In other words, if for two terminal nodes of the k-th round the pool carried over to the next round is the same, and the accumulated scores for Alex and Bob up to that point are also the same, then we may potentially consider the resulting root node of the next round to be identical. Notice that the score data we need to keep track of includes the number of club cards held by Alex and Bob, as well as the point difference from the point cards. We also add an extra value to the score to record whether Alex or Bob has accumulated at least `7` clubs by that terminal node of the round. In that case, we reset the number of clubs for both players to zero and set this new index to `1` or `2`, depending on whether Alex or Bob was the one who collected the `7` clubs.
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/idea.png" width="80%" height="80%">
@@ -110,9 +110,9 @@ This process is explained more clearly in the figure below. We represent the inh
 <img src="https://sinabaghal.github.io/files/pasur/unfolding.png" width="110%" height="110%">
 </p>
 
-We need to explain the unfolding process—how to convert the Game Tree into the Full Game Tree. For now, let me mention the 4 main tensors used throughout. The first is the game tensor _t_gme_, which encodes the card states and action history within each round. The second is the score tensor `t_scr`, which encodes all the unique scores inherited from previous rounds. And finally, the Full Game Tree tensor, `t_fgm`, where a `[g, s]` entry means that the g-th row of the Game Tree has inherited the s-th score from `t_scr`. Connections between the layers of the Full Game Tree are also encoded in the `t_edg` tensor, as shown in the figure above.
+We need to explain the unfolding process—how to convert the Game Tree into the Full Game Tree. For now, let me mention the 4 main tensors used throughout. The first is the game tensor `t_gme`, which encodes the card states and action history within each round. The second is the score tensor `t_scr`, which encodes all the unique scores inherited from previous rounds. And finally, the Full Game Tree tensor, `t_fgm`, where a `[g, s]` entry means that the g-th row of the Game Tree has inherited the s-th score from `t_scr`. Connections between the layers of the Full Game Tree are also encoded in the `t_edg` tensor, as shown in the figure above.
 
-The next figure shows the game tree of height 48. Notice that in the first round, all the incoming arrows are colored red, because at the start of the game all scores are identically zero. In other words, nobody has collected any cards at that point. Throughout, we refer to this as the Game Tree (GT) and the Pasur Full Game Tree as shown above the Full Game Tree (FGT). Note that FGT is preserved through the full game tensor _t_fgm_ and also the score tensor `t_scr`. 
+The next figure shows the game tree of height 48. Notice that in the first round, all the incoming arrows are colored red, because at the start of the game all scores are identically zero. In other words, nobody has collected any cards at that point. Throughout, we refer to this as the Game Tree (GT) and the Pasur Full Game Tree as shown above the Full Game Tree (FGT). Note that FGT is preserved through the full game tensor `t_fgm` and also the score tensor `t_scr`. 
 
 <p align="center">
 <img src="https://sinabaghal.github.io/images/GT.png" width="100%" height="100%">
