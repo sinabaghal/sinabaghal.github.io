@@ -21,6 +21,7 @@ This repository is dedicated to the paper [*Solving Pasur Using GPU-Accelerated 
 - [Counterfactual Regret Minimization](#counterfactual-regret-minimization)
 - [Pasur](#pasur)
 - [Folding](#folding)
+- [Pytorch Framework](#pytorch-framework)
 
 
 ## Counterfactual Regret Minimization (CFR)
@@ -93,6 +94,8 @@ And below is a basic but key observation that we will use to represent the full 
 </p>
 
 Based on this observation, we represent each node of the full game tree using two tensors: one is the score tensor, and the other is the game state tensor. The game state consists of the cards held by Alex and Bob, the cards in the pool, and the action history within the round. Note that at the beginning of each round, the game state resets to only reflect the card status.
+
+## Pytorch Framework
 
 This process is explained more clearly in the figure below. We represent the inherited scores from previous rounds using colored arrows going into a node. We call the left-hand side the Game Tree and the right-hand side the Full Game Tree. Notice that the branching factors are shown by the underlying lines. For example, here the branching factor is [2, 3]. 
 
