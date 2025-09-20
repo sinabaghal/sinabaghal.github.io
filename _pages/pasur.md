@@ -36,6 +36,7 @@ The contents below are only a summary of what is discussed in the paper. Many de
   - [Between-Hand Updates](#between-hand-updates)
   - [Action Tensors](#action-tensor)
   - [Numeric Actions](#numeric-actions)
+  - [Overview](#overview)
 
 
 ## Counterfactual Regret Minimization (CFR)
@@ -240,8 +241,13 @@ At this stage, we have the tensors `t_pck`, `t_lay`, `t_jck`, `t_kng`, `t_qun`, 
 </p>
 
 <p align="center">
-<img src="https://sinabaghal.github.io/files/pasur/tnum_3.png" width="110%" height="110%">
+<img src="https://sinabaghal.github.io/files/pasur/num_3.png" width="110%" height="110%">
 </p>
 
+### Overview
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/overview.png" width="110%" height="110%">
+</p>
 
 
