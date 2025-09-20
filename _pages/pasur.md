@@ -31,7 +31,7 @@ Utilities at terminal nodes are defined naturally via the game’s scoring syste
 Now, we are looking to find an optimal strategy for both players. Here by “optimal strategy,” we mean a Nash Equilibrium. This is a pair of strategies where no player can improve their payoff by changing their own strategy while the other keeps theirs fixed.
 
 <p align="left">
-<img src="https://sinabaghal.github.io/files/pasur/nash.png" width="80%" height="80%">
+<img src="https://sinabaghal.github.io/files/pasur/nash.png" width="90%" height="90%">
 </p>
 
 Next, we define something called instantaneous regret for each action. Instantaneous regret is defined as the counterfactual utility of that action minus the counterfactual utility of the current node. The definitions are written here. Counterfactual utility of a node is the probability of reaching that node—assuming the current player has purposefully reached that node—multiplied by the expected utility if play continues from that point. Counterfactual utility of an action is defined in the same way. 
