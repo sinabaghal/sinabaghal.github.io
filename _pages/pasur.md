@@ -49,6 +49,14 @@ The aim of this work is to run CFR on the Pasur game tree, which has a height of
 <img src="https://sinabaghal.github.io/files/pasur/pasur_game_tree.png" width="70%" height="70%">
 </p>
 
+Let me explain the game itself next! 
+
+Pasur is played in 6 rounds, and in each round each player is dealt 4 cards, which they play sequentially over 4 turns, taking turns one after another. At each turn, a player places a card face up and either lays it in the pool or collects it along with some other pool cards, according to the rule shown in this table. Figure below shows an example of the first turn by Alex and Bob.
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/ex.png" width="70%" height="70%">
+</p>
+
 
 <p align="center">
 <img src="https://sinabaghal.github.io/images/GT.png" width="80%" height="100%">
