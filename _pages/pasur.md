@@ -56,6 +56,17 @@ Pasur is played in 6 rounds, and in each round each player is dealt 4 cards, whi
 <img src="https://sinabaghal.github.io/files/pasur/ex.png" width="70%" height="70%">
 </p>
 
+Let me explain the rule and scoring system in more detail. If the played card is numeric, it can collect any subset of cards whose values add up to 11. If it is a Jack, it can collect all cards in the pool except for Kings and Queens. If it is a King, it can only collect a single King, and if it is a Queen, it can only collect a single Queen. 
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/rule.png" width="70%" height="70%">
+</p>
+
+At the end of the game, each player counts their score based on the cards they have collected, using the scoring system. The scoring system is as follows: any player with at least 7 clubs receives 7 points. Each Jack and each Ace is worth 1 point. There are also two key cards: the 10 of Diamonds, which is worth 3 points, and the 2 of Clubs, which is worth 2 points. 
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/score.png" width="70%" height="70%">
+</p>
 
 <p align="center">
 <img src="https://sinabaghal.github.io/images/GT.png" width="80%" height="100%">
