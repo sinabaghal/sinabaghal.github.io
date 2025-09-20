@@ -26,7 +26,6 @@ By strategy, we mean a probability distribution over the possible actions at eac
 <img src="https://sinabaghal.github.io/files/pasur/CFR_Tree.png" width="90%" height="90%">
 </p>
 
-
 Utilities at terminal nodes are defined naturally via the game’s scoring system. Utilities at other nodes is calculated via a backup pass. Notice that since we are in a zero-sum setting, the utilities of Alex and Bob always sum to zero at each node of the game tree. In other words, $$u_a$$ plus $$u_b$$ equals zero.
 
 Now, we are looking to find an optimal strategy for both players. Here by “optimal strategy,” we mean a Nash Equilibrium. This is a pair of strategies where no player can improve their payoff by changing their own strategy while the other keeps theirs fixed.
