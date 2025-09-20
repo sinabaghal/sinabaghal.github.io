@@ -182,7 +182,7 @@ Once `t_2x40` is obtained, we apply `torch.unique` without sorting to obtain `tu
 
 Afterward, we apply padding to restore all tensors to the original shape of `t_gme`. In other words, `tu_pck.shape[2] = t_gme.shape[2]`, and so on. Next, we reverse the unique operation. The details of this step are omitted here, but we refer you to the full paper for further explanation.  
 
-At this stage, we have the tensors `t_pck`, `t_lay`, `t_jck`, `t_kng`, `t_qun`, `c_pck`, `c_lay`, `c_jck`, `c_kng`, and `c_qun`. Finally, we concatenate the action tensors in such a way that all actions corresponding to each node of the game tree are grouped together. To achieve this, we concatenate these action tensors and then use the sorting indices obtained from the count tensors to shuffle the concatenated result, yielding `t_act`. Figure below, summerizes this operation. 
+At this stage, we have the tensors `t_pck`, `t_lay`, `t_jck`, `t_kng`, `t_qun`, `c_pck`, `c_lay`, `c_jck`, `c_kng`, and `c_qun`. Finally, we concatenate the action tensors in such a way that all actions corresponding to each node of the game tree are grouped together. To achieve this, we concatenate these action tensors and then use the sorting indices obtained from the count tensors to shuffle the concatenated result, yielding `t_act`. The figure below summarizes this operation. The branching factor `t_brf` is constructed as shown.
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/t_act_scheme.png" width="110%" height="110%">
