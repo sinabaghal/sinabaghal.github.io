@@ -43,7 +43,11 @@ CFR is a classic algorithm that provably converges to this Nash Equilibrium. The
 <img src="https://sinabaghal.github.io/files/pasur/cfr_algo.png" width="40%" height="40%">
 </p>
 
+The aim of this work is to run CFR on the Pasur game tree, which has a height of 48 and an average size of about 2 to the power of 30 nodes.
 
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/pasur_game_tree.png" width="40%" height="40%">
+</p>
 
 
 <p align="center">
