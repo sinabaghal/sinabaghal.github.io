@@ -133,3 +133,7 @@ Keeping track of inactive cards results in significant memory savings, as tensor
 Next, I will explain how game tensors are updated throughout the process. There are two types of updates: in-hand updates and between-hand updates.
 
 Let us begin with the in-hand updates. Consider the example above with two game nodes, where the inherited scores are 3 and 2. In this case, the count score tensor _c_scr_ is given by [3,2]. Assume further that the branching factors are 2 and 3; _t_brf_ ] [2,3]. This setup corresponds to the figure on the left-hand side. Observe the count score tensor alongside the branch factor tensor. The complete game tensor for the first row of the game tree is also displayed.
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/in_hand.png" width="80%" height="100%">
+</p>
