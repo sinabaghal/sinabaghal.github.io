@@ -32,7 +32,7 @@ Utilities at terminal nodes are defined naturally via the game’s scoring syste
 Now, we are looking to find an optimal strategy for both players. Here by “optimal strategy,” we mean a Nash Equilibrium. This is a pair of strategies where no player can improve their payoff by changing their own strategy while the other keeps theirs fixed.
 
 <p align="center">
-<img src="https://sinabaghal.github.io/files/pasur/nash.png" width="40%" height="40%">
+<img src="https://sinabaghal.github.io/files/pasur/nash.png" width="70%" height="70%">
 </p>
 
 Next, we define something called instantaneous regret for each action. Instantaneous regret is defined as the counterfactual utility of that action minus the counterfactual utility of the current node. The definitions are written here. Counterfactual utility of a node is the probability of reaching that node—assuming the current player has purposefully reached that node—multiplied by the expected utility if play continues from that point. Counterfactual utility of an action is defined in the same way. 
@@ -40,13 +40,13 @@ Next, we define something called instantaneous regret for each action. Instantan
 CFR is a classic algorithm that provably converges to this Nash Equilibrium. The idea of CFR is straightforward. We start with a uniform strategy, meaning each action is taken with equal probability. For example, if there are two actions, each one is chosen with probability 50%. At each iteration, we compute these instantaneous regrets for all nodes and store them. We then update the strategy by assigning probabilities to actions in proportion to the sum of all accumulated regrets up to the current iteration.  Finally, the output of CFR is the weighted average of all strategies observed so far, where the weights are given by the reach probabilities.
 
 <p align="center">
-<img src="https://sinabaghal.github.io/files/pasur/cfr_algo.png" width="40%" height="40%">
+<img src="https://sinabaghal.github.io/files/pasur/cfr_algo.png" width="70%" height="70%">
 </p>
 
 The aim of this work is to run CFR on the Pasur game tree, which has a height of 48 and an average size of about 2 to the power of 30 nodes.
 
 <p align="center">
-<img src="https://sinabaghal.github.io/files/pasur/pasur_game_tree.png" width="40%" height="40%">
+<img src="https://sinabaghal.github.io/files/pasur/pasur_game_tree.png" width="70%" height="70%">
 </p>
 
 
