@@ -23,7 +23,7 @@ I begin by explaining CFR. Suppose we have two players, Alex and Bob, who are pl
 By strategy, we mean a probability distribution over the possible actions at each node of the tree. For example, at the node denoted by B in the figure below, Bob has two actions where based on his current strategy, one action may be chosen with probability 20% (as shown) and the other with probability 80%. 
 
 <p align="center">
-<img src="https://sinabaghal.github.io/files/pasur/CFR_Tree.png" width="90%" height="90%">
+<img src="https://sinabaghal.github.io/files/pasur/CFR_Tree.png" width="110%" height="110%">
 </p>
 
 Utilities at terminal nodes are defined naturally via the game’s scoring system. Utilities at other nodes is calculated via a backup pass. Notice that since we are in a zero-sum setting, the utilities of Alex and Bob always sum to zero at each node of the game tree. In other words, $$u_a$$ plus $$u_b$$ equals zero.
