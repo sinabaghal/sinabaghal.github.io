@@ -74,7 +74,7 @@ Here is an example of a full game being played. Notice the 6 rounds, and the fac
 <img src="https://sinabaghal.github.io/files/pasur/full_game.png" width="90%" height="90%">
 </p>
 
-And this is a basic but key observation that we will use to represent the full game tree, which has on average 2 to the power of 30 nodes, in a more compact way. In other words, if for two terminal nodes of the k-th round the pool carried over to the next round is the same, and the accumulated scores for Alex and Bob up to that point are also the same, then we may potentially consider the resulting root node of the next round to be identical. Notice that the score data we need to keep track of includes the number of club cards held by Alex and Bob, as well as the point difference from the point cards. We also add an extra value to the score to record whether Alex or Bob has accumulated at least 7 clubs by that terminal node of the round. In that case, we reset the number of clubs for both players to zero and set this new index to 1 or 2, depending on whether Alex or Bob was the one who collected the 7 clubs.
+And below is a basic but key observation that we will use to represent the full game tree, which has on average 2 to the power of 30 nodes, in a more compact way. In other words, if for two terminal nodes of the k-th round the pool carried over to the next round is the same, and the accumulated scores for Alex and Bob up to that point are also the same, then we may potentially consider the resulting root node of the next round to be identical. Notice that the score data we need to keep track of includes the number of club cards held by Alex and Bob, as well as the point difference from the point cards. We also add an extra value to the score to record whether Alex or Bob has accumulated at least 7 clubs by that terminal node of the round. In that case, we reset the number of clubs for both players to zero and set this new index to 1 or 2, depending on whether Alex or Bob was the one who collected the 7 clubs.
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/idea.png" width="80%" height="80%">
@@ -94,4 +94,38 @@ The next figure shows the game tree of height 48. Notice that in the first round
 
 <p align="center">
 <img src="https://sinabaghal.github.io/images/GT.png" width="80%" height="100%">
+</p>
+
+At this stage, I need to explain several things, including how PyTorch tensors are used to represent game states. I also need to explain how these tensors are updated throughout the process.
+
+So let me explain the game state tensors. Each layer of the game tree is represented by a tensor of shape _M × 3 × m_. Here, _M_ is the number of nodes in that layer, and _m_ is the number of active cards. A card is inactive if it has not yet been played or if it has already been collected across all terminal nodes of the previous rounds.
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/map_idx.png" width="80%" height="100%">
+</p>
+
+So let’s look at a slice of a game tensor. Each slice corresponds to a node in the game tree and contains 3 rows. 
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/t_gme_0.png" width="80%" height="100%">
+</p>
+
+The first row encodes card ownership: 1 means Alex has the card, 2 means Bob has the card, and 3 means the pool contains the card. A value of 0 means the card has already been collected or is only active in another node of the game tree.
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/t_gme_01.png" width="80%" height="100%">
+</p>
+
+The second row encodes Alex’s action history. A value of 1 is added if a card is laid on his first turn, and 10 if it is picked on his first turn. Values of 2 and 20, 3 and 30, 4 and 40 are used similarly for the later turns.
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/t_gme_1.png" width="80%" height="100%">
+</p>
+
+Notice that a value of 41, for example, means the card was laid on the first turn and picked on the fourth turn. Similarly, a card that is laid and picked in the same turn can be identified by a value of 2 for that turn in the second row, while the corresponding value in the first row of the game tensor is 0.
+
+Keeping track of inactive cards results in significant memory savings, as tensor sizes are kept optimally small. We also maintain padding tensors to help consolidate different tensor shapes whenever needed.
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/dyn_shape.png" width="80%" height="100%">
 </p>
