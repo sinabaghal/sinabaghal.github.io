@@ -292,3 +292,25 @@ Finally, we update the running strategy. This is achieved using the `scatter_add
 </p>
 
 
+## Model 
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/bot_0.png" width="110%" height="110%">
+</p>
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/bot_1.png" width="110%" height="110%">
+</p>
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/bot_2.png" width="110%" height="110%">
+</p>
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/bot_3.png" width="110%" height="110%">
+</p>
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/bot_4.png" width="110%" height="110%">
+</p>
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/bot_5.png" width="110%" height="110%">
+</p>
+
+
