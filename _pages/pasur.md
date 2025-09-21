@@ -310,8 +310,56 @@ For each round, we compute the mean and standard deviation of the MSE distances.
 
 ## Model 
 
+The last step is to train a tree-based model to be used as an AI agent to play the game with. To this end, we need to train a model so that it takes in the FGT node and outputs the Nash strategies obtained above. In order to represent an FGT node, we need to encode the game state, which is a `3 × 52` tensor, as well as the score inherited from the previous round.  
+
+Notice that we added three columns `H`, `T`, and `P` to encode the game state: whose turn it is, which round it is, and whose turn it is to play. With this encoding, we require `163 = 3×52 + 4 + 3` features and one target value, namely $$\sigma$$. However, we manage to compress the game tensor data into a 52-sized tensor as explained below.  
+
+Each card within a single round has four possible states:  
+1. Not played yet.  
+2. Laid to the pool and not picked yet (one leg).  
+3. Laid and picked in the same turn.  
+4. Laid and picked at a later turn.  
+
+Based on this observation and using the difference tensor  `t_dff = t_gme[:,1,:]-t_gme[:,2,:]`, we manage to compress `t_gme` into `t_cmp` as detailed below.  
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/bot_0.png" width="110%" height="110%">
+</p>
+
+The detailed process to compute `t_cmp` is also illustrated below.  
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/bot_1.png" width="110%" height="110%">
+</p>
+
+This way, the resulting compressed tensor has the possible values with the interpretation explained below.  
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/bot_2.png" width="110%" height="110%">
+</p>
+
 
 <!-- This is a comment 
+
+
+For example, consider the following initial game start. 
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/bot_5.png" width="110%" height="110%">
+</p>
+
+The corresponding Nash strategies are computed as displayed below. 
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/bot_4.png" width="110%" height="110%">
+</p>
+
+Notice that we added in three columns `H`,`T`, and `P` to encode the game state, meaning whose turn is 
+
+
+
+
+
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/bot_0.png" width="110%" height="110%">
 </p>
@@ -330,9 +378,7 @@ For each round, we compute the mean and standard deviation of the MSE distances.
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/bot_4.png" width="110%" height="110%">
 </p>
-<p align="center">
-<img src="https://sinabaghal.github.io/files/pasur/bot_5.png" width="110%" height="110%">
-</p>
+
 
 ### Experiments
 
