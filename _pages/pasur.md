@@ -284,7 +284,7 @@ In the backward pass, we update the strategy. Recall that in CFR, strategies are
 Finally, we update the running strategy. This is achieved using the `scatter_add_` operator, ensuring proper accumulation across actions. Here, `TOL = 1e-5` is used to handle numerical stability. For this update, the FGT layer shapes and edge tensors `t_edg`, which were already computed in the forward pass, are required in GPU. Figure below describes this procedure. Figure below illustrates this process.
 
 <p align="center">
-<img src="https://sinabaghal.github.io/files/pasur/backward_pass_1.png" width="110%" height="110%">
+<img src="https://sinabaghal.github.io/files/pasur/backward_1.png" width="110%" height="110%">
 </p>
 
 
