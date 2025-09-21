@@ -313,5 +313,11 @@ Finally, we update the running strategy. This is achieved using the `scatter_add
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/bot_5.png" width="110%" height="110%">
 </p>
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/model_0.png" width="110%" height="110%">
+</p>
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/model_1.png" width="110%" height="110%">
+</p>
 
 
