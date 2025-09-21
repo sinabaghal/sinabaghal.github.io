@@ -267,5 +267,9 @@ We now explain how the CFR algorithm is implemented for a single round. The proc
 
 The figure below illustrates how these probabilities are calculated.
 
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/forward_pass.png" width="110%" height="110%">
+</p>
+
 
 In the backward pass, 
