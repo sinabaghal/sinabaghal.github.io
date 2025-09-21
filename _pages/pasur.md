@@ -22,7 +22,7 @@ The contents below are only a summary of what is discussed in the paper. Many de
 ## Table of Contents
 - [Counterfactual Regret Minimization (CFR)](#counterfactual-regret-minimization-(cfr))
 - [Pasur](#pasur)
-- [Folding](#folding)
+- [Unfolding Process](#unfolding-process)
 - [Pytorch Framework](#pytorch-framework)
   - [Game Tensor](#game-tensor)
   - [In-Hand Updates](#in-hand-updates)
@@ -96,7 +96,7 @@ Here is an example of a full game being played. Notice the `6` rounds, and the f
 <img src="https://sinabaghal.github.io/files/pasur/full_game.png" width="90%" height="90%">
 </p>
 
-## Folding
+## Unfolding Process
 
 And below is a basic but key observation that we will use to represent the full game tree, which has on average `2` to the power of `30` nodes, in a more compact way. In other words, if for two terminal nodes of the k-th round the pool carried over to the next round is the same, and the accumulated scores for Alex and Bob up to that point are also the same, then we may potentially consider the resulting root node of the next round to be identical. Notice that the score data we need to keep track of includes the number of club cards held by Alex and Bob, as well as the point difference from the point cards. We also add an extra value to the score to record whether Alex or Bob has accumulated at least `7` clubs by that terminal node of the round. In that case, we reset the number of clubs for both players to zero and set this new index to `1` or `2`, depending on whether Alex or Bob was the one who collected the `7` clubs.
 
