@@ -34,6 +34,7 @@ The contents below are only a summary of what is discussed in the paper. Many de
   - [Forward Pass](#forward-pass)
   - [Backward Pass](#backward-pass)
 - [Model](#model)
+  - [Experiments](#experiments)
 
 
 ## Counterfactual Regret Minimization (CFR)
@@ -313,6 +314,9 @@ Finally, we update the running strategy. This is achieved using the `scatter_add
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/bot_5.png" width="110%" height="110%">
 </p>
+
+### Experiments
+
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/model_0.png" width="110%" height="110%">
 </p>
