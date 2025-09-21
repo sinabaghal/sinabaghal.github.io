@@ -32,7 +32,8 @@ The contents below are only a summary of what is discussed in the paper. Many de
   - [Overview](#overview)
 - [CFR Implementation](#cfr-implementation)
   - [Forward Pass](#forward-pass)
-  - [Backward Pass](#backward-pass) 
+  - [Backward Pass](#backward-pass)
+- [Model](#model)
 
 
 ## Counterfactual Regret Minimization (CFR)
