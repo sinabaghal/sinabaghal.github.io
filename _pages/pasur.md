@@ -17,14 +17,7 @@ tags:
 
 This repository is dedicated to the paper [*Solving Pasur Using GPU-Accelerated Counterfactual Regret Minimization*](https://arxiv.org/abs/2508.06559). You can find the code for this project [**here**](https://github.com/sinabaghal/pasur). 
 
-The contents below are only a summary of what is discussed in the paper. Many details are omitted. To see the full details, please refer to the paper linked above. The content is organized as follows:
-
-1. An explanation of the CFR algorithm.
-2. An introduction to the card game of Pasur.
-3. A description of the GPU-friendly algorithm design for applying CFR to Pasur, along with key implementation details.
-4. Experimental results.
-5. Training a model to serve as an AI bot that can play the game with you.
-
+The contents below are only a summary of what is discussed in the paper. Many details are omitted. To see the full details, please refer to the paper linked above. 
 
 ## Table of Contents
 - [Counterfactual Regret Minimization (CFR)](#counterfactual-regret-minimization-(cfr))
