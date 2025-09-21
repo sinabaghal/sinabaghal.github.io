@@ -293,9 +293,28 @@ Finally, we update the running strategy. This is achieved using the `scatter_add
 <img src="https://sinabaghal.github.io/files/pasur/backward_2.png" width="110%" height="110%">
 </p>
 
+### Convergence 
+
+We examine the convergence behaviour of the CFR algorithm next. For this, we run CFR (a slightly modified version compared to the one described above; see the paper for full details) over 500 randomly generated decks.
+
+The experiments are done in two stages:
+
+1. The first run is used to obtain the Nash Equilibrium strategy.  
+2. The second run measures the mean squared error (MSE) distance to that strategy.  
+
+For each round, we compute the mean and standard deviation of the MSE distances. The plots below show these convergence statistics separately for each round.
+
+ <p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/cfr_cnv.png" width="110%" height="110%">
+</p>
 
 ## Model 
 
+
+<!-- This is a comment 
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/bot_0.png" width="110%" height="110%">
+</p>
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/bot_0.png" width="110%" height="110%">
 </p>
@@ -324,4 +343,4 @@ Finally, we update the running strategy. This is achieved using the `scatter_add
 <img src="https://sinabaghal.github.io/files/pasur/model_1.png" width="110%" height="110%">
 </p>
 
-
+-->
