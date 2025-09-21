@@ -30,6 +30,7 @@ The contents below are only a summary of what is discussed in the paper. Many de
   - [Action Tensors](#action-tensor)
   - [Numeric Actions](#numeric-actions)
   - [Overview](#overview)
+- [CFR Implementation](#cfr-implementation)
 
 
 ## Counterfactual Regret Minimization (CFR)
