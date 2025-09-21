@@ -31,6 +31,7 @@ The contents below are only a summary of what is discussed in the paper. Many de
   - [Numeric Actions](#numeric-actions)
   - [Overview](#overview)
 - [CFR Implementation](#cfr-implementation)
+  - [Forward Pass](#forward-pass) 
 
 
 ## Counterfactual Regret Minimization (CFR)
@@ -260,7 +261,11 @@ Once each round is calculated, the resulting tensors are passed to the CPU to be
 
 Next, we explain the details regarding the implementation of the CFR algorithm. The Nash strategies are obtained round by round, starting from the last round, namely round `6`. We first compute the utilities at the terminal nodes, and then derive the Nash strategies for the nodes within that round. In other words, starting from any root-level node of round `6`, we determine the optimal strategies by assuming a reach probability of `1` for each root-level node.  Once the utilities at the root nodes are computed, they are passed up to the previous round, with the running score from that round added to the utilities. These updated values serve as the terminal node utilities for that round, which are then used to compute the corresponding CFR strategies.
 
-We now explain how the CFR algorithm is implemented for a single round. The procedure consists of a forward phase and a backward phase. In the forward phase, we compute the reach probabilities. There are two types of reach probabilities to calculate:  
+We now explain how the CFR algorithm is implemented for a single round. The procedure consists of a forward phase and a backward phase.
+
+### Forward Pass
+
+In the forward phase, we compute the reach probabilities. There are two types of reach probabilities to calculate:  
 
 1. The probability that both players play according to the current strategy to reach a given node, denoted by $$\pi^{\sigma}$$.  
 2. The probability that, for a given node, the player whose turn it is purposefully reaches that node, denoted by $$\tilde{\pi}^{\sigma}$$.  
