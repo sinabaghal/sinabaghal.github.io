@@ -247,6 +247,10 @@ Once `t_hnd` is constructed, the lay cards are found using a simple `torch.relu(
 
 ### Overview
 
+The procedure explained above describes how to generate the game tree information. Its purpose is to produce data that represents the full game tree. This data is then used to run the CFR algorithm in order to obtain the Nash Equilibrium strategies. The figure below shows the scheme of the entire process. The tensors to be saved are the game tensor `t_gme`, score tensor `t_scr`, edge tensor `t_edg`, and the full game tensor `t_fgm`. It is also necessary to preserve the linkage between the FGT nodes across rounds, which is encoded in the `t_lnk` tensor.  
+
+Once each round is calculated, the resulting tensors are passed to the CPU to be used in the CFR algorithm. Note that CFR is applied round by round in reverse order. Therefore, we first pass the data for round `6` to the GPU; once CFR for round `6` is complete, those tensors can be removed from the GPU, and the data for round `5` is then transferred, and so on. This approach optimizes GPU memory usage. For more details, see the sections below.
+
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/overview.png" width="110%" height="110%">
 </p>
