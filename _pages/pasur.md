@@ -279,4 +279,13 @@ The figure below illustrates how these probabilities are calculated.
 
 ### Backward Pass
 
-In the backward pass, we update our strategy. Remember that in CFR, we initialize the startegies as uniform. We first need to compute the utilities at the terminal nodes of the last round. To this end, we utilize the score tensor `t_scr` and the link tensor `t_lnk` along with the running score tensor for the last layer of the last round. Notice that the `t_rus$$\otimes$$c_scr`
+In the backward pass, we update the strategy. Recall that in CFR, strategies are initialized uniformly. We begin by computing the utilities at the terminal nodes of the last round and to this end we pass `t_rus`, `c_scr`, and `t_scr` to the GPU to compute the utility tensor `t_utl`. We use the score tensor `t_scr`, the link tensor `t_lnk`, and the running score tensor `t_rus` corresponding to the last layer of the last round. To propagate the running score across all nodes of the FGT derived from the GT, we apply `repeat_interleave(t_rus, c_scr)`. This step unfolds the running scores in alignment with the structure of the FGT.  Once `t_utl` is obtained, utilities are propagated backward layer by layer to compute the action regret tensor `t_reg`.  Note that, the reach probabilities `t_ply` are used in this step to properly weight regrets. We also aggregate regrets by adding `t_reg` to the cumulative regret tensor `a_reg`.
+
+Finally, we update the running strategy. This is achieved using the `scatter_add_` operator, ensuring proper accumulation across actions. Here, `TOL = 1e-5` is used to handle numerical stability. For this update, the FGT layer shapes and edge tensors `t_edg`, which were already computed in the forward pass, are required in GPU. Figure below describes this procedure. Figure below illustrates this process.
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/backward_pass_1.png" width="110%" height="110%">
+</p>
+
+
+
