@@ -31,7 +31,8 @@ The contents below are only a summary of what is discussed in the paper. Many de
   - [Numeric Actions](#numeric-actions)
   - [Overview](#overview)
 - [CFR Implementation](#cfr-implementation)
-  - [Forward Pass](#forward-pass) 
+  - [Forward Pass](#forward-pass)
+  - [Backward Pass](#backward-pass) 
 
 
 ## Counterfactual Regret Minimization (CFR)
@@ -276,5 +277,6 @@ The figure below illustrates how these probabilities are calculated.
 <img src="https://sinabaghal.github.io/files/pasur/forward_pass.png" width="110%" height="110%">
 </p>
 
+### Backward Pass
 
-In the backward pass, 
+In the backward pass, we update our strategy. Remember that in CFR, we initialize the startegies as uniform. We first need to compute the utilities at the terminal nodes of the last round. To this end, we utilize the score tensor `t_scr` and the link tensor `t_lnk` along with the running score tensor for the last layer of the last round. Notice that the `t_rus$$\otimes$$c_scr`
