@@ -14,7 +14,8 @@ tags:
   - Artificial Intelligence
 ---
 
-
+ <br>
+ 
 This repository is dedicated to the paper [*Solving Pasur Using GPU-Accelerated Counterfactual Regret Minimization*](https://arxiv.org/abs/2508.06559). You can find the code for this project [**here**](https://github.com/sinabaghal/pasur). 
 
 The main aim of this work is to train an algorithm that can play the card game Pasur *optimally*.  The contents of this webpage provide only a summary of what is discussed in the paper, with many details omitted.  For the complete discussion, please refer to the paper linked above.
