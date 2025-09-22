@@ -362,9 +362,7 @@ We trained CFR for over 500 decks and obtained a table similar to the one above.
 <img src="https://sinabaghal.github.io/files/pasur/model_0.png" width="110%" height="110%">
 </p>
 
-It is interesting to observe that the fair value of the deck varies significantly across different deck formations.  
-We investigated this phenomenon and found that the variation is largely driven by the distribution of key cards.  
-For example, players holding more clubs or jacks have a higher chance of accumulating points.  
+It is interesting to observe that the fair value of the deck varies significantly across different deck formations.  I investigated this phenomenon and found that the variation is largely driven by the distribution of key cards.  For example, players holding more clubs or jacks have a higher chance of accumulating points.  
 
 The table below reflects this observation.  
 
