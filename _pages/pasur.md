@@ -30,6 +30,7 @@ The contents below are only a summary of what is discussed in the paper. Many de
   - [Action Tensors](#action-tensor)
   - [Numeric Actions](#numeric-actions)
   - [Overview](#overview)
+  - [External Sampling](#external-sampling)
 - [CFR Implementation](#cfr-implementation)
   - [Forward Pass](#forward-pass)
   - [Backward Pass](#backward-pass)
@@ -260,6 +261,17 @@ Once each round is calculated, the resulting tensors are passed to the CPU to be
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/overview.png" width="110%" height="110%">
 </p>
+
+### External Sampling 
+
+The current framework addresses the setting where both players are fully aware of each other’s hands.  To extend this to the more realistic and challenging case where players do not have access to the opponent’s hand information, we need to incorporate sampling techniques along with approaches such as Deep CFR.  For further details, see the Future Work section in the full paper.  Implementing this extension requires substantial computational resources.  
+
+Figure below describes the mechanism for external sampling. 
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/external_0.png" width="110%" height="110%">
+</p>
+
 
 ## CFR Implementation 
 
