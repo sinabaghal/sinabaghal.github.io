@@ -21,7 +21,7 @@ This repository is dedicated to the paper [*Solving Pasur Using GPU-Accelerated 
 The main aim of this work is to train an algorithm that can play the card game Pasur *optimally*.  The contents of this webpage provide only a summary of what is discussed in the paper, with many details omitted.  For the complete discussion, please refer to the paper linked above.
 
 ## Table of Contents
-- [Counterfactual Regret Minimization (CFR)](#counterfactual-regret-minimization-\(cfr\))
+- [Counterfactual Regret Minimization](#counterfactual-regret-minimization)
 - [Pasur](#pasur)
 - [Unfolding Process](#unfolding-process)
 - [Pytorch Framework](#pytorch-framework)
@@ -40,10 +40,10 @@ The main aim of this work is to train an algorithm that can play the card game P
   - [Experiments](#experiments)
 
 
-## Counterfactual Regret Minimization (CFR)
+## Counterfactual Regret Minimization
 
 
-I begin by explaining CFR. Suppose we have two players, Alex and Bob, who are playing a game and the corresponding game tree is shown here. The goal of the CFR algorithm is to find an optimal strategy for both players. 
+I begin by explaining Counterfactual Regret Minimization (CFR). Suppose we have two players, Alex and Bob, who are playing a game and the corresponding game tree is shown here. The goal of the CFR algorithm is to find an optimal strategy for both players. 
 
 By strategy, we mean a probability distribution over the possible actions at each node of the tree. For example, at the node denoted by B in the figure below, Bob has two actions where based on his current strategy, one action may be chosen with probability 20% (as shown) and the other with probability 80%. 
 
@@ -74,8 +74,6 @@ The aim of this work is to run CFR on the Pasur game tree, which has a height of
 </p>
 
 ## Pasur
-
-Let me explain the game itself next! 
 
 Pasur is played in `6` rounds, and in each round each player is dealt `4` cards, which they play sequentially over `4` turns, taking turns one after another. At each turn, a player places a card face up and either lays it in the pool or collects it along with some other pool cards, according to the rule shown in this table. Figure below shows an example of the first turn by Alex and Bob.
 
