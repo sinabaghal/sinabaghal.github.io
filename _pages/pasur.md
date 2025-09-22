@@ -35,6 +35,7 @@ The contents below are only a summary of what is discussed in the paper. Many de
   - [Backward Pass](#backward-pass)
 - [Model](#model)
   - [Example](#example)
+  - [Experiments](#experiments)
 
 
 ## Counterfactual Regret Minimization (CFR)
@@ -354,10 +355,21 @@ The Nash strategies obtained via CFR are displayed below.  Note that score-relat
 
 
 ### Experiments 
+
 We trained CFR for over 500 decks and obtained a table similar to the one above.  Next, we fit an XGBoost model to predict the $$\sigma$$ value.  The main advantage of this approach is that it enables large-scale self-play.  We use this to evaluate the performance of Nash strategies against each other as well as against a random player.  The figure below displays the performance comparison.  
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/model_0.png" width="110%" height="110%">
+</p>
+
+It is interesting to observe that the fair value of the deck varies significantly across different deck formations.  
+We investigated this phenomenon and found that the variation is largely driven by the distribution of key cards.  
+For example, players holding more clubs or jacks have a higher chance of accumulating points.  
+
+The table below reflects this observation.  
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/model_1.png" width="110%" height="110%">
 </p>
 
 <!-- This is a comment 
