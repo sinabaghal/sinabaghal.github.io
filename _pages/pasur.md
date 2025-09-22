@@ -352,6 +352,14 @@ The Nash strategies obtained via CFR are displayed below.  Note that score-relat
 <img src="https://sinabaghal.github.io/files/pasur/bot_4.png" width="110%" height="110%">
 </p>
 
+
+### Experiments 
+We trained CFR for over 500 decks and obtained a table similar to the one above.  Next, we fit an XGBoost model to predict the $$\sigma$$ value.  The main advantage of this approach is that it enables large-scale self-play.  We use this to evaluate the performance of Nash strategies against each other as well as against a random player.  The figure below displays the performance comparison.  
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/model_0.png" width="110%" height="110%">
+</p>
+
 <!-- This is a comment 
 
 
