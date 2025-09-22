@@ -343,7 +343,7 @@ This way, the resulting compressed tensor has the possible values with the inter
 Consider the game initialization described below.  
 
 <p align="center">
-<img src="https://sinabaghal.github.io/files/pasur/bot_5.png" width="80%" height="80%">
+<img src="https://sinabaghal.github.io/files/pasur/bot_5.png" width="50%" height="50%">
 </p>
 
 The Nash strategies obtained via CFR are displayed below.  Note that score-related columns are hidden here since they are all `0` in the first round.  
