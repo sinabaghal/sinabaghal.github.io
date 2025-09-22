@@ -21,7 +21,7 @@ This repository is dedicated to the paper [*Solving Pasur Using GPU-Accelerated 
 The main aim of this work is to train an algorithm that can play the card game Pasur *optimally*.  The contents of this webpage provide only a summary of what is discussed in the paper, with many details omitted.  For the complete discussion, please refer to the paper linked above.
 
 ## Table of Contents
-- [Counterfactual Regret Minimization (CFR)](#counterfactual-regret-minimization-(cfr))
+- [Counterfactual Regret Minimization (CFR)](#counterfactual-regret-minimization-\(cfr\))
 - [Pasur](#pasur)
 - [Unfolding Process](#unfolding-process)
 - [Pytorch Framework](#pytorch-framework)
