@@ -264,14 +264,19 @@ Once each round is calculated, the resulting tensors are passed to the CPU to be
 
 ### External Sampling 
 
-The current framework addresses the setting where both players are fully aware of each other’s hands.  To extend this to the more realistic and challenging case where players do not have access to the opponent’s hand information, we need to incorporate sampling techniques along with approaches such as Deep CFR.  For further details, see the Future Work section in the full paper.  Implementing this extension requires substantial computational resources.  
+The current framework addresses the setting where both players are fully aware of each other’s hands.  To extend this to the more realistic and challenging case where players do not have access to the opponent’s hand information, we need to incorporate sampling techniques along with approaches such as Deep CFR.  For further details, see the Future Work section in the full paper.  It is emphasized that implementing this extension requires substantial computational resources.  
 
-Figure below describes the mechanism for external sampling. 
+Figure below illustrates external sampling. 
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/external_0.png" width="110%" height="110%">
 </p>
 
+The figure below also illustrates the mechanism for external sampling.  Here, `c_edg` counts the number of edges for each GT node.  It can be obtained via `c_edg = t_brf ⊗ c_scr`.
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/external_1.png" width="110%" height="110%">
+</p>
 
 ## CFR Implementation 
 
