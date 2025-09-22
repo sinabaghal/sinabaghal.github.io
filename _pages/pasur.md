@@ -102,25 +102,25 @@ Here is an example of a full game being played. Notice the `6` rounds, and the f
 
 ## Unfolding Process
 
-And below is a basic but key observation that we will use to represent the full game tree, which has on average `2` to the power of `30` nodes, in a more compact way. In other words, if for two terminal nodes of the k-th round the pool carried over to the next round is the same, and the accumulated scores for Alex and Bob up to that point are also the same, then we may potentially consider the resulting root node of the next round to be identical. Notice that the score data we need to keep track of includes the number of club cards held by Alex and Bob, as well as the point difference from the point cards. We also add an extra value to the score to record whether Alex or Bob has accumulated at least `7` clubs by that terminal node of the round. In that case, we reset the number of clubs for both players to zero and set this new index to `1` or `2`, depending on whether Alex or Bob was the one who collected the `7` clubs.
+And below is a basic but key observation thatI will use to represent the full game tree, which has on average `2` to the power of `30` nodes, in a more compact way. In other words, if for two terminal nodes of the k-th round the pool carried over to the next round is the same, and the accumulated scores for Alex and Bob up to that point are also the same, then I may potentially consider the resulting root node of the next round to be identical. Notice that the score data I need to keep track of includes the number of club cards held by Alex and Bob, as well as the point difference from the point cards. I also add an extra value to the score to record whether Alex or Bob has accumulated at least `7` clubs by that terminal node of the round. In that case, I reset the number of clubs for both players to zero and set this new index to `1` or `2`, depending on whether Alex or Bob was the one who collected the `7` clubs.
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/idea.png" width="80%" height="80%">
 </p>
 
-Based on this observation, we represent each node of the full game tree using two tensors: one is the score tensor, and the other is the game state tensor. The game state consists of the cards held by Alex and Bob, the cards in the pool, and the action history within the round. Note that at the beginning of each round, the game state resets to only reflect the card status.
+Based on this observation, I represent each node of the full game tree using two tensors: one is the score tensor, and the other is the game state tensor. The game state consists of the cards held by Alex and Bob, the cards in the pool, and the action history within the round. Note that at the beginning of each round, the game state resets to only reflect the card status.
 
 ## Pytorch Framework
 
-This process is explained more clearly in the figure below. We represent the inherited scores from previous rounds using colored arrows going into a node. We call the left-hand side the Game Tree and the right-hand side the Full Game Tree. Notice that the branching factors are shown by the underlying lines. For example, here the branching factor is `[2, 3]`. 
+This process is explained more clearly in the figure below. I represent the inherited scores from previous rounds using colored arrows going into a node. I call the left-hand side the Game Tree and the right-hand side the Full Game Tree. Notice that the branching factors are shown by the underlying lines. For example, here the branching factor is `[2, 3]`. 
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/unfolding.png" width="110%" height="110%">
 </p>
 
-We need to explain the unfolding process—how to convert the Game Tree into the Full Game Tree. For now, let me mention the 4 main tensors used throughout. The first is the game tensor `t_gme`, which encodes the card states and action history within each round. The second is the score tensor `t_scr`, which encodes all the unique scores inherited from previous rounds. And finally, the Full Game Tree tensor, `t_fgm`, where a `[g, s]` entry means that the g-th row of the Game Tree has inherited the s-th score from `t_scr`. Connections between the layers of the Full Game Tree are also encoded in the `t_edg` tensor, as shown in the figure above.
+I need to explain the unfolding process—how to convert the Game Tree into the Full Game Tree. For now, let me mention the 4 main tensors used throughout. The first is the game tensor `t_gme`, which encodes the card states and action history within each round. The second is the score tensor `t_scr`, which encodes all the unique scores inherited from previous rounds. And finally, the Full Game Tree tensor, `t_fgm`, where a `[g, s]` entry means that the g-th row of the Game Tree has inherited the s-th score from `t_scr`. Connections between the layers of the Full Game Tree are also encoded in the `t_edg` tensor, as shown in the figure above.
 
-The next figure shows the game tree of height 48. Notice that in the first round, all the incoming arrows are colored red, because at the start of the game all scores are identically zero. In other words, nobody has collected any cards at that point. Throughout, we refer to this as the Game Tree (GT) and the Pasur Full Game Tree as shown above the Full Game Tree (FGT). Note that FGT is preserved through the full game tensor `t_fgm` and also the score tensor `t_scr`. 
+The next figure shows the game tree of height 48. Notice that in the first round, all the incoming arrows are colored red, because at the start of the game all scores are identically zero. In other words, nobody has collected any cards at that point. Throughout, I refer to this as the Game Tree (GT) and the Pasur Full Game Tree as shown above the Full Game Tree (FGT). Note that FGT is preserved through the full game tensor `t_fgm` and also the score tensor `t_scr`. 
 
 <p align="center">
 <img src="https://sinabaghal.github.io/images/GT.png" width="100%" height="100%">
@@ -156,7 +156,7 @@ The second row encodes Alex’s action history. A value of 1 is added if a card 
 
 Notice that a value of 41, for example, means the card was laid on the first turn and picked on the fourth turn. Similarly, a card that is laid and picked in the same turn can be identified by a value of 2 for that turn in the second row, while the corresponding value in the first row of the game tensor is 0.
 
-Keeping track of inactive cards results in significant memory savings, as tensor sizes are kept optimally small. We also maintain padding tensors to help consolidate different tensor shapes whenever needed.
+Keeping track of inactive cards results in significant memory savings, as tensor sizes are kept optimally small. I also maintain padding tensors to help consolidate different tensor shapes whenever needed.
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/dyn_shape.png" width="80%" height="100%">
@@ -176,19 +176,19 @@ Here, the $$\otimes$$ notation refers to the PyTorch repeat_interleave operation
 
 A simple inspection shows that the edge tensor is constructed using the displayed formula via the repeat-blocks process. Block sizes are determined by the count score tensor, and the repeat tensor is given by the branching factor. The first block `[0, 1, 2]` is repeated twice, while the last block `[3, 4]` is repeated three times, since its branching factor is `3`. Similarly, column 1 of the FGT is updated. Recall that this column encodes the color of each node in the FGT. 
 
-After these two updates, we proceed to update column 0 of the FGT tensor. Before doing so, the count score and branching factor are updated. Note that the actions will be applied to the game tensor at a later stage.
+After these two updates, I proceed to update column 0 of the FGT tensor. Before doing so, the count score and branching factor are updated. Note that the actions will be applied to the game tensor at a later stage.
 
 ### Between-Hand Updates
 
-Now we explain the between-hand updates. Remember that at the end of each round, the pool and the inherited scores are the only items that matter. We discard all other information in the game tensor except for the pool formation. We then find the unique pool formations using `torch.unique`. Notice that there is no need to sort the output, but we do need to record the inverse mapping from the unique operation. We apply the same procedure for the running score tensor `t_rus`.
+Now I explain the between-hand updates. Remember that at the end of each round, the pool and the inherited scores are the only items that matter. I discard all other information in the game tensor except for the pool formation. I then find the unique pool formations using `torch.unique`. Notice that there is no need to sort the output, but I do need to record the inverse mapping from the unique operation. I apply the same procedure for the running score tensor `t_rus`.
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/bet_hand_0.png" width="110%" height="110%">
 </p>
 
-We find the new set of unique scores to be inherited by the nodes of the next round. At each node of the full game tree, we currently have two scores: one inherited from previous rounds, recorded in column 1 of the full game tensor, and the other being the running score accumulated during the current round. The resulting pair is encoded in the tensor shown here. We then apply a unique operation on this set of pairs, sum the corresponding scores, and apply unique again to determine the set of scores to be passed to the next round.
+I find the new set of unique scores to be inherited by the nodes of the next round. At each node of the full game tree, I currently have two scores: one inherited from previous rounds, recorded in column 1 of the full game tensor, and the other being the running score accumulated during the current round. The resulting pair is encoded in the tensor shown here. We then apply a unique operation on this set of pairs, sum the corresponding scores, and apply unique again to determine the set of scores to be passed to the next round.
 
-Finally, we establish the linkage between the two rounds for the full game tree. To do this, we first determine the pair index and then locate where that pair is mapped inside the score tensor. Similarly, the index of the game state can be found, as shown in the second-to-last line of the displayed code snippet.
+Finally, I establish the linkage between the two rounds for the full game tree. To do this, I first determine the pair index and then locate where that pair is mapped inside the score tensor. Similarly, the index of the game state can be found, as shown in the second-to-last line of the displayed code snippet.
 
 The game tensor is then populated using the newly dealt cards at the root level of the next round, while the full game tensor already reflects the unfolding process for that root level.
 
@@ -197,7 +197,7 @@ The game tensor is then populated using the newly dealt cards at the root level 
 </p>
 
 
-Notice that the linkage tensor is used to propagate back the utilities computed for each full game tree during the CFR algorithm. Since CFR is trained on the full game tree, we need to pass back the calculated utilities from the root level of each round to the terminal level of the preceding round.
+Notice that the linkage tensor is used to propagate back the utilities computed for each full game tree during the CFR algorithm. Since CFR is trained on the full game tree, I need to pass back the calculated utilities from the root level of each round to the terminal level of the preceding round.
 
 ### Action Tensor
 
@@ -208,19 +208,19 @@ Next, I explain how the action tensor is constructed. Note that the inherited sc
 <img src="https://sinabaghal.github.io/files/pasur/t_act.png" width="110%" height="110%">
 </p>
 
-Once the action tensor   `t_act` is obtained, the game tensor `t_gme` is constructed as follows. We first identify the pick actions, meaning those in which at least one card from the pool is selected. According to the rules of the game, whenever such a pick occurs, both the laid card and the selected pool cards are collected by the player. If no pick occurs, the laid card is simply added to the pool and removed from the player’s hand.  `t_act[*,1:2,:]` is updated via the procedure explained above, that is lay (weighted by `i_trn+1`) plus pick (weighted by `10 x (i_trn+1)`).
+Once the action tensor   `t_act` is obtained, the game tensor `t_gme` is constructed as follows. I first identify the pick actions, meaning those in which at least one card from the pool is selected. According to the rules of the game, whenever such a pick occurs, both the laid card and the selected pool cards are collected by the player. If no pick occurs, the laid card is simply added to the pool and removed from the player’s hand.  `t_act[*,1:2,:]` is updated via the procedure explained above, that is lay (weighted by `i_trn+1`) plus pick (weighted by `10 x (i_trn+1)`).
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/t_act_1.png" width="110%" height="110%">
 </p>
 
-Actions are divided into four categories: Numeric, Jack, King, and Queen actions. For example, since numeric actions do not involve face cards, when constructing them we filter the input game tensor to mask out all cards that are not numeric. We denote the resulting tensor as `t_2x40`. Note that, due to the dynamic shaping discussed earlier, `t_2x40` does not necessarily have shape 40; the notation is used for clarity.  
+Actions are divided into four categories: Numeric, Jack, King, and Queen actions. For example, since numeric actions do not involve face cards, when constructing them I filter the input game tensor to mask out all cards that are not numeric. I denote the resulting tensor as `t_2x40`. Note that, due to the dynamic shaping discussed earlier, `t_2x40` does not necessarily have shape 40; the notation is used for clarity.  
 
-Once `t_2x40` is obtained, we apply `torch.unique` without sorting to obtain `tu_2x40`, while also recording the reverse indices. For numeric actions in particular, we separate pick and lay actions and construct the resulting action tensors individually. These action tensors are denoted by `tu_pck` and `tu_lay`, along with the corresponding count tensors `cu_pck` and `cu_lay`. Similarly, we obtain `tu_jck`, `tu_kng`, `tu_qun`, `cu_jck`, `cu_kng`, and `cu_qun`.  
+Once `t_2x40` is obtained, I apply `torch.unique` without sorting to obtain `tu_2x40`, while also recording the reverse indices. For numeric actions in particular, I separate pick and lay actions and construct the resulting action tensors individually. These action tensors are denoted by `tu_pck` and `tu_lay`, along with the corresponding count tensors `cu_pck` and `cu_lay`. Similarly, I obtain `tu_jck`, `tu_kng`, `tu_qun`, `cu_jck`, `cu_kng`, and `cu_qun`.  
 
-Afterward, we apply padding to restore all tensors to the original shape of `t_gme`. In other words, `tu_pck.shape[2] = t_gme.shape[2]`, and so on. Next, we reverse the unique operation. The details of this step are omitted here, but we refer you to the full paper for further explanation.  
+Afterward, I apply padding to restore all tensors to the original shape of `t_gme`. In other words, `tu_pck.shape[2] = t_gme.shape[2]`, and so on. Next, I reverse the unique operation. The details of this step are omitted here, but I refer you to the full paper for further explanation.  
 
-At this stage, we have the tensors `t_pck`, `t_lay`, `t_jck`, `t_kng`, `t_qun`, `c_pck`, `c_lay`, `c_jck`, `c_kng`, and `c_qun`. Finally, we concatenate the action tensors in such a way that all actions corresponding to each node of the game tree are grouped together. To achieve this, we concatenate these action tensors and then use the sorting indices obtained from the count tensors to shuffle the concatenated result, yielding `t_act`. The figure below summarizes this operation. The branching factor `t_brf` is constructed as shown.
+At this stage, I have the tensors `t_pck`, `t_lay`, `t_jck`, `t_kng`, `t_qun`, `c_pck`, `c_lay`, `c_jck`, `c_kng`, and `c_qun`. Finally, I concatenate the action tensors in such a way that all actions corresponding to each node of the game tree are grouped together. To achieve this, I concatenate these action tensors and then use the sorting indices obtained from the count tensors to shuffle the concatenated result, yielding `t_act`. The figure below summarizes this operation. The branching factor `t_brf` is constructed as shown.
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/t_act_scheme.png" width="110%" height="110%">
@@ -228,19 +228,19 @@ At this stage, we have the tensors `t_pck`, `t_lay`, `t_jck`, `t_kng`, `t_qun`, 
 
 ### Numeric Actions
 
-We explain how the numeric actions are constructed. The construction of king, queen, or jack actions is not discussed here; for those details, we refer the reader to the full paper. To find the numeric actions, we first construct an auxiliary tensor `t_40x2764`, where each column represents a unique possible action. This can be done using a simple Subset Sum Problem application. We also create another auxiliary tensor `t_tuples`, where the `k`-th column is `[1, q]`, with `q+1` being the number of cards used in the `k`-th action. See figure below.
+I explain how the numeric actions are constructed. The construction of king, queen, or jack actions is not discussed here; for those details, I refer the reader to the full paper. To find the numeric actions, I first construct an auxiliary tensor `t_40x2764`, where each column represents a unique possible action. This can be done using a simple Subset Sum Problem application. I also create another auxiliary tensor `t_tuples`, where the `k`-th column is `[1, q]`, with `q+1` being the number of cards used in the `k`-th action. See figure below.
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/num_0.png" width="110%" height="110%">
 </p>
 
-We can now easily determine whether action `k` is available for node `i` of tensor `t_2x40`. To do this, we compute `t_tuples - matmul(t_2x40, t_40x2764)`. The resulting tensor has shape `Mx2x2764`, and its `[i,:,k]`-th column is `0` if and only if the `k`-th action is available for node `i`.
+I can now easily determine whether action `k` is available for node `i` of tensor `t_2x40`. To do this, I compute `t_tuples - matmul(t_2x40, t_40x2764)`. The resulting tensor has shape `Mx2x2764`, and its `[i,:,k]`-th column is `0` if and only if the `k`-th action is available for node `i`.
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/num_1.png" width="110%" height="110%">
 </p>
 
-Next, we construct a tensor based on the pick action tensor `t_pck`, where each column corresponds to a node and each value represents the number of pick actions involving a specific card. We denote this tensor by `t_hnd`. The tensor `t_hnd` is then used to determine the available lay actions.
+Next, I construct a tensor based on the pick action tensor `t_pck`, where each column corresponds to a node and each value represents the number of pick actions involving a specific card. I denote this tensor by `t_hnd`. The tensor `t_hnd` is then used to determine the available lay actions.
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/num_2.png" width="110%" height="110%">
@@ -256,7 +256,7 @@ Once `t_hnd` is constructed, the lay cards are found using a simple `torch.relu(
 
 The procedure explained above describes how to generate the game tree information. Its purpose is to produce data that represents the full game tree. This data is then used to run the CFR algorithm in order to obtain the Nash Equilibrium strategies. The figure below shows the scheme of the entire process. The tensors to be saved are the game tensor `t_gme`, score tensor `t_scr`, edge tensor `t_edg`, and the full game tensor `t_fgm`. It is also necessary to preserve the linkage between the FGT nodes across rounds, which is encoded in the `t_lnk` tensor.  
 
-Once each round is calculated, the resulting tensors are passed to the CPU to be used in the CFR algorithm. Note that CFR is applied round by round in reverse order. Therefore, we first pass the data for round `6` to the GPU; once CFR for round `6` is complete, those tensors can be removed from the GPU, and the data for round `5` is then transferred, and so on. This approach optimizes GPU memory usage. For more details, see the sections below.
+Once each round is calculated, the resulting tensors are passed to the CPU to be used in the CFR algorithm. Note that CFR is applied round by round in reverse order. Therefore, I first pass the data for round `6` to the GPU; once CFR for round `6` is complete, those tensors can be removed from the GPU, and the data for round `5` is then transferred, and so on. This approach optimizes GPU memory usage. For more details, see the sections below.
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/overview.png" width="110%" height="110%">
@@ -280,13 +280,13 @@ The figure below also illustrates the mechanism for external sampling.  Here, `c
 
 ## CFR Implementation 
 
-Next, we explain the details regarding the implementation of the CFR algorithm. The Nash strategies are obtained round by round, starting from the last round, namely round `6`. We first compute the utilities at the terminal nodes, and then derive the Nash strategies for the nodes within that round. In other words, starting from any root-level node of round `6`, we determine the optimal strategies by assuming a reach probability of `1` for each root-level node.  Once the utilities at the root nodes are computed, they are passed up to the previous round, with the running score from that round added to the utilities. These updated values serve as the terminal node utilities for that round, which are then used to compute the corresponding CFR strategies.
+Next, I explain the details regarding the implementation of the CFR algorithm. The Nash strategies are obtained round by round, starting from the last round, namely round `6`. I first compute the utilities at the terminal nodes, and then derive the Nash strategies for the nodes within that round. In other words, starting from any root-level node of round `6`, I determine the optimal strategies by assuming a reach probability of `1` for each root-level node.  Once the utilities at the root nodes are computed, they are passed up to the previous round, with the running score from that round added to the utilities. These updated values serve as the terminal node utilities for that round, which are then used to compute the corresponding CFR strategies.
 
-We now explain how the CFR algorithm is implemented for a single round. The procedure consists of a forward phase and a backward phase.
+I now explain how the CFR algorithm is implemented for a single round. The procedure consists of a forward phase and a backward phase.
 
 ### Forward Pass
 
-In the forward phase, we compute the reach probabilities. There are two types of reach probabilities to calculate:  
+In the forward phase, I compute the reach probabilities. There are two types of reach probabilities to calculate:  
 
 1. The probability that both players play according to the current strategy to reach a given node, denoted by $$\pi^{\sigma}$$.  
 2. The probability that, for a given node, the player whose turn it is purposefully reaches that node, denoted by $$\tilde{\pi}^{\sigma}$$.  
@@ -299,13 +299,13 @@ The figure below illustrates how these probabilities are calculated.
 
 ### Backward Pass
 
-In the backward pass, we update the strategy. Recall that in CFR, strategies are initialized uniformly. We begin by computing the utilities at the terminal nodes of the last round and to this end we pass `t_rus`, `c_scr`, and `t_scr` to the GPU to compute the utility tensor `t_utl`. We use the score tensor `t_scr`, the link tensor `t_lnk`, and the running score tensor `t_rus` corresponding to the last layer of the last round. To propagate the running score across all nodes of the FGT derived from the GT, we apply `repeat_interleave(t_rus, c_scr)`. This step unfolds the running scores in alignment with the structure of the FGT.  Once `t_utl` is obtained, utilities are propagated backward layer by layer to compute the action regret tensor `t_reg`.  Note that, the reach probabilities `t_ply` are used in this step to properly weight regrets. We also aggregate regrets by adding `t_reg` to the cumulative regret tensor `a_reg`. Figure below illustrates this process.
+In the backward pass, I update the strategy. Recall that in CFR, strategies are initialized uniformly. I begin by computing the utilities at the terminal nodes of the last round and to this end I pass `t_rus`, `c_scr`, and `t_scr` to the GPU to compute the utility tensor `t_utl`. I use the score tensor `t_scr`, the link tensor `t_lnk`, and the running score tensor `t_rus` corresponding to the last layer of the last round. To propagate the running score across all nodes of the FGT derived from the GT, I apply `repeat_interleave(t_rus, c_scr)`. This step unfolds the running scores in alignment with the structure of the FGT.  Once `t_utl` is obtained, utilities are propagated backward layer by layer to compute the action regret tensor `t_reg`.  Note that, the reach probabilities `t_ply` are used in this step to properly weight regrets. I also aggregate regrets by adding `t_reg` to the cumulative regret tensor `a_reg`. Figure below illustrates this process.
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/backward_1.png" width="110%" height="110%">
 </p>
 
-Finally, we update the running strategy. This is achieved using the `scatter_add_` operator, ensuring proper accumulation across actions. Here, `TOL = 1e-5` is used to handle numerical stability. For this update, the FGT layer shapes and edge tensors `t_edg`, which were already passed to the GPU are required. Figure below illustrates this process.
+Finally, I update the running strategy. This is achieved using the `scatter_add_` operator, ensuring proper accumulation across actions. Here, `TOL = 1e-5` is used to handle numerical stability. For this update, the FGT layer shapes and edge tensors `t_edg`, which were already passed to the GPU are required. Figure below illustrates this process.
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/backward_2.png" width="110%" height="110%">
@@ -313,14 +313,14 @@ Finally, we update the running strategy. This is achieved using the `scatter_add
 
 ### Convergence 
 
-We examine the convergence behaviour of the CFR algorithm next. For this, we run CFR (a slightly modified version compared to the one described above; see the paper for full details) over 500 randomly generated decks.
+I examine the convergence behaviour of the CFR algorithm next. For this, I run CFR (a slightly modified version compared to the one described above; see the paper for full details) over 500 randomly generated decks.
 
 The experiments are done in two stages:
 
 1. The first run is used to obtain the Nash Equilibrium strategy.  
 2. The second run measures the mean squared error (MSE) distance to that strategy.  
 
-For each round, we compute the mean and standard deviation of the MSE distances. The plots below show these convergence statistics separately for each round.
+For each round, I compute the mean and standard deviation of the MSE distances. The plots below show these convergence statistics separately for each round.
 
  <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/cfr_cnv.png" width="110%" height="110%">
@@ -328,9 +328,9 @@ For each round, we compute the mean and standard deviation of the MSE distances.
 
 ## Model 
 
-The last step is to train a tree-based model to be used as an AI agent to play the game with. To this end, we need to train a model so that it takes in the FGT node and outputs the Nash strategies obtained above. In order to represent an FGT node, we need to encode the game state, which is a `3 × 52` tensor, as well as the score inherited from the previous round.  
+The last step is to train a tree-based model to be used as an AI agent to play the game with. To this end, I need to train a model so that it takes in the FGT node and outputs the Nash strategies obtained above. In order to represent an FGT node, I need to encode the game state, which is a `3 × 52` tensor, as well as the score inherited from the previous round.  
 
-Notice that we added three columns `H`, `T`, and `P` to encode the game state: whose turn it is, which round it is, and whose turn it is to play. With this encoding, we require `163 = 3×52 + 4 + 3` features and one target value, namely $$\sigma$$. However, we manage to compress the game tensor data into a 52-sized tensor as explained below.  
+Notice that I added three columns `H`, `T`, and `P` to encode the game state: whose turn it is, which round it is, and whose turn it is to play. With this encoding, I require `163 = 3×52 + 4 + 3` features and one target value, namely $$\sigma$$. However, I manage to compress the game tensor data into a 52-sized tensor as explained below.  
 
 Each card within a single round has four possible states:  
 1. Not played yet.  
@@ -338,7 +338,7 @@ Each card within a single round has four possible states:
 3. Laid and picked in the same turn.  
 4. Laid and picked at a later turn.  
 
-Based on this observation and using the difference tensor  `t_dff = t_gme[:,1,:]-t_gme[:,2,:]`, we manage to compress `t_gme` into `t_cmp` as detailed below.  
+Based on this observation and using the difference tensor  `t_dff = t_gme[:,1,:]-t_gme[:,2,:]`, I manage to compress `t_gme` into `t_cmp` as detailed below.  
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/bot_0.png" width="110%" height="110%">
