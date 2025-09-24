@@ -298,17 +298,24 @@ The figure below illustrates how these probabilities are calculated.
 
 ### Backward Pass
 
-In the backward pass, I update the strategy. Recall that in CFR, strategies are initialized uniformly. I begin by computing the utilities at the terminal nodes of the last round and to this end I pass `t_rus`, `c_scr`, and `t_scr` to the GPU to compute the utility tensor `t_utl`. I use the score tensor `t_scr`, the link tensor `t_lnk`, and the running score tensor `t_rus` corresponding to the last layer of the last round. To propagate the running score across all nodes of the FGT derived from the GT, I apply `repeat_interleave(t_rus, c_scr)`. This step unfolds the running scores in alignment with the structure of the FGT.  Once `t_utl` is obtained, utilities are propagated backward layer by layer to compute the action regret tensor `t_reg`.  Note that, the reach probabilities `t_ply` are used in this step to properly weight regrets. I also aggregate regrets by adding `t_reg` to the cumulative regret tensor `a_reg`. Figure below illustrates this process.
+In the backward pass, I update the strategy and utility. Recall that in CFR, strategies are initialized uniformly. I begin by computing the utilities at the terminal nodes of the last round and to this end I pass `t_rus`, `c_scr`, and `t_scr` to the GPU to compute the utility tensor `t_utl`. I use the score tensor `t_scr`, the link tensor `t_lnk`, and the running score tensor `t_rus` corresponding to the last layer of the last round. To propagate the running score across all nodes of the FGT derived from the GT, I apply `repeat_interleave(t_rus, c_scr)`. This step unfolds the running scores in alignment with the structure of the FGT.  Once `t_utl` is obtained, utilities are propagated backward layer by layer to compute the action regret tensor `t_reg`.  Note that, the reach probabilities `t_ply` are used in this step to properly weight regrets. I also aggregate regrets by adding `t_reg` to the cumulative regret tensor `a_reg`. Figure below illustrates an overview of this process.
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/backward_1.png" width="110%" height="110%">
 </p>
 
-Finally, I update the running strategy. This is achieved using the `scatter_add_` operator, ensuring proper accumulation across actions. Here, `TOL = 1e-5` is used to handle numerical stability. For this update, the FGT layer shapes and edge tensors `t_edg`, which were already passed to the GPU are required. Figure below illustrates this process.
+Figure below also shows how `t_utl` is updated. Note that the computed `t_utl` values for the root-level nodes are accumulated inside the `a_utl` tensor, which is then passed to the terminal nodes of the previous round.
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/pasur/update_tutil.png" width="110%" height="110%">
+</p>
+
+Finally, the running strategy is updated via a simple use of the `scatter_add_` operator, ensuring proper accumulation across actions. Here, `TOL = 1e-5` is used to handle numerical stability. For this update, the FGT layer shapes and edge tensors `t_edg`, which were already passed to the GPU are required. Figure below illustrates this process.
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/pasur/backward_2.png" width="110%" height="110%">
 </p>
+
 
 ### Convergence 
 
