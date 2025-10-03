@@ -27,5 +27,5 @@ $$
 where $$0 \leq \gamma < 1$$ is a discount factor. Notice that:  
 
 - More weight is placed on earlier steps due to the discount factor $$\gamma^t$$.  
-- The objective $$\mathbb{E}_{\pi_\theta}\!\left[\sum_{t=0}^\infty \gamma^t r(s_t, a_t)\right]$$ is a smooth function of $$\theta$$,  
+- The objective $$\mathbb{E}_{\pi_\theta}$$ is a smooth function of $$\theta$$,  
   even though the reward function $$r$$ itself may be non-smooth (e.g., $$r \in \{\pm 1\}$$).
