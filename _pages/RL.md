@@ -50,6 +50,12 @@ $$
 \Pr_{s_t \sim p_{\text{train}}}\big[\pi_\theta(s_t) \neq \pi^*(s_t)\big] \leq \epsilon.
 $$
 
+Based on this, write 
+
+
+$$
+p_{\theta}(s_t) = (1-\epsilon)^t p_{\text{train}}(s_t)+(1-(1-\epsilon)^t)p_{\text{mistake}}(s_t)
+$$
 
 
 
