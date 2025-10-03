@@ -16,7 +16,7 @@ This tutorial provides an introduction to the fundamentals of reinforcement lear
 
 In reinforcement learning, there is an _agent_ and an _environment_.  At time step $$t$$, the state is denoted by $$s_t$$.  Given state $$s_t$$, the agent takes an action $$a_t$$ resulting in a reward value $$r_t := r(s_t, a_t)$$.  
 
-The agent’s decision-making is parameterized by a policy $$\pi_\theta$$,  where $$\pi_\theta(\cdot \mid s_t)$$ defines a probability distribution over possible actions at time $$t$$,  given the state $$s_t$$.  
+Agent’s _policy_ is parameterized by $$\pi_\theta$$,  where $$\pi_\theta(\cdot \mid s_t)$$ defines a probability distribution over possible actions at time $$t$$,  given the state $$s_t$$.  
 
 The goal of an RL algorithm is to maximize the _expected cumulative reward_:  
 
@@ -28,6 +28,7 @@ where $$0 \leq \gamma < 1$$ is a discount factor. Notice that:
 
 - More weight is placed on earlier steps. 
 - The objective $$\mathbb{E}_{\pi_\theta}$$ is a smooth function of $$\theta$$, even though the reward function $$r$$ itself may be non-smooth (e.g., $$r \in \{\pm 1\}$$).
+- $s_t$ is independent of $$s_{t-1}$$ (_Markov Property_)
 
 <br>
 
@@ -36,3 +37,5 @@ where $$0 \leq \gamma < 1$$ is a discount factor. Notice that:
 </p>
 
 <br>
+
+
