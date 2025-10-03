@@ -12,6 +12,7 @@ This tutorial provides an introduction to the fundamentals of reinforcement lear
 ## Table of Contents
 - [Goal of RL](#goal_of_rl)
 - [Imitation Learning](#imitation_learning)
+- [Markov Decision Process](#markov_decision_process)
 
 ## Goal of RL
 
@@ -75,5 +76,8 @@ $$
 
 This bound is achieved in the _tightrope walking_ problem, where the agent must learn to go straight; otherwise, it will enter unknown territory. Imitation learning can still be useful with some modifications, such as including bad actions along with corrective steps to be taken afterward.
 
+## Markov Decision Process 
+
+A _Markov Decision Process_ (MDP) consists of a _state space_ $$\mathcal{S}$$ and an _action space_ $$\mathcal{A}$$,  along with a _transition operator_ $$\mathcal{T}$$ and a _reward function_  $$r : \mathcal{S} \times \mathcal{A} \to \mathbb{R}_+$$
 
 
