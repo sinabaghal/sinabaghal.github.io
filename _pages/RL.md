@@ -11,6 +11,7 @@ This tutorial provides an introduction to the fundamentals of reinforcement lear
 
 ## Table of Contents
 - [Goal of RL](#goal_of_rl)
+- [Imitation Learning](#imitation_learning)
 
 ## Goal of RL
 
@@ -27,7 +28,7 @@ Agent’s _policy_ is parameterized by $$\pi_\theta$$,  where $$\pi_\theta(\cdot
 The goal of an RL algorithm is to maximize the _expected cumulative reward_:  
 
 $$
-\text{argmax}_\theta \mathbb{E}_{\pi_\theta} \left[ \sum_{t=0}^\infty \gamma^t r(s_t, a_t) \right],
+\text{argmax}_\theta \mathbb{E}_{\pi_\theta} \left[ \sum_{t=0}^T \gamma^t r(s_t, a_t) \right],
 $$
 
 where $$0 \leq \gamma < 1$$ is a discount factor. Notice that:  
@@ -44,6 +45,8 @@ Graphical model below describes the relationships between states and actions:
 </p>
 <br>
 
+## Imitation Learning
+
 The analogous concept in reinforcement learning, compared to supervised learning, is called _imitation learning_, where the agent learns by mimicking expert actions.  However, imitation learning often does not work well in practice due to the _distributional shift problem_.  This arises because, in supervised learning, samples are assumed to be _i.i.d._, while in reinforcement learning the agent’s past actions affect future states.  To formalize this, assume that $$\pi^*$$ is the expert policy and the learned policy $$\pi_\theta$$ makes an error with probability at most $$\epsilon$$ under the training distribution:  
 
 $$
@@ -57,6 +60,11 @@ $$
 p_{\theta}(s_t) = (1-\epsilon)^t p_{\text{train}}(s_t)+(1-(1-\epsilon)^t)p_{\text{mistake}}(s_t)
 $$
 
+Total number of deviation from $$\pi^*$$ up to time $T$ is therefore upperbounded as follows.
+
+$$
+\mathbb{E}_{\pi_\theta} \left[ \sum_{t=0}^T c(s_t,a_t) \right] = \int p_\theta(s_t)c(s_t,a_t) ds_t =  (1-\epsilon)^t\cdot\int p_{\text{train}}c(s_t,a_t) ds_t
+$$
 
 
 
