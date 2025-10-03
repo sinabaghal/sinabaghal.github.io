@@ -21,7 +21,7 @@ The agent’s decision-making is parameterized by a policy $$\pi_\theta$$,  wher
 The goal of an RL algorithm is not just to maximize the immediate reward,  but to maximize the **expected cumulative reward**:  
 
 $$
-\max_\theta \, \mathbb{E}_{\pi_\theta} \left[ \sum_{t=0}^\infty \gamma^t r(s_t, a_t) \right],
+\max_\theta \mathbb{E}_{\pi_\theta} \left[ \sum_{t=0}^\infty \gamma^t r(s_t, a_t) \right],
 $$
 
 where $$0 \leq \gamma < 1$$ is a discount factor. 
