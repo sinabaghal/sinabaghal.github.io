@@ -47,7 +47,9 @@ Graphical model below describes the relationships between states and actions:
 
 ## Imitation Learning
 
-The analogous concept in reinforcement learning, compared to supervised learning, is called _imitation learning_, where the agent learns by mimicking expert actions.  However, imitation learning often does not work well in practice due to the _distributional shift problem_.  This arises because, in supervised learning, samples are assumed to be _i.i.d._, while in reinforcement learning the agent’s past actions affect future states.  To formalize this, assume that $$\pi^*$$ is the expert policy and the learned policy $$\pi_\theta$$ makes an error with probability at most $$\epsilon$$ under the training distribution:  
+The analogous concept in reinforcement learning, compared to supervised learning, is called _imitation learning_, where the agent learns by mimicking expert actions.  However, imitation learning often does not work well in practice due to the _distributional shift problem_.  This arises because, in supervised learning, samples are assumed to be _i.i.d._, while in reinforcement learning the agent’s past actions affect future states.  
+
+To formalize this, assume that $$\pi^*$$ is the expert policy and the learned policy $$\pi_\theta$$ makes an error with probability at most $$\epsilon$$ under the training distribution:  
 
 $$
 \Pr_{s_t \sim p_{\text{train}}}\big[\pi_\theta(s_t) \neq \pi^*(s_t)\big] \leq \epsilon.
@@ -55,17 +57,21 @@ $$
 
 Based on this, write 
 
-
 $$
 p_{\theta}(s_t) = (1-\epsilon)^t p_{\text{train}}(s_t)+(1-(1-\epsilon)^t)p_{\text{mistake}}(s_t)
 $$
 
-Total number of deviation from $$\pi^*$$ up to time $T$ is therefore upperbounded as follows.
+Denote $$c_t(s_t, a_t) = 1_{\{a_t \neq \pi^*(s_t)\}} \in \{0, 1\}$$. Then, the total number of times the policy $$\pi_\theta$$ deviates from the optimal policy grows quadratically with $$T$$.
 
 $$
-\mathbb{E}_{\pi_\theta} \left[ \sum_{t=0}^T c(s_t,a_t) \right] = \int p_\theta(s_t)c(s_t,a_t) ds_t =  (1-\epsilon)^t\cdot\int p_{\text{train}}c(s_t,a_t) ds_t
+\begin{aligned}
+\mathbb{E}_{\pi_\theta} \left[ \sum_{t=0}^T c(s_t,a_t) \right] &= \sum_{t=0}^T\int p_\theta(s_t)c(s_t,a_t) ds_t \\
+&=  \sum_{t=0}^T (1-\epsilon)^t\cdot\int p_{\text{train}}(s_t)c(s_t,a_t) ds_t + \sum_{t=0}^T (1-(1-\epsilon)^t)\cdot\int p_{\text{mistake}}(s_t)c(s_t,a_t) ds_t  \\ 
+&\leq  \sum_{t=0}^T (1-\epsilon)^t\cdot\epsilon + \sum_{t=0}^T 1-(1-\epsilon)^t \\ 
+&\leq  \sum_{t=0}^T (1-\epsilon)^t\cdot\epsilon + 2\epsilon\cdot\sum_{t=0}^T t \\ 
+&= \epsilon\cdot\mathcal{O}(T^2)
+\end{aligned}
 $$
-
 
 
 
