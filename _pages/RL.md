@@ -14,11 +14,11 @@ This tutorial provides an introduction to the fundamentals of reinforcement lear
 
 ## Goal of RL
 
-In reinforcement learning, there is an **agent** and an **environment**.  At time step $$t$$, the state is denoted by $$s_t$$.  Given state $$s_t$$, the agent takes an action $$a_t$$.  This results in a reward value $$r_t := r(s_t, a_t)$$.  
+In reinforcement learning, there is an _agent_ and an _environment_.  At time step $$t$$, the state is denoted by $$s_t$$.  Given state $$s_t$$, the agent takes an action $$a_t$$.  This results in a reward value $$r_t := r(s_t, a_t)$$.  
 
 The agent’s decision-making is parameterized by a policy $$\pi_\theta$$,  where $$\pi_\theta(\cdot \mid s_t)$$ defines a probability distribution over possible actions at time $$t$$,  given the state $$s_t$$.  
 
-The goal of an RL algorithm is not just to maximize the immediate reward,  but to maximize the **expected cumulative reward**:  
+The goal of an RL algorithm is not just to maximize the immediate reward,  but to maximize the _expected cumulative reward_:  
 
 $$
 \max_\theta \mathbb{E}_{\pi_\theta} \left[ \sum_{t=0}^\infty \gamma^t r(s_t, a_t) \right],
