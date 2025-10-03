@@ -18,10 +18,14 @@ In reinforcement learning, there is an _agent_ and an _environment_.  At time st
 
 The agent’s decision-making is parameterized by a policy $$\pi_\theta$$,  where $$\pi_\theta(\cdot \mid s_t)$$ defines a probability distribution over possible actions at time $$t$$,  given the state $$s_t$$.  
 
-The goal of an RL algorithm is not just to maximize the immediate reward,  but to maximize the _expected cumulative reward_:  
+The goal of an RL algorithm is to maximize the _expected cumulative reward_:  
 
 $$
-\max_\theta \mathbb{E}_{\pi_\theta} \left[ \sum_{t=0}^\infty \gamma^t r(s_t, a_t) \right],
+\text{argmax}_\theta \mathbb{E}_{\pi_\theta} \left[ \sum_{t=0}^\infty \gamma^t r(s_t, a_t) \right],
 $$
 
-where $$0 \leq \gamma < 1$$ is a discount factor. 
+where $$0 \leq \gamma < 1$$ is a discount factor. Notice that:  
+
+- More weight is placed on earlier steps due to the discount factor $$\gamma^t$$.  
+- The objective $$\mathbb{E}_{\pi_\theta}\!\left[\sum_{t=0}^\infty \gamma^t r(s_t, a_t)\right]$$ is a smooth function of $$\theta$$,  
+  even though the reward function $$r$$ itself may be non-smooth (e.g., $$r \in \{\pm 1\}$$).
