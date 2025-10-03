@@ -47,7 +47,7 @@ Graphical model below describes the relationships between states and actions:
 The analogous concept in reinforcement learning, compared to supervised learning, is called _imitation learning_, where the agent learns by mimicking expert actions.  However, imitation learning often does not work well in practice due to the _distributional shift problem_.  This arises because, in supervised learning, samples are assumed to be _i.i.d._, while in reinforcement learning the agent’s past actions affect future states.  To formalize this, assume that $$\pi^*$$ is the expert policy and the learned policy $$\pi_\theta$$ makes an error with probability at most $$\epsilon$$ under the training distribution:  
 
 $$
-\Pr_{\;s_t \sim p_{\text{train}}}\big[\, \pi_\theta(s_t) \neq \pi^*(s_t)\,\big] \leq \epsilon.
+\Pr_{s_t \sim p_{\text{train}}}\big[\pi_\theta(s_t) \neq \pi^*(s_t)\,\big] \leq \epsilon.
 $$
 
 
