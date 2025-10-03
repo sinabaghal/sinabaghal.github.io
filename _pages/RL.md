@@ -30,5 +30,5 @@ where $$0 \leq \gamma < 1$$ is a discount factor. Notice that:
 - The objective $$\mathbb{E}_{\pi_\theta}$$ is a smooth function of $$\theta$$, even though the reward function $$r$$ itself may be non-smooth (e.g., $$r \in \{\pm 1\}$$).
 
 <p align="center">
-<img src="https://sinabaghal.github.io/files/pasur/00.png" width="110%" height="110%">
+<img src="https://sinabaghal.github.io/files/RL/00.png" width="110%" height="110%">
 </p>
