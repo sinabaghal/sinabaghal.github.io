@@ -97,7 +97,7 @@ $$
 \nabla_\theta J(\theta) &= \int \nabla_\theta p_\theta(\tau)r(\tau)d\tau  \\ 
 &= \int p_\theta(\tau)\nabla_\theta \log \; p_\theta(\tau)r(\tau)d\tau \\
 &= \mathbb{E}_{\tau \sim p_\theta} \nabla_\theta \log \; p_\theta(\tau)r(\tau) \\ 
-&= \mathbb{E}_{\tau \sim p_\theta} \left(\sum_{t=1}^T \nabla_\theta \log \pi_\theta(a_t|s_t)\right)\cdot\left(\sum_{t=1}^T r(s_t,a_t)\right)
+&= \mathbb{E}_{\tau \sim p_\theta} \left(\sum_{t=1}^T \nabla_\theta \log \pi_\theta(a_t|s_t)\right)\cdot\left(\sum_{t=1}^T r(s_t,a_t)\right) \quad \text{\tiny{note: $\nabla_\theta p(s_{t+1}|s_t,a_t) = 0$ }}
 \end{aligned}
 $$
 
