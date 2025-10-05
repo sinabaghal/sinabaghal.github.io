@@ -87,10 +87,10 @@ $$
 We may also rewrite the goal of RL as follows:
 
 $$
-\text{argmax}_\theta   J(\theta):= \mathbb{E}_{\tau \sim \pi_\theta}[r(\tau)] = \int p_\theta(\tau)r(\tau)d\tau 
+\text{argmax}_\theta   J(\theta):= \mathbb{E}_{\tau \sim \pi_\theta}[r(\tau)] = \int p_\theta(\tau)r(\tau)d\tau,
 $$
 
-This enables a direct policy differentiation. 
+enabling a direct policy differentiation 
 
 $$
 \begin{aligned}
