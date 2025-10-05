@@ -46,6 +46,12 @@ Graphical model below describes the relationships between states and actions:
 </p>
 <br>
 
+A _Markov Decision Process_ (MDP) consists of a _state space_ $$\mathcal{S}$$ and an _action space_ $$\mathcal{A}$$,  along with a _transition operator_ $$\mathcal{T}$$ and a _reward function_  $$r : \mathcal{S} \times \mathcal{A} \to \mathbb{R}_+$$. An MDP allows us to write a probability distribution over trajectories
+
+$$
+p_\theta(\tau) = p(s_1)\prod_{t=1}^T \pi_\theta(a_t|s_t)p(s_{t+1}|s_t,a_t) \text{ where } \tau = (s_1,a_1,\cdots,s_T,a_T)
+$$
+
 ## Imitation Learning
 
 The analogous concept in reinforcement learning, compared to supervised learning, is called _imitation learning_, where the agent learns by mimicking expert actions.  However, imitation learning often does not work well in practice due to the _distributional shift problem_.  This arises because, in supervised learning, samples are assumed to be _i.i.d._, while in reinforcement learning the agent’s past actions affect future states.  
@@ -78,11 +84,6 @@ This bound is achieved in the _tightrope walking_ problem, where the agent must 
 
 ## REINFORCE
 
-A _Markov Decision Process_ (MDP) consists of a _state space_ $$\mathcal{S}$$ and an _action space_ $$\mathcal{A}$$,  along with a _transition operator_ $$\mathcal{T}$$ and a _reward function_  $$r : \mathcal{S} \times \mathcal{A} \to \mathbb{R}_+$$. An MDP allows us to write a probability distribution over trajectories
-
-$$
-p_\theta(\tau) = p(s_1)\prod_{t=1}^T \pi_\theta(a_t|s_t)p(s_{t+1}|s_t,a_t) \text{ where } \tau = (s_1,a_1,\cdots,s_T,a_T)
-$$
 
 We may also rewrite the goal of RL as follows:
 
