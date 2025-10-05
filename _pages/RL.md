@@ -78,10 +78,20 @@ This bound is achieved in the _tightrope walking_ problem, where the agent must 
 
 ## Markov Decision Process 
 
-A _Markov Decision Process_ (MDP) consists of a _state space_ $$\mathcal{S}$$ and an _action space_ $$\mathcal{A}$$,  along with a _transition operator_ $$\mathcal{T}$$ and a _reward function_  $$r : \mathcal{S} \times \mathcal{A} \to \mathbb{R}_+$$. The transition operator is a tensor as below:
+A _Markov Decision Process_ (MDP) consists of a _state space_ $$\mathcal{S}$$ and an _action space_ $$\mathcal{A}$$,  along with a _transition operator_ $$\mathcal{T}$$ and a _reward function_  $$r : \mathcal{S} \times \mathcal{A} \to \mathbb{R}_+$$. An MDP allows us to write a probability distribution over trajectories
 
 $$
-p_\theta(\tau) = p(s_1)\product_{t=1}^T \pi_\theta(a_t\med s_t)p(s_{t+1}\med s_t,a_t)
+p_\theta(\tau) = p(s_1)\prod_{t=1}^T \pi_\theta(a_t|s_t)p(s_{t+1}|s_t,a_t) \text{ where } \tau = (s_1,a_1,\cdots,s_T,a_T)
 $$
+
+We may also rewrite the goal of RL as follows:
+
+$$
+\text{argmax}_\theta \mathbb{E}_{\pi_\theta}[r(\tau)] = \int p_\theta(\tau)r(\tau)d\tau 
+$$
+
+
+
+
 
 
