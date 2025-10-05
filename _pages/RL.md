@@ -87,7 +87,7 @@ $$
 We may also rewrite the goal of RL as follows:
 
 $$
-\text{argmax}_\theta   J(\theta):= \mathbb{E}_{\pi_\theta}[r(\tau)] = \int p_\theta(\tau)r(\tau)d\tau 
+\text{argmax}_\theta   J(\theta):= \mathbb{E}_{\tau \sim \pi_\theta}[r(\tau)] = \int p_\theta(\tau)r(\tau)d\tau 
 $$
 
 This enables a direct policy differentiation. 
@@ -95,7 +95,8 @@ This enables a direct policy differentiation.
 $$
 \begin{aligned}
 \nabla_\theta J(\theta) &= \int \nabla_\theta p_\theta(\tau)r(\tau)d\tau  \\ 
-&= \int \nabla_\theta p_\theta(\tau)\nabla_\theta \log \; p_\theta(\tau)r(\tau)d\tau 
+&= \int p_\theta(\tau)\nabla_\theta \log \; p_\theta(\tau)r(\tau)d\tau \\
+&= \mathbb{E}_{\tau \sim \pi_\theta} \nabla_\theta \log \; p_\theta(\tau)r(\tau)
 \end{aligned}
 $$
 
