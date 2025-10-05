@@ -91,7 +91,7 @@ $$
 \text{argmax}_\theta   J(\theta):= \mathbb{E}_{\tau \sim p_\theta}[r(\tau)] = \int p_\theta(\tau)r(\tau)d\tau,
 $$
 
-enabling a direct policy differentiation 
+MDP allows direct policy differentiation 
 
 $$
 \begin{aligned}
