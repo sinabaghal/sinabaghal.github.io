@@ -74,7 +74,7 @@ $$
 \end{aligned}
 $$
 
-This bound is achieved in the _tightrope walking_ problem, where the agent must learn to go straight; otherwise, it will enter unknown territory 💀. Imitation learning can still be useful with some modifications, such as including bad actions along with corrective steps.
+This bound is achieved in the _tightrope walking_ problem, where the agent must learn to go straight; otherwise, it will enter unknown territory ☠️. Imitation learning can still be useful with some modifications, such as including bad actions along with corrective steps.
 
 ## Markov Decision Process 
 
