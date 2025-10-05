@@ -74,7 +74,7 @@ $$
 \end{aligned}
 $$
 
-This bound is achieved in the _tightrope walking_ problem, where the agent must learn to go straight; otherwise, it will enter unknown territory 💀. Imitation learning can still be useful with some modifications, such as including bad actions along with corrective steps to be taken afterward.
+This bound is achieved in the _tightrope walking_ problem, where the agent must learn to go straight; otherwise, it will enter unknown territory 💀. Imitation learning can still be useful with some modifications, such as including bad actions along with corrective steps.
 
 ## Markov Decision Process 
 
@@ -89,6 +89,7 @@ We may also rewrite the goal of RL as follows:
 $$
 \text{argmax}_\theta \mathbb{E}_{\pi_\theta}[r(\tau)] = \int p_\theta(\tau)r(\tau)d\tau 
 $$
+
 
 
 
