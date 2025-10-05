@@ -35,7 +35,7 @@ $$
 where $$0 \leq \gamma < 1$$ is a discount factor. Notice that:  
 
 - More weight is placed on earlier steps. 
-- Objective $$\mathbb{E}_{\pi_\theta}$$ is a smooth function of $$\theta$$ where the reward function $$r$$ itself may be non-smooth (e.g., $$r \in \{\pm 1\}$$).
+- $$\mathbb{E}_{\pi_\theta}$$ is a smooth function of $$\theta$$ where  $$r$$ itself may not be (e.g., $$r \in \{\pm 1\}$$).
 - $$s_t$$ is independent of $$s_{t-1}$$ (_Markov Property_)
 
 Graphical model below describes the relationships between states and actions:
