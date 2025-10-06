@@ -85,13 +85,13 @@ This bound is achieved in the _tightrope walking_ problem, where the agent must 
 ## REINFORCE
 
 
-We may rewrite the goal of RL as following optimization problem:
+An MDP allows to rewrite the goal of RL as following optimization problem:
 
 $$
 \text{argmax}_\theta   J(\theta):= \mathbb{E}_{\tau \sim p_\theta}[r(\tau)] = \int p_\theta(\tau)r(\tau)d\tau,
 $$
 
-MDP allows direct policy differentiation 
+enabling a direct policy differentiation 
 
 $$
 \begin{aligned}
