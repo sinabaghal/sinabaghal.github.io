@@ -14,6 +14,7 @@ This tutorial provides an introduction to the fundamentals of reinforcement lear
 - [Imitation Learning](#imitation_learning)
 - [REINFORCE](#reinforce)
 - [Variance Reduction](#variance-reduction)
+- [Value Functins](#value-functions)
 
 ## Goal of RL
 
