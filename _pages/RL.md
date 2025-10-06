@@ -119,7 +119,7 @@ Causality: Policy at <img src="https://latex.codecogs.com/svg.latex?t'" /> canno
 Thus, we estimate the policy gradient as below:
 
 $$
-\nabla_\theta J(\theta) \approx \sum_{i=1}^N \sum_{t=1}^T \nabla_\theta \log \; \pi_\theta(a_{i,t}|s_{i,t})\cdot\left(\sum_{t'=t}^T r(s_{i,t'},a_{i,t'})\right)
+\nabla_\theta J(\theta) \approx \frac{1}{N}\sum_{i=1}^N \sum_{t=1}^T \nabla_\theta \log \; \pi_\theta(a_{i,t}|s_{i,t})\cdot\left(\sum_{t'=t}^T r(s_{i,t'},a_{i,t'})\right)
 $$
 
 
