@@ -105,7 +105,7 @@ $$
 We are now ready to state the first policy gradient method: REINFORCE. 
 
 - Run the current policy $$N$$ times to generate sample $$\tau_i$$ for $$i\in 1,\cdots,N$$
-- Compute the MC estimate of $$\nabla_\theta J(\theta) \approx \tfrac{1}{N} \sum_{i=1}^N \left(\sum_{t=1}^T \nabla_\theta \log \; \pi_\theta(a_{i,t}|s_{i,t})\right)\cdot\left(\sum_{t=1}^T r(s_{i,t},a_{i,t})\right) $$
+- Compute the MC estimate of $$\nabla_\theta J(\theta) \approx \frac{1}{N} \sum_{i=1}^N \left(\sum_{t=1}^T \nabla_\theta \log \; \pi_\theta(a_{i,t}|s_{i,t})\right)\cdot\left(\sum_{t=1}^T r(s_{i,t},a_{i,t})\right) $$
 - Apply Gradient Ascent $$\theta \mapsto \theta + \alpha  \nabla_\theta J(\theta)$$
 
 ## Variance Reduction 
