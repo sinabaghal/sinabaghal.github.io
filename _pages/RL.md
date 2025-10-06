@@ -84,7 +84,6 @@ This bound is achieved in the _tightrope walking_ problem, where the agent must 
 
 ## REINFORCE
 
-
 An MDP allows to rewrite the goal of RL as following optimization problem:
 
 $$
@@ -102,7 +101,10 @@ $$
 \end{aligned}
 $$
 
+We are now ready to state the REINFORCE algorithm. 
 
+- Run the current policy $$N$$ times to generate sample $$\tau_i$$ for $$i\in 1,\cdots,N$$
+- Compute the MC estimate of $$\nabla_\theta J(\theta) \approx \tfrac{1}{N} \sum_{i=1}^N \left(\sum_{t=1}^T \nabla_\theta \log \; \pi_\theta(a_{i,t}|s_{i,t})\right)\cdot\left(\sum_{t=1}^T r(s_{i,t},a_{i,t})\right) $$. 
 
 
 
