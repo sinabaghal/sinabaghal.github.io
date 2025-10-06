@@ -102,7 +102,7 @@ $$
 \end{aligned}
 $$
 
-We are now ready to state the REINFORCE algorithm. 
+We are now ready to state the first policy gradient method: REINFORCE. 
 
 - Run the current policy $$N$$ times to generate sample $$\tau_i$$ for $$i\in 1,\cdots,N$$
 - Compute the MC estimate of $$\nabla_\theta J(\theta) \approx \tfrac{1}{N} \sum_{i=1}^N \left(\sum_{t=1}^T \nabla_\theta \log \; \pi_\theta(a_{i,t}|s_{i,t})\right)\cdot\left(\sum_{t=1}^T r(s_{i,t},a_{i,t})\right) $$
@@ -112,7 +112,15 @@ We are now ready to state the REINFORCE algorithm.
 
 The main issue with the REINFORCE algorithm is the high variance in the reward term $$\sum_{t=1}^T r(s_{i,t},a_{i,t})$$. As a first step toward variance reduction, we apply the _causality trick_:
 
-<p align="center">
-Causality: Policy at $$t'$$ cannot impact reward at time $$t < t'$$
-</p>
+$$
+\text{Policy at $$t'$$ cannot impact reward at time $$t<t'$$}
+$$
+
+Thus, we estimate the policy gradient as below:
+
+$$
+\nabla_\theta J(\theta) \approx \sum_{i=1}^N \left(\sum_{t=1}^T \nabla_\theta \log \; \pi_\theta(a_{i,t}|s_{i,t})\right)\cdot\left(\sum_{t=1}^T r(s_{i,t},a_{i,t})\right)
+$$
+
+
 
