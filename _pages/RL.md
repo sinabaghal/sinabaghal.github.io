@@ -123,7 +123,17 @@ $$
 \nabla_\theta J(\theta) \approx \frac{1}{N}\sum_{i=1}^N \sum_{t=1}^T \nabla_\theta \log \; \pi_\theta(a_{i,t}|s_{i,t})\cdot\left(\sum_{t'=t}^T r(s_{i,t'},a_{i,t'})\right)
 $$
 
-Another issue with the REINFORCE algorithm is that a translation of the reward, $$r\mapsto r+b$ affects the gradient estimate $$\nabla_\theta J(\theta)$$. In the worst-case scenario, good actions may receive a reward of zero, leading to poor training. To address this, we need to apply normalization to the reward function. This leads to the idea of value function fitting. 
+$$\sum_{t'=t}^T r(s_{i,t'},a_{i,t'})$$ is referred to as the _reward to go_.
+
+Another issue with the REINFORCE algorithm is that a translation of the reward, $$r\mapsto r+b$$ affects the gradient estimate $$\nabla_\theta J(\theta)$$. In the worst-case scenario, good actions may receive a reward of zero, leading to poor training. To address this, we need to apply normalization to the reward function. This leads to the idea of value function fitting. 
 
 ## Value Functions 
+
+| **Function** | **Definition** |
+|---------------|----------------|
+| **Q-function (reward-to-go)** | $$Q^{\pi_{\theta}}(s_t,a_t) = \sum_{t'=t}^T \mathbb{E}_\theta[r(s_{t'},a_{t'})]|s_{t},a_{t}]$$ |
+| **Value function** | $$V^{\pi_{\theta}}(s_t) = \mathbb{E}_{a_t \sim \pi_{\theta}(a_t|s_t)} \!\left[ Q^{\pi_{\theta}}(s_t,a_t) \right]$$ |
+| **Advantage function** | $$A^{\pi_{\theta}}(s_t,a_t) = Q^{\pi_{\theta}}(s_t,a_t) - V^{\pi_{\theta}}(s_t)$$ |
+
+
 
