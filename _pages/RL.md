@@ -116,11 +116,13 @@ The main issue with the REINFORCE algorithm is the high variance in the reward t
 Causality: Policy at <img src="https://latex.codecogs.com/svg.latex?t'" /> cannot impact reward at time <img src="https://latex.codecogs.com/svg.latex?t<t'" />.
 </p>
 
-Thus, we estimate the policy gradient as below:
+In view of the causality trick, we estimate the policy gradient as below:
 
 $$
 \nabla_\theta J(\theta) \approx \frac{1}{N}\sum_{i=1}^N \sum_{t=1}^T \nabla_\theta \log \; \pi_\theta(a_{i,t}|s_{i,t})\cdot\left(\sum_{t'=t}^T r(s_{i,t'},a_{i,t'})\right)
 $$
 
+Another issue with the REINFORCE algorithm is that a translation of the reward, $$r\mapsto r+b$ affects the gradient estimate $$\nabla_\theta J(\theta)$$. In the worst-case scenario, good actions may receive a reward of zero, leading to poor training. To address this, we need to apply normalization to the reward function. This leads to the idea of value function fitting. 
 
+## Value Functions 
 
