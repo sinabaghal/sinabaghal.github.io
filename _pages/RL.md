@@ -112,14 +112,14 @@ We are now ready to state the first policy gradient method: REINFORCE.
 
 The main issue with the REINFORCE algorithm is the high variance in the reward term $$\sum_{t=1}^T r(s_{i,t},a_{i,t})$$. As a first step toward variance reduction, we apply the _causality trick_:
 
-$$
-\text{Policy at $$t'$$ cannot impact reward at time $$t<t'$$}
-$$
+<p align="center">
+Causality: Policy at <img src="https://latex.codecogs.com/svg.latex?t'" /> cannot impact reward at time <img src="https://latex.codecogs.com/svg.latex?t<t'" />.
+</p>
 
 Thus, we estimate the policy gradient as below:
 
 $$
-\nabla_\theta J(\theta) \approx \sum_{i=1}^N \left(\sum_{t=1}^T \nabla_\theta \log \; \pi_\theta(a_{i,t}|s_{i,t})\right)\cdot\left(\sum_{t=1}^T r(s_{i,t},a_{i,t})\right)
+\nabla_\theta J(\theta) \approx \sum_{i=1}^N \sum_{t=1}^T \nabla_\theta \log \; \pi_\theta(a_{i,t}|s_{i,t})\cdot\left(\sum_{t'=t}^T r(s_{i,t'},a_{i,t'})\right)
 $$
 
 
