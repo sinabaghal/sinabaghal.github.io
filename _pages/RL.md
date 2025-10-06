@@ -111,8 +111,8 @@ We are now ready to state the REINFORCE algorithm.
 ## Variance Reduction 
 
 The main issue with the REINFORCE algorithm is the high variance in the reward term $$\sum_{t=1}^T r(s_{i,t},a_{i,t})$$. As a first step toward variance reduction, we apply the _causality trick_:
-\begin{center}
-Causality: Policy at $$t'$$ cannot impact reward at time $$t<t'$$
-\end{center}
 
+<p align="center">
+Causality: Policy at $$t'$$ cannot impact reward at time $$t < t'$$
+</p>
 
