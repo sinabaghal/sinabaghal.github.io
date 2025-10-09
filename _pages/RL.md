@@ -94,7 +94,7 @@ $$
 This bound is achieved in the *tightrope walking* problem, where the agent must learn to go straight; otherwise, it will enter unknown territory. Imitation learning can still be useful with some modifications, such as including bad actions along with corrective steps.
 
 <p align="center">
-<img src="https://sinabaghal.github.io/files/RL/02.png" width="110%" height="110%">
+<img src="https://sinabaghal.github.io/files/RL/02.jpeg" width="110%" height="110%">
 </p>
 
 ---
@@ -136,7 +136,14 @@ $$
 
 ## Variance Reduction
 
-**Causality:** Policy at time $t'$ cannot impact reward at time $t < t'$.
+One of the main issues with REINFORCE is the high variance in the reward term $$\sum_{t=1}^T r(s_{i,t},a_{i,t})$$. In this section, we introduce some techniques to reduce this variance.  
+
+### Causality
+As a first step toward variance reduction, we apply the *causality trick*:
+
+> Policy at time $t'$ cannot impact reward at time $t < t'$.
+
+Using this, the policy gradient is estimated as:
 
 $$
 \nabla_\theta J(\theta) \approx \frac{1}{N}\sum_{i=1}^N \sum_{t=1}^T 
@@ -144,34 +151,64 @@ $$
 \left(\sum_{t'=t}^T r(s_{i,t'},a_{i,t'})\right)
 $$
 
-The term $\sum_{t'=t}^T r(s_{i,t'},a_{i,t'})$ is referred to as the *reward-to-go*.
+The term $$\sum_{t'=t}^T r(s_{i,t'},a_{i,t'})$$ is referred to as the *reward-to-go*.
 
-**Value Functions:**  
+### Value Functions
+The next idea is to replace the reward-to-go with a function estimator.  
+Notice two things: the ideal target for the reward-to-go function is the quantity  
+
+$$
+Q(s_{i,t},a_{i,t}) = \sum_{t'=t}^T\mathbb{E}_{\pi_{\theta}}[r(s_{t'},a_{t'})|s_{i,t}, a_{i,t}]
+$$  
+
+rather than the single-sample estimate $$\sum_{t'=t}^T r(s_{i,t'},a_{i,t'})$$.  
+This represents the *value* of state $s_{i,t}$ under the current policy where action $a_{i,t}$ is taken.  
+If the state $s'_{i,t}$ is close to $s_{i,t}$ and $$p(s_{t+1}|s'_{i,t},a'_{i,t}) \approx p(s_{t+1}|s_{i,t},a_{i,t})$$, we expect their reward-to-go values to be similar.  
+
+<p align="center">
+<img src="https://sinabaghal.github.io/files/RL/03.png" width="110%" height="110%">
+</p>
+
+### Baselines
+Translation of the reward $$r \mapsto r - b$$ can help reduce variance. Assuming this translation:
+
+$$
+\begin{aligned}
+\text{Var}[\nabla_\theta J(\theta)] &= \mathbb{E}_{\tau \sim p_\theta(\tau)} \left(\nabla_\theta \log  p_\theta(\tau)(r(\tau)-b)\right)^2- \left(\mathbb{E}_{\tau \sim p_\theta(\tau)}\nabla_\theta \log  p_\theta(\tau)(r(\tau)-b)\right)^2\\
+&= \mathbb{E}_{\tau \sim p_\theta(\tau)} \left(\nabla_\theta \log  p_\theta(\tau)(r(\tau)-b)\right)^2-\left(\mathbb{E}_{\tau \sim p_\theta(\tau)}\nabla_\theta \log  p_\theta(\tau)r(\tau)\right)^2
+\end{aligned}
+$$
+
+Thus, an appropriate choice of $b$ can reduce the variance. A proper choice is the expected value of the $Q$ function.  
 
 | Function | Notation | Definition |
 |----------|----------|-----------|
-| Q-function (reward-to-go) | $Q^{\pi_\theta}(s_t,a_t)$ | $\sum_{t'=t}^T \mathbb{E}_\theta[r(s_{t'},a_{t'})|s_t,a_t]$ |
-| Value function | $V^{\pi_\theta}(s_t)$ | $\mathbb{E}_{a_t \sim \pi_\theta(a_t|s_t)}[Q^{\pi_\theta}(s_t,a_t)]$ |
-| Advantage function | $A^{\pi_\theta}(s_t,a_t)$ | $Q^{\pi_\theta}(s_t,a_t) - V^{\pi_\theta}(s_t)$ |
+| Q-function (reward-to-go) | $Q^{\pi_{\theta}}(s_t,a_t)$ | $\sum_{t'=t}^T \mathbb{E}_\theta[r(s_{t'},a_{t'})|s_{t},a_{t}]$ |
+| Value function | $V^{\pi_{\theta}}(s_t)$ | $\mathbb{E}_{a_t \sim \pi_{\theta}(a_t|s_t)} [ Q^{\pi_{\theta}}(s_t,a_t) ]$ |
+| Advantage function | $A^{\pi_{\theta}}(s_t,a_t)$ | $Q^{\pi_{\theta}}(s_t,a_t) - V^{\pi_{\theta}}(s_t)$ |
 
 $$
-Q(s_t,a_t) = r(s_t,a_t) + \mathbb{E}_{s_{t+1}\sim p(.|s_t,a_t)}V^{\pi_\theta}(s_{t+1})
-\approx r(s_t,a_t) + V^{\pi_\theta}(s_{t+1})
+\begin{aligned}
+Q(s_t,a_t) &= r(s_t,a_t)+\mathbb{E}_{s_{t+1}\sim p(.|s_t,a_t)}V^{\pi_\theta}(s_{t+1}) \\
+&\approx r(s_t,a_t)+V^{\pi_\theta}(s_{t+1})
+\end{aligned}
 $$
 
-Policy gradient with lower variance:
+Thus following policy gradient favors lower variance:
 
 $$
-\nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim p_\theta}\sum_{t=1}^T \nabla_\theta \log  \pi_\theta(a_t|s_t)\!\cdot\![r(s_t,a_t)+V^{\pi_\theta}(s_{t+1})-V^{\pi_\theta}(s_t)]
+\nabla_\theta J(\theta) =  \mathbb{E}_{\tau \sim p_\theta}\sum_{t=1}^T \nabla_\theta \log  \pi_\theta(a_t|s_t) \cdot \left[r(s_t,a_t)+V^{\pi_\theta}(s_{t+1})-V^{\pi_\theta}(s_{t})\right]
 $$
 
-**Discount Factor:** The discount factor also helps reduce variance, as terms further in the horizon are weighted less:
+### Discounts
+The discount factor also helps reduce variance, as terms further in the horizon are weighted less. The policy gradient becomes:
 
 $$
-\nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim p_\theta}\sum_{t=1}^T \nabla_\theta \log  \pi_\theta(a_t|s_t)\!\cdot\![r(s_t,a_t)+\gamma \hat{V}_\phi(s_{t+1})-\hat{V}_\phi(s_t)]
+\nabla_\theta J(\theta) =  \mathbb{E}_{\tau \sim p_\theta}\sum_{t=1}^T \nabla_\theta \log  \pi_\theta(a_t|s_t) \cdot \left[r(s_t,a_t)+\gamma \hat{V}_\phi^{\pi_\theta}(s_{t+1})-\hat{V}_\phi^{\pi_\theta}(s_{t})\right]
 $$
 
----
+Here $\hat{V}_\phi$ estimates $V$.
+
 
 ## Bias Reduction
 
