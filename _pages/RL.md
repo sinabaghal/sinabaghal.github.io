@@ -48,7 +48,7 @@ where $0 \leq \gamma < 1$ and $T$ are the discount factor and horizon respective
 - $s_t$ is independent of $s_{t-1}$ (*Markov Property*).
 
 <p align="center">
-<img src="https://sinabaghal.github.io/files/RL/01.png" width="110%" height="110%">
+<img src="https://sinabaghal.github.io/files/RLFIGS/01.png" width="110%" height="110%">
 </p>
 
 **MDP:** A *Markov Decision Process* (MDP) consists of a state space $\mathcal{S}$ and an action space $\mathcal{A}$,  along with a transition operator $\mathcal{T}$ and a reward function  $r : \mathcal{S} \times \mathcal{A} \to \mathbb{R}_+$.  An MDP allows us to write a probability distribution over trajectories:
@@ -93,7 +93,7 @@ $$
 This bound is achieved in the *tightrope walking* problem, where the agent must learn to go straight; otherwise, it will enter unknown territory. Imitation learning can still be useful with some modifications, such as including bad actions along with corrective steps.
 
 <p align="center">
-<img src="https://sinabaghal.github.io/files/RL/02.png" width="110%" height="110%">
+<img src="https://sinabaghal.github.io/files/RLFIGS/02.png" width="110%" height="110%">
 </p>
 
 ---
@@ -120,13 +120,11 @@ $$
 **REINFORCE Algorithm:**
 
 1. Run the current policy $N$ times to generate sample $\tau_i$ for $i=1,\dots,N$.
+
 2. Compute the Monte Carlo estimate:
 
 $$
-\nabla_\theta J(\theta) \approx \frac{1}{N} \sum_{i=1}^N 
-\left(\sum_{t=1}^T \nabla_\theta \log  \pi_\theta(a_{i,t}|s_{i,t})\right)
-\cdot
-\left(\sum_{t=1}^T r(s_{i,t},a_{i,t})\right)
+\nabla_\theta J(\theta) \approx \frac{1}{N} \sum_{i=1}^N \left( \sum_{t=1}^T \nabla_\theta \log \pi_\theta(a_{i,t}|s_{i,t}) \right) \left( \sum_{t=1}^T r(s_{i,t},a_{i,t}) \right)
 $$
 
 3. Apply Gradient Ascent: $\theta \leftarrow \theta + \alpha \nabla_\theta J(\theta)$.
@@ -160,8 +158,9 @@ Q(s_{i,t},a_{i,t}) = \sum_{t'=t}^T\mathbb{E}_{\pi_{\theta}}[r(s_{t'},a_{t'})|s_{
 $$  
 
 rather than the single-sample estimate $$\sum_{t'=t}^T r(s_{i,t'},a_{i,t'})$$.  This represents the *value* of state $s_{i,t}$ under the current policy where action $a_{i,t}$ is taken.  Another advantage is that, as shown in Figure below, if the state $$s′_{i,t}$$ is quite close to $$s'_{i,t}$$ and $$p(s_{t+1}|s'_{i,t},a'_{i,t})\approx p(s_{t+1}|s_{i,t},a_{i,t})$$, we expect their reward-to-go values to be similar. However, when working with a single-sample estimate, this relationship may easily be violated.
+
 <p align="center">
-<img src="https://sinabaghal.github.io/files/RL/03.png" width="110%" height="110%">
+<img src="https://sinabaghal.github.io/files/RLFIGS/03.png" width="110%" height="110%">
 </p>
 
 ### Baselines
@@ -174,20 +173,11 @@ $$
 \end{aligned}
 $$
 
-Thus, an appropriate choice of $b$ can reduce the variance. A proper choice is the expected value of the $Q$ function.  
+Thus, an appropriate choice of $b$ can reduce the variance. A proper choice is the expected value of the $Q$ function.  Table below summarizes value functions used throughout.
 
-| Function | Notation | Definition |
-|----------|----------|-----------|
-| Q-function (reward-to-go) | $Q^{\pi_{\theta}}(s_t,a_t)$ | $\sum_{t'=t}^T \mathbb{E}_\theta[r(s_{t'},a_{t'})|s_{t},a_{t}]$ |
-| Value function | $V^{\pi_{\theta}}(s_t)$ | $\mathbb{E}_{a_t \sim \pi_{\theta}(a_t|s_t)} [ Q^{\pi_{\theta}}(s_t,a_t) ]$ |
-| Advantage function | $A^{\pi_{\theta}}(s_t,a_t)$ | $Q^{\pi_{\theta}}(s_t,a_t) - V^{\pi_{\theta}}(s_t)$ |
-
-$$
-\begin{aligned}
-Q(s_t,a_t) &= r(s_t,a_t)+\mathbb{E}_{s_{t+1}\sim p(.|s_t,a_t)}V^{\pi_\theta}(s_{t+1}) \\
-&\approx r(s_t,a_t)+V^{\pi_\theta}(s_{t+1})
-\end{aligned}
-$$
+<p align="center">
+<img src="https://sinabaghal.github.io/files/RLFIGS/04.png" width="110%" height="110%">
+</p>
 
 Thus following policy gradient favors lower variance:
 
