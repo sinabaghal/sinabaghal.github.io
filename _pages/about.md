@@ -13,7 +13,6 @@ I am a research engineer and former mathematician with a passion for translating
 I earned my PhD in Mathematics from the University of Waterloo in 2021, and I hold both a master's and a bachelor's degree in Mathematics from Sharif University of Technology. My [PhD research](https://uwspace.uwaterloo.ca/handle/10012/16872) focused on Stochastic Optimization, while my earlier studies delved into Fundamental Mathematics. You can find my CV [here](https://sinabaghal.github.io/files/CV.pdf). 
 
 
-
 # Notes
 
 - [Basics of Reinforcement Learning](https://sinabaghal.github.io/files/rl.pdf)
