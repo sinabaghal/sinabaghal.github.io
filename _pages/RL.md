@@ -126,7 +126,7 @@ $$
 \nabla_\theta J(\theta) \approx \frac{1}{N} \sum_{i=1}^N \left( \sum_{t=1}^T \nabla_\theta \log \pi_\theta(a_{i,t}|s_{i,t}) \right) \left( \sum_{t=1}^T r(s_{i,t},a_{i,t}) \right)
 $$
 
-3. Apply Gradient Ascent: $\theta \leftarrow \theta + \alpha \nabla_\theta J(\theta)$.
+3. Apply Gradient Ascent: $$\theta \leftarrow \theta + \alpha \nabla_\theta J(\theta)$$.
 
 ---
 
