@@ -29,7 +29,9 @@ This tutorial provides an introduction to the fundamentals of reinforcement lear
 
 **RL:** In reinforcement learning, there is an *agent* and an *environment*.  At time step $t$, the state is denoted by $s_t$.  Given state $s_t$, the agent takes an action $a_t$ resulting in a reward value $r_t := r(s_t, a_t)$.
 
-![RL Diagram](figs/00.png)
+<p align="center">
+<img src="https://sinabaghal.github.io/files/RL/00.png" width="110%" height="110%">
+</p>
 
 **Policy:** The agent’s *policy* is parameterized by $\pi_\theta$,  where $\pi_\theta(\cdot \mid s_t)$ defines a probability distribution over possible actions at time $t$, given the state $s_t$.
 
@@ -45,7 +47,9 @@ where $0 \leq \gamma < 1$ and $T$ are the discount factor and horizon respective
 - $\mathbb{E}_{\pi_\theta}$ is a smooth function of $\theta$ where $r$ itself may not be (e.g., $r \in \{\pm 1\}$).
 - $s_t$ is independent of $s_{t-1}$ (*Markov Property*).
 
-![RL Example](figs/01.png)
+<p align="center">
+<img src="https://sinabaghal.github.io/files/RL/01.png" width="110%" height="110%">
+</p>
 
 **MDP:** A *Markov Decision Process* (MDP) consists of a state space $\mathcal{S}$ and an action space $\mathcal{A}$,  along with a transition operator $\mathcal{T}$ and a reward function  $r : \mathcal{S} \times \mathcal{A} \to \mathbb{R}_+$.  An MDP allows us to write a probability distribution over trajectories:
 
@@ -89,7 +93,9 @@ $$
 
 This bound is achieved in the *tightrope walking* problem, where the agent must learn to go straight; otherwise, it will enter unknown territory. Imitation learning can still be useful with some modifications, such as including bad actions along with corrective steps.
 
-![Tightrope Walker](figs/02.png)
+<p align="center">
+<img src="https://sinabaghal.github.io/files/RL/02.png" width="110%" height="110%">
+</p>
 
 ---
 
