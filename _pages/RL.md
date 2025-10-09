@@ -94,7 +94,7 @@ $$
 This bound is achieved in the *tightrope walking* problem, where the agent must learn to go straight; otherwise, it will enter unknown territory. Imitation learning can still be useful with some modifications, such as including bad actions along with corrective steps.
 
 <p align="center">
-<img src="https://sinabaghal.github.io/files/RL/02.jpeg" width="110%" height="110%">
+<img src="https://sinabaghal.github.io/files/RL/02.png" width="110%" height="110%">
 </p>
 
 ---
