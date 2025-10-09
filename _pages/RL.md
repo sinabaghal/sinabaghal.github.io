@@ -76,8 +76,7 @@ $$
 p_{\theta}(s_t) = (1-\epsilon)^t p_{\text{train}}(s_t)+(1-(1-\epsilon)^t)p_{\text{mistake}}(s_t).
 $$
 
-Denote $c_t(s_t, a_t) = 1_{\{a_t \neq \pi^*(s_t)\}} \in \{0, 1\}$.  
-Then the total number of times the policy $\pi_\theta$ deviates from the optimal policy grows quadratically with $T$:
+Denote $$c_t(s_t, a_t) = 1_{\{a_t \neq \pi^*(s_t)\}} \in \{0, 1\}$$.  Then the total number of times the policy $$\pi_\theta$$ deviates from the optimal policy grows quadratically with $$T$$:
 
 $$
 \begin{aligned}
@@ -119,7 +118,7 @@ $$
 
 **REINFORCE Algorithm:**
 
-1. Run the current policy $N$ times to generate sample $\tau_i$ for $i=1,\dots,N$.
+1. Run the current policy $$N$$ times to generate sample $$\tau_i$ for $i=1,\dots,N$$.
 
 2. Compute the Monte Carlo estimate:
 
@@ -138,7 +137,7 @@ One of the main issues with REINFORCE is the high variance in the reward term $$
 ### Causality
 As a first step toward variance reduction, we apply the *causality trick*:
 
-> Policy at time $t'$ cannot impact reward at time $t < t'$.
+> Policy at time $$t'$$ cannot impact reward at time $$t < t'$$.
 
 Using this, the policy gradient is estimated as:
 
