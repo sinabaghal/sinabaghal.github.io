@@ -22,6 +22,12 @@ I earned my PhD in Mathematics from the University of Waterloo in 2021, and I ho
 ---
 ---
 
+# Notes
+- [Basics of Reinforcement Learning](https://github.com/sinabaghal/rl)
+  
+---
+---
+
 ### Solving Pasur Using GPU-Accelerated Counterfactual Regret Minimization
 
 Pasur is a fishing card game played over six rounds and is played similarly to games such as Cassino and Scopa, and Bastra. This paper introduces a CUDA-accelerated computational framework for simulating Pasur, emphasizing efficient memory management. We use our framework to compute near-Nash equilibria via Counterfactual Regret Minimization (CFR), a well-known algorithm for solving large imperfect-information games.  To see project's page, click [**here**](https://sinabaghal.github.io/pasur/). You can find the code for this project [**here**](https://github.com/sinabaghal/pasur). 
