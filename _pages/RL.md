@@ -62,8 +62,7 @@ $$
 
 ## Imitation Learning
 
-The analogous concept in reinforcement learning, compared to supervised learning, is called *imitation learning*,  where the agent learns by mimicking expert actions.  
-However, imitation learning often does not work well in practice due to the *distributional shift problem*. This arises because, in supervised learning, samples are assumed to be i.i.d., while in reinforcement learning the agent’s past actions affect future states.
+The analogous concept in reinforcement learning, compared to supervised learning, is called *imitation learning*,  where the agent learns by mimicking expert actions.  However, imitation learning often does not work well in practice due to the *distributional shift problem*. This arises because, in supervised learning, samples are assumed to be i.i.d., while in reinforcement learning the agent’s past actions affect future states.
 
 Assume that $\pi^*$ is the expert policy and the learned policy $\pi_\theta$ makes an error with probability at most $\epsilon$ under the training distribution:
 
@@ -154,17 +153,13 @@ $$
 The term $$\sum_{t'=t}^T r(s_{i,t'},a_{i,t'})$$ is referred to as the *reward-to-go*.
 
 ### Value Functions
-The next idea is to replace the reward-to-go with a function estimator.  
-Notice two things: the ideal target for the reward-to-go function is the quantity  
+The next idea is to replace the reward-to-go with a function estimator.  Notice two things: the ideal target for the reward-to-go function is
 
 $$
 Q(s_{i,t},a_{i,t}) = \sum_{t'=t}^T\mathbb{E}_{\pi_{\theta}}[r(s_{t'},a_{t'})|s_{i,t}, a_{i,t}]
 $$  
 
-rather than the single-sample estimate $$\sum_{t'=t}^T r(s_{i,t'},a_{i,t'})$$.  
-This represents the *value* of state $s_{i,t}$ under the current policy where action $a_{i,t}$ is taken.  
-If the state $s'_{i,t}$ is close to $s_{i,t}$ and $$p(s_{t+1}|s'_{i,t},a'_{i,t}) \approx p(s_{t+1}|s_{i,t},a_{i,t})$$, we expect their reward-to-go values to be similar.  
-
+rather than the single-sample estimate $$\sum_{t'=t}^T r(s_{i,t'},a_{i,t'})$$.  This represents the *value* of state $s_{i,t}$ under the current policy where action $a_{i,t}$ is taken.  Another advantage is that, as shown in Figure below, if the state $$s′_{i,t}$$ is quite close to $$s'_{i,t}$$ and $$p(s_{t+1}|s'_{i,t},a'_{i,t})\approx p(s_{t+1}|s_{i,t},a_{i,t})$$, we expect their reward-to-go values to be similar. However, when working with a single-sample estimate, this relationship may easily be violated.
 <p align="center">
 <img src="https://sinabaghal.github.io/files/RL/03.png" width="110%" height="110%">
 </p>
