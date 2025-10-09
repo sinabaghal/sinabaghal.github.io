@@ -7,7 +7,7 @@ tags:
   - Machine Learning
 ---
 
-This tutorial provides an introduction to the fundamentals of reinforcement learning.  The main reference is the [video lecture series](https://www.youtube.com/playlist?list=PL_iWQOsE6TfVYGEGiAOMaOzzv41Jfm_Ps) by Sergey Levine.
+This tutorial provides an introduction to the fundamentals of reinforcement learning.  The main reference is the [video lecture series](https://www.youtube.com/playlist?list=PL_iWQOsE6TfVYGEGiAOMaOzzv41Jfm_Ps) by Sergey Levine. Read the PDF version  [**here**](https://sinabaghal.github.io/files/rl.pdf). 
 
 # Table of Contents
 
