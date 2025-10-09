@@ -23,7 +23,7 @@ I earned my PhD in Mathematics from the University of Waterloo in 2021, and I ho
 ---
 
 # Notes
-- [Basics of Reinforcement Learning](https://github.com/sinabaghal/rl)
+- [Basics of Reinforcement Learning](https://github.com/sinabaghal/files/rl.pdf)
   
 ---
 ---
