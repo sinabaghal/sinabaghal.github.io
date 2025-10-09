@@ -203,7 +203,7 @@ $$
 \hat{A}^{\pi_\theta}_n(s_t,a_t) = \sum_{t'=t}^{t+n} \gamma^{t'-t} r(s_{t'},a_{t'}) + \gamma^n \hat{V}_\phi(s_{t+n}) - \hat{V}_\phi(s_t)
 $$
 
-For $n=1$, we recover the previously mentioned policy gradient. As $n \to +\infty$, the bias is reduced while the variance increases. To manage this trade-off, we define the **Generalized Advantage Estimator (GAE)**:
+For $n=1$, we recover the previously mentioned policy gradient. As $n \to +\infty$, the bias is reduced while the variance increases. To manage this trade-off, we define the Generalized Advantage Estimator (GAE):
 
 $$
 \begin{aligned}
