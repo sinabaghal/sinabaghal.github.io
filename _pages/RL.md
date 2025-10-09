@@ -30,7 +30,7 @@ This tutorial provides an introduction to the fundamentals of reinforcement lear
 **RL:** In reinforcement learning, there is an *agent* and an *environment*.  At time step $t$, the state is denoted by $s_t$.  Given state $s_t$, the agent takes an action $a_t$ resulting in a reward value $r_t := r(s_t, a_t)$.
 
 <p align="center">
-<img src="https://sinabaghal.github.io/files/RL/00.png" width="110%" height="110%">
+<img src="https://sinabaghal.github.io/files/RLFIGS/00.png" width="110%" height="110%">
 </p>
 
 **Policy:** The agent’s *policy* is parameterized by $\pi_\theta$,  where $\pi_\theta(\cdot \mid s_t)$ defines a probability distribution over possible actions at time $t$, given the state $s_t$.
