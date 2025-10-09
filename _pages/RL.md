@@ -27,13 +27,13 @@ This tutorial provides an introduction to the fundamentals of reinforcement lear
 
 ## What is RL?
 
-**RL:** In reinforcement learning, there is an *agent* and an *environment*.  At time step $t$, the state is denoted by $s_t$.  Given state $s_t$, the agent takes an action $a_t$ resulting in a reward value $r_t := r(s_t, a_t)$.
+**RL:** In reinforcement learning, there is an *agent* and an *environment*.  At time step $$t$$, the state is denoted by $$s_t$$.  Given state $$s_t$$, the agent takes an action $$a_t$$ resulting in a reward value $$r_t := r(s_t, a_t)$$.
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/RLFIGS/00.png" width="110%" height="110%">
 </p>
 
-**Policy:** The agent’s *policy* is parameterized by $\pi_\theta$,  where $\pi_\theta(\cdot \mid s_t)$ defines a probability distribution over possible actions at time $t$, given the state $s_t$.
+**Policy:** The agent’s *policy* is parameterized by $$\pi_\theta$$,  where $$\pi_\theta(\cdot \mid s_t)$$ defines a probability distribution over possible actions at time $$t$$, given the state $$s_t$$.
 
 **RL Goal:** The goal of an RL algorithm is to maximize the *expected cumulative reward*:
 
@@ -41,17 +41,17 @@ $$
 \text{argmax}_\theta \; \mathbb{E}_{\pi_\theta} \left[ \sum_{t=0}^T \gamma^t r(s_t, a_t) \right],
 $$
 
-where $0 \leq \gamma < 1$ and $T$ are the discount factor and horizon respectively. Notice that:
+where $$0 \leq \gamma < 1$$ and $$T$$ are the discount factor and horizon respectively. Notice that:
 
 - More weight is placed on earlier steps.
-- $\mathbb{E}_{\pi_\theta}$ is a smooth function of $\theta$ where $r$ itself may not be (e.g., $r \in \{\pm 1\}$).
-- $s_t$ is independent of $s_{t-1}$ (*Markov Property*).
+- $$\mathbb{E}_{\pi_\theta}$$ is a smooth function of $$\theta$$ where $$r$$ itself may not be (e.g., $$r \in \{\pm 1\}$$).
+- $$s_t$$ is independent of $$s_{t-1}$$ (*Markov Property*).
 
 <p align="center">
 <img src="https://sinabaghal.github.io/files/RLFIGS/01.png" width="110%" height="110%">
 </p>
 
-**MDP:** A *Markov Decision Process* (MDP) consists of a state space $\mathcal{S}$ and an action space $\mathcal{A}$,  along with a transition operator $\mathcal{T}$ and a reward function  $r : \mathcal{S} \times \mathcal{A} \to \mathbb{R}_+$.  An MDP allows us to write a probability distribution over trajectories:
+**MDP:** A *Markov Decision Process* (MDP) consists of a state space $$\mathcal{S}$$ and an action space $$\mathcal{A}$$,  along with a transition operator $$\mathcal{T}$$ and a reward function  $$r : \mathcal{S} \times \mathcal{A} \to \mathbb{R}_+$$.  An MDP allows us to write a probability distribution over trajectories:
 
 $$
 p_\theta(\tau) = p(s_1)\prod_{t=1}^T \pi_\theta(a_t|s_t)p(s_{t+1}|s_t,a_t),
