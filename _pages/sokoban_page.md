@@ -279,15 +279,15 @@ Selecting cells uniformly also avoids the pitfalls of confidence-based ordering:
 
 **Algorithm 2 Sampling**
 
-**Require:** Trained model $f_\theta$, $T = 100$ steps, temperature $\tau = 1.0$
+**Require:** Trained model $f\_\theta$, $T = 100$ steps, temperature $\tau = 1.0$
 
 1. Initialise $x \leftarrow [\mathrm{MASK}]^{100}$
 2. **for** $\text{step} = 0, \dots, T-1$ **do**
 3. &nbsp;&nbsp;&nbsp;&nbsp;Compute $t = T - \text{step}$
-4. &nbsp;&nbsp;&nbsp;&nbsp;Forward pass: $p = \mathrm{softmax}\big(f_\theta(x, t) / \tau\big)$ for every cell
-5. &nbsp;&nbsp;&nbsp;&nbsp;Draw a candidate tile for every cell: $\hat{x}_i \sim \mathrm{Categorical}(p_i)$
-6. &nbsp;&nbsp;&nbsp;&nbsp;Collect the still-masked cells $M = \{\, i : x_i = [\mathrm{MASK}] \,\}$
-7. &nbsp;&nbsp;&nbsp;&nbsp;Decide how many to reveal: $n = \max\!\big(\lceil \lvert M \rvert / (T - \text{step}) \rceil,\, 1\big)$, which is $1$ here
+4. &nbsp;&nbsp;&nbsp;&nbsp;Forward pass: $p = \mathrm{softmax}\big(f\_\theta(x, t) / \tau\big)$ for every cell
+5. &nbsp;&nbsp;&nbsp;&nbsp;Draw a candidate tile for every cell: $\hat{x}\_i \sim \mathrm{Categorical}(p\_i)$
+6. &nbsp;&nbsp;&nbsp;&nbsp;Collect the still-masked cells $M = \lbrace i : x\_i = [\mathrm{MASK}] \rbrace$
+7. &nbsp;&nbsp;&nbsp;&nbsp;Decide how many to reveal: $n = \max\big(\lceil \lvert M \rvert / (T - \text{step}) \rceil, 1\big)$, which is $1$ here
 8. &nbsp;&nbsp;&nbsp;&nbsp;Choose which cells to reveal: pick $n$ of the masked cells in $M$ at random, all equally likely
 9. &nbsp;&nbsp;&nbsp;&nbsp;Commit the values sampled in line 5 at those cells (never revised afterwards)
 10. **return** $x$
