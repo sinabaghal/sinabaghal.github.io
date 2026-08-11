@@ -52,7 +52,6 @@ The research question, model architecture, training setup, and all experimental 
 This section is organized as follows. We first define the game of Sokoban, how a puzzle's solvability is decided using a push-based solver, and how its difficulty is measured. We then describe the masked diffusion model: its mechanism, its evolution from the continuous-diffusion formulation, and its suitability for Sokoban puzzle generation. 
 
 ## Sokoban
-
 Sokoban is a single-player puzzle created in Japan around 1980. Played on a grid-based maze with a single character and multiple boxes, the objective is to move all boxes onto designated target positions. Game mechanics are strictly restricted to pushes meaning that the player can only push one box at a time into an adjacent unoccupied space and cannot pull boxes.
 
 Due to spatial interdependencies, Sokoban cannot be decomposed into isolated tasks. Moving a single box alters board topology and player reachability; an incorrect execution order can obstruct future paths or render previously placed boxes into deadlocks. Sequence is therefore as vital as destination. Because localized, step-by-step decision-making fails, players must formulate a holistic plan accounting for all box interactions prior to execution.
