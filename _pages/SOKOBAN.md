@@ -1,4 +1,8 @@
-# Masked Diffusion Generates Solvable Sokoban Puzzles Without Solvability Supervision
+---
+title: "Masked Diffusion Generates Solvable Sokoban Puzzles Without Solvability Supervision"
+permalink: /sokoban/
+author_profile: true
+---
 
 This work presents a transformer-based diffusion model for generating Sokoban puzzles. The training pipeline is adapted from the MD4 paper [1], and the dataset is DeepMind's Boxoban [2].  The final model, along with instructions for generating new puzzles, is available [here](https://github.com/sinabaghal/SokobanPlayground). See [here](https://htmlpreview.github.io/?https://github.com/sinabaghal/SokobanPlayground/blob/main/playground.html) for a playground of already-generated puzzles.
 
