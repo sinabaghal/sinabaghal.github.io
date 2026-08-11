@@ -71,7 +71,7 @@ Continuous diffusion models are built on a stochastic differential equation (SDE
 </p>
 <div align="center">
 
-*Figure 1 from [Song et al. (2021)](https://arxiv.org/abs/2011.13456), reproduced here. **Top, forward SDE:** the process that corrupts data $\mathbf{x}(0)$ into noise $\mathbf{x}(T)$, shown corrupting a photograph step by step. **Bottom, reverse SDE:** the same process run backwards, turning noise back into data, made possible only if the **score function** $\nabla_{\mathbf{x}} \log p_t(\mathbf{x})$, boxed in the equation, is known at every intermediate step.*
+**Figure 1 from [Song et al. (2021)](https://arxiv.org/abs/2011.13456), reproduced here. **Top, forward SDE:** the process that corrupts data $\mathbf{x}(0)$ into noise $\mathbf{x}(T)$, shown corrupting a photograph step by step. **Bottom, reverse SDE:** the same process run backwards, turning noise back into data, made possible only if the **score function** $\nabla_{\mathbf{x}} \log p_t(\mathbf{x})$, boxed in the equation, is known at every intermediate step.*
 
 </div>
 
