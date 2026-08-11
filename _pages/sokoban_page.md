@@ -45,6 +45,7 @@ The research question, model architecture, training setup, and all experimental 
 - [Citation](#citation)
 - [References](#references)
 
+<div style="height: 3rem;"></div>
 
 # Preliminary
 
