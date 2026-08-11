@@ -5,7 +5,7 @@ author_profile: false
 ---
 
 
-This work presents a transformer-based diffusion model for generating Sokoban puzzles. The training pipeline is adapted from the MD4 paper [[1]](#ref-1), and the dataset is DeepMind's Boxoban [2].  The final model, along with instructions for generating new puzzles, is available [here](https://github.com/sinabaghal/SokobanPlayground). See [here](https://htmlpreview.github.io/?https://github.com/sinabaghal/SokobanPlayground/blob/main/playground.html) for a playground of already-generated puzzles.
+This work presents a transformer-based diffusion model for generating Sokoban puzzles. The training pipeline is adapted from the MD4 paper [[1]](#ref-1), and the dataset is DeepMind's Boxoban [[2]](#ref-2).  The final model, along with instructions for generating new puzzles, is available [here](https://github.com/sinabaghal/SokobanPlayground). See [here](https://htmlpreview.github.io/?https://github.com/sinabaghal/SokobanPlayground/blob/main/playground.html) for a playground of already-generated puzzles.
 
 Determining Sokoban solvability is a PSPACE-complete challenge that demands exhaustive search to verify since even a single misplaced wall can silently render an entire map unsolvable. In this work, we show that a 4.9M-parameter discrete diffusion model trained purely on tile completion, with no access to solvers, rewards, or solvability labels, achieves an unfiltered playability rate of 77.4%, with 94.5% of the remaining failures rendered solvable by removing a single wall. That a global, search-heavy property should follow from a purely local training objective is the result this work reports: by factorizing the intractable 100-cell joint distribution into a sequence of conditional steps, the model reproduces a distribution whose support consists entirely of solvable puzzles, and inherits solvability without ever being trained on it. 
 
@@ -49,7 +49,7 @@ Due to spatial interdependencies, Sokoban cannot be decomposed into isolated tas
 A puzzle is solvable if some sequence of legal box pushes lands every box on a goal. We decide this with a push-based solver that branches on pushes, not on player moves. The player's individual steps only relocate the worker without changing the puzzle, so branching on every movement would blow up the search with positions that differ solely in where the player stands. Instead we branch once per box push, and canonicalise the player to the region it can currently reach: every board with identical boxes and the player anywhere inside that reachable region collapses to a single search state. Branching is therefore tied to the box configuration rather than to navigation. We also prune dead cells: working backwards from each goal by pulling a box outward, any cell never reached is one no box could ever be pushed to a goal from, so pushes into it are discarded rather than branched on. 
 
 
-Culberson [4] proved that deciding Sokoban solvability
+Culberson [[4]](#ref-4) proved that deciding Sokoban solvability
 is PSPACE-complete. PSPACE is the class of problems solvable with a polynomial amount of memory,
 though possibly requiring exponential time, and it contains NP. What separates
 Sokoban from an NP-complete puzzle such as Sudoku is that its shortest solution
@@ -59,7 +59,7 @@ an enormous state space.
 
 ### Difficulty
 
-Jarušek and Pelánek [3] modeled Sokoban difficulty on the push-based state-space graph $G = (V, E)$, where each vertex $v \in V$ is a game state (box positions plus the player's reachable area) and each directed edge $e = (u, v) \in E$ is a single valid box push. Evaluating metrics against large-scale human solving logs, they found that static, global properties of the graph fail to predict human difficulty: push-space size $\vert V \vert$ showed no significant correlation ($r = -0.11$) and shortest push-solution length $L$ was only weakly predictive ($r = 0.30$). The strongest predictors instead captured the search a human must perform: a problem-decomposition metric correlated best under Spearman ($\rho=0.82$), while a stochastic model of human traversal was strongest under Pearson ($r=0.76$); the two are the top performers, each under a different coefficient.
+Jarušek and Pelánek [[3]](#ref-3) modeled Sokoban difficulty on the push-based state-space graph $G = (V, E)$, where each vertex $v \in V$ is a game state (box positions plus the player's reachable area) and each directed edge $e = (u, v) \in E$ is a single valid box push. Evaluating metrics against large-scale human solving logs, they found that static, global properties of the graph fail to predict human difficulty: push-space size $\vert V \vert$ showed no significant correlation ($r = -0.11$) and shortest push-solution length $L$ was only weakly predictive ($r = 0.30$). The strongest predictors instead captured the search a human must perform: a problem-decomposition metric correlated best under Spearman ($\rho=0.82$), while a stochastic model of human traversal was strongest under Pearson ($r=0.76$); the two are the top performers, each under a different coefficient.
 
 
 ## Masked diffusion model
@@ -181,7 +181,7 @@ The cosine weight therefore diverges quadratically in $1/t$ rather than linearly
 $w^\star(1) \approx 8106$ against linear's $w^\star(1) = T = 100$ which is a bounded
 ceiling equal to the sequence length itself.
 
-Finally, the snippet below summarizes the training algorithm, following [1].
+Finally, the snippet below summarizes the training algorithm, following  [[1]](#ref-1).
 
 **Algorithm 1 Training Step**
 
