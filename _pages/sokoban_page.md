@@ -351,11 +351,14 @@ further from the training corpus than genuine puzzles do.
 <p align="center">
   <img src="/images/sokoban_assets/hamming.png" alt="nearest-neighbour Hamming distance to the training corpus">
 </p>
-<div align="center">
-
-*Nearest-neighbour Hamming distance to the training corpus, player position canonicalised away. <strong>Blue:</strong> for each of 50,000 held-out puzzles, the distance to its nearest neighbour among the 450,000 training puzzles.  <strong>Orange:</strong> the same measurement for 50,000 generated puzzles. The blue series is the reference: it is what a generator that memorised nothing would score. Mass piled up near zero in the orange series would be memorisation; there is none.*
-
-</div>
+<p style="max-width: 42em; margin: 0.6em auto 2em; font-size: 0.9em; line-height: 1.55; opacity: 0.8;">
+  Nearest-neighbour Hamming distance to the training corpus, player position canonicalised away.
+  <strong>Blue:</strong> for each of 50,000 held-out puzzles, the distance to its nearest
+  neighbour among the 450,000 training puzzles. <strong>Orange:</strong> the same measurement
+  for 50,000 generated puzzles. The blue series is the reference: it is what a generator that
+  memorised nothing would score. Mass piled up near zero in the orange series would be
+  memorisation; there is none.
+</p>
 
 ## Sampling temperature
 
