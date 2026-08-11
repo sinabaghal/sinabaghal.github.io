@@ -206,7 +206,7 @@ Finally, the snippet below summarizes the training algorithm, following  [[1]](#
 3. Sample masks: $m_i \sim \mathrm{Bernoulli}(1 - \alpha_t)$ for each position
 4. Create $x_t$: replace $x_0^{(i)}$ with $[\mathrm{MASK}]$ where $m_i = 1$
 5. Forward pass: $\text{logits} = f_\theta(x_t, t)$
-6. Compute cross-entropy at masked positions
+6. Average cross-entropy over the masked positions: $\frac{1}{|M|}\sum_{i \in M}$
 7. Apply weight $w(t) = \min(1/(1 - \alpha_t),\, w_{\max})$
 8. Backpropagate and update $\theta$
 
