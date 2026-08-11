@@ -19,7 +19,7 @@ Determining Sokoban solvability is a PSPACE-complete challenge that demands exha
   - [Contribution](#contribution)
     - [Solvability emerges without supervision](#solvability-emerges-without-supervision)
     - [Distribution match](#distribution-match)
-    - [Sampling temperature trades realism for solvability](#sampling-temperature-trades-realism-for-solvability)
+    - [Temperature trade-off](#temperature-trade-off)
 - [Method and design choices](#method-and-design-choices)
   - [Model choice](#model-choice)
   - [Architecture](#architecture)
@@ -116,7 +116,7 @@ Trained only to fill in masked cells, with no solver, reward, or solvability lab
 
 The tile-pattern divergence between generated puzzles and the training corpus sits on the divergence between *real held-out* puzzles and the same corpus, at every sample size from 250 to 50,000, where the held-out split runs out. Both series decay at the same rate, and what separates them is under 4% of the divergence itself at every size. Solvability is simply inherited from the training dataset.
 
-### Sampling temperature trades realism for solvability
+### Temperature trade-off
 
 Lowering $\tau$ from 1.0 to 0.6 raises solvability by 3.8 points but inflates average wall count from 68.9 to 73.2 in the temperature sweep, against a corpus average of 68.6, while cutting median solver effort by 36%. The default $\tau = 1.0$ is the setting at which generated puzzles match real wall density.
 
