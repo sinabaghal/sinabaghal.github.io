@@ -110,7 +110,7 @@ formulation from the MD4 paper [Shi et al., 2024](https://arxiv.org/abs/2406.043
 
 ### Solvability emerges without supervision
 
-Trained only to fill in masked cells, with no solver, reward, or solvability label in the loop, the model generates puzzles that are **77.4%** solvable unfiltered, rising to **98.7%** once failures repairable by deleting a single interior wall are counted. Here 50,000 puzzles were generated using our model and every unsolvable puzzle was checked. Counting two-wall repairs as well, only ~0.40% of everything generated is genuinely broken. Interestingly, The culprit walls were committed at a median probability of **0.45**, against **0.93** for the other interior walls of the very same puzzles.
+Trained only to fill in masked cells, with no solver, reward, or solvability label in the loop, the model generates puzzles that are **77.4%** solvable unfiltered, rising to **98.7%** once failures repairable by deleting a single interior wall are counted. Here 50,000 puzzles were generated using our model and every unsolvable puzzle was checked. Counting two-wall repairs as well, only ~0.40% of everything generated is genuinely broken. Interestingly, the culprit walls were committed at a median probability of **0.45**, against **0.93** for the other interior walls of the very same puzzles.
 
 
 ### Distribution match
