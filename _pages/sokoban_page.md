@@ -9,6 +9,10 @@ This work presents a transformer-based diffusion model for generating Sokoban pu
 
 Determining Sokoban solvability is a PSPACE-complete challenge that demands exhaustive search to verify since even a single misplaced wall can silently render an entire map unsolvable. In this work, we show that a 4.9M-parameter discrete diffusion model trained purely on tile completion, with no access to solvers, rewards, or solvability labels, achieves an unfiltered playability rate of 77.4%, with 94.5% of the remaining failures rendered solvable by removing a single wall. That a global, search-heavy property should follow from a purely local training objective is the result this work reports: by factorizing the intractable 100-cell joint distribution into a sequence of conditional steps, the model reproduces a distribution whose support consists entirely of solvable puzzles, and inherits solvability without ever being trained on it. 
 
+## AI usage
+
+The research question, model architecture, training setup, and all experimental design decisions are the author's. Claude Code was used as an implementation and editing assistant.
+
 ## Contents
 
 - [Preliminary](#preliminary)
