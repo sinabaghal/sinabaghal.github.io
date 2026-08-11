@@ -23,6 +23,7 @@ I earned my PhD in Mathematics from the University of Waterloo in 2021, and I ho
   
 # Projects 
 
+- [Generating Solvable Sokoban Puzzles Using Masked Discrete Diffusion](#generating-solvable-sokoban-puzzles-using-masked-discrete-diffusion)
 - [Solving Pasur Using GPU-Accelerated Counterfactual Regret Minimization](#solving-pasur-using-gpu-accelerated-counterfactual-regret-minimization)
 - [Generative Modeling of Heston Volatility Surfaces Using Variational Autoencoders](#generative-modeling-of-heston-volatility-surfaces-using-variational-autoencoders)
 - [Implementing Deep Smoothing for Implied Volatility Surfaces](#implementing-deep-smoothing-for-implied-volatility-surfaces)
@@ -31,6 +32,12 @@ I earned my PhD in Mathematics from the University of Waterloo in 2021, and I ho
 
 ---
 ---
+
+
+### Generating Solvable Sokoban Puzzles Using Masked Discrete Diffusion
+
+Sokoban is a single-player puzzle in which a worker pushes boxes onto goal squares, and deciding whether a given puzzle can be solved at all is PSPACE-complete. This project trains a 4.9M-parameter masked discrete diffusion model to generate Sokoban puzzles from scratch, using nothing but a per-cell tile-completion objective: no solver, no reward, and no solvability label ever enters training. Despite never being shown whether a puzzle is playable, the model produces puzzles that are 77.4% solvable unfiltered, rising to 98.7% once failures repairable by deleting a single wall are counted. To see project's page, click [**here**](https://sinabaghal.github.io/sokoban/). You can find the code for this project [**here**](https://github.com/sinabaghal/SokobanPlayground).
+
 
 ### Solving Pasur Using GPU-Accelerated Counterfactual Regret Minimization
 
