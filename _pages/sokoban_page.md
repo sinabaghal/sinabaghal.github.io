@@ -104,23 +104,22 @@ formulation from the MD4 paper [Shi et al., 2024](https://arxiv.org/abs/2406.043
   <img src="/images/sokoban_assets/legend.png" alt="tile key">
 </p>
 
-**Solvability emerges without supervision** Trained only to fill in masked
-  cells, with no solver, reward, or solvability label in the loop, the model
-  generates puzzles that are **77.4%** solvable unfiltered, rising to **98.7%**
-  once failures repairable by deleting a single interior wall are counted. Here 50,000 puzzles were generated using our model and every unsolvable puzzle was checked. Counting two-wall repairs as well, only ~0.40% of everything generated is genuinely broken.
+**Solvability emerges without supervision** 
+
+Trained only to fill in masked cells, with no solver, reward, or solvability label in the loop, the model generates puzzles that are **77.4%** solvable unfiltered, rising to **98.7%** once failures repairable by deleting a single interior wall are counted. Here 50,000 puzzles were generated using our model and every unsolvable puzzle was checked. Counting two-wall repairs as well, only ~0.40% of everything generated is genuinely broken.
 
 
-**Distribution match** The tile-pattern divergence between generated puzzles and the training corpus sits on the divergence between *real held-out* puzzles and the same corpus, at every sample size from 250 to 50,000, where the held-out split runs out. Both series decay at the same rate, and what separates them is under 4% of the divergence itself at every size. Solvability is simply inherited from the training dataset.
+**Distribution match** 
 
-**The model's own uncertainty identifies the cells that break puzzles** The
-  culprit walls were committed at a median probability of **0.45**, against
-  **0.93** for the other interior walls of the very same puzzles.
+The tile-pattern divergence between generated puzzles and the training corpus sits on the divergence between *real held-out* puzzles and the same corpus, at every sample size from 250 to 50,000, where the held-out split runs out. Both series decay at the same rate, and what separates them is under 4% of the divergence itself at every size. Solvability is simply inherited from the training dataset.
 
-**Sampling temperature trades realism for solvability** Lowering $\tau$ from
-  1.0 to 0.6 raises solvability by 3.8 points but inflates average wall count
-  from 68.9 to 73.2 in the temperature sweep, against a corpus average of 68.6, while cutting median
-  solver effort by 36%. The default $\tau = 1.0$ is the setting at which
-  generated puzzles match real wall density.
+**The model's own uncertainty identifies the cells that break puzzles**
+
+The culprit walls were committed at a median probability of **0.45**, against **0.93** for the other interior walls of the very same puzzles.
+
+**Sampling temperature trades realism for solvability**
+
+Lowering $\tau$ from 1.0 to 0.6 raises solvability by 3.8 points but inflates average wall count from 68.9 to 73.2 in the temperature sweep, against a corpus average of 68.6, while cutting median solver effort by 36%. The default $\tau = 1.0$ is the setting at which generated puzzles match real wall density.
 
 
 # Method and design choices
