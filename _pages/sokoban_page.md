@@ -4,6 +4,13 @@ permalink: /sokoban/
 author_profile: false
 ---
 
+<style>
+  #main { max-width: 1500px; }
+  .page { width: 100%; padding-right: 0; float: none; }
+  .page__inner-wrap { max-width: none; }
+  .page__content p, .page__content li { max-width: none; }
+</style>
+
 
 This work presents a transformer-based diffusion model for generating Sokoban puzzles. The training pipeline is adapted from the MD4 paper [[1]](#ref-1), and the dataset is DeepMind's Boxoban [[2]](#ref-2).  The final model, along with instructions for generating new puzzles, is available [here](https://github.com/sinabaghal/SokobanPlayground). See [here](https://htmlpreview.github.io/?https://github.com/sinabaghal/SokobanPlayground/blob/main/playground.html) for a playground of already-generated puzzles.
 
