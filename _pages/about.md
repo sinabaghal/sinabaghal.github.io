@@ -39,7 +39,10 @@ I earned my PhD in Mathematics from the University of Waterloo in 2021, and I ho
 Sokoban is a single-player puzzle in which a worker pushes boxes onto goal squares, and deciding whether a given puzzle can be solved at all is PSPACE-complete. This project trains a 4.9M-parameter masked discrete diffusion model to generate Sokoban puzzles from scratch, using nothing but a per-cell tile-completion objective: no solver, no reward, and no solvability label ever enters training. Despite never being shown whether a puzzle is playable, the model produces puzzles that are 77.4% solvable unfiltered, rising to 98.7% once failures repairable by deleting a single wall are counted. To see project's page, click [**here**](https://sinabaghal.github.io/sokoban/). You can find the code for this project [**here**](https://github.com/sinabaghal/SokobanPlayground).
 
 <p align="center">
-  <a href="/sokoban/"><img src="/images/sokoban_assets/panel_levels.png" alt="nine generated Sokoban puzzles"></a>
+  <img src="/images/sokoban_assets/generate_panel.gif" alt="nine Sokoban puzzles generated from a fully masked grid">
+</p>
+<p align="center">
+  <em>Nine puzzles generated from a fully masked grid: 100 steps, one cell committed per step in uniformly random order, never revised.</em>
 </p>
 
 
