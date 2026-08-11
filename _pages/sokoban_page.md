@@ -167,13 +167,13 @@ $$
 Here $M = \lbrace i : x\_t^{(i)} = [\mathrm{MASK}] \rbrace$ where $t \sim \mathrm{Uniform}\lbrace 1,\dots,T\rbrace$ and each position is masked
 independently with probability $1-\alpha\_t$. We now explain the three remaining choices: the weight cap, the number of diffusion steps, and the schedule.
 
-**Weights** At timestep $t$ only $100 \cdot t/T$ cells are masked in expectation, so at $t=1$ the model is graded on roughly one cell and at $t=T$ on all hundred. Without reweighting, a step that hides a single cell contributes as much to the gradient as one that hides the entire grid. The $1/(1-\alpha_t)$ factor which falls out of the masked-diffusion ELBO restores the per-sequence scale. Moreover, since $T/t \to \infty$ as $t\to 0$, with uncapped $w(t)$ a single near-complete grid would carry $T\times$ the gradient weight of
+**Weights.** At timestep $t$ only $100 \cdot t/T$ cells are masked in expectation, so at $t=1$ the model is graded on roughly one cell and at $t=T$ on all hundred. Without reweighting, a step that hides a single cell contributes as much to the gradient as one that hides the entire grid. The $1/(1-\alpha_t)$ factor which falls out of the masked-diffusion ELBO restores the per-sequence scale. Moreover, since $T/t \to \infty$ as $t\to 0$, with uncapped $w(t)$ a single near-complete grid would carry $T\times$ the gradient weight of
 a fully-masked one, and the gradient becomes dominated by a handful of nearly finished examples. Small $t$ is the *near-complete* regime, in which a grid has only a handful of cells left to fill. These are the cells that are critical for solvability. $w_{\max}$ therefore sets how much the model learns about the phase that determines the global property it is never trained on. 
 
-**Number of diffusion steps** Notice that $T=L$ is the unique value where, first, exactly one cell is revealed per step and, second, no trained
+**Number of diffusion steps.** Notice that $T=L$ is the unique value where, first, exactly one cell is revealed per step and, second, no trained
 timestep is left unused by the sampler. Every reveal-step must unmask at least one new cell, so sampling always runs $\min(T, L)$ reveal steps. Choosing $T < L$ forces the sampler to reveal more than one cell per step; choosing $T > L$ leaves the sampler visiting only $L$ of the $T$ trained timesteps, so most are never used at inference.
 
-**Scheduler** As mentioned above, since the loss is computed only at masked positions, a timestep with few masked tokens carries little information per gradient step, and the uncapped weight $w^\star(t) \equiv 1/(1-\alpha_t)$ compensates by amplifying it. The schedule decides how sharply this amplification grows as $t$ approaches its minimum. Under the linear and cosine schedules, near $t=0$ the masked fraction behaves as
+**Scheduler.** As mentioned above, since the loss is computed only at masked positions, a timestep with few masked tokens carries little information per gradient step, and the uncapped weight $w^\star(t) \equiv 1/(1-\alpha_t)$ compensates by amplifying it. The schedule decides how sharply this amplification grows as $t$ approaches its minimum. Under the linear and cosine schedules, near $t=0$ the masked fraction behaves as
 
 $$1-\alpha_t^{\text{linear}} = \frac{t}{T}, \qquad 1-\alpha_t^{\text{cosine}} \approx \frac{\pi^2 t^2}{8T^2}$$
 
