@@ -147,7 +147,7 @@ Here $E_{\text{tok}},  E_{\text{row}}$, and $E_{\text{col}}$ each maps an intege
 
 $$\mathrm{sinusoid}(t) = \big[\sin(t\omega_0),\cos(t\omega_0),\ \sin(t\omega_1),\cos(t\omega_1),\ \dots\big]$$
 
-$$\omega_k = 10000^{-2k/d}.$$
+$$\omega_k = 10000^{-2k/d}$$
 
 Note that the timestep term $\tau(t)$ is added identically to every cell. The embeddings then feed a standard stack of 6 standard pre-norm Transformer blocks (multi-head attention + FFN with residual connections), and a final linear layer projects each cell to logits over the 7 tiles.
 
