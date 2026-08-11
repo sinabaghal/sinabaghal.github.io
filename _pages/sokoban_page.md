@@ -19,7 +19,6 @@ Determining Sokoban solvability is a PSPACE-complete challenge that demands exha
   - [Contribution](#contribution)
     - [Solvability emerges without supervision](#solvability-emerges-without-supervision)
     - [Distribution match](#distribution-match)
-    - [The model's own uncertainty identifies the cells that break puzzles](#the-models-own-uncertainty-identifies-the-cells-that-break-puzzles)
     - [Sampling temperature trades realism for solvability](#sampling-temperature-trades-realism-for-solvability)
 - [Method and design choices](#method-and-design-choices)
   - [Model choice](#model-choice)
