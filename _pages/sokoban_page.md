@@ -356,7 +356,7 @@ further from the training corpus than genuine puzzles do.
 </p>
 <div align="center">
 
-*Nearest-neighbour Hamming distance to the training corpus, player position canonicalised away. **Blue:** for each of 50,000 held-out puzzles, the distance to its nearest neighbour among the 450,000 training puzzles. **Orange:** the same measurement for 50,000 generated puzzles. The blue series is the reference: it is what a generator that memorised nothing would score. Mass piled up near zero in the orange series would be memorisation; there is none.*
+*Nearest-neighbour Hamming distance to the training corpus, player position canonicalised away. <strong>Blue:</strong> for each of 50,000 held-out puzzles, the distance to its nearest neighbour among the 450,000 training puzzles.  <strong>Orange:</strong> the same measurement for 50,000 generated puzzles. The blue series is the reference: it is what a generator that memorised nothing would score. Mass piled up near zero in the orange series would be memorisation; there is none.*
 
 </div>
 
