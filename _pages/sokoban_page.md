@@ -145,7 +145,7 @@ The non-local interdependence between different parts of the puzzle is what make
 
 The generator $f_\theta$ is a bidirectional Transformer encoder ($\approx$ 4.9M parameters): $d=256$, $6$ layers, $8$ heads, feed-forward width $1024$, dropout $0.1$.  Encoder only is used because the task is fill-in-the-blanks over a grid, not left-to-right generation.
 
-It maps a masked grid $x_t\in\{0,\dots,7\}^{100}$ and timestep $t$ to per-cell logits over the $7$ real tiles, $f_\theta(x_t,t)\in\mathbb{R}^{100\times 7}$ ([MASK] is an input token only, never predicted).
+It maps a masked grid $x_t\in\lbrace 0,\dots,7\rbrace ^{100}$ and timestep $t$ to per-cell logits over the $7$ real tiles, $f_\theta(x_t,t)\in\mathbb{R}^{100\times 7}$ ([MASK] is an input token only, never predicted).
 
 First, we explain the cell embedding: Cell $i$, at grid position $(r_i,c_i)$, is embedded as
 
