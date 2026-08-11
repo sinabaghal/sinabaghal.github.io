@@ -75,7 +75,7 @@ Continuous diffusion models are built on a stochastic differential equation (SDE
   <strong>Top, forward SDE:</strong> the process that corrupts data $\mathbf{x}(0)$ into
   noise $\mathbf{x}(T)$, shown corrupting a photograph step by step.
   <strong>Bottom, reverse SDE:</strong> the same process run backwards, turning noise back
-  into data — possible only if the <strong>score function</strong>
+  into data. This is made possible only if the <strong>score function</strong>
   $\nabla_{\mathbf{x}} \log p_t(\mathbf{x})$, boxed in the equation, is known at every
   intermediate step.
 </p>
@@ -153,7 +153,6 @@ At timestep $t$ each cell is independently replaced by `[MASK]` with probability
 recover the original tokens at the masked positions, where the loss is the cross-entropy weighted by
 
 $$w(t) = \min\left(\frac{1}{1-\alpha_t},\ w_{\max}\right) = \min(T/t,\ w_{\max}), \qquad w_{\max}=10$$
-
 
 The loss function is therefore calculated as below. 
 
