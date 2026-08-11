@@ -4,14 +4,6 @@ permalink: /sokoban/
 author_profile: false
 ---
 
-<style>
-  #main { max-width: 1500px; }
-  .page { width: 100%; padding-right: 0; float: none; }
-  .page__inner-wrap { max-width: none; }
-  .page__content p, .page__content li { max-width: none; }
-</style>
-
-
 This work presents a transformer-based diffusion model for generating Sokoban puzzles. The training pipeline is adapted from the MD4 paper [[1]](#ref-1), and the dataset is DeepMind's Boxoban [[2]](#ref-2).  The final model, along with instructions for generating new puzzles, is available [here](https://github.com/sinabaghal/SokobanPlayground). See [here](https://htmlpreview.github.io/?https://github.com/sinabaghal/SokobanPlayground/blob/main/playground.html) for a playground of already-generated puzzles.
 
 Determining Sokoban solvability is a PSPACE-complete challenge that demands exhaustive search to verify since even a single misplaced wall can silently render an entire map unsolvable. In this work, we show that a 4.9M-parameter discrete diffusion model trained purely on tile completion, with no access to solvers, rewards, or solvability labels, achieves an unfiltered playability rate of 77.4%, with 94.5% of the remaining failures rendered solvable by removing a single wall. That a global, search-heavy property should follow from a purely local training objective is the result this work reports: by factorizing the intractable 100-cell joint distribution into a sequence of conditional steps, the model reproduces a distribution whose support consists entirely of solvable puzzles, and inherits solvability without ever being trained on it. 
