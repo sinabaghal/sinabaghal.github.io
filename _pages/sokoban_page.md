@@ -171,17 +171,18 @@ a fully-masked one, and the gradient becomes dominated by a handful of nearly fi
 timestep is left unused by the sampler. Every reveal-step must unmask at least one new cell, so sampling always runs $\min(T, L)$ reveal steps. Choosing $T < L$ forces the sampler to reveal more than one cell per step; choosing $T > L$ leaves the sampler visiting only $L$ of the $T$ trained timesteps, so most are never used at inference.
 
 **Scheduler** As mentioned above, since the loss is computed only at masked positions, a timestep with few masked tokens carries little information per gradient step, and the uncapped weight $w^\star(t) \equiv 1/(1-\alpha_t)$ compensates by amplifying it. The schedule decides how sharply this amplification grows as $t$ approaches its minimum. Under the linear and cosine schedules, near $t=0$ the masked fraction behaves as
+
 $$1-\alpha_t^{\text{linear}} = \frac{t}{T}, \qquad 1-\alpha_t^{\text{cosine}} \approx \frac{\pi^2 t^2}{8T^2}$$
+
 _i.e.,_ a linear vs. a quadratic falloff, so the uncapped weights grow as
+
 $$w^\star_{\text{linear}}(t) = \frac{T}{t}, \qquad w^\star_{\text{cosine}}(t) \approx \frac{8T^2}{\pi^2 t^2}$$
+
 The cosine weight therefore diverges quadratically in $1/t$ rather than linearly, reaching
 $w^\star(1) \approx 8106$ against linear's $w^\star(1) = T = 100$ which is a bounded
 ceiling equal to the sequence length itself.
 
-
-
 Finally, the snippet below summarizes the training algorithm, following [1].
-
 
 **Algorithm 1 Training Step**
 
