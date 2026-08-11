@@ -199,6 +199,8 @@ Finally, the snippet below summarizes the training algorithm, following  [[1]](#
 7. Apply weight $w(t) = \min(1/(1 - \alpha_t),\, w_{\max})$
 8. Backpropagate and update $\theta$
 
+In Algorithm 1, training is shown for a single puzzle; the implementation vectorizes over a batch of $B$.
+
 ## Loss and solvability 
 
 The model was trained for 1,000 epochs over the 450,000-puzzle corpus, 292,000
