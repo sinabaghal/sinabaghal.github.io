@@ -69,11 +69,15 @@ Continuous diffusion models are built on a stochastic differential equation (SDE
 <p align="center">
   <img src="/images/sokoban_assets/SDE.png" alt="forward and reverse SDE, Song et al. 2021">
 </p>
-<div align="center">
-
-**Figure 1 from [Song et al. (2021)](https://arxiv.org/abs/2011.13456), reproduced here. **Top, forward SDE:** the process that corrupts data $\mathbf{x}(0)$ into noise $\mathbf{x}(T)$, shown corrupting a photograph step by step. **Bottom, reverse SDE:** the same process run backwards, turning noise back into data, made possible only if the **score function** $\nabla_{\mathbf{x}} \log p_t(\mathbf{x})$, boxed in the equation, is known at every intermediate step.*
-
-</div>
+<p style="max-width: 42em; margin: 0.6em auto 2em; font-size: 0.9em; line-height: 1.55; opacity: 0.8;">
+  Figure 1 from <a href="https://arxiv.org/abs/2011.13456">Song et al. (2021)</a>, reproduced here.
+  <strong>Top, forward SDE:</strong> the process that corrupts data \(\mathbf{x}(0)\) into
+  noise \(\mathbf{x}(T)\), shown corrupting a photograph step by step.
+  <strong>Bottom, reverse SDE:</strong> the same process run backwards, turning noise back
+  into data — possible only if the <strong>score function</strong>
+  \(\nabla_{\mathbf{x}} \log p_t(\mathbf{x})\), boxed in the equation, is known at every
+  intermediate step.
+</p>
 
 The diffusion models that generate images work on **continuous** data. The forward process gradually adds Gaussian noise to a picture until nothing is left
 but static; the model learns to run that backwards, removing a little noise at a
