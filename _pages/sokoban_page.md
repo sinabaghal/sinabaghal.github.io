@@ -381,7 +381,7 @@ If you use this work, please cite it as:
   title   = {Masked Diffusion Generates Solvable Sokoban Puzzles Without Ever Seeing a Solver},
   year    = {2026},
   url     = {https://github.com/sinabaghal/SokobanPlayground},
-  note    = {Masked discrete diffusion model for Sokoban puzzle generation}
+  note    = {{arXiv} version forthcoming}
 }
 ```
 
