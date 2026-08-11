@@ -138,7 +138,9 @@ The generator $f_\theta$ is a bidirectional Transformer encoder ($\approx$ 4.9M 
 It maps a masked grid $x_t\in\{0,\dots,7\}^{100}$ and timestep $t$ to per-cell logits over the $7$ real tiles, $f_\theta(x_t,t)\in\mathbb{R}^{100\times 7}$ ([MASK] is an input token only, never predicted).
 
 First, we explain the cell embedding: Cell $i$, at grid position $(r_i,c_i)$, is embedded as
+
 $$h_i^{(0)} = E_{\text{tok}}(x_{t,i}) + E_{\text{row}}(r_i) + E_{\text{col}}(c_i) + \tau(t),\qquad \tau(t)=\mathrm{MLP}\big(\mathrm{sinusoid}(t)\big)\in\mathbb{R}^{d}.$$
+
 Here $E_{\text{tok}},  E_{\text{row}}$, and $E_{\text{col}}$ each maps an integer index to a learned $d$-vector. Separate row/column embeddings give attention the 2-D grid geometry directly rather than through a flat 1-D index. Moreover, 
 $$\mathrm{sinusoid}(t) = \big[\sin(t\omega_0),\cos(t\omega_0),\ \sin(t\omega_1),\cos(t\omega_1),\ \dots\big],\qquad \omega_k = 10000^{-2k/d}.$$
 Note that the timestep term $\tau(t)$ is added identically to every cell. The embeddings then feed a standard stack of 6 standard pre-norm Transformer blocks (multi-head attention + FFN with residual connections), and a final linear layer projects each cell to logits over the 7 tiles.
@@ -152,9 +154,11 @@ $$w(t) = \min\left(\frac{1}{1-\alpha_t},\ w_{\max}\right) = \min(T/t,\ w_{\max})
 
 
 The loss function is therefore calculated as below. 
+
 $$
 \mathcal{L}(\theta) \;=\; \mathbb{E}_{x_0,\; t,\; m}\left[\; w(t)\cdot\frac{1}{|M|}\sum_{i \in M} -\log p_\theta\big(x_0^{(i)} \,\big|\, x_t,\, t\big)\;\right]
 $$
+
 Here $M = \{\, i : x_t^{(i)} = [\mathrm{MASK}] \,\}$ where $t \sim \mathrm{Uniform}\{1,\dots,T\}$ and each position is masked
 independently with probability $1-\alpha_t$. We now explain the three remaining choices: the weight cap, the number of diffusion steps, and the schedule.
 
