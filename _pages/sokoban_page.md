@@ -185,7 +185,7 @@ Finally, the snippet below summarizes the training algorithm, following  [[1]](#
 
 **Algorithm 1 Training Step**
 
-**Require:** Batch of puzzles $\{x_0^{(b)}\}_{b=1}^{B}$, model $f_\theta$
+**Require:** Batch of puzzles $\lbrace x_0^{(b)}\rbrace_{b=1}^{B}$, model $f_\theta$
 
 1. Sample $t^{(b)} \sim \mathrm{Uniform}\{1, \dots, T\}$ for each $b$
 2. Compute $\alpha_t = 1 - t/T$
