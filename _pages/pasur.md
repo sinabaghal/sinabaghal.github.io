@@ -1,7 +1,7 @@
 ---
 title: "Solving Pasur Using GPU-Accelerated CFR"
 permalink: /pasur/
-author_profile: true
+author_profile: false
 tags:
   - Counterfactual Regret Minimization
   - Reinforcement Learning
