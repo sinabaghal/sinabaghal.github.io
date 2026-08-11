@@ -103,9 +103,7 @@ and a box. Gaussian noise has nothing to act on.
 
 **Masked diffusion** replaces noising with *hiding*. Corruption means swapping a
 token for a special `[MASK]` symbol, and the schedule controls how many tokens
-are hidden rather than how much noise is added. Generation runs that backwards:
-start from a fully masked grid and reveal cells one at a time, predicting what
-belongs in each.
+are hidden rather than how much noise is added. Generation runs that backwards: start from a fully masked grid and progressively reveal cells, predicting what belongs in each. How many are revealed per step follows from the number of diffusion steps. 
 
 In masked diffusion models commitments are **final**: once a cell is unmasked it can never be selected again and the sampler only ever draws from cells still marked `[MASK]`, so a wall placed at step 3 stays a wall for the rest of generation. Continuous diffusion has no such rule: every pixel is nudged at every one of its steps, all the way to the end, so an early bad direction can still be pulled back later. 
 
