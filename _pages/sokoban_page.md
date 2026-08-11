@@ -314,15 +314,12 @@ at the moment it committed it during generation. These probabilities have a medi
 **0.93** for the other interior walls of the very same puzzles.
 
 <p align="center">
-  <img src="/images/sokoban_assets/hamming.png" alt="nearest-neighbour Hamming distance to the training corpus">
+  <img src="/images/sokoban_assets/wallfix_fixed.png" alt="unsolvable puzzles repaired by removing one wall, each marked with the probability the model committed it at">
 </p>
 <p style="max-width: 42em; margin: 0.6em auto 2em; font-size: 0.9em; line-height: 1.55; opacity: 0.8;">
-  Nearest-neighbour Hamming distance to the training corpus, player position canonicalised away.
-  <strong>Blue:</strong> for each of 50,000 held-out puzzles, the distance to its nearest
-  neighbour among the 450,000 training puzzles. <strong>Orange:</strong> the same measurement
-  for 50,000 generated puzzles. The blue series is the reference: it is what a generator that
-  memorised nothing would score. Mass piled up near zero in the orange series would be
-  memorisation; there is none.
+  Nine unsolvable puzzles, each repaired by deleting one interior wall. The red outline marks
+  the removed cell and the chip gives the probability the model assigned it when it was
+  committed during generation. Measured on 11,288 unsolvable puzzles from a 50,000-sample run.
 </p>
 
 ## Memorization
