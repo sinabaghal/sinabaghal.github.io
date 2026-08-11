@@ -161,7 +161,7 @@ $$w(t) = \min\left(\frac{1}{1-\alpha_t},\ w_{\max}\right) = \min(T/t,\ w_{\max})
 The loss function is therefore calculated as below. 
 
 $$
-\mathcal{L}(\theta) \;=\; \mathbb{E}_{x_0,\; t,\; m}\left[\; w(t)\cdot\frac{1}{|M|}\sum_{i \in M} -\log p_\theta\big(x_0^{(i)} \,\big|\, x_t,\, t\big)\;\right]
+\mathcal{L}(\theta) = \mathbb{E}_{x_0, t, m} \Big[ w(t) \cdot \frac{1}{\lvert M \rvert} \sum_{i \in M} -\log p_\theta \big( x_0^{(i)} \mid x_t, t \big) \Big]
 $$
 
 Here $M = \lbrace i : x\_t^{(i)} = [\mathrm{MASK}] \rbrace$ where $t \sim \mathrm{Uniform}\lbrace 1,\dots,T\rbrace$ and each position is masked
