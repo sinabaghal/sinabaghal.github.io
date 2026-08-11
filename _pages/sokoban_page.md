@@ -67,7 +67,7 @@ Jarušek and Pelánek [3] modeled Sokoban difficulty on the push-based state-spa
 Continuous diffusion models are built on a stochastic differential equation (SDE) that gradually turns data into noise. [Song et al. (2021)](https://arxiv.org/abs/2011.13456) showed this process can be run in reverse in two ways: as a matching reverse-time SDE, or as a deterministic *probability flow ODE* with the same marginal distributions _i.e.,_ an ordinary differential equation that a standard solver can integrate directly. Both routes need the same missing piece: the *score function*, $\nabla_x \log p_t(x)$, the gradient of the log-density of the noised data at each step. The score function has no closed form; it can only be estimated by training a separate network against a score-matching objective. Every part of this, meaning the SDE, the ODE, the gradient, the density is defined over a continuous, differentiable space. None of it has a meaning for discrete data: there is no gradient of a distribution over seven tile types, and no log-density of a word.
 
 <p align="center">
-  <img src="/images/sokoban_assets/SDE.png" alt="forward and reverse SDE, Song et al. 2021">
+  <img src="http://sinabaghal.github.io/images/sokoban_assets/SDE.png" alt="forward and reverse SDE, Song et al. 2021">
 </p>
 <div align="center">
 
