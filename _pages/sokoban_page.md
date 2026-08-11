@@ -239,11 +239,13 @@ patterns, plotted against how many puzzles went into the sample. The validation 
 <p align="center">
   <img src="/images/sokoban_assets/jsd_sample_size.png" alt="tile-pattern JSD against sample size, generated vs real held-out puzzles">
 </p>
-<div align="center">
-
-*Tile-pattern JSD against the 450,000-puzzle training corpus, plotted against sample size, for generated puzzles and for real held-out puzzles measured identically. Both series decay as $K^{-0.59}$: the divergence a small sample shows is dominated by how few $3\times3$ patterns it can cover, not by the source it was drawn from. The held-out curve is therefore the floor, and the generated curve sits on it.*
-
-</div>
+<p style="max-width: 42em; margin: 0.6em auto 2em; font-size: 0.9em; line-height: 1.55; opacity: 0.8;">
+  Tile-pattern JSD against the 450,000-puzzle training corpus, plotted against sample size,
+  for generated puzzles and for real held-out puzzles measured identically. Both series decay
+  as <em>K</em><sup>&minus;0.59</sup>: the divergence a small sample shows is dominated by how
+  few 3&times;3 patterns it can cover, not by the source it was drawn from. The held-out curve
+  is therefore the floor, and the generated curve sits on it.
+</p>
 
 
 # Inference and evaluation
