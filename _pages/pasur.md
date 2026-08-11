@@ -14,8 +14,6 @@ tags:
   - Artificial Intelligence
 ---
 
- <br>
-
 <style>
   #main { max-width: 1500px; }
   .page { width: 100%; padding-right: 0; float: none; }
