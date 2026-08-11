@@ -316,8 +316,7 @@ at the moment it committed it during generation. These probabilities have a medi
 <p align="center">
   <img src="/images/sokoban_assets/wallfix_fixed.png" alt="unsolvable puzzles repaired by removing one wall, each marked with the probability the model committed it at">
 </p>
-<p style="max-width: 42em; margin: 0.6em auto 2em; font-size: 0.9em; line-height: 1.55; opacity: 0.8;">
-  Nine unsolvable puzzles, each repaired by deleting one interior wall. The red outline marks
+<p style="max-width: 42em; margin: 0.6em auto 2em; font-size: 0.9em; line-height: 1.55; opacity: 0.8;"> Nine unsolvable puzzles, each repaired by deleting one interior wall. The red outline marks
   the removed cell and the chip gives the probability the model assigned it when it was
   committed during generation. Measured on 11,288 unsolvable puzzles from a 50,000-sample run.
 </p>
