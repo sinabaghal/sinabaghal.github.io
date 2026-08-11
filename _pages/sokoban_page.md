@@ -380,7 +380,7 @@ If you use this work, please cite it as:
   author  = {Baghal, Sina},
   title   = {Masked Diffusion Generates Solvable Sokoban Puzzles Without Ever Seeing a Solver},
   year    = {2026},
-  url     = {https://github.com/sinabaghal/SokobanPlayground},
+  url     = {https://sinabaghal.github.io/sokoban/},
   note    = {{arXiv} version forthcoming}
 }
 ```
