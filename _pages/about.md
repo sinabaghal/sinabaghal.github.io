@@ -23,7 +23,7 @@ I earned my PhD in Mathematics from the University of Waterloo in 2021, and I ho
   
 # Projects 
 
-- [Generating Solvable Sokoban Puzzles Using Masked Discrete Diffusion](#generating-solvable-sokoban-puzzles-using-masked-discrete-diffusion)
+- [Masked Diffusion Generates Solvable Sokoban Puzzles Without Ever Seeing a Solver](#masked-diffusion-generates-solvable-sokoban-puzzles-without-ever-seeing-a-solver)
 - [Solving Pasur Using GPU-Accelerated Counterfactual Regret Minimization](#solving-pasur-using-gpu-accelerated-counterfactual-regret-minimization)
 - [Generative Modeling of Heston Volatility Surfaces Using Variational Autoencoders](#generative-modeling-of-heston-volatility-surfaces-using-variational-autoencoders)
 - [Implementing Deep Smoothing for Implied Volatility Surfaces](#implementing-deep-smoothing-for-implied-volatility-surfaces)
@@ -34,7 +34,7 @@ I earned my PhD in Mathematics from the University of Waterloo in 2021, and I ho
 ---
 
 
-### Generating Solvable Sokoban Puzzles Using Masked Discrete Diffusion
+### Masked Diffusion Generates Solvable Sokoban Puzzles Without Ever Seeing a Solver
 
 Sokoban is a single-player puzzle in which a worker pushes boxes onto goal squares, and deciding whether a given puzzle can be solved at all is PSPACE-complete.
 
