@@ -372,8 +372,12 @@ solvability.
   <img src="/images/sokoban_assets/temperature_sweep.png" alt="solvability and wall count against sampling temperature">
 </p>
 <div align="center">
-
-*Solvability and average wall count against sampling temperature, 10,000 samples per setting on the T=100 checkpoint. Shaded bands are 95% confidence intervals. The training corpus averages 68.6 walls per puzzle; sampling at $\tau = 1.0$ matches it, and every lower setting exceeds it.*
+<p style="max-width: 42em; margin: 0.6em auto 2em; font-size: 0.9em; line-height: 1.55; opacity: 0.8;">
+  Solvability and average wall count against sampling temperature, 10,000 samples per setting
+  on the <em>T</em>&nbsp;=&nbsp;100 checkpoint. Shaded bands are 95% confidence intervals. The
+  training corpus averages 68.6 walls per puzzle; sampling at &tau;&nbsp;=&nbsp;1.0 matches it,
+  and every lower setting exceeds it.
+</p>
 
 </div>
 
