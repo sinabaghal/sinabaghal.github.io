@@ -14,6 +14,8 @@ tags:
   - Artificial Intelligence
 ---
 
+
+
 <style>
   #main { max-width: 1500px; }
   .page { width: 100%; padding-right: 0; float: none; }
@@ -21,6 +23,7 @@ tags:
   .page__content p, .page__content li { max-width: none; }
   .page__content img { max-width: 100%; height: auto; }
 </style>
+
 
  
 This repository is dedicated to the paper [*Solving Pasur Using GPU-Accelerated Counterfactual Regret Minimization*](https://arxiv.org/abs/2508.06559). You can find the code for this project [**here**](https://github.com/sinabaghal/pasur). 
