@@ -1,5 +1,5 @@
 ---
-title: "Masked Diffusion Generates Solvable Sokoban Puzzles Without Solvability Supervision"
+title: "Masked Diffusion Generates Solvable Sokoban Puzzles Without Ever Seeing a Solver"
 permalink: /sokoban/
 author_profile: false
 ---
@@ -370,7 +370,7 @@ If you use this work, please cite it as:
 ```bibtex
 @software{baghal2026sokoban,
   author  = {Baghal, Sina},
-  title   = {Masked Diffusion Generates Solvable Sokoban Puzzles Without Solvability Supervision},
+  title   = {Masked Diffusion Generates Solvable Sokoban Puzzles Without Ever Seeing a Solver},
   year    = {2026},
   url     = {https://github.com/sinabaghal/SokobanPlayground},
   note    = {Masked discrete diffusion model for Sokoban puzzle generation}
