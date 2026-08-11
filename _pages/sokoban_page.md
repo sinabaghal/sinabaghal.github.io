@@ -24,7 +24,7 @@ Determining Sokoban solvability is a PSPACE-complete challenge that demands exha
   - [Model choice](#model-choice)
   - [Architecture](#architecture)
   - [Training](#training)
-  - [Training run](#training-run)
+  - [Loss and solvability](#loss-and-solvability)
   - [Distribution match](#distribution-match-1)
 - [Inference and evaluation](#inference-and-evaluation)
   - [Examples](#examples)
@@ -200,7 +200,7 @@ Finally, the snippet below summarizes the training algorithm, following  [[1]](#
 7. Apply weight $w(t) = \min(1/(1 - \alpha_t),\, w_{\max})$
 8. Backpropagate and update $\theta$
 
-## Training run
+## Loss and solvability 
 
 The model was trained for 1,000 epochs over the 450,000-puzzle corpus, 292,000
 optimizer steps at batch size 1,536, using AdamW (learning rate
