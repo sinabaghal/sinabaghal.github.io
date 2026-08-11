@@ -376,12 +376,12 @@ solvability.
 If you use this work, please cite it as:
 
 ```bibtex
-@software{baghal2026sokoban,
-  author  = {Baghal, Sina},
-  title   = {Masked Diffusion Generates Solvable Sokoban Puzzles Without Ever Seeing a Solver},
-  year    = {2026},
-  url     = {https://sinabaghal.github.io/sokoban/},
-  note    = {{arXiv} version forthcoming}
+@misc{baghal2026sokoban,
+  author       = {Baghal, Sina},
+  title        = {Masked Diffusion Generates Solvable Sokoban Puzzles Without Ever Seeing a Solver},
+  year         = {2026},
+  howpublished = {\url{https://sinabaghal.github.io/sokoban/}},
+  note         = {{arXiv} version forthcoming}
 }
 ```
 
