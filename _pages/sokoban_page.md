@@ -1,7 +1,7 @@
 ---
 title: "Masked Diffusion Generates Solvable Sokoban Puzzles Without Solvability Supervision"
 permalink: /sokoban/
-author_profile: true
+author_profile: false
 ---
 
 
