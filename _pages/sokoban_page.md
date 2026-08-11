@@ -402,8 +402,8 @@ PMLR 97, 2019. arXiv:1901.03559.
 Dataset: https://github.com/deepmind/boxoban-levels
 
 <a id="ref-3"></a>[3] Petr Jarušek and Radek Pelánek. "Difficulty Rating of Sokoban Puzzle."
-*Frontiers in Artificial Intelligence and Applications*, Vol. 222, pp. 140–150,
-2010. DOI: 10.3233/978-1-60750-675-1-140.
+*Frontiers in Artificial Intelligence and Applications*, Vol. 222, pp. 140–150, 2010.
+DOI: 10.3233/978-1-60750-675-1-140.
 
 <a id="ref-4"></a>[4] Joseph Culberson. "Sokoban is PSPACE-complete." Technical Report TR97-02,
 Department of Computing Science, University of Alberta, 1997.
