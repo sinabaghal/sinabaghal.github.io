@@ -379,17 +379,17 @@ If you use this work, please cite it as:
 
 # References
 
-[1] Jiaxin Shi et al. "Simplified and Generalized Masked Diffusion for Discrete Data." *Advances in
+<a id="ref-1"></a>[1] Jiaxin Shi et al. "Simplified and Generalized Masked Diffusion for Discrete Data." *Advances in
 Neural Information Processing Systems (NeurIPS)*, 2024. arXiv:2406.04329.
 
-[2] Arthur Guez et al. "An Investigation of Model-Free Planning."
+<a id="ref-2"></a>[2] Arthur Guez et al. "An Investigation of Model-Free Planning."
 *Proceedings of the 36th International Conference on Machine Learning (ICML)*,
 PMLR 97, 2019. arXiv:1901.03559.
 Dataset: https://github.com/deepmind/boxoban-levels
 
-[3] Petr Jarušek and Radek Pelánek. "Difficulty Rating of Sokoban Puzzle."
+<a id="ref-3"></a>[3] Petr Jarušek and Radek Pelánek. "Difficulty Rating of Sokoban Puzzle."
 *Frontiers in Artificial Intelligence and Applications*, Vol. 222, pp. 140–150,
 2010. DOI: 10.3233/978-1-60750-675-1-140.
 
-[4] Joseph Culberson. "Sokoban is PSPACE-complete." Technical Report TR97-02,
+<a id="ref-4"></a>[4] Joseph Culberson. "Sokoban is PSPACE-complete." Technical Report TR97-02,
 Department of Computing Science, University of Alberta, 1997.
