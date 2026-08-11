@@ -221,7 +221,11 @@ overfitting.
 
 ## Distribution match
 
-To assess whether generated puzzles capture the structural style of the Boxoban corpus beyond mere solvability, we evaluate the Jensen-Shannon Divergence, defined as $\mathrm{JSD}(P \parallel Q) = \frac{1}{2}\mathrm{KL}(P \parallel M) + \frac{1}{2}\mathrm{KL}(Q \parallel M)$ where $M = \frac{1}{2}(P + Q)$, between the empirical $3 \times 3$ sliding-window tile distributions of generated samples ($Q$) and the 450,000-puzzle training reference ($P$). Extracting 64 local $3 \times 3$ windows per $10 \times 10$ grid captures critical structural features such as corridors, corners, and dead ends. We choose $\mathrm{JSD}$ over raw Kullback-Leibler divergence because it is symmetric, bounded in $[0, 1]$, and naturally handles unobserved patterns without requiring arbitrary additive smoothing. Finally, because sample size strongly affects support coverage and raw scores, every generated $\mathrm{JSD}$ score is calibrated directly against a baseline of real held-out puzzles evaluated at the identical sample size.
+To assess whether generated puzzles capture the structural style of the Boxoban corpus beyond mere solvability, we evaluate the Jensen-Shannon Divergence, defined as 
+
+$$\mathrm{JSD}(P \parallel Q) = \frac{1}{2}\mathrm{KL}(P \parallel M) + \frac{1}{2}\mathrm{KL}(Q \parallel M)$$ 
+
+where $M = \frac{1}{2}(P + Q)$, between the empirical $3 \times 3$ sliding-window tile distributions of generated samples ($Q$) and the 450,000-puzzle training reference ($P$). Extracting 64 local $3 \times 3$ windows per $10 \times 10$ grid captures critical structural features such as corridors, corners, and dead ends. We choose $\mathrm{JSD}$ over raw Kullback-Leibler divergence because it is symmetric, bounded in $[0, 1]$, and naturally handles unobserved patterns without requiring arbitrary additive smoothing. Finally, because sample size strongly affects support coverage and raw scores, every generated $\mathrm{JSD}$ score is calibrated directly against a baseline of real held-out puzzles evaluated at the identical sample size.
 
 The plot below compares generated puzzles against real ones on the same measurement: both series show how far a sample of puzzles diverges from the 450,000-puzzle training corpus in its distribution of local $3\times3$ tile
 patterns, plotted against how many puzzles went into the sample. The validation set is Boxoban's held-out split, which comes with DeepMind's dataset and consists of 50,000 real puzzles that were never shown to the model.
