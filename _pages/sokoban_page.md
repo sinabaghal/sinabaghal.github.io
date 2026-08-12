@@ -51,7 +51,7 @@ Due to spatial interdependencies, Sokoban cannot be decomposed into isolated tas
 
 ### Solvability
 
-A puzzle is solvable if some sequence of legal box pushes lands every box on a goal. We decide this with a push-based solver that branches on pushes, not on player moves. The player's individual steps only relocate the worker without changing the puzzle, so branching on every movement would blow up the search with positions that differ solely in where the player stands. Instead we branch once per box push, and canonicalise the player to the region it can currently reach: every board with identical boxes and the player anywhere inside that reachable region collapses to a single search state. Branching is therefore tied to the box configuration rather than to navigation. We also prune dead cells: working backwards from each goal by pulling a box outward, any cell never reached is one no box could ever be pushed to a goal from, so pushes into it are discarded rather than branched on. 
+A puzzle is solvable if some sequence of legal box pushes lands every box on a goal. We decide this with a push-based solver that branches on pushes, not on player moves. The player's individual steps only relocate the worker without changing the puzzle, so branching on every movement would blow up the search with positions that differ solely in where the player stands. Instead we branch once per box push, and normalize the player to the region it can currently reach: every board with identical boxes and the player anywhere inside that reachable region collapses to a single search state. Branching is therefore tied to the box configuration rather than to navigation. We also prune dead cells: working backwards from each goal by pulling a box outward, any cell never reached is one no box could ever be pushed to a goal from, so pushes into it are discarded rather than branched on. 
 
 
 Culberson [[4]](#ref-4) proved that deciding Sokoban solvability
@@ -285,7 +285,7 @@ Selecting cells uniformly also avoids the pitfalls of confidence-based ordering:
 
 **Require:** Trained model $f\_\theta$, $T = 100$ steps, temperature $\tau = 1.0$
 
-1. Initialise $x \leftarrow [\mathrm{MASK}]^{100}$
+1. Initialize $x \leftarrow [\mathrm{MASK}]^{100}$
 2. **for** $\text{step} = 0, \dots, T-1$ **do**
 3. &nbsp;&nbsp;&nbsp;&nbsp;Compute $t = T - \text{step}$
 4. &nbsp;&nbsp;&nbsp;&nbsp;Forward pass: $p = \mathrm{softmax}\big(f\_\theta(x, t) / \tau\big)$ for every cell
