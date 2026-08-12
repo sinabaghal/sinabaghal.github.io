@@ -254,7 +254,7 @@ This section reports the evaluation results for the trained model: solvability, 
   <img src="/images/sokoban_assets/generate_panel.gif" alt="generation">
 </p>
 <p align="center">
-  <em>Nine puzzles generated from a fully masked grid: 100 steps, one cell committed per step in uniformly random order, never revised. Verdicts and push counts appear once every cell is committed; the bars rate each puzzle against the training corpus's difficulty quartiles.</em>
+  <em> Nine puzzles generated from a fully masked grid: 100 steps, one cell committed per step in uniformly random order, never revised. Verdicts and push counts appear once every cell is committed; the bars rate each puzzle against the training corpus's difficulty quartiles.</em>
 </p>
 
 Below are the solutions to those puzzles.
