@@ -379,11 +379,10 @@ If you use this work, please cite it as:
 
 ```bibtex
 @misc{baghal2026sokoban,
-  author       = {Baghal, Sina},
-  title        = {Masked Diffusion Generates Solvable Sokoban Puzzles Without Ever Seeing a Solver},
-  year         = {2026},
-  howpublished = {\url{https://sinabaghal.github.io/sokoban/}},
-  note         = {arXiv version forthcoming}
+  author  = {Baghal, Sina},
+  title   = {Masked Diffusion Generates Solvable Sokoban Puzzles Without Ever Seeing a Solver},
+  year    = {2026},
+  note    = {arXiv version forthcoming}
 }
 ```
 
