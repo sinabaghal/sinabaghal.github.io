@@ -1,5 +1,5 @@
 ---
-title: "Masked Diffusion Generates Solvable Sokoban Puzzles Without Ever Seeing a Solver"
+title: "Solvable Sokoban Without a Solver via Diffusion"
 permalink: /sokoban/
 author_profile: false
 ---
