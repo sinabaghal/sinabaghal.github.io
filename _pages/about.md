@@ -34,7 +34,7 @@ I earned my PhD in Mathematics from the University of Waterloo in 2021, and I ho
 ---
 
 
-###Solvable Sokoban Without a Solver via Diffusion
+### Solvable Sokoban Without a Solver via Diffusion
 
 Sokoban is a single-player puzzle in which a worker pushes boxes onto goal squares, and deciding whether a given puzzle can be solved at all is [PSPACE-complete](https://en.wikipedia.org/wiki/PSPACE-complete).
 
