@@ -380,11 +380,14 @@ solvability.
 If you use this work, please cite it as:
 
 ```bibtex
-@misc{baghal2026sokoban,
-  author  = {Baghal, Sina},
-  title   = {Masked Diffusion Generates Solvable Sokoban Puzzles Without Ever Seeing a Solver},
-  year    = {2026},
-  note    = {arXiv version forthcoming}
+@misc{baghal2026solvablesokobansolverdiffusion,
+      title={Solvable Sokoban Without a Solver via Diffusion}, 
+      author={Sina Baghal},
+      year={2026},
+      eprint={2608.15958},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2608.15958}, 
 }
 ```
 
