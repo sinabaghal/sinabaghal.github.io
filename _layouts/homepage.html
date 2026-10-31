@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title and page.title != "Home" %}{{ page.title }} &#8212; {% endif %}{{ site.name }}</title>
+    <meta name="description" content="{{ page.excerpt | default: 'Sina Baghal - research engineer and former mathematician working on machine learning, generative models, and quantitative finance.' | strip_html | strip }}">
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    <link rel="icon" type="image/png" href="{{ site.url }}/images/favicon-32x32.png" sizes="32x32">
+    <link rel="alternate" type="application/atom+xml" title="{{ site.name }} Feed" href="{{ site.url }}/feed.xml">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+    <meta property="og:title" content="{{ site.name }}">
+    <meta property="og:image" content="{{ site.url }}/images/profile.png">
+
+    <script>
+      (function () {
+        var t = null;
+        try { t = localStorage.getItem('theme'); } catch (e) {}
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+      })();
+    </script>
+    <link rel="stylesheet" href="{{ site.url }}/assets/css/homepage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
+
+    <script>
+      window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true } };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>{{ site.name }}</h1>
+            <nav>
+                <div class="nav-links">
+                    <a href="{{ site.url }}/" class="{% if page.url == '/' %}active{% endif %}">Home</a>
+                    <a href="{{ site.url }}/projects/" class="{% if page.url == '/projects/' %}active{% endif %}">Projects</a>
+                    <a href="{{ site.url }}/notes/" class="{% if page.url == '/notes/' %}active{% endif %}">Notes</a>
+                    <a href="{{ site.url }}/files/resume.pdf">CV</a>
+                </div>
+                <div class="nav-icons">
+                    <a href="https://github.com/sinabaghal" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/sina-baghal-35b076143" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://scholar.google.com/citations?user=fos-fhgAAAAJ&amp;hl=en" aria-label="Google Scholar" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
+                    <a href="{{ site.url }}/files/resume.pdf" aria-label="CV"><i class="ai ai-cv"></i></a>
+                    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch between light and dark mode" title="Switch between light and dark mode">
+                        <i class="fa-solid fa-moon"></i><i class="fa-solid fa-sun"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main>
+{% if page.url != '/' and page.title and page.show_title != false %}        <h1 class="page-title">{{ page.title }}</h1>
+{% endif %}{{ content }}
+    </main>
+    <footer>
+        <div class="footer-content">
+            &copy; {{ site.time | date: '%Y' }} {{ site.name }}
+        </div>
+    </footer>
+    <script>
+      document.getElementById('theme-toggle').addEventListener('click', function () {
+        var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+      });
+    </script>
+</body>
+</html>
