@@ -20,6 +20,9 @@ links:
   - label: "Code"
     url: "https://github.com/sinabaghal/pasur"
     icon: "fa-brands fa-github"
+  - label: "BibTeX"
+    url: "#citation"
+    icon: "fa-solid fa-quote-right"
 stats:
   - value: "~2³⁰"
     label: "nodes in the game tree, on average"
@@ -395,6 +398,23 @@ The table below reflects this observation.
 <figure class="fig">
   <img src="/files/pasur/model_1.png" alt="">
 </figure>
+
+## Citation
+
+If you use this work, please cite it as:
+
+```bibtex
+@misc{baghal2025solvingpasurusinggpuaccelerated,
+      title={Solving Pasur Using GPU-Accelerated Counterfactual Regret Minimization}, 
+      author={Sina Baghal},
+      year={2025},
+      eprint={2508.06559},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2508.06559}, 
+}
+```
+
 
 <!-- This is a comment 
 
