@@ -33,7 +33,7 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
-<body>
+<body{% if page.layout == 'project' %} class="wide-page"{% endif %}>
     <header>
         <div class="header-content">
             <h1>{{ site.name }}</h1>
@@ -56,8 +56,8 @@
             </nav>
         </div>
     </header>
-    <main>
-{% if page.url != '/' and page.title and page.show_title != false %}        <h1 class="page-title">{{ page.title }}</h1>
+    <main{% if page.layout == 'project' %} class="wide"{% endif %}>
+{% if page.url != '/' and page.title and page.show_title != false and page.layout != 'project' %}        <h1 class="page-title">{{ page.title }}</h1>
 {% endif %}{{ content }}
     </main>
     <footer>

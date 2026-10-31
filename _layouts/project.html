@@ -1,0 +1,131 @@
+---
+layout: homepage
+---
+<article class="project-page">
+
+  <div class="project-hero{% if page.hero %} has-hero-image{% endif %}{% if page.hero_wide %} hero-wide{% endif %}">
+    <div class="project-hero-text">
+      <h1 class="project-title">{{ page.title }}</h1>
+      {% if page.tagline %}<p class="project-tagline">{{ page.tagline }}</p>{% endif %}
+      <p class="project-meta">{{ page.authors | default: site.name }}{% if page.date_label %} · {{ page.date_label }}{% endif %}{% if page.venue %} · {{ page.venue }}{% endif %}</p>
+      {% if page.tags %}<div class="tags project-hero-tags">{% for t in page.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>{% endif %}
+      {% if page.links %}
+      <div class="project-links project-hero-links">
+        {% for l in page.links %}<a href="{{ l.url }}">{% if l.icon %}<i class="{{ l.icon }}"></i> {% endif %}{{ l.label }}</a>{% endfor %}
+      </div>
+      {% endif %}
+      {% if page.stats %}
+      <div class="stat-row">
+        {% for s in page.stats %}
+        <div class="stat-tile"><span class="stat-value">{{ s.value }}</span><span class="stat-label">{{ s.label }}</span></div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    {% if page.hero %}
+    <figure class="project-hero-figure">
+      <img src="{{ page.hero }}" alt="{{ page.hero_alt | default: page.title }}">
+      {% if page.hero_caption %}<figcaption>{{ page.hero_caption }}</figcaption>{% endif %}
+    </figure>
+    {% endif %}
+  </div>
+
+  <div class="project-grid">
+    <nav class="project-toc" aria-label="Contents">
+      <details open>
+        <summary>Contents</summary>
+        <ol id="toc-list"></ol>
+      </details>
+    </nav>
+
+    <div class="project-content">
+      {% if page.abstract %}
+      <div class="abstract-box">
+        <span class="abstract-label">Abstract</span>
+        {{ page.abstract | markdownify }}
+      </div>
+      {% endif %}
+
+      {{ content }}
+
+      {% if page.prev or page.next %}
+      <nav class="project-pager">
+        {% if page.prev %}<a class="pager-prev" href="{{ page.prev.url }}"><span>← Previous</span>{{ page.prev.title }}</a>{% else %}<span></span>{% endif %}
+        {% if page.next %}<a class="pager-next" href="{{ page.next.url }}"><span>Next →</span>{{ page.next.title }}</a>{% endif %}
+      </nav>
+      {% endif %}
+      <p class="back-to-projects"><a href="/projects/">← All projects</a></p>
+    </div>
+  </div>
+</article>
+
+<script>
+(function () {
+  var content = document.querySelector('.project-content');
+  var list = document.getElementById('toc-list');
+  var heads = content.querySelectorAll('h2[id], h3[id]');
+  var links = [];
+  heads.forEach(function (h) {
+    if (h.closest('.abstract-box')) return;
+    var li = document.createElement('li');
+    li.className = h.tagName === 'H3' ? 'toc-sub' : 'toc-top';
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent;
+    li.appendChild(a);
+    list.appendChild(li);
+    links.push({ head: h, link: a });
+  });
+  if (!links.length) document.querySelector('.project-toc').style.display = 'none';
+
+  // On narrow screens start with the contents folded
+  if (window.matchMedia('(max-width: 1000px)').matches) {
+    document.querySelector('.project-toc details').removeAttribute('open');
+  }
+
+  // Highlight the section being read
+  function onScroll() {
+    var current = null;
+    for (var i = 0; i < links.length; i++) {
+      if (links[i].head.getBoundingClientRect().top < 120) current = links[i]; else break;
+    }
+    links.forEach(function (l) { l.link.classList.toggle('active', l === current); });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Fold long code listings (not citations)
+  content.querySelectorAll('div.highlighter-rouge').forEach(function (block) {
+    if (block.classList.contains('language-bibtex')) return;
+    var n = block.innerText.split('\n').length;
+    if (n < 25) return;
+    var det = document.createElement('details');
+    det.className = 'code-fold';
+    var sum = document.createElement('summary');
+    sum.textContent = 'Show code (' + n + ' lines)';
+    det.addEventListener('toggle', function () {
+      sum.textContent = (det.open ? 'Hide code' : 'Show code') + ' (' + n + ' lines)';
+    });
+    block.parentNode.insertBefore(det, block);
+    det.appendChild(sum);
+    det.appendChild(block);
+  });
+
+  // Copy buttons on code blocks
+  content.querySelectorAll('pre').forEach(function (pre) {
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'copy-btn';
+    btn.textContent = 'Copy';
+    btn.addEventListener('click', function () {
+      var text = pre.innerText;
+      navigator.clipboard.writeText(text).then(function () {
+        btn.textContent = 'Copied';
+        setTimeout(function () { btn.textContent = 'Copy'; }, 1500);
+      });
+    });
+    pre.parentNode.style.position = 'relative';
+    pre.parentNode.insertBefore(btn, pre);
+  });
+})();
+</script>

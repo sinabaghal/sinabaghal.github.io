@@ -1,46 +1,52 @@
 ---
+layout: project
 title: "Generative Modeling of Heston Volatility Surfaces Using Variational Autoencoders"
 permalink: /vae4heston/
-author_profile: true
+author_profile: false
+tagline: "A variational autoencoder trained on Heston volatility surfaces that generates new surfaces, and fits unseen ones by searching its latent space."
+date_label: "November 2024"
 tags:
   - Variational Autoencoder
   - Generative AI
-  - Deep Learning
-  - Heston 
-  - Volatility Surfaces
-  - Vectorization
+  - Heston
   - Monte Carlo Simulation
+links:
+  - label: "Code"
+    url: "https://github.com/sinabaghal/VariationalAutoEncoderforHeston"
+    icon: "fa-brands fa-github"
+  - label: "BibTeX"
+    url: "#bibtex"
+    icon: "fa-solid fa-quote-right"
+stats:
+  - value: "625"
+    label: "Heston parameter sets in the training data"
+  - value: "2²³"
+    label: "Monte Carlo paths per surface"
+  - value: "4"
+    label: "latent dimensions"
+hero: "/images/part1.gif"
+hero_alt: "Volatility surfaces generated along a random walk in the VAE latent space"
+hero_wide: true
+abstract: "In this project, I focus on training a Variational Autoencoder (VAE), a generative model, to produce Heston volatility surfaces. The Heston model is a widely used stochastic volatility option pricing model. Once trained, this VAE can generate new volatility surfaces, which could be useful for various financial applications such as risk management, pricing exotic derivatives, etc. This project emphasizes the advantage of generative AI in advancing financial modeling."
+prev:
+  title: "Solving Pasur with GPU-Accelerated CFR"
+  url: "/pasur/"
+next:
+  title: "Deep Smoothing for Implied Volatility Surfaces"
+  url: "/deepsmoothing/"
 ---
----
-
-In this project, I focus on training a Variational Autoencoder (VAE), a generative model, to produce Heston volatility surfaces. The Heston model is a widely used stochastic volatility option pricing model. Once trained, this VAE can generate new volatility surfaces, which could be useful for various financial applications such as risk management, pricing exotic derivatives, etc. This project emphasizes the advantage of generative AI in advancing financial modeling. **You can find the code for this project** [**here**](https://github.com/sinabaghal/VariationalAutoEncoderforHeston).
-
-## Table of Contents
-- [Variational Autoencoders](#variational-autoencoders)
-- [Heston Model](#heston-model)
-  - [Training Data](#training-data)
-  - [Monte Carlo Simulation](#monte-carlo-simulation)
-  - [The VAE Model Training](#the-vae-model-training)
-- [Generative VAE Model for Heston Model](#generative-vae-model-for-heston-model)
-  - [Random Walk](#random-walk)
-  - [Fit a Random Surface Using the VAE Model](#fit-a-random-surface-using-the-vae-model)
-- [Bibtex](#bibtex)
-- [References](#references)
-
-
-
 ## Variational Autoencoders 
 
-This section provides a brief overview of variational autoencoders (VAEs). For a deeper understanding, refer to [^1]. Video lectures (20 & 21) [^2] are also an excellent resource for learning the core concepts of VAEs.
+This section provides a brief overview of variational autoencoders (VAEs). For a deeper understanding, refer to [[1]](#ref-1). Video lectures (20 & 21) [[2]](#ref-2) are also an excellent resource for learning the core concepts of VAEs.
 
 Variational autoencoders (VAEs) belong to a broader family of probabilistic autoencoders. Probabilistic autoencoders learn to model the distribution of the data in the latent space enabling them to generate new examples by sampling from this distribution. A VAE consists of an encoder and a decoder part. The encoder maps an input $$x$$ to a distribution over the latent space, encoding it into a conditional distribution of latent variables rather than a single point. The decoder then samples from this latent distribution to produce a conditional distribution over possible reconstructions of $$x$$. Denote these conditional distributions as $$f$$ and $$g$$ for the encoder and decoder, respectively. Then 
 
 - $$f: Pr(h \mid x; W_f)$$, where $$h$$ is the latent representation conditioned on the input $$x$$, and $$W_f$$ are the parameters of the encoder.
 - $$g: Pr(\tilde{x} \mid h; W_g)$$, where $$\tilde{x}$$ is generated from the latent representation $$h$$, with $$W_g$$ as the parameters of the decoder. 
 
-<p align="center">
-<img src="http://sinabaghal.github.io/images/Screenshot 2024-11-14 152106.jpg" width="80%" height="100%">
-</p>
+<figure class="fig">
+  <img src="/images/Screenshot 2024-11-14 152106.jpg" alt="" style="width:80%">
+</figure>
 
 The key idea in a VAEs is to ensure that the encoder distribution over the latent space is close to a simple, fixed distribution, typically a standard normal distribution $$\mathcal{N}(0, I)$$. As a result, to generate new data points, we can easily sample new latent representations from $$\mathcal{N}(0, I)$$ and pass them through the decoder.
 
@@ -73,9 +79,9 @@ $$\Pr(x_n; W_f, W_g) \approx \Pr(x_n \mid h_n; W_g)\quad \text{where} \quad h_n 
 The figure below illustrates the network architecture.
 
 
-<p align="center">
-<img src="http://sinabaghal.github.io/images/Screenshot 2024-11-14 172234.jpg" width="80%" height="100%">
-</p>
+<figure class="fig">
+  <img src="/images/Screenshot 2024-11-14 172234.jpg" alt="" style="width:80%">
+</figure>
 
 With this architecture, we face a challenge when trying to backpropagate through the stochastic sampling step. The sampling introduces randomness, which disrupts the flow of gradients and makes the training infeasible. To address this, VAEs use a technique called the **reparameterization**: Instead of sampling directly from the latent distribution $$h \sim q(h\\|x)$$, we rewrite $$h$$ as a deterministic function of the encoder’s output parameters and an independent random variable $$\zeta \sim N(0,I)$$. The reparameterization trick transforms the sampling as follows:
 
@@ -87,9 +93,9 @@ Here $$\mu_n(x)$$ and $$\sigma_n(x)$$ are the mean and standard deviation of the
 
 This transformation effectively makes the sample $$h$$ a function of $$x$$ and the learned parameters $$W_f$$, with the randomness isolated in $$\zeta$$. Now, $$h$$ can be treated as a deterministic input to the decoder network during backpropagation, allowing us to compute gradients with respect to the encoder parameters. The resulting network looks as follows:
 
-<p align="center">
-<img src="http://sinabaghal.github.io/images/Screenshot 2024-11-14 172648.jpg" width="80%" height="100%">
-</p>
+<figure class="fig">
+  <img src="/images/Screenshot 2024-11-14 172648.jpg" alt="" style="width:80%">
+</figure>
 
 Now, returning to the second approximation (recal that $$Pr(x_n; W_f, W_g)$$ represents the probability of reconstructing $$x_n$$), we have that:
 
@@ -357,9 +363,9 @@ def train(autoencoder, epochs=print_epoch*10000):
 
 The figure below displays the logarithmic values of the MSE and KL divergence losses during the training process.
 
-<p align="center">
-<img src="http://sinabaghal.github.io/images/logMSElogKL.png" width="80%" height="100%">
-</p>
+<figure class="fig">
+  <img src="/images/logMSElogKL.png" alt="" style="width:80%">
+</figure>
 
 ## Generative VAE model for Heston Model
 
@@ -374,8 +380,9 @@ The next two subsections provide detailed explanations of these approaches.
 
 To explore the generative capabilities of my Variational Autoencoder (VAE), I create a random walk in $$R^{\text{latent dim}}$$. This random walk is generated using Gaussian steps with their length re-scaled to $$dt=0.2$$. The resulting random walk serves as the input trajectory to the VAE. The GIF below displays a walk of size 500. **Right click on the GIF and 'Open in new tab' if the GIF doesn't display the animation.**
 
-![](http://sinabaghal.github.io/images/part1.gif)
-
+<figure class="fig">
+  <img src="/images/part1.gif" alt="">
+</figure>
 ### Fit a Random Surface Using the VAE Model
 
 We next evaluate the generalization capabilities of our VAE model. To achieve this, we generate a random set of parameters and compute option prices through Monte Carlo simulations. Using these prices, we derive the implied volatility surface with the help of the QuantLib library. Subsequently, we employ the Adam optimizer to identify a point in the latent space that, when processed through the VAE, generates a volatility surface closely approximating the target surface, as measured by the mean squared error (MSE) loss. The Python snippet below shows the process.
@@ -460,9 +467,9 @@ while epoch < num_epochs:
 
 Figure below is an example of VAE's capablity of fitting a random surface. The 'o' marker represents the VAE's output.
 
-<p align="center">
-<img src="http://sinabaghal.github.io/images/vaefit.png" width="80%" height="100%">
-</p>
+<figure class="fig">
+  <img src="/images/vaefit.png" alt="" style="width:80%">
+</figure>
 
 
 ## Bibtex
@@ -477,12 +484,13 @@ Figure below is an example of VAE's capablity of fitting a random surface. The '
 }
 ```
 
-The full source code for this project is available at [here](https://github.com/sinabaghal/VariationalAutoEncoderforHeston). 
 
-## References 
+## References
 
-[^1]: Kingma, D., Welling, M. (2019). *An Introduction to Variational Autoencoders*. [arXiv:1906.02691](https://arxiv.org/abs/1906.02691)
-[^2]: Poupart, P. (2019). *Introduction to Machine Learning*. [CS480/690 UWaterloo](https://cs.uwaterloo.ca/~ppoupart/teaching/cs480-spring19/)
+<div class="references" markdown="1">
 
+<a id="ref-1"></a>[1] Kingma, D., Welling, M. (2019). *An Introduction to Variational Autoencoders*. [arXiv:1906.02691](https://arxiv.org/abs/1906.02691)
 
+<a id="ref-2"></a>[2] Poupart, P. (2019). *Introduction to Machine Learning*. [CS480/690 UWaterloo](https://cs.uwaterloo.ca/~ppoupart/teaching/cs480-spring19/)
 
+</div>

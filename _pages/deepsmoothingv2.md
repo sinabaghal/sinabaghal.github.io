@@ -1,44 +1,40 @@
 ---
+layout: project
 title: "Implementing Deep Smoothing for Implied Volatility Surfaces (IVS)"
 permalink: /deepsmoothing/
-author_profile: True
+author_profile: false
+tagline: "A feed-forward network corrects an SSVI prior so the implied volatility surface fits the data while staying free of calendar and butterfly arbitrage."
+date_label: "August 2024"
 tags:
   - Deep Learning
-  - Feed Forward Networks
   - Volatility Surfaces
-  - Vectorization
   - SSVI
   - CVX
+links:
+  - label: "Code"
+    url: "https://github.com/sinabaghal/deepsmoothigIVS"
+    icon: "fa-brands fa-github"
+  - label: "Original paper (Ackerer et al.)"
+    url: "https://arxiv.org/abs/1906.05065"
+    icon: "ai ai-arxiv"
+  - label: "BibTeX"
+    url: "#bibtex"
+    icon: "fa-solid fa-quote-right"
+stats:
+  - value: "4 × 40"
+    label: "hidden layers × units"
+  - value: "29"
+    label: "arbitrage-free surfaces trained"
+  - value: "2¹⁴"
+    label: "FFT points for Bates pricing"
+hero: "/images/header.png"
+hero_alt: "A smoothed implied volatility surface"
+hero_wide: true
+abstract: "This project is a python-based implementation of the methodologies presented in the paper *Deep Smoothing of the Implied Volatility Surface* by Ackerer et al (2020) [[1]](#ref-1). A volatility surface is a representation of implied volatility across different strike prices and maturities, crucial for pricing and hedging options accurately. Ensuring the surface is arbitrage-free is essential to prevent inconsistencies that could lead to riskless profit opportunities, which would undermine the model’s reliability in real markets."
+prev:
+  title: "Generative Modeling of Heston Volatility Surfaces"
+  url: "/vae4heston/"
 ---
----
-
-This project is a python-based implementation of the methodologies presented in the paper *Deep Smoothing of the Implied Volatility Surface* by Ackerer et al (2020) [^1].  A volatility surface is a representation of implied volatility across different strike prices and maturities, crucial for pricing and hedging options accurately. Ensuring the surface is arbitrage-free is essential to prevent inconsistencies that could lead to riskless profit opportunities, which would undermine the model’s reliability in real markets. **You can find the code for this project** [**here**](https://github.com/sinabaghal/deepsmoothigIVS).
-
-<p align="center">
-<img src="http://sinabaghal.github.io/images/header.png" width="150%" height="150%">
-</p>
-
-## Table of Contents
-- [Introduction](#introduction)
-- [Notation and Initial Values](#notation-and-initial-values)
-- [Bates Model](#bates-model)
-  - [Characteristic Function](#characteristic-function)
-  - [Fast Fourier Transform](#fast-fourier-transform)
-- [Loss Function](#loss-function)
-  - [Calendar and Butterfly](#calendar-and-butterfly)
-  - [Large Moneyness](#large-moneyness)
-  - [Around the Money](#around-the-money)
-  - [Total Loss](#total-loss)
-- [ATM Total Variance](#atm-total-variance)
-- [Surface Stochastic Volatility Inspired (SSVI)](#surface-stochastic-volatility-inspired-ssvi)
-- [Neural Network](#neural-network)
-- [Convergence](#convergence)
-- [Results](#results)
-- [Final Remarks](#final-remarks)
-- [Appendix: Arb-Free Volatility Surfaces](#appendix-arb-free-volatility-surfaces)
-- [Bibtex](#bibtex)
-- [References](#references)
-
 ## Introduction
 
 Deep smoothing focuses on applying deep learning methods to generate smooth, arbitrage-free implied volatility surfaces. For someone unfamiliar with quantitative finance, this problem can be summarized as follows: Imagine you are given a set of points $$(k, \tau, iv)$$ representing market data. These points form part of a 3D surface that we aim to construct with two key objectives:
@@ -47,7 +43,7 @@ Deep smoothing focuses on applying deep learning methods to generate smooth, arb
 - We must ensure that the surface meets certain curvature properties. In quantitative finance, this means creating an arbitrage-free surface. Mathematically, this translates to minimizing a specified loss function across the entire surface.
 
 
-Deep smoothing's main idea is to use feedforward neural networks as a corrective tool to modify the prior models considered for volatility surfaces (See [^2] to learn more about prior models). By letting
+Deep smoothing's main idea is to use feedforward neural networks as a corrective tool to modify the prior models considered for volatility surfaces (See [[2]](#ref-2) to learn more about prior models). By letting
 
 $$
 \begin{equation}
@@ -57,11 +53,11 @@ $$
 
 we enrich the space of parameters used for fitting the volatility surface. Here $$\omega$$ is the implied variance and $$\theta_{\text{prior}}$$ and $$\theta_{\text{nn}}$$ are two disjoint set of parameters. The figure below displays a neural network with 4 hidden layers, each containing 40 units. The weights of this network are represented by $$\theta_{\text{nn}}$$.
 
-<p align="center">
-<img src="http://sinabaghal.github.io/images/Screenshot 2024-11-12 085101.jpg" width="100%" height="100%">
-</p>
+<figure class="fig">
+  <img src="/images/Screenshot 2024-11-12 085101.jpg" alt="">
+</figure>
 
-To ensure our volatility surface is free of arbitrage, we use the ideas from _Arbitrage-free SVI Volatility Surfaces_ (2013) [^2] where they argue that if the following are satisfied then the call price surface is free of Calendar & Butterfly arbitrage resp.
+To ensure our volatility surface is free of arbitrage, we use the ideas from _Arbitrage-free SVI Volatility Surfaces_ (2013) [[2]](#ref-2) where they argue that if the following are satisfied then the call price surface is free of Calendar & Butterfly arbitrage resp.
 
 $$
 \begin{align*}
@@ -123,7 +119,7 @@ We will use this characteristic function to price options in Bates model. To thi
 
 ### Fast Fourier Transform
 
-The option price calculation for the Bates model can be efficiently computed using an analytical formula that leverages FFT. Following Carr and Madan [^3], we apply a smoothing technique to be able to compute the FFT integral. Recall that the option value is given by 
+The option price calculation for the Bates model can be efficiently computed using an analytical formula that leverages FFT. Following Carr and Madan [[3]](#ref-3), we apply a smoothing technique to be able to compute the FFT integral. Recall that the option value is given by 
 
 $$
 C_\tau(k) = spot \cdot \Pi_1 - K e^{-rate \cdot \tau} \cdot \Pi_2
@@ -587,15 +583,15 @@ We have two kinds of training: training a reference model and training models us
 
 Numerical results show that the enhanced model, incorporating a neural network with the loss function $$\omega(k,\tau; \theta)$$ with SSVI as prior, fits the Bates model data perfectly and produces an arbitrage-free volatility surface. The figure below shows how well the model fits the training data.
 
-<p align="center">
-<img src="http://sinabaghal.github.io/images/ref_V.png" width="100%" height="100%">
-</p>
+<figure class="fig">
+  <img src="/images/ref_V.png" alt="">
+</figure>
 
 The following also is an example of the training trajectory where a feedforward neural network with 4 hidden layers, with 40 units in each layer. 
 
-<p align="center">
-<img src="http://sinabaghal.github.io/images/train_metrics.png" width="100%" height="100%">
-</p>
+<figure class="fig">
+  <img src="/images/train_metrics.png" alt="">
+</figure>
 
 
 
@@ -608,9 +604,9 @@ Several numerical experiments are still to be conducted using the project code. 
 
 The figure below illustrates 29 trained implied variance surfaces obtained using the deep smoothing algorithm. Different values for the Bates model parameters are used in each case. Displayed parameters are $$\alpha, \beta, \kappa, v_0, \theta, \rho, \sigma, \lambda$$ respectively. . 
 
-<p align="center">
-<img src="http://sinabaghal.github.io/images/all_models6.png" width="80%" height="100%">
-</p>
+<figure class="fig">
+  <img src="/images/all_models6.png" alt="" style="width:80%">
+</figure>
 
 ## Bibtex
 
@@ -624,8 +620,14 @@ The figure below illustrates 29 trained implied variance surfaces obtained using
 }
 ```
 
-## References 
+## References
 
-[^1]: Ackerer, D., Tagasovska, N., & Vatter, T. (2020). *Deep Smoothing of the Implied Volatility Surface*. [arXiv:1906.05065](https://arxiv.org/pdf/1906.05065)
-[^2]: Gatheral, J., Jacquier, A. (2013). *Arbitrage-free SVI volatility surfaces*. [arXiv:1204.0646](https://arxiv.org/pdf/1204.0646)
-[^3]: Carr, P., Madan, D. (2001). *Option valuation using the fast Fourier transform*. [CarrMadan.pdf](https://engineering.nyu.edu/sites/default/files/2018-08/CarrMadan2_0.pdf)
+<div class="references" markdown="1">
+
+<a id="ref-1"></a>[1] Ackerer, D., Tagasovska, N., & Vatter, T. (2020). *Deep Smoothing of the Implied Volatility Surface*. [arXiv:1906.05065](https://arxiv.org/pdf/1906.05065)
+
+<a id="ref-2"></a>[2] Gatheral, J., Jacquier, A. (2013). *Arbitrage-free SVI volatility surfaces*. [arXiv:1204.0646](https://arxiv.org/pdf/1204.0646)
+
+<a id="ref-3"></a>[3] Carr, P., Madan, D. (2001). *Option valuation using the fast Fourier transform*. [CarrMadan.pdf](https://engineering.nyu.edu/sites/default/files/2018-08/CarrMadan2_0.pdf)
+
+</div>

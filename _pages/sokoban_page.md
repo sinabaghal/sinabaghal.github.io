@@ -1,57 +1,61 @@
 ---
+layout: project
 title: "Solvable Sokoban Without a Solver via Diffusion"
 permalink: /sokoban/
 author_profile: false
+tagline: "A 4.9M-parameter masked diffusion model generates Sokoban puzzles that are mostly solvable, without ever seeing a solver, a reward, or a solvability label."
+date_label: "August 2026"
+links:
+  - label: "Paper"
+    url: "https://arxiv.org/abs/2608.15958"
+    icon: "ai ai-arxiv"
+  - label: "Code"
+    url: "https://github.com/sinabaghal/Sokoban"
+    icon: "fa-brands fa-github"
+  - label: "Model & generation"
+    url: "https://github.com/sinabaghal/SokobanPlayground"
+    icon: "fa-solid fa-cube"
+  - label: "Playground"
+    url: "https://htmlpreview.github.io/?https://github.com/sinabaghal/SokobanPlayground/blob/main/playground.html"
+    icon: "fa-solid fa-gamepad"
+  - label: "BibTeX"
+    url: "#citation"
+    icon: "fa-solid fa-quote-right"
+stats:
+  - value: "77.4%"
+    label: "solvable, unfiltered"
+  - value: "98.7%"
+    label: "solvable after a one-wall fix"
+  - value: "4.9M"
+    label: "parameters"
+  - value: "0"
+    label: "solvability labels used in training"
+hero: "/images/sokoban_assets/denoise_hero.gif"
+hero_alt: "One Sokoban level generated over 100 denoising steps"
+abstract: "Determining Sokoban solvability is a PSPACE-complete challenge that demands exhaustive search to verify since even a single misplaced wall can silently render an entire puzzle unsolvable. In this work, we show that a 4.9M-parameter discrete diffusion model trained purely on tile completion, with no access to solvers, rewards, or solvability labels, achieves an unfiltered playability rate of 77.4%, with 94.5% of the remaining failures rendered solvable by removing a single wall. That a global, search-heavy property should follow from a purely local training objective is the result this work reports: by factorizing the intractable 100-cell joint distribution into a sequence of conditional steps, the model reproduces a distribution whose support consists entirely of solvable puzzles, and inherits solvability without ever being trained on it."
+next:
+  title: "Solving Pasur with GPU-Accelerated CFR"
+  url: "/pasur/"
 ---
-
-This repository is dedicated to the paper [Solvable Sokoban Without a Solver via Diffusion](https://arxiv.org/pdf/2608.15958). 
-
 This work presents a transformer-based diffusion model for generating Sokoban puzzles. The training pipeline is adapted from the MD4 paper [[1]](#ref-1), and the dataset is DeepMind's Boxoban [[2]](#ref-2).  The final model, along with instructions for generating new puzzles, is available [here](https://github.com/sinabaghal/SokobanPlayground). See [here](https://htmlpreview.github.io/?https://github.com/sinabaghal/SokobanPlayground/blob/main/playground.html) for a playground of already-generated puzzles.
 
-Determining Sokoban solvability is a PSPACE-complete challenge that demands exhaustive search to verify since even a single misplaced wall can silently render an entire puzzle unsolvable. In this work, we show that a 4.9M-parameter discrete diffusion model trained purely on tile completion, with no access to solvers, rewards, or solvability labels, achieves an unfiltered playability rate of 77.4%, with 94.5% of the remaining failures rendered solvable by removing a single wall. That a global, search-heavy property should follow from a purely local training objective is the result this work reports: by factorizing the intractable 100-cell joint distribution into a sequence of conditional steps, the model reproduces a distribution whose support consists entirely of solvable puzzles, and inherits solvability without ever being trained on it. 
 
-## AI usage
-
+<div class="callout" markdown="1">
+**AI usage**
 The research question, model architecture, training setup, and all experimental design decisions are the author's. Claude Code was used as an implementation and editing assistant.
+</div>
 
-## Contents
-
-- [Preliminary](#preliminary)
-  - [Sokoban](#sokoban)
-    - [Solvability](#solvability)
-    - [Difficulty](#difficulty)
-  - [Masked diffusion model](#masked-diffusion-model)
-  - [Contribution](#contribution)
-    - [Solvability emerges without supervision](#solvability-emerges-without-supervision)
-    - [Distribution match](#distribution-match)
-    - [Temperature trade-off](#temperature-trade-off)
-- [Method and design choices](#method-and-design-choices)
-  - [Model choice](#model-choice)
-  - [Architecture](#architecture)
-  - [Training](#training)
-  - [Loss and solvability](#loss-and-solvability)
-  - [Distribution match](#distribution-match-1)
-- [Inference and evaluation](#inference-and-evaluation)
-  - [Sampling algorithm](#sampling-algorithm)
-  - [One-wall fixes](#one-wall-fixes)
-  - [Memorization](#memorization)
-  - [Sampling temperature](#sampling-temperature)
-- [Citation](#citation)
-- [References](#references)
-
-<div style="height: 3rem;"></div>
-
-# Preliminary
+## Preliminary
 
 This section is organized as follows. We first define the game of Sokoban, how a puzzle's solvability is decided using a push-based solver, and how its difficulty is measured. We then describe the masked diffusion model: its mechanism, its evolution from the continuous-diffusion formulation, and its suitability for Sokoban puzzle generation. 
 
-## Sokoban
+### Sokoban
 Sokoban is a single-player puzzle created in Japan around 1980. Played on a grid-based maze with a single character and multiple boxes, the objective is to move all boxes onto designated target positions. Game mechanics are strictly restricted to pushes meaning that the player can only push one box at a time into an adjacent unoccupied space and cannot pull boxes.
 
 Due to spatial interdependencies, Sokoban cannot be decomposed into isolated tasks. Moving a single box alters board topology and player reachability; an incorrect execution order can obstruct future paths or render previously placed boxes into deadlocks. Sequence is therefore as vital as destination. Because localized, step-by-step decision-making fails, players must formulate a holistic plan accounting for all box interactions prior to execution.
 
 
-### Solvability
+#### Solvability
 
 A puzzle is solvable if some sequence of legal box pushes lands every box on a goal. We decide this with a push-based solver that branches on pushes, not on player moves. The player's individual steps only relocate the worker without changing the puzzle, so branching on every movement would blow up the search with positions that differ solely in where the player stands. Instead we branch once per box push, and normalize the player to the region it can currently reach: every board with identical boxes and the player anywhere inside that reachable region collapses to a single search state. Branching is therefore tied to the box configuration rather than to navigation. We also prune dead cells: working backwards from each goal by pulling a box outward, any cell never reached is one no box could ever be pushed to a goal from, so pushes into it are discarded rather than branched on. 
 
@@ -64,28 +68,26 @@ can be exponentially long: there is no short certificate that a checker could
 verify quickly, so establishing that a puzzle is solvable may require searching
 an enormous state space. 
 
-### Difficulty
+#### Difficulty
 
 Jarušek and Pelánek [[3]](#ref-3) modeled Sokoban difficulty on the push-based state-space graph $G = (V, E)$, where each vertex $v \in V$ is a game state (box positions plus the player's reachable area) and each directed edge $e = (u, v) \in E$ is a single valid box push. Evaluating metrics against large-scale human solving logs, they found that static, global properties of the graph fail to predict human difficulty: push-space size $\vert V \vert$ showed no significant correlation ($r = -0.11$) and shortest push-solution length $L$ was only weakly predictive ($r = 0.30$). What did predict difficulty were metrics modelling the search a human actually performs, rather than properties of the finished graph. Two stood out. A decomposition metric, measuring how far a puzzle breaks into independent sub-problems that can be solved one at a time, reached $\rho = 0.82$ under Spearman correlation. A stochastic model of a human wandering the state space, rather than walking the optimal path, reached $r = 0.76$ under Pearson correlation. 
 
 The difficulty measure used in this work is aligned with that finding. We rate a puzzle by the number of states the push solver expands before it finds a solution, which is a measure of how much search the puzzle demands rather than of how large its state space is. This is machine search rather than human search, so it is an analogue of Jarušek and Pelánek's predictive metrics rather than one of them. It nonetheless falls on the same side of their distinction, and deliberately not on the side of $\vert V \vert$, which their logs show carries almost no signal.
 
-## Masked diffusion model
+### Masked diffusion model
 
 Continuous diffusion models are built on a stochastic differential equation (SDE) that gradually turns data into noise. [Song et al. (2021)](https://arxiv.org/abs/2011.13456) showed this process can be run in reverse in two ways: as a matching reverse-time SDE, or as a deterministic *probability flow ODE* with the same marginal distributions _i.e.,_ an ordinary differential equation that a standard solver can integrate directly. Both routes need the same missing piece: the *score function*, $\nabla_x \log p_t(x)$, the gradient of the log-density of the noised data at each step. The score function has no closed form; it can only be estimated by training a separate network against a score-matching objective. Every part of this, meaning the SDE, the ODE, the gradient, the density is defined over a continuous, differentiable space. None of it has a meaning for discrete data: there is no gradient of a distribution over seven tile types, and no log-density of a word.
 
-<p align="center">
+<figure class="fig">
   <img src="/images/sokoban_assets/SDE.png" alt="forward and reverse SDE, Song et al. 2021">
-</p>
-<p style="max-width: 42em; margin: 0.6em auto 2em; font-size: 0.9em; line-height: 1.55; opacity: 0.8;">
-  Figure 1 from <a href="https://arxiv.org/abs/2011.13456">Song et al. (2021)</a>, reproduced here.
+  <figcaption>Figure 1 from <a href="https://arxiv.org/abs/2011.13456">Song et al. (2021)</a>, reproduced here.
   <strong>Top, forward SDE:</strong> the process that corrupts data $\mathbf{x}(0)$ into
   noise $\mathbf{x}(T)$, shown corrupting a photograph step by step.
   <strong>Bottom, reverse SDE:</strong> the same process run backwards, turning noise back
   into data. This is made possible only if the <strong>score function</strong>
   $\nabla_{\mathbf{x}} \log p_t(\mathbf{x})$, boxed in the equation, is known at every
-  intermediate step.
-</p>
+  intermediate step.</figcaption>
+</figure>
 
 The diffusion models that generate images work on **continuous** data. The forward process gradually adds Gaussian noise to a picture until nothing is left
 but static; the model learns to run that backwards, removing a little noise at a
@@ -101,38 +103,39 @@ are hidden rather than how much noise is added. Generation runs that backwards: 
 
 In masked diffusion models commitments are **final**: once a cell is unmasked it can never be selected again and the sampler only ever draws from cells still marked `[MASK]`, so a wall placed at step 3 stays a wall for the rest of generation. Continuous diffusion has no such rule: every pixel is nudged at every one of its steps, all the way to the end, so an early bad direction can still be pulled back later. 
 
-## Contribution
+### Contribution
 
 We train a **masked diffusion model** to generate Sokoban puzzles, using the
 formulation from the MD4 paper [Shi et al., 2024](https://arxiv.org/abs/2406.04329). The training data is DeepMind's [Boxoban](https://github.com/deepmind/boxoban-levels) dataset. Puzzles here are $10\times10$ grids of tiles rather than sentences of words: each one flattens to **100 tokens** over a vocabulary of 7 tile types (`#` wall, space floor, `@` player, `$` box, `.` goal, `*` box-on-goal, `+` player-on-goal), plus a `[MASK]` symbol the model uses but the data never contains.
 
-<p align="center">
-  <img src="/images/sokoban_assets/legend.png" alt="tile key">
-</p>
+<figure class="fig">
+  <img class="no-bg" src="/images/sokoban_assets/legend.png" alt="tile key">
+  <figcaption>Tile key.</figcaption>
+</figure>
 
-### Solvability emerges without supervision
+#### Solvability emerges without supervision
 
 Trained only to fill in masked cells, with no solver, reward, or solvability label in the loop, the model generates puzzles that are **77.4%** solvable unfiltered, rising to **98.7%** once failures repairable by deleting a single interior wall are counted. Here 50,000 puzzles were generated using our model and every unsolvable puzzle was checked. Counting two-wall repairs as well, only ~0.40% of everything generated is genuinely broken. Interestingly, the culprit walls were committed at a median probability of **0.45**, against **0.93** for the other interior walls of the very same puzzles.
 
 
-### Distribution match
+#### Distribution match
 
 The tile-pattern divergence between generated puzzles and the training corpus sits on the divergence between *real held-out* puzzles and the same corpus, at every sample size from 250 to 50,000, where the held-out split runs out. Both series decay at the same rate, and what separates them is under 4% of the divergence itself at every size. Solvability is simply inherited from the training dataset.
 
-### Temperature trade-off
+#### Temperature trade-off
 
 Lowering $\tau$ from 1.0 to 0.6 raises solvability by 3.8 points but inflates average wall count from 68.9 to 73.2 in the temperature sweep, against a corpus average of 68.6, while cutting median solver effort by 36%. The default $\tau = 1.0$ is the setting at which generated puzzles match real wall density.
 
 
-# Method and design choices
+## Method and design choices
 
 This section lays out the design of the model and the reasoning behind each choice. We first motivate why a diffusion model, rather than an autoregressive one, suits Sokoban generation. We then describe the training objective and work through the three choices that shape it: the loss weighting that keeps every noise level contributing usefully, the number of diffusion steps, and the noise schedule. Each is presented not just as a setting but with the argument for why it takes the value it does.
 
-## Model choice
+### Model choice
 
 The non-local interdependence between different parts of the puzzle is what makes it difficult, so an autoregressive generator, which commits to everything in one fixed order, isn't a good fit for this kind of game. Diffusion does not work that way. It fills in cells in whatever order the reveal process happens to land on, and each new cell is conditioned on every cell already decided so far, wherever in the grid it sits, not on a fixed prefix that always runs in the same direction. The model might settle a goal in one corner, a wall on the opposite side, and only later the corridor connecting them, rather than reading the grid off in one fixed pass. Because a puzzle's actual difficulty comes from exactly this kind of non-local interaction meaning a decision in one part of the grid constraining what will work somewhere else entirely, a generator that isn't locked into a single fixed order is a better structural match for the problem than one that is.
 
-## Architecture
+### Architecture
 
 The generator $f_\theta$ is a bidirectional Transformer encoder ($\approx$ 4.9M parameters): $d=256$, $6$ layers, $8$ heads, feed-forward width $1024$, dropout $0.1$.  Encoder only is used because the task is fill-in-the-blanks over a grid, not left-to-right generation.
 
@@ -153,7 +156,7 @@ $$\omega_k = 10000^{-2k/d}$$
 
 Note that the timestep term $\tau(t)$ is added identically to every cell. The embeddings then feed a standard stack of 6 standard pre-norm Transformer blocks (multi-head attention + FFN with residual connections), and a final linear layer projects each cell to logits over the 7 tiles.
 
-## Training
+### Training
 
 At timestep $t$ each cell is independently replaced by `[MASK]` with probability $1-\alpha_t$, on a linear schedule $\alpha_t = 1 - t/T$ with $T = 100$. At $t=0$ the grid is intact; at $t=T$ it is entirely mask. A training data point then consists of a sampled puzzle from the training data, a sampled $t \in \{1,\dots,T\}$, and a masked version of the chosen puzzle via the scheduler. The model is then trained to
 recover the original tokens at the masked positions, where the loss is the cross-entropy weighted by
@@ -188,22 +191,24 @@ ceiling equal to the sequence length itself.
 
 Finally, the snippet below summarizes the training algorithm, following  [[1]](#ref-1).
 
-**Algorithm 1 Training Step**
-
-**Require:** Batch of puzzles $\lbrace x_0^{(b)}\rbrace_{b=1}^{B}$, model $f_\theta$
-
-1. Sample $t^{(b)} \sim \mathrm{Uniform}\{1, \dots, T\}$ for each $b$
-2. Compute $\alpha_t = 1 - t/T$
-3. Sample masks: $m_i \sim \mathrm{Bernoulli}(1 - \alpha_t)$ for each position
-4. Create $x_t$: replace $x_0^{(i)}$ with $[\mathrm{MASK}]$ where $m_i = 1$
-5. Forward pass: $\text{logits} = f_\theta(x_t, t)$
-6. Average cross-entropy over the masked positions
-7. Apply weight $w(t) = \min(1/(1 - \alpha_t),\, w_{\max})$
-8. Backpropagate and update $\theta$
+<div class="algorithm">
+<p class="algorithm-title">Algorithm 1: Training step</p>
+<p><strong>Require:</strong> Batch of puzzles $\lbrace x_0^{(b)}\rbrace_{b=1}^{B}$, model $f_\theta$</p>
+<ol>
+<li>Sample $t^{(b)} \sim \mathrm{Uniform}\lbrace 1, \dots, T\rbrace$ for each $b$</li>
+<li>Compute $\alpha_t = 1 - t/T$</li>
+<li>Sample masks: $m_i \sim \mathrm{Bernoulli}(1 - \alpha_t)$ for each position</li>
+<li>Create $x_t$: replace $x_0^{(i)}$ with $[\mathrm{MASK}]$ where $m_i = 1$</li>
+<li>Forward pass: $\text{logits} = f_\theta(x_t, t)$</li>
+<li>Average cross-entropy over the masked positions</li>
+<li>Apply weight $w(t) = \min(1/(1 - \alpha_t),\, w_{\max})$</li>
+<li>Backpropagate and update $\theta$</li>
+</ol>
+</div>
 
 In Algorithm 1, training is shown for a single puzzle; the implementation vectorizes over a batch of $B$.
 
-## Loss and solvability 
+### Loss and solvability 
 
 The model was trained for 1,000 epochs over the 450,000-puzzle corpus, 292,000
 optimizer steps at batch size 1,536, using AdamW (learning rate
@@ -221,11 +226,12 @@ flattened would have given up roughly 25 points of solvability. Train and
 validation loss also track each other throughout, so the long run is not
 overfitting.
 
-<p align="center">
-  <img src="/images/sokoban_assets/training_curve.png" alt="training and validation loss against solvability over the training run">
-</p>
+<figure class="fig">
+  <img class="only-light" src="/images/sokoban_assets/training_curve.png" alt="training and validation loss against solvability over the training run"><img class="only-dark" src="/images/sokoban_assets/training_curve_dark.png" alt="training and validation loss against solvability over the training run">
+  <figcaption>Training and validation loss against solvability over the training run.</figcaption>
+</figure>
 
-## Distribution match
+### Distribution match
 
 To assess whether generated puzzles capture the structural style of the Boxoban corpus beyond mere solvability, we evaluate the Jensen-Shannon Divergence, defined as 
 
@@ -236,39 +242,33 @@ where $M = \frac{1}{2}(P + Q)$, between the empirical $3 \times 3$ sliding-windo
 The plot below compares generated puzzles against real ones on the same measurement: both series show how far a sample of puzzles diverges from the 450,000-puzzle training corpus in its distribution of local $3\times3$ tile
 patterns, plotted against how many puzzles went into the sample. The validation set is Boxoban's held-out split, which comes with DeepMind's dataset and consists of 50,000 real puzzles that were never shown to the model.
 
-<p align="center">
-  <img src="/images/sokoban_assets/jsd_sample_size.png" alt="tile-pattern JSD against sample size, generated vs real held-out puzzles">
-</p>
-<p style="max-width: 42em; margin: 0.6em auto 2em; font-size: 0.9em; line-height: 1.55; opacity: 0.8;">
-  Tile-pattern JSD against the 450,000-puzzle training corpus, plotted against sample size,
+<figure class="fig">
+  <img class="only-light" src="/images/sokoban_assets/jsd_sample_size.png" alt="tile-pattern JSD against sample size, generated vs real held-out puzzles"><img class="only-dark" src="/images/sokoban_assets/jsd_sample_size_dark.png" alt="tile-pattern JSD against sample size, generated vs real held-out puzzles">
+  <figcaption>Tile-pattern JSD against the 450,000-puzzle training corpus, plotted against sample size,
   for generated puzzles and for real held-out puzzles measured identically. Both series decay
   as <em>K</em><sup>&minus;0.59</sup>: the divergence a small sample shows is dominated by how
   few 3&times;3 patterns it can cover, not by the source it was drawn from. The held-out curve
-  is therefore the floor, and the generated curve sits on it.
-</p>
+  is therefore the floor, and the generated curve sits on it.</figcaption>
+</figure>
 
 
-# Inference and evaluation
+## Inference and evaluation
 
 This section reports the evaluation results for the trained model: solvability, one-wall repairability, memorization, and the effect of sampling temperature. We begin with sample puzzles, rated for difficulty by the push-based search described earlier.
 
-<p align="center">
-  <img src="/images/sokoban_assets/generate_panel.gif" alt="generation">
-</p>
-<p align="center">
-  <em> Nine puzzles generated from a fully masked grid: 100 steps, one cell committed per step in uniformly random order, never revised. Verdicts and push counts appear once every cell is committed; the bars rate each puzzle against the training corpus's difficulty quartiles.</em>
-</p>
+<figure class="fig">
+  <img class="no-bg" src="/images/sokoban_assets/generate_panel.gif" alt="generation">
+  <figcaption>Nine puzzles generated from a fully masked grid: 100 steps, one cell committed per step in uniformly random order, never revised. Verdicts and push counts appear once every cell is committed; the bars rate each puzzle against the training corpus's difficulty quartiles.</figcaption>
+</figure>
 
 Below are the solutions to those puzzles.
 
-<p align="center">
-  <img src="/images/sokoban_assets/solve_panel.gif" alt="playback">
-</p>
-<p align="center">
-  <em> The same nine puzzles, played back under solutions found by the push-based solver.</em>
-</p>
+<figure class="fig">
+  <img class="no-bg" src="/images/sokoban_assets/solve_panel.gif" alt="playback">
+  <figcaption>The same nine puzzles, played back under solutions found by the push-based solver.</figcaption>
+</figure>
 
-## Sampling algorithm
+### Sampling algorithm
 
 The generation process reverses corruption by starting with a 100-cell [MASK] grid and unmasking one cell at a time across 100 steps. At each step, the model predicts probability distributions over all seven tile types across the entire grid simultaneously. A candidate tile is sampled from each distribution—rather than selected via argmax—and exactly one uncommitted cell is chosen uniformly at random to be fixed. Discarding the remaining predictions and recomputing them from scratch on each step ensures the model chooses what tile to place while a uniform sampler determines which cell comes next. By conditioning each step on one additional finalized neighbor, the system bypasses having to model the full 100-cell joint distribution directly. In other words, the following holds
 
@@ -283,22 +283,24 @@ which is precisely what allows any reveal order to be used at sampling time.
 Selecting cells uniformly also avoids the pitfalls of confidence-based ordering: because walls are the easy, high-confidence majority class, committing high-confidence cells first biases subsequent predictions toward even more walls, inflating the average wall count in that comparison from 69.5, which matches the corpus average of 68.6, up to 81.5. The snippet below provides the inference algorithm.
 
 
-**Algorithm 2 Sampling**
+<div class="algorithm">
+<p class="algorithm-title">Algorithm 2: Sampling</p>
+<p><strong>Require:</strong> Trained model $f_\theta$, $T = 100$ steps, temperature $\tau = 1.0$</p>
+<ol>
+<li>Initialize $x \leftarrow [\mathrm{MASK}]^{100}$</li>
+<li><strong>for</strong> $\text{step} = 0, \dots, T-1$ <strong>do</strong></li>
+<li class="indent">Compute $t = T - \text{step}$</li>
+<li class="indent">Forward pass: $p = \mathrm{softmax}\big(f_\theta(x, t) / \tau\big)$ for every cell</li>
+<li class="indent">Draw a candidate tile for every cell: $\hat{x}_i \sim \mathrm{Categorical}(p_i)$</li>
+<li class="indent">Collect the still-masked cells $M = \lbrace i : x_i = [\mathrm{MASK}] \rbrace$</li>
+<li class="indent">Decide how many to reveal: $n = \max\big(\lceil \lvert M \rvert / (T - \text{step}) \rceil, 1\big)$, which is $1$ here</li>
+<li class="indent">Choose which cells to reveal: pick $n$ of the masked cells in $M$ at random, all equally likely</li>
+<li class="indent">Commit the values sampled in line 5 at those cells (never revised afterwards)</li>
+<li><strong>return</strong> $x$</li>
+</ol>
+</div>
 
-**Require:** Trained model $f\_\theta$, $T = 100$ steps, temperature $\tau = 1.0$
-
-1. Initialize $x \leftarrow [\mathrm{MASK}]^{100}$
-2. **for** $\text{step} = 0, \dots, T-1$ **do**
-3. &nbsp;&nbsp;&nbsp;&nbsp;Compute $t = T - \text{step}$
-4. &nbsp;&nbsp;&nbsp;&nbsp;Forward pass: $p = \mathrm{softmax}\big(f\_\theta(x, t) / \tau\big)$ for every cell
-5. &nbsp;&nbsp;&nbsp;&nbsp;Draw a candidate tile for every cell: $\hat{x}\_i \sim \mathrm{Categorical}(p\_i)$
-6. &nbsp;&nbsp;&nbsp;&nbsp;Collect the still-masked cells $M = \lbrace i : x\_i = [\mathrm{MASK}] \rbrace$
-7. &nbsp;&nbsp;&nbsp;&nbsp;Decide how many to reveal: $n = \max\big(\lceil \lvert M \rvert / (T - \text{step}) \rceil, 1\big)$, which is $1$ here
-8. &nbsp;&nbsp;&nbsp;&nbsp;Choose which cells to reveal: pick $n$ of the masked cells in $M$ at random, all equally likely
-9. &nbsp;&nbsp;&nbsp;&nbsp;Commit the values sampled in line 5 at those cells (never revised afterwards)
-10. **return** $x$
-
-## One-wall fixes
+### One-wall fixes
 
 When a generated puzzle is unsolvable, the failure is usually shallow rather
 than structural: **94.5%** of unsolvable puzzles become solvable by deleting a
@@ -307,15 +309,14 @@ single interior wall, which lifts effective solvability from 77.4% to
 at the moment it committed it during generation. These probabilities have a median of **0.45**, against
 **0.93** for the other interior walls of the very same puzzles.
 
-<p align="center">
-  <img src="/images/sokoban_assets/wallfix_fixed.png" alt="unsolvable puzzles repaired by removing one wall, each marked with the probability the model committed it at">
-</p>
-<p style="max-width: 42em; margin: 0.6em auto 2em; font-size: 0.9em; line-height: 1.55; opacity: 0.8;"> Nine unsolvable puzzles, each repaired by deleting one interior wall. The red outline marks
+<figure class="fig">
+  <img class="no-bg" src="/images/sokoban_assets/wallfix_fixed.png" alt="unsolvable puzzles repaired by removing one wall, each marked with the probability the model committed it at">
+  <figcaption>Nine unsolvable puzzles, each repaired by deleting one interior wall. The red outline marks
   the removed cell and the chip gives the probability the model assigned it when it was
-  committed during generation. Measured on 11,288 unsolvable puzzles from a 50,000-sample run.
-</p>
+  committed during generation. Measured on 11,288 unsolvable puzzles from a 50,000-sample run.</figcaption>
+</figure>
 
-## Memorization
+### Memorization
 
 A generator that reproduced its training data would score well on every metric
 above while being worthless. For each generated puzzle we measure the **Hamming
@@ -342,40 +343,33 @@ one, **5** against **19**, as is close agreement, **5.6%** within 5 cells agains
 **7.5%**. The model is therefore not copying; if anything it lands slightly
 further from the training corpus than genuine puzzles do.
 
-<p align="center">
-  <img src="/images/sokoban_assets/hamming.png" alt="nearest-neighbour Hamming distance to the training corpus">
-</p>
-<p style="max-width: 42em; margin: 0.6em auto 2em; font-size: 0.9em; line-height: 1.55; opacity: 0.8;">
-  Nearest-neighbour Hamming distance to the training corpus, player position canonicalised away.
+<figure class="fig">
+  <img class="only-light" src="/images/sokoban_assets/hamming.png" alt="nearest-neighbour Hamming distance to the training corpus"><img class="only-dark" src="/images/sokoban_assets/hamming_dark.png" alt="nearest-neighbour Hamming distance to the training corpus">
+  <figcaption>Nearest-neighbour Hamming distance to the training corpus, player position canonicalised away.
   <strong>Blue:</strong> for each of 50,000 held-out puzzles, the distance to its nearest
   neighbour among the 450,000 training puzzles. <strong>Orange:</strong> the same measurement
   for 50,000 generated puzzles. The blue series is the reference: it is what a generator that
   memorised nothing would score. Mass piled up near zero in the orange series would be
-  memorisation; there is none.
-</p>
+  memorisation; there is none.</figcaption>
+</figure>
 
-## Sampling temperature
+### Sampling temperature
 
 Temperature $\tau$ rescales the logits before each cell is drawn. Lowering it
 sharpens the distribution toward the model's top choice; raising it flattens
 it. The figure below describes the impact of temperature on wall count and
 solvability.
 
-<p align="center">
-  <img src="/images/sokoban_assets/temperature_sweep.png" alt="solvability and wall count against sampling temperature">
-</p>
-<div align="center">
-<p style="max-width: 42em; margin: 0.6em auto 2em; font-size: 0.9em; line-height: 1.55; opacity: 0.8;">
-  Solvability and average wall count against sampling temperature, 10,000 samples per setting
+<figure class="fig">
+  <img class="only-light" src="/images/sokoban_assets/temperature_sweep.png" alt="solvability and wall count against sampling temperature"><img class="only-dark" src="/images/sokoban_assets/temperature_sweep_dark.png" alt="solvability and wall count against sampling temperature">
+  <figcaption>Solvability and average wall count against sampling temperature, 10,000 samples per setting
   on the <em>T</em>&nbsp;=&nbsp;100 checkpoint. Shaded bands are 95% confidence intervals. The
   training corpus averages 68.6 walls per puzzle; sampling at &tau;&nbsp;=&nbsp;1.0 matches it,
-  and every lower setting exceeds it.
-</p>
-
-</div>
+  and every lower setting exceeds it.</figcaption>
+</figure>
 
 
-# Citation
+## Citation
 
 If you use this work, please cite it as:
 
@@ -391,7 +385,9 @@ If you use this work, please cite it as:
 }
 ```
 
-# References
+## References
+
+<div class="references" markdown="1">
 
 <a id="ref-1"></a>[1] Jiaxin Shi et al. "Simplified and Generalized Masked Diffusion for Discrete Data." *Advances in
 Neural Information Processing Systems (NeurIPS)*, 2024. arXiv:2406.04329.
@@ -407,3 +403,5 @@ DOI: 10.3233/978-1-60750-675-1-140.
 
 <a id="ref-4"></a>[4] Joseph Culberson. "Sokoban is PSPACE-complete." Technical Report TR97-02,
 Department of Computing Science, University of Alberta, 1997.
+
+</div>
