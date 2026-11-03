@@ -14,7 +14,7 @@ I am a **research engineer and former mathematician** with a passion for transla
 
 I earned my PhD in Mathematics from the [University of Waterloo](https://uwaterloo.ca/) in 2021, and I hold both a master's and a bachelor's degree in Mathematics from [Sharif University of Technology](https://en.sharif.edu/). My [PhD research](https://uwspace.uwaterloo.ca/handle/10012/16872) focused on stochastic optimization, while my earlier studies delved into fundamental mathematics.
 
-Recently I have been working on generative models for combinatorial puzzles, GPU-accelerated game solving, and deep learning for option pricing. You can read more about my [projects](/projects/) or download my [CV](/files/resume.pdf).
+Recently I have been working on generative models for combinatorial puzzles, GPU-accelerated game solving, and deep learning for option pricing. You can read more about my [projects](/projects/).
 
 <div class="news-container">
     <h3>Recent News &amp; Highlights</h3>
