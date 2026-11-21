@@ -20,13 +20,6 @@ links:
   - label: "BibTeX"
     url: "#bibtex"
     icon: "fa-solid fa-quote-right"
-stats:
-  - value: "4 × 40"
-    label: "hidden layers × units"
-  - value: "29"
-    label: "arbitrage-free surfaces trained"
-  - value: "2¹⁴"
-    label: "FFT points for Bates pricing"
 hero: "/images/header.png"
 hero_alt: "A smoothed implied volatility surface"
 hero_wide: true

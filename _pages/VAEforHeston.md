@@ -17,13 +17,6 @@ links:
   - label: "BibTeX"
     url: "#bibtex"
     icon: "fa-solid fa-quote-right"
-stats:
-  - value: "625"
-    label: "Heston parameter sets in the training data"
-  - value: "2²³"
-    label: "Monte Carlo paths per surface"
-  - value: "4"
-    label: "latent dimensions"
 hero: "/images/part1.gif"
 hero_alt: "Volatility surfaces generated along a random walk in the VAE latent space"
 hero_wide: true

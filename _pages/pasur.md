@@ -23,13 +23,6 @@ links:
   - label: "BibTeX"
     url: "#citation"
     icon: "fa-solid fa-quote-right"
-stats:
-  - value: "~2³⁰"
-    label: "nodes in the game tree, on average"
-  - value: "48"
-    label: "game tree height"
-  - value: "500"
-    label: "random decks solved with CFR"
 hero: "/files/pasur/pasur_game_tree.png"
 hero_alt: "The Pasur full game tree: height 48, about 2^30 nodes"
 abstract: "Pasur is a fishing card game played over six rounds, similar to games such as Cassino, Scopa, and Bastra. This paper introduces a CUDA-accelerated computational framework for simulating Pasur, emphasizing efficient memory management. We use our framework to compute near-Nash equilibria via Counterfactual Regret Minimization (CFR), a well-known algorithm for solving large imperfect-information games."
