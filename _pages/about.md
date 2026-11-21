@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-<img src="/images/profile.png" alt="Sina Baghal" class="profile">
+<img src="/images/profile.jpg" alt="Sina Baghal" class="profile">
 
 I am a **research engineer and former mathematician** with a passion for translating advanced mathematical and computational methods into real-world applications. My professional background spans **data science, machine learning research, and quantitative analysis**.
 
